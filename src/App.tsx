@@ -39,20 +39,12 @@ const App = () => {
         body: JSON.stringify({
           parent: { database_id: databaseId },
           properties: {
-            Name: {
-              "title": [
-                {
-                  "text": {
-                    "content": "Tuscan Kale"
-                  }
-                }
-              ]
-            }
+            이름: {"title": [{"text": {"content": "Tuscan Kale"}}]}
           }
         })
       })
       const data = await response.json();
-      return data;
+      console.log(data)
     } catch (error) {
       console.error('Error', error)
     }
