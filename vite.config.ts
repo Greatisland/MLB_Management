@@ -5,7 +5,7 @@ dotenv.config();
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/MLB_managament/", 
+  base: "/MLB_Managament/", 
   plugins: [react()],
   define: {
     'process.env': process.env,
