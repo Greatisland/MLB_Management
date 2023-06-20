@@ -1,5 +1,6 @@
 // import { useEffect } from 'react'
 import AppRouter from './router/AppRouter'
+import { GlobalStyle } from './style/globalStyled'
 
 const App = () => {
   // const Cors = 'https://cors-anywhere.herokuapp.com/'
@@ -55,6 +56,7 @@ const App = () => {
     <>
       {/* <div onClick={() => {readData()}}>읽기</div>
       <div onClick={() => {postData()}}>쓰기</div> */}
+      <GlobalStyle />
       <AppRouter />
     </>
   )
