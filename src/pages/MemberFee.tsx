@@ -1,8 +1,9 @@
+import { MemberFeeContainer } from "../style/MemberFeeStyled"
+
 const MemberFee = () => {
   return (
-    <>
-      회비
-    </>
+    <MemberFeeContainer>
+    </MemberFeeContainer>
   )
 }
 
