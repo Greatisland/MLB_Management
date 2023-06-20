@@ -5,7 +5,7 @@ import { sortState } from "../store/slice"
 const BtnList = () => {
   const dispatch = useAppDispatch()
   const selectSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(sortState(e))
+    dispatch(sortState(e.target.value))
   }
 
   return (

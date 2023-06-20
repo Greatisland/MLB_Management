@@ -12,6 +12,7 @@ export const NotionApi = {
         }
       });
       const data = await response.json();
+      data.results.sort((a: any, b: any) => new Date(a.properties.가입일.date.start).getTime() - new Date(b.properties.가입일.date.start).getTime())
       return data.results
 
     } catch (error) {
@@ -39,6 +40,7 @@ export const NotionApi = {
         })
       })
       const data = await response.json();
+      return data
     } catch (error) {
       console.error('Error', error)
     }

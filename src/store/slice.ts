@@ -48,6 +48,7 @@ const membersDataSlice = createSlice({
   initialState,
   reducers: {
     sortState: (state, action) => {
+      console.log(action.payload)
       if(action.payload === 'name'){
         state.membersData.sort((a, b) => {
           let aName = a.properties.이름.title[0].plain_text
@@ -86,7 +87,6 @@ const membersDataSlice = createSlice({
     .addCase(getMembersData.fulfilled, (state, action) => {
       //fetch성공 후 수행할 action 작성
       state.membersData = action.payload
-      state.membersData.sort((a, b) => new Date(a.properties.가입일.date.start).getTime() - new Date(b.properties.가입일.date.start).getTime())
       console.log(state.membersData)
     })
 
