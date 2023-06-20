@@ -1,6 +1,6 @@
 import { Btn, BtnListContainer } from "../style/globalStyled"
 import { useAppDispatch } from "../store/hook"
-import { sortState } from "../store/slice"
+import { sortState, toggleModal, sendMember } from "../store/slice"
 
 const BtnList = () => {
   const dispatch = useAppDispatch()
@@ -17,11 +17,19 @@ const BtnList = () => {
           <option value='birth'>년생</option>
         </select>
       </Btn>
-      <Btn onClick={() => {}}>
+      <Btn onClick={()=>{dispatch(toggleModal()), dispatch(sendMember({
+        id: '', 
+        archived: '',
+        name: '',
+        join: '',
+        year: '',
+        etc: '',
+        state: false
+      }))}}>
         <p>회원추가</p>
       </Btn>
       <Btn onClick={() => {}}>
-        <p>회원삭제</p>
+        <p>검색</p>
       </Btn>
     </BtnListContainer>
   )

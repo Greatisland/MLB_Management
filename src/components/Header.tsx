@@ -1,19 +1,16 @@
 import { HeaderContainer } from "../style/headerStyle"
 import BtnList from "./BtnList"
-import { useState } from "react";
-import JoinModal from "./JoinModal";
+import MemberModal from "./MemberModal";
+import { useAppSelector } from "../store/hook";
 
 const Header = () => {
-  const [showModal, setShowModal] = useState(false)
+  const { modalState } = useAppSelector(state => state.membersData)
 
-  const openModal = () => {
-    setShowModal((param) => !param);
-  }
   return (
     <HeaderContainer>
       <h1>MLB Management</h1>
-      <BtnList />
-      {/* {showModal ? <JoinModal closeModal={closeModal} /> : null} */}
+      <BtnList/>
+      {modalState ? <MemberModal /> : null}
     </HeaderContainer>
   )
 }

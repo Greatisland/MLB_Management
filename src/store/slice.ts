@@ -9,9 +9,21 @@ export const getMembersData = createAsyncThunk("members/getMembersData", async (
 //state 초기 값
 interface InitialState {
   membersData: Member[]
+  modalState: boolean
+  sendMember: {
+    id: string
+    archived: boolean
+    name: string
+    join?: string
+    year?: string
+    etc?: string
+    state: false
+  }
 }
 
 interface Member {
+  id: string
+  archived: boolean
   properties: Properties
 }
 
@@ -39,7 +51,17 @@ interface Properties {
 }
 
 const initialState: InitialState = {
-  membersData: []
+  membersData: [],
+  modalState: false,
+  sendMember: {
+    id: '',
+    archived: false,
+    name: '',
+    join: '',
+    year: '',
+    etc: '',
+    state: false
+  }
 }
 
 //reducer, state를 모두 관리할 slice
@@ -75,6 +97,12 @@ const membersDataSlice = createSlice({
           return Number(a.properties.년생.rich_text[0].plain_text) - Number(b.properties.년생.rich_text[0].plain_text)
         })
       }
+    },
+
+    toggleModal: (state) => {state.modalState = !state.modalState},
+
+    sendMember: (state, action) => {
+      state.sendMember = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -86,8 +114,8 @@ const membersDataSlice = createSlice({
 
     .addCase(getMembersData.fulfilled, (state, action) => {
       //fetch성공 후 수행할 action 작성
+      console.log('로딩 끝!')
       state.membersData = action.payload
-      console.log(state.membersData)
     })
 
     .addCase(getMembersData.rejected, (state) => {
@@ -96,5 +124,5 @@ const membersDataSlice = createSlice({
     })
   },
 })
-export const { sortState } = membersDataSlice.actions
+export const { sortState, toggleModal, sendMember } = membersDataSlice.actions
 export default membersDataSlice.reducer
