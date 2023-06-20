@@ -1,22 +1,12 @@
 import { Btn, BtnListContainer } from "../style/globalStyled"
 import { useAppDispatch } from "../store/hook"
-import { sortState, toggleModal, sendMember } from "../store/slice"
+import { toggleModal, sendMember } from "../store/slice"
 
 const BtnList = () => {
   const dispatch = useAppDispatch()
-  const selectSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(sortState(e.target.value))
-  }
 
   return (
     <BtnListContainer>
-      <Btn>
-        <select onChange={selectSort}>
-          <option value='join'>가입일</option>
-          <option value='name'>이름</option>
-          <option value='birth'>년생</option>
-        </select>
-      </Btn>
       <Btn onClick={()=>{dispatch(toggleModal()), dispatch(sendMember({
         id: '', 
         archived: '',

@@ -10,7 +10,7 @@ export const NotionApi = {
           'Notion-Version': '2022-06-28',
           'Content-Type': 'application/json'
         }
-      });
+      })
       const data = await response.json()
       data.results.sort((a: any, b: any) => new Date(a.properties.가입일.date.start).getTime() - new Date(b.properties.가입일.date.start).getTime())
       return data.results
@@ -22,7 +22,7 @@ export const NotionApi = {
 
   async postData(name: string, join: string, year: string, etc: string){
     try {
-      const response = await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/`, {
+      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -39,8 +39,7 @@ export const NotionApi = {
           }
         })
       })
-      const data = await response.json();
-      return data
+
     } catch (error) {
       console.error('Error', error)
     }
@@ -48,7 +47,7 @@ export const NotionApi = {
 
   async updateData(name: string, join: string, year: string, etc: string, id: string){
     try {
-      const response = await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -64,8 +63,7 @@ export const NotionApi = {
           }
         })
       })
-      const data = await response.json();
-      return data
+
     } catch (error) {
       console.error('Error', error)
     }
@@ -73,7 +71,7 @@ export const NotionApi = {
 
   async deleteData(id: string){
     try {
-      const response = await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -82,8 +80,7 @@ export const NotionApi = {
         },
         body: JSON.stringify({archived: true})
       })
-      const data = await response.json();
-      return data
+
     } catch (error) {
       console.error('Error', error)
     }

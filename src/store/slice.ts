@@ -69,8 +69,21 @@ const membersDataSlice = createSlice({
   name: "membersData",
   initialState,
   reducers: {
-    sortState: (state, action) => {
-      console.log(action.payload)
+    //memeberUpdate, memberDelete는 api호출을 최소화하기 위한 메소드
+    memberUpdate (state, action) {
+      let index = state.membersData.findIndex(member => member.id === action.payload.id)
+      if(index !== -1){state.membersData.splice(index, 1, action.payload)}
+      else{
+        state.membersData = [...state.membersData, action.payload]
+      }
+    },
+
+    memberDelete (state, action) {
+      let index = state.membersData.findIndex(member => member.id === action.payload.id)
+      state.membersData.splice(index, 1)
+    },
+
+    sortState (state, action){
       if(action.payload === 'name'){
         state.membersData.sort((a, b) => {
           let aName = a.properties.이름.title[0].plain_text
@@ -87,42 +100,48 @@ const membersDataSlice = createSlice({
       }else if(action.payload === 'join'){
         state.membersData.sort((a, b) => new Date(a.properties.가입일.date.start).getTime() - new Date(b.properties.가입일.date.start).getTime())
 
-      }else if(action.payload === 'birth'){
+      }else if(action.payload === 'year'){
         state.membersData.sort((a, b) => {
-          if(a.properties.년생.rich_text[0].plain_text === '00'){
-            a.properties.년생.rich_text[0].plain_text = '2000'
-          }else if(b.properties.년생.rich_text[0].plain_text === '00'){
-            b.properties.년생.rich_text[0].plain_text = '2000'
-          }
           return Number(a.properties.년생.rich_text[0].plain_text) - Number(b.properties.년생.rich_text[0].plain_text)
+        })
+      }else if(action.payload === 'etc'){
+        state.membersData.sort((a, b) => {
+          let aName = a.properties.비고.rich_text[0] ? a.properties.비고.rich_text[0].plain_text as string : ''
+          let bName = b.properties.비고.rich_text[0] ? b.properties.비고.rich_text[0].plain_text as string : ''
+          if (aName < bName) {
+            return 1
+          }
+          if (aName > bName) {
+            return -1
+          }
+          return 0;
         })
       }
     },
 
-    toggleModal: (state) => {state.modalState = !state.modalState},
+    toggleModal (state) {state.modalState = !state.modalState},
 
-    sendMember: (state, action) => {
+    sendMember (state, action) {
       state.sendMember = action.payload
     }
   },
-  extraReducers: (builder) => {
+  extraReducers (builder) {
     builder
-    .addCase(getMembersData.pending, (state) => {
+    .addCase(getMembersData.pending, () => {
       //fetch되기 전 수행할 action 작성
       console.log('로딩중..')
     })
 
     .addCase(getMembersData.fulfilled, (state, action) => {
       //fetch성공 후 수행할 action 작성
-      console.log('로딩 끝!')
       state.membersData = action.payload
     })
 
-    .addCase(getMembersData.rejected, (state) => {
+    .addCase(getMembersData.rejected, () => {
       //fetch 실패 시 수행할 action 작성
       console.log('fetch 실패 ㅠㅠ')
     })
   },
 })
-export const { sortState, toggleModal, sendMember } = membersDataSlice.actions
+export const { sortState, toggleModal, sendMember, memberUpdate, memberDelete } = membersDataSlice.actions
 export default membersDataSlice.reducer

@@ -6,9 +6,9 @@ export const FooterContainer = styled.div`
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: #f2f2f2;
+  background: #ddd;
   a {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     padding: 20px;
   }

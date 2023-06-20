@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <h1>MLB Management</h1>
+      <h1>MLB MANAGEMENT</h1>
       <BtnList/>
       {modalState ? <MemberModal /> : null}
     </HeaderContainer>

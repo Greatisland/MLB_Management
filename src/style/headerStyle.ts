@@ -8,6 +8,8 @@ export const HeaderContainer = styled.div`
   h1 {
     padding: 20px 0 0;
     font-size: 1.5rem;
+    color: #0B4240;
+    font-weight: bold;
   }
 `
 export const  JoinModalWrapper = styled.div`

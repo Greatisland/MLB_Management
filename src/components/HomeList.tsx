@@ -1,6 +1,6 @@
 import { HomeListContainer } from "../style/homeStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
-import { toggleModal, sendMember } from "../store/slice"
+import { toggleModal, sendMember, sortState } from "../store/slice"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
@@ -11,10 +11,10 @@ const HomeList = () => {
       <table>
         <thead>
           <tr>
-            <th>이름</th>
-            <th>가입일</th>
-            <th>년생</th>
-            <th>비고</th>
+            <th onClick={() => {dispatch(sortState('name'))}}>이름</th>
+            <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
+            <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
+            <th onClick={() => {dispatch(sortState('etc'))}}>비고</th>
           </tr>
         </thead>
         <tbody>
@@ -31,9 +31,9 @@ const HomeList = () => {
               }
               ))}}>
               <td>{member.properties.이름.title[0].plain_text}</td>
-              <td>{member.properties.가입일.date.start}</td>
-              <td>{member.properties.년생.rich_text[0].plain_text}</td>
-              <td>{member.properties.비고.rich_text[0]?member.properties.비고.rich_text[0].plain_text:null}</td>
+              <td className="date">{member.properties.가입일.date.start}</td>
+              <td>{member.properties.년생.rich_text[0].plain_text.substring(2)}</td>
+              <td className="etc">{member.properties.비고.rich_text[0] ? member.properties.비고.rich_text[0].plain_text : null}</td>
             </tr>
           ))}
         </tbody>
