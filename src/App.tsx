@@ -3,6 +3,7 @@ import { GlobalStyle } from './style/globalStyled'
 import { useEffect } from "react"
 import { useAppDispatch } from './store/hook'
 import { getMembersData } from './store/slice'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <ScrollToTop />
       <AppRouter />
     </>
   )

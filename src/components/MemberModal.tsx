@@ -12,7 +12,8 @@ const MemberModal = () => {
     name: sendMember.name || '',
     join: sendMember.join || '',
     year: sendMember.year || '',
-    etc: sendMember.etc || ''
+    etc: sendMember.etc || '',
+    gender: sendMember.gender || '',
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,27 +22,30 @@ const MemberModal = () => {
       sendMember.name !== state.name ||
       sendMember.join !== state.join ||
       sendMember.year !== state.year ||
-      sendMember.etc !== state.etc
+      sendMember.etc !== state.etc ||
+      sendMember.gender !== state.gender
       ){
       if(sendMember.state){
-        NotionApi.updateData(state.name, state.join, state.year, state.etc, sendMember.id)
+        NotionApi.updateData(state.name, state.join, state.year, state.etc, state.gender, sendMember.id)
         dispatch(memberUpdate({
           properties: {
             이름: {"title": [{'plain_text': state.name}]},
             가입일: {"date": {"start": state.join}},
             년생: {"rich_text": [{'plain_text': state.year}]},
-            비고: {"rich_text": [{'plain_text': state.etc}]}
+            비고: {"rich_text": [{'plain_text': state.etc}]},
+            성별: {"rich_text": [{'plain_text': state.gender}]},
           },
           id: sendMember.id
         }))
       }else{
-        NotionApi.postData(state.name, state.join, state.year, state.etc)
+        NotionApi.postData(state.name, state.join, state.year, state.etc, state.gender)
         dispatch(memberUpdate({
           properties: {
             이름: {"title": [{'plain_text': state.name}]},
             가입일: {"date": {"start": state.join}},
             년생: {"rich_text": [{'plain_text': state.year}]},
-            비고: {"rich_text": [{'plain_text': state.etc}]}
+            비고: {"rich_text": [{'plain_text': state.etc}]},
+            성별: {"rich_text": [{'plain_text': state.gender}]}
           }
         }))
       }
@@ -69,6 +73,10 @@ const MemberModal = () => {
             ))}
           </select>
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="비고(없을 경우 공란)"></input>
+          <select value={state.gender} onChange={e => setState({...state, gender: e.target.value})}>
+            <option value={'남'}>남</option>
+            <option value={'여'}>여</option>
+          </select>
           <input type="submit" value="완료"></input>
         </form>
         <div onClick={() => {deleteMenber(sendMember.id)}}>회원정보 삭제</div>

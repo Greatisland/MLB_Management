@@ -45,7 +45,7 @@ export const NotionApi = {
     }
   },
 
-  async updateData(name: string, join: string, year: string, etc: string, id: string){
+  async updateData(name: string, join: string, year: string, etc: string, gender: string, id: string){
     try {
       await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
@@ -59,7 +59,8 @@ export const NotionApi = {
             이름: {"title": [{"text": {"content": name}}]},
             가입일: {"date": {"start": join}},
             년생: {"rich_text": [{"text": {"content": year}}]},
-            비고: {"rich_text": [{"text": {"content": etc}}]}
+            비고: {"rich_text": [{"text": {"content": etc}}]},
+            성별: {"rich_text": [{"text": {"content": gender}}]}
           }
         })
       })
@@ -79,6 +80,48 @@ export const NotionApi = {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({archived: true})
+      })
+
+    } catch (error) {
+      console.error('Error', error)
+    }
+  },
+
+  async updatePay(id: string, target: string){
+    try {
+      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          properties: {
+            회비대상: {"rich_text": [{"text": {"content": target}}]},
+          }
+        })
+      })
+
+    } catch (error) {
+      console.error('Error', error)
+    }
+  },
+
+  async updateCheck(id: string, check: boolean){
+    try {
+      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          properties: {
+            납부체크: {"checkbox": check},
+          }
+        })
       })
 
     } catch (error) {

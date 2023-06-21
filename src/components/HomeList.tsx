@@ -26,6 +26,7 @@ const HomeList = () => {
                 name: member.properties.이름.title[0].plain_text,
                 join: member.properties.가입일.date.start,
                 year: member.properties.년생.rich_text[0].plain_text,
+                gender: member.properties.성별.rich_text[0].plain_text,
                 etc: member.properties.비고.rich_text[0] ? member.properties.비고.rich_text[0].plain_text : null,
                 state: true
               }
