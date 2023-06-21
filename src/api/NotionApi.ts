@@ -20,7 +20,7 @@ export const NotionApi = {
     }
   },
 
-  async postData(name: string, join: string, year: string, etc: string){
+  async postData(name: string, join: string, year: string, etc: string, gender: string){
     try {
       await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/`, {
         method: 'POST',
@@ -35,7 +35,8 @@ export const NotionApi = {
             이름: {"title": [{"text": {"content": name}}]},
             가입일: {"date": {"start": join}},
             년생: {"rich_text": [{"text": {"content": year}}]},
-            비고: {"rich_text": [{"text": {"content": etc}}]}
+            비고: {"rich_text": [{"text": {"content": etc}}]},
+            성별: {"rich_text": [{"text": {"content": gender}}]}
           }
         })
       })

@@ -5,7 +5,8 @@ dotenv.config({ path: '.env.production' }) //배포 환경에서 사용
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/MLB_Managament/", 
+  base: "/", 
+  // base: "/MLB_Management/", 
   plugins: [react()],
   define: {
     'process.env': process.env,

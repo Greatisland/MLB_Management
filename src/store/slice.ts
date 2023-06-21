@@ -143,6 +143,26 @@ const membersDataSlice = createSlice({
       }
     },
 
+    //pay멤버 정렬
+    sortPayState(state) {
+      state.noPayMemberData.sort((a, b) => {
+        let aName = a.properties.회비대상.rich_text[0] ? a.properties.회비대상.rich_text[0].plain_text : '기타'
+        let bName = b.properties.회비대상.rich_text[0] ? b.properties.회비대상.rich_text[0].plain_text : '기타'
+        if (aName < bName) {
+          return 1
+        }
+        if (aName > bName) {
+          return -1
+        }
+        return 0;
+      })
+      state.payMemberData.sort((a, b) => {
+        let aName = a.properties.납부체크.checkbox ? 1 : 2
+        let bName = b.properties.납부체크.checkbox ? 1 : 2
+        return bName - aName
+      })
+    },
+
     //모달 
     toggleModal (state) {state.modalState = !state.modalState},
 
@@ -155,8 +175,7 @@ const membersDataSlice = createSlice({
       let updateNoPay = [...state.noPayMemberData]
 
       if(!action.payload.add){
-
-        let index = updatePay.findIndex(member => member.id === action.payload.id)
+        let index = updatePay.findIndex(member => member.id === action.payload.member.id)
         updatePay.splice(index, 1)
         updateNoPay.push(action.payload.member)
 
@@ -164,7 +183,7 @@ const membersDataSlice = createSlice({
 
       }else{
 
-        let index = updateNoPay.findIndex(member => member.id === action.payload.id)
+        let index = updateNoPay.findIndex(member => member.id === action.payload.member.id)
         updateNoPay.splice(index, 1)
         updatePay.push(action.payload.member)
 
@@ -186,13 +205,35 @@ const membersDataSlice = createSlice({
 
     //전원 납부 <-> 미납 토글
     payAllToggle (state, action) {
-
-      state.membersData.forEach(member => {
-        NotionApi.updateCheck(member.id, action.payload)
+      state.membersData.forEach((member: Member) => {
+        NotionApi.updateCheck(member.id, action.payload);
+      });
+    
+      state.payMemberData = state.payMemberData.map((member: Member) => {
+        return {
+          ...member,
+          properties: {
+            ...member.properties,
+            납부체크: {
+              ...member.properties.납부체크,
+              checkbox: action.payload
+            }
+          }
+        }
       })
-
-      state.payMemberData = state.payMemberData.map(member => member.properties.납부체크.checkbox = action.payload)
-      state.noPayMemberData = state.noPayMemberData.map(member => member.properties.납부체크.checkbox = action.payload)
+    
+      state.noPayMemberData = state.noPayMemberData.map((member: Member) => {
+        return {
+          ...member,
+          properties: {
+            ...member.properties,
+            납부체크: {
+              ...member.properties.납부체크,
+              checkbox: action.payload
+            }
+          }
+        }
+      })
     }
     
   },
@@ -210,7 +251,7 @@ const membersDataSlice = createSlice({
       let todayYear = dateCalc('year')
       let todayMonth = dateCalc('month')
 
-      state.payMemberData = action.payload.filter(member => {
+      state.payMemberData = action.payload.filter((member: Member) => {
         let date = new Date(member.properties.가입일.date.start)
         let joinYear = String(date.getFullYear())
         let joinMonth = String(date.getMonth() + 1).padStart(2,'0')
@@ -235,9 +276,12 @@ const membersDataSlice = createSlice({
           }
           state.noPayMemberData.push(member)
         }else if(
-          member.properties.회비대상.rich_text.length === 0
+          member.properties.회비대상.rich_text.length === 0 ||
+          member.properties.회비대상.rich_text[0].plain_text === ''
         ){
           return member
+        }else{
+          state.noPayMemberData.push(member)
         }
       })
     })
@@ -248,5 +292,5 @@ const membersDataSlice = createSlice({
     })
   },
 })
-export const { sortState, toggleModal, sendMember, memberUpdate, memberDelete, payMemberToggle, payCheckToggle, payAllToggle } = membersDataSlice.actions
+export const { sortState, toggleModal, sendMember, memberUpdate, memberDelete, payMemberToggle, payCheckToggle, payAllToggle, sortPayState } = membersDataSlice.actions
 export default membersDataSlice.reducer

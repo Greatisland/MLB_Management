@@ -10,6 +10,7 @@ export const HomeListContainer = styled.div`
   border-radius: 30px;
   background: #f2f2f2;
   overflow: hidden;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   table {
     width: 100%;
     display: flex;
@@ -17,7 +18,7 @@ export const HomeListContainer = styled.div`
     border-collapse: collapse;
   }
   thead {
-    background: #ddd;
+    background: #E3CBCB;
   }
   thead, tbody, tr {
     width: 100%;

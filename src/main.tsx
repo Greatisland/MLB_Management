@@ -6,7 +6,9 @@ import store from './store/configureStore.ts'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <BrowserRouter basename='/MLB_Managament/'>
+    {/* <BrowserRouter basename='/MLB_Managament/'> */}
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {/* <BrowserRouter> */}
       <App />
     </BrowserRouter>
   </Provider>

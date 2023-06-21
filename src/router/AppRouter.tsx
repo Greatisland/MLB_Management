@@ -7,15 +7,23 @@ import MemberPart from "../pages/MemberPart";
 const AppRouter = () => {
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/memberfee" element={<MemberFee />} />
         <Route path="/memberpart" element={<MemberPart />} />
       </Route>
     </Routes>
+    </> */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="memberfee" element={<MemberFee />} />
+          <Route path="memberpart" element={<MemberPart />} />
+        </Route>
+      </Routes>
     </>
-  )
+    )
 }
 
 export default AppRouter
