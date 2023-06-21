@@ -92,11 +92,11 @@ export const MembersTarget = styled.div`
   }
 `
 interface IColor {
-  state: boolean
+  state: string
 }
 
 export const CheckState = styled.li<IColor>`
-  color: ${props => props.state ? '#135E12' : '#BA3A3A'};
+  color: ${props => props.state === 'true' ? '#135E12' : '#BA3A3A'};
   font-weight: bold;
 `
 

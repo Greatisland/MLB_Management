@@ -28,7 +28,7 @@ const MemberFeeList = () => {
           <div className="member" key={i}>
             <ul onClick={() => {checkToggle(member)}}>
               <li>{member.properties.이름.title[0].plain_text}</li>
-              <CheckState state={member.properties.납부체크.checkbox}>{member.properties.납부체크.checkbox ? '완료!' : '미완료'}</CheckState>
+              <CheckState state={member.properties.납부체크.checkbox.toString()}>{member.properties.납부체크.checkbox ? '완료!' : '미완료'}</CheckState>
             </ul>
             <span>
               <TiUserDelete onClick={() => {payToggle(member, false)}} />
