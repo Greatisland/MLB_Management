@@ -35,8 +35,8 @@ const MemberFeeTotal = () => {
       </ul>
       <ul>
         <li>{percent()}%</li>
-        <li>${completeTotal('done')}</li>
-        <li>${completeTotal('none')}</li>
+        <li>₩{completeTotal('done')}</li>
+        <li>₩{completeTotal('none')}</li>
       </ul>
     </MemberFeeTotalContainer>
   )

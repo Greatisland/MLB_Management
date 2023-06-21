@@ -200,7 +200,7 @@ const membersDataSlice = createSlice({
       let index = state.payMemberData.findIndex(member => member.id === action.payload.id)
       state.payMemberData[index].properties.납부체크.checkbox = !state.payMemberData[index].properties.납부체크.checkbox
 
-      NotionApi.updateCheck(action.payload.id, !state.payMemberData[index].properties.납부체크.checkbox)
+      NotionApi.updateCheck(action.payload.id, state.payMemberData[index].properties.납부체크.checkbox)
     },
 
     //전원 납부 <-> 미납 토글
