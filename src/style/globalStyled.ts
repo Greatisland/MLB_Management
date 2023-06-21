@@ -29,12 +29,14 @@ export const GlobalStyle = createGlobalStyle`
 
 export const BtnListContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
   gap: 10px;
-  height: 20px;
+  padding: 0 10px;
 `
 
 export const Btn = styled.div`
+  display: flex;
   font-size: 0.8rem;
   border-radius: 30px;
   cursor: pointer;
@@ -66,5 +68,37 @@ export const Btn = styled.div`
     border-radius: 12px;
     box-sizing: border-box;
     border: none;
+  }
+  &.totalReview {
+    display: flex;
+    width: 100%;
+    gap: 2px;
+
+    justify-content: center;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+    }
+    .number {
+      padding: 0 24px 0 0;
+    }
+  }
+
+`
+
+export const ScrollToTopBtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  svg {
+    width: 80%;
+    height: 80%;
   }
 `
