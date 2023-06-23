@@ -7,6 +7,7 @@ import Swal from "sweetalert2"
 
 
 const MemberModal = () => {
+  
   const dispatch = useAppDispatch()
   const { sendMember } = useAppSelector(state => state.membersData)
   const [state, setState] = useState({
