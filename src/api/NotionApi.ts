@@ -1,9 +1,7 @@
-const Cors = 'https://cors-anywhere.herokuapp.com/'
-
 export const NotionApi = {
   async readData(){
     try {
-      const response = await fetch(`${Cors}${process.env.NOTION_ENDPOINT}databases/${process.env.NOTION_DATABASE_KEY}/query`, {
+      const response = await fetch(`${process.env.NOTION_ENDPOINT}databases/${process.env.NOTION_DATABASE_KEY}/query`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -20,9 +18,9 @@ export const NotionApi = {
     }
   },
 
-  async postData(name: string, join: string, year: string, etc: string){
+  async postData(name: string, join: string, year: string, etc: string, gender: string){
     try {
-      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/`, {
+      await fetch(`${process.env.NOTION_ENDPOINT}pages/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -35,7 +33,8 @@ export const NotionApi = {
             이름: {"title": [{"text": {"content": name}}]},
             가입일: {"date": {"start": join}},
             년생: {"rich_text": [{"text": {"content": year}}]},
-            비고: {"rich_text": [{"text": {"content": etc}}]}
+            비고: {"rich_text": [{"text": {"content": etc}}]},
+            성별: {"rich_text": [{"text": {"content": gender}}]}
           }
         })
       })
@@ -47,7 +46,7 @@ export const NotionApi = {
 
   async updateData(name: string, join: string, year: string, etc: string, gender: string, id: string){
     try {
-      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -72,7 +71,7 @@ export const NotionApi = {
 
   async deleteData(id: string){
     try {
-      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -89,7 +88,7 @@ export const NotionApi = {
 
   async updatePay(id: string, target: string){
     try {
-      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
@@ -110,7 +109,7 @@ export const NotionApi = {
 
   async updateCheck(id: string, check: boolean){
     try {
-      await fetch(`${Cors}${process.env.NOTION_ENDPOINT}pages/${id}`, {
+      await fetch(`${process.env.NOTION_ENDPOINT}pages/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
