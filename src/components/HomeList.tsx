@@ -1,11 +1,19 @@
 import { HomeListContainer } from "../style/homeStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal, sendMember, sortState } from "../store/slice"
+import { dbFunc } from "../firebase/firebaseFunc"
+import { useState, useEffect } from "react";
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
-
   const { membersData } = useAppSelector(state => state.membersData)
+
+  const [members, setMembers] = useState([])
+
+  useEffect(() => {
+    dbFunc.getAllMembers(setMembers)
+  }, [])
+
   return (
     <HomeListContainer>
       <table>
@@ -17,7 +25,7 @@ const HomeList = () => {
             <th onClick={() => {dispatch(sortState('etc'))}}>비고</th>
           </tr>
         </thead>
-        <tbody>
+        {/* <tbody>
           {membersData?.map((member, i) => (
             <tr key={i} onClick={() => {dispatch(toggleModal()), dispatch(sendMember(
               {
@@ -37,8 +45,20 @@ const HomeList = () => {
               <td className="etc">{member.properties.비고.rich_text[0] ? member.properties.비고.rich_text[0].plain_text : null}</td>
             </tr>
           ))}
+        </tbody> */}
+        <tbody>
+          {members.map((member, i) => (
+            <tr key={i}>
+              <td>{member[1].name}</td>
+              <td>{member[1].join}</td>
+              <td>{member[1].year}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      <div onClick={() => {dbFunc.addMember({name: '섹스', year: 2002})}}>추가테스트</div>
+      <div onClick={() => {dbFunc.removeMember('-NYbLLt098IeMiQg7Ywf')}}>삭제테스트</div>
+      <div onClick={() => {dbFunc.addMember({name: '섹스', year: 2002})}}>수정테스트</div>
     </HomeListContainer>
   )
 }
