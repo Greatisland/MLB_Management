@@ -1,27 +1,38 @@
 import { MemberFeeTotalContainer } from "../style/memberFeeStyled"
 import { useAppSelector } from "../store/hook"
+import { dateCalc } from "./dateCalc";
 
 const MemberFeeTotal = () => {
-  const { payMemberData } = useAppSelector(state => state.membersData)
+  const { membersData } = useAppSelector(state => state.membersData)
+  let payMembers = membersData.filter(member => {
+    let memberJoin = new Date(member[1].join)
+    let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
+    let joinYear = String(memberJoin.getFullYear())
+
+    if(member[1].target === '' && !member[1].special && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+      return true
+    }
+  })
 
   const percent = () => {
-    let complete = payMemberData.reduce((acc: number, member) => {
-      if(member.properties.납부체크.checkbox){ return acc += 1 }
+    let complete = payMembers.reduce((acc: number, member) => {
+      if(member[1].pay){ return acc += 1 }
       return acc
     }, 0)
-    return Math.floor((complete / payMemberData.length) * 100)
+    const percentage = Math.floor((complete / payMembers.length) * 100)
+    return isNaN(percentage) ? 0 : percentage
   }
 
   const completeTotal = (param: string) => {
-    let complete = payMemberData.reduce((acc: number, member) => {
-      if(member.properties.납부체크.checkbox){ return acc += 1 }
+    let complete = payMembers.reduce((acc: number, member) => {
+      if(member[1].pay){ return acc += 1 }
       return acc
     }, 0)
 
     if(param === 'done'){
       return (complete * 15000).toLocaleString()
     }else{
-      return ((payMemberData.length * 15000) - (complete * 15000)).toLocaleString()
+      return ((payMembers.length * 15000) - (complete * 15000)).toLocaleString()
     }
   }
   

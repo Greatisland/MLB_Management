@@ -1,21 +1,21 @@
 import { Btn, BtnListContainer } from "../style/globalStyled"
-import { payAllToggle } from "../store/slice"
-import { useAppDispatch } from "../store/hook"
+import { useAppSelector } from "../store/hook"
 import Swal from "sweetalert2"
+import { dbFunc } from "../firebase/firebaseFunc"
 
 const MemberFeeBtn = () => {
-  const dispatch = useAppDispatch()
+  const { membersData } = useAppSelector(state => state.membersData)
 
   const allDone = () => {
     Swal.fire({
       title: `모든 회원의 회비가 납부처리됩니다.`,
-      text: "속도가 느리니 확인 후 조금만 기다려주세요.",
+      text: "이번 달 회비가 모두 납부되었나요?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#e99797',
       cancelButtonColor: '#4ec6e4',
-      confirmButtonText: '확인.',
-      cancelButtonText: '취소.'
+      confirmButtonText: '네.',
+      cancelButtonText: '취소할게요.'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -27,7 +27,9 @@ const MemberFeeBtn = () => {
           showConfirmButton: false,
           timer: 1000
         })
-        dispatch(payAllToggle(true))
+        membersData.forEach(member => {
+          dbFunc.updateMember(member[0], {pay: true})
+        })
         return
       }else{return}
     })
@@ -36,7 +38,7 @@ const MemberFeeBtn = () => {
   const allNone = () => {
     Swal.fire({
       title: `모든 회원의 회비가 미납처리됩니다.`,
-      text: "속도가 느리니 확인 후 조금만 기다려주세요.",
+      text: "다음 달 회비관리를 위해 초기화해야 할 경우 이 기능을 사용해주세요.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#e99797',
@@ -54,7 +56,9 @@ const MemberFeeBtn = () => {
           showConfirmButton: false,
           timer: 1000
         })
-        dispatch(payAllToggle(false))
+        membersData.forEach(member => {
+          dbFunc.updateMember(member[0], {pay: false})
+        })
         return
       }else{return}
     })

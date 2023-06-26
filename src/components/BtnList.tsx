@@ -9,11 +9,11 @@ const BtnList = () => {
 
   const totalMembers = membersData.length
   const totalGender = (param: string) => {return membersData.reduce((acc: number, member) => {
-    let gender = member.properties.성별.rich_text[0].plain_text
+    let gender = member[1].gender
     if(gender === param) {return acc + 1}
-    else {return acc}
-  }, 0)
-}
+      else {return acc}
+    }, 0)
+  }
 
   return (
     <BtnListContainer>
@@ -27,7 +27,6 @@ const BtnList = () => {
       </Btn>
       <Btn onClick={()=>{dispatch(toggleModal()), dispatch(sendMember({
         id: '', 
-        archived: '',
         name: '',
         join: '',
         year: '',
