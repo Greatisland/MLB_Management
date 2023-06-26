@@ -2,8 +2,10 @@ import { Btn, BtnListContainer } from "../style/globalStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal, sendMember } from "../store/slice"
 import { BiMale, BiFemale, BiMaleFemale } from 'react-icons/bi'
+import { useNavigate  } from "react-router"
 
 const BtnList = () => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { membersData } = useAppSelector(state => state.membersData)
 
@@ -35,7 +37,7 @@ const BtnList = () => {
       }))}}>
         <p>회원추가</p>
       </Btn>
-      <Btn onClick={() => {}}>
+      <Btn onClick={() => {navigate('SearchPage')}}>
         <p>검색</p>
       </Btn>
 
