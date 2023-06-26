@@ -1,9 +1,9 @@
 import { JoinModalContainer, JoinModalWrapper } from "../style/headerStyle"
-import { NotionApi } from "../api/NotionApi"
 import { useState } from "react"
 import { useAppSelector, useAppDispatch } from "../store/hook"
-import { toggleModal, memberUpdate, memberDelete } from "../store/slice"
+import { toggleModal } from "../store/slice"
 import Swal from "sweetalert2"
+import { dbFunc } from "../firebase/firebaseFunc"
 
 
 const MemberModal = () => {
@@ -16,6 +16,9 @@ const MemberModal = () => {
     year: sendMember.year || '',
     etc: sendMember.etc || '',
     gender: sendMember.gender || '',
+    pay: false,
+    special: sendMember.special || '',
+    target: ''
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,51 +26,29 @@ const MemberModal = () => {
 
     //기존 회원정보 수정
     if(
-      state.name !== '' &&
-      state.join !== '' &&
-      state.year !== '' &&
-      state.gender !== '' &&
       sendMember.state &&
-      (sendMember.name !== state.name ||
-        sendMember.join !== state.join ||
-        sendMember.year !== state.year ||
-        sendMember.etc !== state.etc ||
-        sendMember.gender !== state.gender)
+      (
+      sendMember.name !== state.name ||
+      sendMember.join !== state.join ||
+      sendMember.year !== state.year ||
+      sendMember.etc !== state.etc ||
+      sendMember.gender !== state.gender)
       ){
-      NotionApi.updateData(state.name, state.join, state.year, state.etc, state.gender, sendMember.id)
-      dispatch(memberUpdate({
-        properties: {
-          이름: {"title": [{'plain_text': state.name}]},
-          가입일: {"date": {"start": state.join}},
-          년생: {"rich_text": [{'plain_text': state.year}]},
-          비고: {"rich_text": [{'plain_text': state.etc}]},
-          성별: {"rich_text": [{'plain_text': state.gender}]},
-        },
-        id: sendMember.id
-      }))
-      dispatch(toggleModal())
-    }else if(sendMember.state){
-      dispatch(toggleModal())
-    }
-    
-    //신규회원 추가
-    if(
+        console.log('수정')
+        dbFunc.updateMember(sendMember.id as string, state)
+        dispatch(toggleModal())
+      }else if(sendMember.state){
+        dispatch(toggleModal())
+      }else if(
+
+      //신규회원 추가
+      !sendMember.state &&
       state.name !== '' &&
       state.join !== '' &&
       state.year !== '' &&
-      state.gender !== '' &&
-      !sendMember.state
+      state.gender !== ''
       ){
-      NotionApi.postData(state.name, state.join, state.year, state.etc, state.gender)
-      dispatch(memberUpdate({
-        properties: {
-          이름: {"title": [{'plain_text': state.name}]},
-          가입일: {"date": {"start": state.join}},
-          년생: {"rich_text": [{'plain_text': state.year}]},
-          비고: {"rich_text": [{'plain_text': state.etc}]},
-          성별: {"rich_text": [{'plain_text': state.gender}]}
-        }
-      }))
+      dbFunc.addMember(state)
       Swal.fire({
         icon: 'success',
         title: `${state.name}님이 회원으로 추가되었어요!`,
@@ -109,8 +90,7 @@ const MemberModal = () => {
             showConfirmButton: false,
             timer: 1000
           })
-          NotionApi.deleteData(id)
-          dispatch(memberDelete({id}))
+          dbFunc.removeMember(id)
           dispatch(toggleModal())
           return
         }else{return}
@@ -134,23 +114,32 @@ const MemberModal = () => {
           <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요."></input>
           <p>년생</p>
           <select value={state.year} onChange={e => setState({...state, year: e.target.value})}>
-            <option value=''>년생 선택</option>
+            <option value=''>선택</option>
             {dummyArray.map((v, i) => (
               <option key={i} value={i + 1988}>{i + 1988 + v}</option>
             ))}
           </select>
           <p>성별</p>
           <select value={state.gender} onChange={e => setState({...state, gender: e.target.value})}>
-            <option value={''}>성별 선택</option>
+            <option value={''}>선택</option>
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
           <p>비고</p>
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="비고(없을 경우 공란)"></input>
+          <p>운영진 여부</p>
+          <select value={state.special} onChange={e => {
+            const special = e.target.value || ''
+            setState({...state, special: special})
+          }}>
+            <option value="">일반회원</option>
+            <option value="모임장">모임장</option>
+            <option value="운영진">운영진</option>
+          </select>
           <input type="submit" value="완료"></input>
         </form>
         <div className="cancle" onClick={() => {cancleMember()}}>취소</div>
-        {sendMember.state ? <div className="delete" onClick={() => {deleteMenber(sendMember.id)}}>회원정보 삭제</div> : null}
+        {sendMember.state ? <div className="delete" onClick={() => {deleteMenber(sendMember.id as string)}}>회원정보 삭제</div> : null}
       </JoinModalContainer>
     </JoinModalWrapper>
   )
