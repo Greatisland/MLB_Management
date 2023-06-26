@@ -16,10 +16,11 @@ export const HeaderContainer = styled.div`
 export const  JoinModalWrapper = styled.div`
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.4);
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +28,8 @@ export const  JoinModalWrapper = styled.div`
 
 export const  JoinModalContainer = styled.div`
   width: 80%;
+  height: 80%;
+  overflow: scroll;
   background: #fff;
   border-radius: 30px;
   gap: 20px;

@@ -30,7 +30,7 @@ export const dbFunc = {
   },
 
   // 전원 멤버 리스트 읽어오기
-  getAllMembers(callback) {
+  getAllMembers(callback: any) {
     onValue(dbRef, (snapshot) => {
       callback(Object.entries(snapshot.val()))
     })
