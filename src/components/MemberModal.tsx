@@ -32,9 +32,10 @@ const MemberModal = () => {
       sendMember.join !== state.join ||
       sendMember.year !== state.year ||
       sendMember.etc !== state.etc ||
-      sendMember.gender !== state.gender)
+      sendMember.gender !== state.gender ||
+      sendMember.special !== state.special
+      )
       ){
-        console.log('수정')
         dbFunc.updateMember(sendMember.id as string, state)
         dispatch(toggleModal())
       }else if(sendMember.state){
@@ -129,8 +130,8 @@ const MemberModal = () => {
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="비고(없을 경우 공란)"></input>
           <p>운영진 여부</p>
           <select value={state.special} onChange={e => {
-            const special = e.target.value || ''
-            setState({...state, special: special})
+            const specialData = e.target.value || ''
+            setState({...state, special: specialData})
           }}>
             <option value="">일반회원</option>
             <option value="모임장">모임장</option>

@@ -29,13 +29,22 @@ export const  JoinModalWrapper = styled.div`
 export const  JoinModalContainer = styled.div`
   width: 80%;
   height: 80%;
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;
   border-radius: 30px;
   gap: 20px;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
+  &::-webkit-scrollbar {
+    width: 3px; /* 스크롤바 너비 */
+    background: rgba(0, 0, 0, 0); /* 스크롤바 배경색 */
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #FFA3A3; /* 스크롤바 색상 */
+  }
+
   form {
     display: flex;
     flex-direction: column;

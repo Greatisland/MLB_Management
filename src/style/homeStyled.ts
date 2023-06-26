@@ -35,6 +35,11 @@ export const HomeListContainer = styled.div`
     font-size: 0.85rem;
     cursor: pointer;
   }
+  td:nth-child(4) {
+    text-align: start;
+    font-size: 0.7rem;
+    letter-spacing: -0.01rem;
+  }
   .date {
     letter-spacing: -0.04rem;
   }
