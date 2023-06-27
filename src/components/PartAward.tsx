@@ -1,5 +1,5 @@
 import { useAppSelector } from "../store/hook";
-import { PartAwardContainer } from "../style/PartPageStyled"
+import { PartAwardContainer } from "../style/partPageStyled"
 import { GiPartyPopper } from 'react-icons/gi';
 import { dateCalc } from "./dateCalc";
 

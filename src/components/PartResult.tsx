@@ -1,5 +1,5 @@
 import { useAppSelector } from "../store/hook"
-import { PartResultContainer } from "../style/PartPageStyled"
+import { PartResultContainer } from "../style/partPageStyled"
 import { useState, useEffect } from "react"
 import { dateCalc } from "./dateCalc"
 import type { Member } from "../store/slice"

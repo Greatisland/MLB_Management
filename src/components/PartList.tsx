@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { sortState } from "../store/slice"
-import { PartListContainer } from "../style/PartPageStyled"
+import { PartListContainer } from "../style/partPageStyled"
 import { dateCalc } from "./dateCalc"
 import { togglePartModal, sendMember } from "../store/slice"
 

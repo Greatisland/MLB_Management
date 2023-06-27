@@ -37,7 +37,7 @@ const BtnList = () => {
       }))}}>
         <p>회원추가</p>
       </Btn>
-      <Btn onClick={() => {navigate('/SearchPage')}}>
+      <Btn onClick={() => {navigate('/searchpage')}}>
         <p>검색</p>
       </Btn>
 
