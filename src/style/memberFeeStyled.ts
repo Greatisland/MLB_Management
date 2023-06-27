@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const MemberFeeContainer = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
   gap: 20px;
   padding: 20px 20px 90px 20px;
   .dateResult {

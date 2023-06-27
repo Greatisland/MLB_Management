@@ -7,8 +7,6 @@ const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
 const dbRef = ref(database, '/memberList')
 
-
-
 export const dbFunc = {
 
   // 멤버 추가

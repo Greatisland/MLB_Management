@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Link to='/'><h1>MLB MANAGEMENT</h1></Link>
+      <Link to='/'><h1 className="eng">MLB MANAGEMENT</h1></Link>
       {modalState ? <MemberModal /> : null}
     </HeaderContainer>
   )

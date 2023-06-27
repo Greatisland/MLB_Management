@@ -1,12 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAR9z1gLglR7AQ7XRbaWll9mkOmjeRCTio",
-  authDomain: "mlb-management.firebaseapp.com",
-  projectId: "mlb-management",
-  storageBucket: "mlb-management.appspot.com",
-  messagingSenderId: "1029800054629",
-  appId: "1:1029800054629:web:52de3e19a1267d5a1f1b8c",
-  measurementId: "G-547PMYFKTY",
-  databaseURL: "https://mlb-management-default-rtdb.firebaseio.com",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTHDOMAIN,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID,
+  measurementId: process.env.MEASUREMENTID,
+  databaseURL: process.env.DATABASEURL,
 }
 
 export default firebaseConfig
