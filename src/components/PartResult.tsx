@@ -2,10 +2,12 @@ import { useAppSelector } from "../store/hook"
 import { PartResultContainer } from "../style/PartPageStyled"
 import { useState, useEffect } from "react"
 import { dateCalc } from "./dateCalc"
+import type { Member } from "../store/slice"
 
 const PartResult = () => {
   const { membersData } = useAppSelector(state => state.membersData)
-  let [ rising, setRising ] = useState([])
+  let [ rising, setRising ] = useState<[string, Member][]>([])
+
   useEffect(() => {
     let filterMember = [...membersData].filter((member) => {
       let memberJoin = new Date(member[1].join)
@@ -23,20 +25,19 @@ const PartResult = () => {
   return (
     <PartResultContainer>
       <ul className="title">
-        <li>최고의 신입</li>
+        <li>최고의 신입 유망주</li>
         <li>최고의 벙주</li>
       </ul>
       <ul>
-      {rising.map((member, i) => (
-        <li key={i}>{member[1].name}</li>
-      ))}
-      </ul>
-      <ul>
-        <li>미구현</li>
+        <li>{rising[0] && rising[0][1] ? `${rising[0][1].name} - ${rising[0][1].total}회 참석!` : 'N/A'}</li>
         <li>미구현</li>
       </ul>
       <ul>
+        <li>{rising[1] && rising[1][1] ? `${rising[1][1].name} - ${rising[1][1].total}회 참석!` : 'N/A'}</li>
         <li>미구현</li>
+      </ul>
+      <ul>
+        <li>{rising[2] && rising[2][1] ? `${rising[2][1].name} - ${rising[2][1].total}회 참석!` : 'N/A'}</li>
         <li>미구현</li>
       </ul>
     </PartResultContainer>
