@@ -19,7 +19,7 @@ const PartAward = () => {
 
       //공동수상 발생할 경우
       }else if(monthCount === monthPart){
-        gloryName += `, member[1].name`
+        gloryName += `, ${member[1].name}`
       }
     }
   })

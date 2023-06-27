@@ -13,15 +13,15 @@ const PartList = () => {
         <thead>
           <tr>
             <th onClick={() => {dispatch(sortState('name'))}}>이름</th>
-            <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참여횟수</th>
-            <th onClick={() => {dispatch(sortState('monthPart'))}}>이번 달 참여횟수</th>
+            <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
+            <th onClick={() => {dispatch(sortState('monthPart'))}}>이번달 참석</th>
           </tr>
         </thead>
         <tbody>
         {membersData.map((member, i) => (
           <tr key={i}>
             <td>{member[1].name}</td>
-            <td>{member[1].total} 회</td>
+            <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
           </tr>
         ))}

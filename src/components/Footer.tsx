@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <Link to='/'>회원관리</Link>
-      <Link to='/PartPage'>참여관리</Link>
+      <Link to='/PartPage'>참석관리</Link>
       <Link to='/memberfee'>회비관리</Link>
     </FooterContainer>
   )

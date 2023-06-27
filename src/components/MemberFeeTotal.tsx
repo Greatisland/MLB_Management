@@ -1,6 +1,10 @@
 import { MemberFeeTotalContainer } from "../style/memberFeeStyled"
 import { useAppSelector } from "../store/hook"
 import { dateCalc } from "./dateCalc";
+import { FaCoins } from 'react-icons/fa';
+import { GiCoins } from 'react-icons/gi';
+import { RiHandCoinLine } from 'react-icons/ri';
+
 
 const MemberFeeTotal = () => {
   const { membersData } = useAppSelector(state => state.membersData)
@@ -40,14 +44,14 @@ const MemberFeeTotal = () => {
   return (
     <MemberFeeTotalContainer>
       <ul className="title">
-        <li>납부 완료율</li>
-        <li>납부 총계</li>
-        <li>미납 총계</li>
+        <li><RiHandCoinLine />납부 완료율</li>
+        <li><GiCoins />납부 총계</li>
+        <li><FaCoins />미납 총계</li>
       </ul>
       <ul>
-        <li>{percent()}%</li>
-        <li>₩{completeTotal('done')}</li>
-        <li>₩{completeTotal('none')}</li>
+        <li>{percent()}<span>%</span></li>
+        <li><span>₩</span>{completeTotal('done')}</li>
+        <li><span>₩</span>{completeTotal('none')}</li>
       </ul>
     </MemberFeeTotalContainer>
   )
