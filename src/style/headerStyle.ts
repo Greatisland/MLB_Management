@@ -52,7 +52,7 @@ export const  JoinModalContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
    p {
     font-weight: bold;
@@ -62,17 +62,18 @@ export const  JoinModalContainer = styled.div`
     border: none;
     background: #eee;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     margin: 0 0 10px 0;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;
+
   }
 
   input[type='date'] {
     border: none; 
     position: relative;
-    padding: 10px 20px;
+    padding: 5px 10px;
     background: #eee;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
@@ -97,8 +98,8 @@ export const  JoinModalContainer = styled.div`
     border: none;
     background: #FF9CC7;
     border-radius: 30px;
-    padding: 10px 20px;
-    font-weight: bold;
+    padding: 8px 10px;
+    
     color: #fff;
     letter-spacing: 0.04rem;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
@@ -109,7 +110,7 @@ export const  JoinModalContainer = styled.div`
   select {
     border: none;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
-    padding: 8px;
+    padding: 4px;
     border-radius: 12px;
     background: #eee;
     text-align: center;
@@ -129,17 +130,23 @@ export const  JoinModalContainer = styled.div`
       color: #333;
     }
   }
-
-  .delete, .cancle {
-    border: none;
-    background: #FFA3A3;
-    border-radius: 30px;
-    padding: 10px 20px;
-    color: #fff;
-    letter-spacing: 0.04rem;
-    text-align: center;
-    font-size: 0.8rem;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+  .btnWrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    .delete, .cancle {
+      flex: 1;
+      border: none;
+      background: #FFA3A3;
+      border-radius: 30px;
+      padding: 8px 10px;
+      color: #fff;
+      letter-spacing: 0.04rem;
+      text-align: center;
+      font-size: 0.8rem;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
   }
+
 `

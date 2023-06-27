@@ -139,8 +139,10 @@ const MemberModal = () => {
           </select>
           <input type="submit" value="완료"></input>
         </form>
-        <div className="cancle" onClick={() => {cancleMember()}}>취소</div>
-        {sendMember.state ? <div className="delete" onClick={() => {deleteMenber(sendMember.id as string)}}>회원정보 삭제</div> : null}
+        <div className='btnWrapper'>
+          <div className="cancle" onClick={() => {cancleMember()}}>취소</div>
+          {sendMember.state ? <div className="delete" onClick={() => {deleteMenber(sendMember.id as string)}}>회원정보 삭제</div> : null}
+        </div>
       </JoinModalContainer>
     </JoinModalWrapper>
   )

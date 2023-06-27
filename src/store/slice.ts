@@ -13,18 +13,9 @@ export interface Member {
   pay?: boolean
   special?: string
   total?: number
-  '1month'?: number
-  '2month'?: number
-  '3month'?: number
-  '4month'?: number
-  '5month'?: number
-  '6month'?: number
-  '7month'?: number
-  '8month'?: number
-  '9month'?: number
-  '10month'?: number
-  '11month'?: number
-  '12month'?: number
+  totalHost?: number
+  [key: `${number}month`]: number
+  [key: `${number}monthHost`]: number
 }
 
 //state 초기 값
@@ -32,6 +23,7 @@ interface InitialState {
   membersData: [string, Member][]
   sendMember: Member
   modalState: boolean
+  modalPartState: boolean
   sortDirection : {
     name: number
     join: number
@@ -39,6 +31,7 @@ interface InitialState {
     etc: number
     yearPart: number
     monthPart: number
+    yearHost: number
   }
 }
 
@@ -55,13 +48,15 @@ const initialState: InitialState = {
     special: ''
   },
   modalState: false,
+  modalPartState: false,
   sortDirection : {
     name: 1,
     join: 1,
     year: 1,
     etc: 1,
     yearPart: 1,
-    monthPart: 1
+    monthPart: 1,
+    yearHost: 1
   }
 }
 
@@ -87,6 +82,7 @@ const membersDataSlice = createSlice({
             etc: 1,
             yearPart: 1,
             monthPart: 1,
+            yearHost: 1
         }
       }
   
@@ -135,15 +131,23 @@ const membersDataSlice = createSlice({
           return (Number(aPart) - Number(bPart)) * state.sortDirection.monthPart;
         })
         state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
-      }
+      } else if (action.payload === 'yearHost') {
+        state.membersData.sort((a, b) => {
+          return (Number(a[1].totalHost) - Number(b[1].totalHost)) * state.sortDirection.yearHost;
+        })
+        state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
+
+      } 
+      
     },
 
     //모달 
     toggleModal (state) {state.modalState = !state.modalState},
+    togglePartModal (state) {state.modalPartState = !state.modalPartState},
 
     //모달 전송
     sendMember (state, action) {state.sendMember = action.payload},
   }
 })
-export const { sortState, toggleModal, sendMember, setMembers} = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, sendMember, setMembers} = membersDataSlice.actions
 export default membersDataSlice.reducer
