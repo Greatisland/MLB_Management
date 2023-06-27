@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   display: flex;
+  max-width: 800px;
+  margin: 0 auto;
   flex-direction: column;
   padding: 0 20px;
   gap: 20px;
@@ -9,7 +11,7 @@ export const HeaderContainer = styled.div`
     padding: 20px 0 0;
     font-size: 1.5rem;
     color: #0B4240;
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 0.2rem;
   }
 `
@@ -28,6 +30,8 @@ export const  JoinModalWrapper = styled.div`
 
 export const  JoinModalContainer = styled.div`
   width: 80%;
+  max-width: 300px;
+  max-height: 700px;
   height: 80%;
   overflow-y: scroll;
   scrollbar-width: thin; /* 스크롤바 너비 */

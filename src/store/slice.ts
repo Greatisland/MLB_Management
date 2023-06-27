@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { dateCalc } from "../components/dateCalc"
 
 export interface Member {
   id?: string
@@ -11,6 +12,19 @@ export interface Member {
   target?: string
   pay?: boolean
   special?: string
+  total?: number
+  '1month'?: number
+  '2month'?: number
+  '3month'?: number
+  '4month'?: number
+  '5month'?: number
+  '6month'?: number
+  '7month'?: number
+  '8month'?: number
+  '9month'?: number
+  '10month'?: number
+  '11month'?: number
+  '12month'?: number
 }
 
 //state 초기 값
@@ -18,6 +32,14 @@ interface InitialState {
   membersData: [string, Member][]
   sendMember: Member
   modalState: boolean
+  sortDirection : {
+    name: number
+    join: number
+    year: number
+    etc: number
+    yearPart: number
+    monthPart: number
+  }
 }
 
 const initialState: InitialState = {
@@ -33,6 +55,14 @@ const initialState: InitialState = {
     special: ''
   },
   modalState: false,
+  sortDirection : {
+    name: 1,
+    join: 1,
+    year: 1,
+    etc: 1,
+    yearPart: 1,
+    monthPart: 1
+  }
 }
 
 //reducer, state를 모두 관리할 slice
@@ -47,39 +77,64 @@ const membersDataSlice = createSlice({
     },
 
     //멤버 정렬
-    sortState (state, action){
-      if(action.payload === 'name'){
+    sortState (state, action) {
+      // 정렬 방향을 추적하는 객체 초기화
+      if (!state.sortDirection) {
+        state.sortDirection = {
+            name: 1,
+            join: 1,
+            year: 1,
+            etc: 1,
+            yearPart: 1,
+            monthPart: 1,
+        }
+      }
+  
+      // 정렬 기준에 따라 처리
+      if (action.payload === 'name') {
         state.membersData.sort((a, b) => {
           let aName = a[1].name
           let bName = b[1].name
-          if (aName < bName) {
-            return -1
-          }
-          if (aName > bName) {
-            return 1
-          }
-          return 0;
+          let comparison = aName < bName ? -1 : (aName > bName ? 1 : 0)
+          return comparison * state.sortDirection.name; // 방향에 따른 정렬
         })
+        state.sortDirection.name = -state.sortDirection.name; // 방향 전환
 
-      }else if(action.payload === 'join'){
-        state.membersData.sort((a, b) => new Date(a[1].join).getTime() - new Date(b[1].join).getTime())
-
-      }else if(action.payload === 'year'){
+      } else if (action.payload === 'join') {
         state.membersData.sort((a, b) => {
-          return Number(a[1].year) - Number(b[1].year)
+          return (new Date(a[1].join).getTime() - new Date(b[1].join).getTime()) * state.sortDirection.join
         })
-      }else if(action.payload === 'etc'){
+        state.sortDirection.join = -state.sortDirection.join // 방향 전환
+  
+      } else if (action.payload === 'year') {
+        state.membersData.sort((a, b) => {
+          return (Number(a[1].year) - Number(b[1].year)) * state.sortDirection.year;
+        })
+        state.sortDirection.year = -state.sortDirection.year // 방향 전환
+  
+      } else if (action.payload === 'etc') {
         state.membersData.sort((a, b) => {
           let aName = a[1].etc || ''
           let bName = b[1].etc || ''
-          if (aName < bName) {
-            return 1
-          }
-          if (aName > bName) {
-            return -1
-          }
-          return 0;
+          let comparison = aName < bName ? 1 : (aName > bName ? -1 : 0)
+          return comparison * state.sortDirection.etc // 방향에 따른 정렬
         })
+        state.sortDirection.etc = -state.sortDirection.etc // 방향 전환
+
+      } else if (action.payload === 'yearPart') {
+        state.membersData.sort((a, b) => {
+          return (Number(a[1].total) - Number(b[1].total)) * state.sortDirection.yearPart;
+        })
+        state.sortDirection.yearPart = -state.sortDirection.yearPart // 방향 전환
+
+      } else if (action.payload === 'monthPart') {
+        state.membersData.sort((a, b) => {
+          let string = `${dateCalc('flatMonth')}month`
+          let aPart = (a[1] as any)[string] || 0
+          let bPart = (b[1] as any)[string] || 0
+          return (Number(aPart) - Number(bPart)) * state.sortDirection.monthPart;
+        })
+        state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
       }
     },
 

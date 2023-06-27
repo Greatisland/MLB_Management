@@ -1,45 +1,57 @@
 import { CheckState, MemberFeeListContainer, MembersTarget } from "../style/memberFeeStyled"
 import { useAppSelector } from "../store/hook"
+import { useState, useEffect } from "react";
 import { TiUserAdd, TiUserDelete } from 'react-icons/ti';
 import { dbFunc } from "../firebase/firebaseFunc";
 import { dateCalc } from "./dateCalc";
+import type { Member } from "../store/slice";
 
 const MemberFeeList = () => {
   const { membersData } = useAppSelector(state => state.membersData)
+  const [payMembers, setPayMembers] = useState<[string, Member][]>([]);
+  const [noPayMembers, setNoPayMembers] = useState<[string, Member][]>([]);
+  const [newFace, setNewFace] = useState<[string, Member][]>([]);
 
-  let payMembers = membersData.filter(member => {
-    let memberJoin = new Date(member[1].join)
-    let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
-    let joinYear = String(memberJoin.getFullYear())
+  useEffect(() => {
+    const filteredPayMembers  = membersData.filter(member => {
+      let memberJoin = new Date(member[1].join)
+      let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
+      let joinYear = String(memberJoin.getFullYear())
+  
+      if(member[1].special === '' && member[1].target === '' && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+        return true
+      }
+    }).sort((a, b) => {
+      let aTarget = a[1].pay ? 2 : 1
+      let bTarget = b[1].pay ? 2 : 1
+      return aTarget - bTarget
+    })
+    setPayMembers(filteredPayMembers)
+  
+    const filteredNoPayMembers = membersData.filter(member => {
+      if(member[1].special || member[1].target === '기타'){
+        return true
+      }
+    }).sort((a, b) => {
+      let aTarget = a[1].special ? a[1].special === '모임장' ? 1 : 2 : 3
+      let bTarget = a[1].special ? b[1].special === '모임장' ? 1 : 2 : 3
+      return aTarget - bTarget 
+    })
+    setNoPayMembers(filteredNoPayMembers)
+  
+    const filteredNewFace = membersData.filter(member => {
+      let memberJoin = new Date(member[1].join)
+      let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
+      let joinYear = String(memberJoin.getFullYear())
+  
+      if(member[1].target === '' && joinYear === dateCalc('year') && joinMonth === dateCalc('month')){
+        return true
+      }
+    })
+    setNewFace(filteredNewFace)
+  }, [membersData])
 
-    if(member[1].target === '' && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
-      return true
-    }
-  }).sort((a, b) => {
-    let aTarget = a[1].pay ? 2 : 1
-    let bTarget = b[1].pay ? 2 : 1
-    return aTarget - bTarget
-  })
 
-  let noPayMembers = membersData.filter(member => {
-    if(member[1].special || member[1].target === '기타'){
-      return true
-    }
-  }).sort((a, b) => {
-    let aTarget = a[1].special ? a[1].special === '모임장' ? 1 : 2 : 3
-    let bTarget = a[1].special ? b[1].special === '모임장' ? 1 : 2 : 3
-    return aTarget - bTarget 
-  })
-
-  let newFace = membersData.filter(member => {
-    let memberJoin = new Date(member[1].join)
-    let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
-    let joinYear = String(memberJoin.getFullYear())
-
-    if(member[1].target === '' && joinYear === dateCalc('year') && joinMonth === dateCalc('month')){
-      return true
-    }
-  })
 
   return (
     <MemberFeeListContainer>
@@ -78,7 +90,7 @@ const MemberFeeList = () => {
               <li>{member[1].special ? member[1].special : '기타'}</li>
             </ul>
             {
-              member[1].target === '기타' ? 
+              member[1].special !== '모임장' && member[1].special !== '운영진' && member[1].target === '기타' ? 
               <span><TiUserAdd onClick={() => {dbFunc.updateMember(member[0], {target: ''})}} /></span> : null
             }
           </div>

@@ -10,5 +10,7 @@ export const dateCalc = (param: string) => {
     return month
   }else if(param === 'day'){
     return day
+  }else if(param === 'flatMonth'){
+    return String(date.getMonth() + 1)
   }
 }
