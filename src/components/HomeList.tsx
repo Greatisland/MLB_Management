@@ -14,7 +14,7 @@ const HomeList = () => {
             <th onClick={() => {dispatch(sortState('name'))}}>이름</th>
             <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
             <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
-            <th onClick={() => {dispatch(sortState('etc'))}}>비고</th>
+            <th onClick={() => {dispatch(sortState('etc'))}}>메모</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@ const HomeList = () => {
             ))}}>
               <td>{member[1].name}</td>
               <td>{member[1].join}</td>
-              <td>{member[1].year}</td>
+              <td>{member[1].year.slice(2)}</td>
               <td>{member[1].etc || ''}</td>
             </tr>
           ))}

@@ -10,7 +10,7 @@ export const MemberFeeContainer = styled.div`
   .dateResult {
     background: #E3CBCB;
     color: #333;
-    font-weight: bold;
+    /* font-weight: bold; */
     border-radius: 30px;
     padding: 5px 20px;
     span {
@@ -33,12 +33,12 @@ export const MembersTarget = styled.div`
   overflow: hidden;
   gap: 10px;
   border-radius: 20px;
-  background: #f2f2f2;
+  background: #f9f9f9;
   padding: 0 0 20px 0;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   p {
     font-size: 1rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 5px 20px;
     background: #E3CBCB;
     text-align: center;
@@ -106,7 +106,7 @@ export const MemberFeeTotalContainer = styled.div`
   border-radius: 20px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
-  background: #eee;
+  background: #f9f9f9;
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
@@ -116,17 +116,32 @@ export const MemberFeeTotalContainer = styled.div`
     display: flex;
     justify-content: space-between;
     li {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
       flex: 1;
-      color: #777;
+      color: #FC5454;
       font-size: 0.8rem;
       text-align: center;
+      letter-spacing: 0.04rem;
+      font-weight: bold;
+      span {
+        color: #555;
+      }
     }
   }
 
   ul.title {
     li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
       font-weight: bold;
       color: #333;
+      svg {
+        font-size: 1.1rem;
+      }
     }
   }
 `

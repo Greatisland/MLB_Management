@@ -59,7 +59,7 @@ export const Btn = styled.div`
     display: flex;
     width: 100%;
     gap: 2px;
-
+    padding: 0 0 12px;
     justify-content: center;
     align-items: center;
     span {

@@ -22,6 +22,10 @@ const MemberFeeList = () => {
         return true
       }
     }).sort((a, b) => {
+      let aName = a[1].name
+      let bName = b[1].name
+      return aName < bName ? -1 : (aName > bName ? 1 : 0)
+    }).sort((a, b) => {
       let aTarget = a[1].pay ? 2 : 1
       let bTarget = b[1].pay ? 2 : 1
       return aTarget - bTarget
@@ -33,8 +37,12 @@ const MemberFeeList = () => {
         return true
       }
     }).sort((a, b) => {
-      let aTarget = a[1].special ? a[1].special === '모임장' ? 1 : 2 : 3
-      let bTarget = a[1].special ? b[1].special === '모임장' ? 1 : 2 : 3
+      let aTarget = a[1].special ? ( a[1].special === '모임장' ? 1 : 2 ) : 3
+      let bTarget = b[1].special ? ( b[1].special === '모임장' ? 1 : 2 ) : 3
+      return aTarget - bTarget 
+    }).sort((a, b) => {
+      let aTarget = a[1].special ? 1 : 2
+      let bTarget = b[1].special ? 1 : 2
       return aTarget - bTarget 
     })
     setNoPayMembers(filteredNoPayMembers)

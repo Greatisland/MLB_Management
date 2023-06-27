@@ -126,8 +126,8 @@ const MemberModal = () => {
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
-          <p>비고</p>
-          <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="비고(없을 경우 공란)"></input>
+          <p>메모</p>
+          <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
           <p>운영진 여부</p>
           <select value={state.special} onChange={e => {
             const specialData = e.target.value || ''
