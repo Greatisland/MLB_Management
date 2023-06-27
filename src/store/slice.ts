@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { dateCalc } from "../components/dateCalc"
 
 export interface Member {
   id?: string
@@ -11,6 +12,19 @@ export interface Member {
   target?: string
   pay?: boolean
   special?: string
+  total?: number
+  '1month'?: number
+  '2month'?: number
+  '3month'?: number
+  '4month'?: number
+  '5month'?: number
+  '6month'?: number
+  '7month'?: number
+  '8month'?: number
+  '9month'?: number
+  '10month'?: number
+  '11month'?: number
+  '12month'?: number
 }
 
 //state 초기 값
@@ -23,6 +37,8 @@ interface InitialState {
     join: number
     year: number
     etc: number
+    yearPart: number
+    monthPart: number
   }
 }
 
@@ -43,7 +59,9 @@ const initialState: InitialState = {
     name: 1,
     join: 1,
     year: 1,
-    etc: 1
+    etc: 1,
+    yearPart: 1,
+    monthPart: 1
   }
 }
 
@@ -66,7 +84,9 @@ const membersDataSlice = createSlice({
             name: 1,
             join: 1,
             year: 1,
-            etc: 1
+            etc: 1,
+            yearPart: 1,
+            monthPart: 1,
         }
       }
   
@@ -100,6 +120,21 @@ const membersDataSlice = createSlice({
           return comparison * state.sortDirection.etc // 방향에 따른 정렬
         })
         state.sortDirection.etc = -state.sortDirection.etc // 방향 전환
+
+      } else if (action.payload === 'yearPart') {
+        state.membersData.sort((a, b) => {
+          return (Number(a[1].total) - Number(b[1].total)) * state.sortDirection.yearPart;
+        })
+        state.sortDirection.yearPart = -state.sortDirection.yearPart // 방향 전환
+
+      } else if (action.payload === 'monthPart') {
+        state.membersData.sort((a, b) => {
+          let string = `${dateCalc('flatMonth')}month`
+          let aPart = (a[1] as any)[string] || 0
+          let bPart = (b[1] as any)[string] || 0
+          return (Number(aPart) - Number(bPart)) * state.sortDirection.monthPart;
+        })
+        state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
       }
     },
 

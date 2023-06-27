@@ -64,6 +64,7 @@ export const PartResultContainer = styled.div`
 
 export const PartListContainer = styled.div`
   ${componentStyles}
+  flex-direction: column;
   table {
     width: 100%;
     display: flex;
