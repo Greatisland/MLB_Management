@@ -124,8 +124,7 @@ export const PartModalContainer = styled.div`
     background: #FFA3A3; /* 스크롤바 색상 */
   }
   .chartWrap {
-    height: 40%;
-    max-height: 500px;
+    height: 300px;
     border-radius: 15px;
   }
 

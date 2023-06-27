@@ -45,7 +45,7 @@ const ChartGraph = ({ member }: { member: Member }) => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // 추가
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
