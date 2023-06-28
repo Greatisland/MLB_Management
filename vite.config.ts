@@ -7,7 +7,5 @@ dotenv.config({ path: '.env.production' }) //배포 환경에서 사용
 export default defineConfig({
   base: "/MLB_Management/", 
   plugins: [react()],
-  define: {
-    'process.env': process.env,
-  }
+
 })
