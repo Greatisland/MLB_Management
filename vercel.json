@@ -1,11 +1,5 @@
 {
   "routes": [
     { "src": "/.*", "dest": "/index.html" }
-  ],
-  "headers": [
-    { 
-      "source": "/.*",
-      "headers": [{ "key": "Content-Type", "value": "application/javascript" }] 
-    }
   ]
 }
