@@ -1,6 +1,6 @@
 {
   "name": "뮤라밸 매니지먼트",
-  "short_name": "MLB",
+  "short_name": "뮤라밸",
   "description": "뮤라밸 회원관리, 참여관리, 회비관리를 할 수 있는 앱입니다.",
   "start_url": "/",
   "display": "standalone",
