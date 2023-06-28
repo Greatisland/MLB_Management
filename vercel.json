@@ -1,8 +1,8 @@
 {
-  "headers": {
-    "content-type": "application/javascript"
-  },
   "routes": [
     { "src": "/.*", "dest": "/index.html" }
-  ]
+  ],
+  "headers": {
+    "content-type": "application/javascript"
+  }
 }
