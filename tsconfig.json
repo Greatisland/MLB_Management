@@ -20,6 +20,6 @@
     "noUnusedParameters": false, // deployment bug fix
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "public/sw.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
