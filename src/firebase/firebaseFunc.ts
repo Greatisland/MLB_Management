@@ -5,6 +5,8 @@ import type { Member } from '../store/slice'
 
 const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
+
+//database 
 const dbRef = ref(database, '/memberList')
 
 export const dbFunc = {
