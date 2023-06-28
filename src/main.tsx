@@ -6,7 +6,8 @@ import store from './store/configureStore.ts'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <BrowserRouter basename='/MLB_Management/'>
+    {/* <BrowserRouter basename='/MLB_Management/'> */}
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>

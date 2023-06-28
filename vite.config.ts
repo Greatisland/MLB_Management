@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/MLB_Management/", 
+  // base: "/MLB_Management/", 
   plugins: [react()],
 
 })
