@@ -20,7 +20,12 @@
     {
       "src": "/icons/android-launchericon-512-512.png",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/android-launchericon-512-512.png",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icons/android-launchericon-512-512.png",
