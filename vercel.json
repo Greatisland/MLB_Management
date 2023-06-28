@@ -2,7 +2,7 @@
   "routes": [
     { "src": "/.*", "dest": "/index.html" }
   ],
-  "headers": {
-    "content-type": "application/javascript"
-  }
+  "headers": [
+    { "source": "/.*", "headers": [{ "key": "Content-Type", "value": "application/javascript" }] }
+  ]
 }
