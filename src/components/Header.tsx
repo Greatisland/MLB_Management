@@ -5,17 +5,15 @@ import { Link } from "react-router-dom";
 import { authFunc } from "../firebase/firebaseFunc";
 
 const Header = () => {
-  const { modalState } = useAppSelector(state => state.membersData)
+  const { modalState, loginUser } = useAppSelector(state => state.membersData)
 
   return (
     <HeaderContainer>
       <Link to='/'><h1 className="eng">MLB MANAGEMENT</h1></Link>
       <div className="btns">
-      <div onClick={() => authFunc.stateAccount()}>확인</div>
-      <div onClick={() => console.log('xxx')}>먼데</div>
-      <div onClick={() => {authFunc.logout(), console.log('sex')}}>로그아웃</div>
-      {/* <div onClick={() => authFunc.loginGoogle()}>구글 로그인</div> */}
-      {/* <div onClick={() => authFunc.joinFacebook()}>페북 로그인</div> */}
+        {/* <div props={} /> */}
+        <p className="hi">{loginUser.name || '뮤라밸 회원'}님, 안녕하세요!</p>
+        <div className="logout" onClick={() => authFunc.logout()}>로그아웃</div>
       </div>
       {modalState ? <MemberModal /> : null}
     </HeaderContainer>

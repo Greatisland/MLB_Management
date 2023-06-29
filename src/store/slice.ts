@@ -33,7 +33,13 @@ interface InitialState {
     monthPart: number
     yearHost: number
   }
-  loginUser: string
+  loginUser: {
+    uid: string
+    name: string
+    photoUrl: string
+    level: number
+    state: boolean
+  }
 }
 
 const initialState: InitialState = {
@@ -59,7 +65,13 @@ const initialState: InitialState = {
     monthPart: 1,
     yearHost: 1
   },
-  loginUser: ''
+  loginUser: {
+    uid: '',
+    name: '',
+    photoUrl: '',
+    level: 1,
+    state: false
+  }
 }
 
 //reducer, state를 모두 관리할 slice

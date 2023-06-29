@@ -7,15 +7,20 @@ import { useAppSelector } from "../store/hook"
 import Footer from "../components/Footer"
 
 const PartPage = () => {
-  const { modalPartState } = useAppSelector(state => state.membersData)
+  const { modalPartState, loginUser } = useAppSelector(state => state.membersData)
+
   return (
+    <>
+    {loginUser.state ? 
     <PartPageContainer>
       <PartAward />
       <PartResult />
       <PartList />
       {modalPartState ? <PartModal /> : null}
       <Footer />
-    </PartPageContainer>
+    </PartPageContainer> :
+    <></>}
+    </>
   )
 }
 
