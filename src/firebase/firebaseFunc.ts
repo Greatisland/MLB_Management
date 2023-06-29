@@ -64,14 +64,14 @@ export const authFunc = {
 
   //구글 로그인
   loginGoogle () {
-    // signInWithRedirect(auth, googleProvider)
-    signInWithPopup(auth, googleProvider)
+    signInWithRedirect(auth, googleProvider)
+    // signInWithPopup(auth, googleProvider)
   },
   
   //페이스북 로그인
   loginFacebook () {
-    // signInWithRedirect(auth, googleProvider)
-    signInWithPopup(auth, facebookProvider)
+    signInWithRedirect(auth, facebookProvider)
+    // signInWithPopup(auth, facebookProvider)
   },
 
   //로그인

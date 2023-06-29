@@ -7,8 +7,7 @@ import ScrollToTop from './components/ScrollToTop'
 import { auth, database, dbFunc } from './firebase/firebaseFunc'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router'
-import { getDatabase, ref, onValue } from "firebase/database"
-// import './firebase/firebaseMessage'
+import { ref, onValue } from "firebase/database"
 
 const App = () => {
   const dispatch = useAppDispatch()
