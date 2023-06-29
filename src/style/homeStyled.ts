@@ -5,7 +5,7 @@ export const HomeContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   padding: 20px 20px 90px 20px;
 `
 export const HomeListContainer = styled.div`
