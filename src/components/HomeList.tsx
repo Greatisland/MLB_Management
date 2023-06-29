@@ -29,7 +29,7 @@ const HomeList = () => {
       <table>
         <thead>
           <tr>
-            <th onClick={() => {dispatch(sortState('name'))}}>이름</th>
+            <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
             <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
             <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
             {loginUser.level >= 2 ?

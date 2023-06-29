@@ -14,7 +14,7 @@ const PartList = () => {
       <table>
         <thead>
           <tr>
-            <th onClick={() => {dispatch(sortState('name'))}}>이름</th>
+            <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
             <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
             <th onClick={() => {dispatch(sortState('monthPart'))}}>이번달 참석</th>
             <th onClick={() => {dispatch(sortState('yearHost'))}}>벙 개설</th>
