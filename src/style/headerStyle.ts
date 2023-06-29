@@ -14,6 +14,11 @@ export const HeaderContainer = styled.div`
     font-weight: normal;
     letter-spacing: 0.2rem;
   }
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
 `
 export const  JoinModalWrapper = styled.div`
   width: 100%;

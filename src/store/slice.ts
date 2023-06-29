@@ -33,6 +33,7 @@ interface InitialState {
     monthPart: number
     yearHost: number
   }
+  loginUser: string
 }
 
 const initialState: InitialState = {
@@ -57,7 +58,8 @@ const initialState: InitialState = {
     yearPart: 1,
     monthPart: 1,
     yearHost: 1
-  }
+  },
+  loginUser: ''
 }
 
 //reducer, state를 모두 관리할 slice
@@ -147,7 +149,13 @@ const membersDataSlice = createSlice({
 
     //모달 전송
     sendMember (state, action) {state.sendMember = action.payload},
+
+    //로그인 유저 전송
+    loginUserSend (state, action) {state.loginUser = action.payload},
+
+    //로그아웃
+    logoutUserSend (state) {state.loginUser = ''}
   }
 })
-export const { sortState, toggleModal, togglePartModal, sendMember, setMembers} = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, sendMember, setMembers, loginUserSend, logoutUserSend } = membersDataSlice.actions
 export default membersDataSlice.reducer

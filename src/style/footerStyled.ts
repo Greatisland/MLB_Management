@@ -5,6 +5,7 @@ export const FooterContainer = styled.div`
   justify-content: space-around;
   width: 100%;
   position: fixed;
+  left: 0;
   bottom: 0;
   z-index: 1;
   background: #E3CBCB;

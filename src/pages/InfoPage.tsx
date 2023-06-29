@@ -1,16 +1,16 @@
 import BtnList from "../components/BtnList"
-import Footer from "../components/Footer"
-import SearchList from "../components/SearchList"
+import HomeList from "../components/HomeList"
 import { HomeContainer } from "../style/homeStyled"
+import Footer from "../components/Footer"
 
-const SearchPage = () => {
+const InfoPage = () => {
   return (
     <HomeContainer>
       <BtnList />
-      <SearchList />
+      <HomeList />
       <Footer />
     </HomeContainer>
   )
 }
 
-export default SearchPage
+export default InfoPage
