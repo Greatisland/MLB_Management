@@ -35,7 +35,6 @@ const Home = () => {
           <FaUserCircle />
           게스트로 시작
         </div>
-        {/* <li onClick={() => authFunc.stateAccount()}>확인</li> */}
         <Footer />
       </LoginContainer>
     </LoginWrapper>

@@ -3,6 +3,7 @@ import HomeList from "../components/HomeList"
 import { HomeContainer } from "../style/homeStyled"
 import Footer from "../components/Footer"
 import { useAppSelector } from "../store/hook"
+import Home from "./Home"
 
 const InfoPage = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
@@ -14,7 +15,7 @@ const InfoPage = () => {
       <HomeList />
       <Footer />
     </HomeContainer> :
-    <></>}
+    <Home />}
     </>
 
   )
