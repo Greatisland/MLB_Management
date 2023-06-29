@@ -7,11 +7,30 @@ import { SearchBar, SearchPageContainer } from "../style/searchStyled"
 const SearchList = () => {
 
   const dispatch = useAppDispatch()
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser } = useAppSelector(state => state.membersData)
 
   const [ search, setSearch ] = useState('')
 
   const searchMembersData = membersData.filter(member => member[1].name.includes(search))
+
+  const handleAddMember = (member: any) => {
+    //레벨 2 이상부터 운영진
+    if(loginUser.level >= 2){
+      dispatch(toggleModal()), dispatch(sendMember(
+        {
+          id: member[0],
+          name: member[1].name,
+          join: member[1].join,
+          year: member[1].year,
+          gender: member[1].gender,
+          etc: member[1].etc || '',
+          state: true,
+          special: member[1].special 
+        }
+      ))
+    }
+  }
+
   return (
     <SearchPageContainer>
     <HomeListContainer>
@@ -29,18 +48,7 @@ const SearchList = () => {
         </thead>
         <tbody>
           {searchMembersData.map((member, i) => (
-            <tr key={i} onClick={() => {dispatch(toggleModal()), dispatch(sendMember(
-              {
-                id: member[0],
-                name: member[1].name,
-                join: member[1].join,
-                year: member[1].year,
-                gender: member[1].gender,
-                etc: member[1].etc || '',
-                state: true,
-                special: member[1].special 
-              }
-            ))}}>
+            <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].name}</td>
               <td>{member[1].join}</td>
               <td>{member[1].year}</td>
