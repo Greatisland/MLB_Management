@@ -71,7 +71,7 @@ const initialState: InitialState = {
     photoURL: '',
     level: 1,
     state: false
-  }
+  },
 }
 
 //reducer, state를 모두 관리할 slice
@@ -164,7 +164,6 @@ const membersDataSlice = createSlice({
 
     //로그인 유저 전송
     loginUserSend (state, action) {state.loginUser = action.payload},
-
   }
 })
 export const { sortState, toggleModal, togglePartModal, sendMember, setMembers, loginUserSend } = membersDataSlice.actions

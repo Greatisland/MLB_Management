@@ -7,6 +7,7 @@ import Footer from "../components/Footer"
 import { GrFacebook } from 'react-icons/gr';
 import { FcGoogle } from 'react-icons/fc';
 import { FaUserCircle } from 'react-icons/fa';
+import { auth } from "../firebase/firebaseFunc"
 
 const Home = () => {
   
@@ -17,12 +18,12 @@ const Home = () => {
   }, [loginUser])
 
 
-
   return (
     <LoginWrapper>
       <LoginContainer>
         <h1 className="eng">MLB<br />Management</h1>
-
+        {!auth.currentUser ? 
+        <>
         <div className="loginBtn" onClick={() => authFunc.loginGoogle()}>
           <FcGoogle />
           구글 로그인
@@ -31,7 +32,8 @@ const Home = () => {
           <GrFacebook />
           페이스북 로그인
         </div>
-
+        </>
+        : null}
         <div className="loginBtn" onClick={() => authFunc.loginAccount('guest@mlb.com', 'abc123')}>
           <FaUserCircle />
           게스트로 시작
