@@ -31,7 +31,7 @@ const Home = () => {
           페이스북 로그인
         </div>
 
-        <div className="loginBtn" onClick={() => authFunc.loginAccount('guest@guset.com', '12345')}>
+        <div className="loginBtn" onClick={() => authFunc.loginAccount('guest@mlb.com', 'abc123')}>
           <FaUserCircle />
           게스트로 시작
         </div>
