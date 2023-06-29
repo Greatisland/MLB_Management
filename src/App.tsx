@@ -1,6 +1,6 @@
 import AppRouter from './router/AppRouter'
 import { GlobalStyle } from './style/globalStyled'
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useAppDispatch } from './store/hook'
 import { loginUserSend, setMembers } from './store/slice'
 import ScrollToTop from './components/ScrollToTop'
@@ -8,10 +8,19 @@ import { auth, database, dbFunc } from './firebase/firebaseFunc'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router'
 import { ref, onValue } from "firebase/database"
+import Splash from './components/Splash'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const [ loading, setLoading ] = useState(false)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(true)
+    }, 1500)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     dbFunc.getAllMembers((data: any) => dispatch(setMembers(data)))
@@ -21,7 +30,7 @@ const App = () => {
     //로그인 상태 확인
     const unsubscribe = onAuthStateChanged(auth, (user) => {
 
-      //로그인 상태 redux 전송
+      // 로그인 상태 redux 전송
       const send = (level: number) => {dispatch(loginUserSend({
         uid: user ? user.uid : '',
         name: user ? user.displayName : '',
@@ -53,6 +62,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <ScrollToTop />
+      {!loading ? <Splash /> : null}
       <AppRouter />
     </>
   )

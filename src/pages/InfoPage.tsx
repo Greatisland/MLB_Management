@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import { useAppSelector } from "../store/hook"
 import Home from "./Home"
 
+
 const InfoPage = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   return (

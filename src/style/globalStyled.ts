@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -87,4 +87,26 @@ export const ScrollToTopBtnContainer = styled.div`
     width: 80%;
     height: 80%;
   }
+`
+const anim = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`
+export const SplashContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background: #FA7462;
+  background: #FA7462;
+  /* animation: ${anim} 2s ease-in-out; */
 `
