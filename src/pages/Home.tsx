@@ -42,10 +42,8 @@ const Home = () => {
       }else{
         //로그아웃 시 로그인 화면으로 이동
         send(1)
-        navigate('/')
         setIsLoading(false)
       }
-
     })
 
     // 컴포넌트 unmount시 리스너 해제

@@ -3,11 +3,12 @@ import MemberModal from "./MemberModal";
 import { useAppSelector } from "../store/hook";
 import { Link } from "react-router-dom";
 import { authFunc } from "../firebase/firebaseFunc";
-
-
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { modalState, loginUser } = useAppSelector(state => state.membersData)
+  const navigate = useNavigate()
+  
   return (
     <>{loginUser.state ?
     <HeaderContainer photoURL={loginUser.photoURL}>
@@ -16,7 +17,10 @@ const Header = () => {
       <div className="btns">
         {loginUser.photoURL? <div className="photo" /> : null}
         <p className="hi">{loginUser.name || '뮤라밸 게스트'}님, 안녕하세요!</p>
-        <div className="logout" onClick={() => authFunc.logout()}>로그아웃</div>
+        <div className="logout" onClick={() => {
+          navigate('/')
+          authFunc.logout()
+        }}>로그아웃</div>
       </div> : null}
       {modalState ? <MemberModal /> : null}
     </HeaderContainer> : <></>}</>
