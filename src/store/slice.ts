@@ -133,7 +133,7 @@ const membersDataSlice = createSlice({
 
       } else if (action.payload === 'yearPart') {
         state.membersData.sort((a, b) => {
-          return (Number(a[1].total) - Number(b[1].total)) * state.sortDirection.yearPart;
+          return (Number(b[1].total) - Number(a[1].total)) * state.sortDirection.yearPart;
         })
         state.sortDirection.yearPart = -state.sortDirection.yearPart // 방향 전환
 
@@ -142,12 +142,12 @@ const membersDataSlice = createSlice({
           let string = `${dateCalc('flatMonth')}month`
           let aPart = (a[1] as any)[string] || 0
           let bPart = (b[1] as any)[string] || 0
-          return (Number(aPart) - Number(bPart)) * state.sortDirection.monthPart;
+          return (Number(bPart) - Number(aPart)) * state.sortDirection.monthPart;
         })
         state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
       } else if (action.payload === 'yearHost') {
         state.membersData.sort((a, b) => {
-          return (Number(a[1].totalHost) - Number(b[1].totalHost)) * state.sortDirection.yearHost;
+          return (Number(b[1].totalHost) - Number(a[1].totalHost)) * state.sortDirection.yearHost;
         })
         state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
 
