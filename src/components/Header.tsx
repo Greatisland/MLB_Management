@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <>{loginUser.state ?
     <HeaderContainer photoURL={loginUser.photoURL}>
-      <Link to='/'><h1 className="eng">MLB MANAGEMENT</h1></Link>
+      <Link to='/infopage'><h1 className="eng">MLB MANAGEMENT</h1></Link>
       {loginUser.state ? 
       <div className="btns">
         {loginUser.photoURL? <div className="photo" /> : null}

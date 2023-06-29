@@ -17,10 +17,10 @@ const App = () => {
     dbFunc.getAllMembers((data: any) => dispatch(setMembers(data)))
   },[dispatch])
 
-
   useEffect(() => {
     //로그인 상태 확인
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+
       //로그인 상태 redux 전송
       const send = (level: number) => {dispatch(loginUserSend({
         uid: user ? user.uid : '',
