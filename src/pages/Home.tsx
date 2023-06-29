@@ -4,6 +4,9 @@ import { useEffect } from "react"
 import { useAppSelector } from "../store/hook"
 import { useNavigate } from "react-router"
 import Footer from "../components/Footer"
+import { RiKakaoTalkFill } from 'react-icons/ri';
+import { FcGoogle } from 'react-icons/fc';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Home = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
@@ -15,11 +18,22 @@ const Home = () => {
   return (
     <LoginWrapper>
       <LoginContainer>
-        <div onClick={() => authFunc.loginAccount('kinhyeonjin@naver.com', 'theisland4!')}>그냥 로그인</div>
-        <div onClick={() => authFunc.loginGoogle()}>구글 로그인</div>
-        <div>카카오톡 로그인</div>
-        <div onClick={() => authFunc.stateAccount()}>확인</div>
-        <div onClick={() => authFunc.logout()}>로그아웃</div>
+        <h1 className="eng">MLB<br />Management</h1>
+
+        <div className="loginBtn" onClick={() => authFunc.loginGoogle()}>
+          <FcGoogle />
+          구글 로그인
+        </div>
+        <div className="loginBtn">
+          <RiKakaoTalkFill />
+          카카오 로그인
+        </div>
+        <div className="loginBtn" onClick={() => authFunc.loginAccount('kinhyeonjin@naver.com', 'theisland4!')}>
+          <FaUserCircle />
+          공용계정으로 시작
+        </div>
+
+        {/* <li onClick={() => authFunc.stateAccount()}>확인</li> */}
         <Footer />
       </LoginContainer>
     </LoginWrapper>

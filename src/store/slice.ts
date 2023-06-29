@@ -36,7 +36,7 @@ interface InitialState {
   loginUser: {
     uid: string
     name: string
-    photoUrl: string
+    photoURL: string
     level: number
     state: boolean
   }
@@ -68,7 +68,7 @@ const initialState: InitialState = {
   loginUser: {
     uid: '',
     name: '',
-    photoUrl: '',
+    photoURL: '',
     level: 1,
     state: false
   }
