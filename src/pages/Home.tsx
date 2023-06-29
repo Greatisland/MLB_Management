@@ -3,6 +3,7 @@ import { authFunc } from "../firebase/firebaseFunc"
 import { useState, useEffect, useRef } from "react"
 import { useAppSelector } from "../store/hook"
 import { useNavigate } from "react-router"
+import Footer from "../components/Footer"
 
 const Home = () => {
 
@@ -32,12 +33,14 @@ const Home = () => {
           <input type="submit"></input>
         </form> */}
         {/* <div>회원가입</div> */}
+        <p>로그인 기능 테스트중입니다...........</p>
         <div onClick={() => authFunc.loginGoogle()}>구글 로그인</div>
         <div>카카오톡 로그인</div>
         <div onClick={() => authFunc.stateAccount()}>확인</div>
         <div onClick={() => console.log('xxx')}>먼데</div>
         <div onClick={() => {setTest('로그아웃')}}>로그아웃</div>
         <p>{test}?</p>
+        <Footer />
       </LoginContainer>
     </LoginWrapper>
   )
