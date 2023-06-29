@@ -2,8 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
-import { loginUserSend, type Member } from '../store/slice'
-
+import { type Member } from '../store/slice'
+import Swal from 'sweetalert2'
 
 //firebase 초기화
 const app = initializeApp(firebaseConfig)
@@ -77,6 +77,14 @@ export const authFunc = {
   //로그인
   loginAccount(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password)
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: '이메일 또는 비밀번호가 틀렸네요!',
+         showConfirmButton: false,
+        timer: 800
+      })
+    })
   },
 
   //로그아웃

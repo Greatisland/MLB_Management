@@ -108,5 +108,4 @@ export const SplashContainer = styled.div`
   z-index: 999;
   background: #FA7462;
   background: #FA7462;
-  /* animation: ${anim} 2s ease-in-out; */
 `

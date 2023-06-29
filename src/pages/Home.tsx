@@ -4,7 +4,6 @@ import { HomeContainer } from "../style/homeStyled"
 import Footer from "../components/Footer"
 import { useAppDispatch, useAppSelector } from "../store/hook"
 import LoginPage from "./LoginPage"
-
 import Splash from "../components/Splash"
 import { useState, useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
@@ -12,12 +11,10 @@ import { loginUserSend } from "../store/slice"
 import { auth } from "../firebase/firebaseFunc"
 import { database } from "../firebase/firebaseFunc"
 import { onValue, ref } from "firebase/database"
-import { useNavigate } from "react-router"
 
 const Home = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
   const [ isLoading, setIsLoading ] = useState(true)
   useEffect(() => {
     //로그인 상태 확인
