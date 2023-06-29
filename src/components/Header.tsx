@@ -4,14 +4,16 @@ import { useAppSelector } from "../store/hook";
 import { Link } from "react-router-dom";
 import { authFunc } from "../firebase/firebaseFunc";
 
-const Header = () => {
-  const { modalState } = useAppSelector(state => state.membersData)
 
+
+const Header = () => {
+  const { modalState, loginUser } = useAppSelector(state => state.membersData)
   return (
-    <HeaderContainer>
+    <>{loginUser.state ?
+    <HeaderContainer photoURL={loginUser.photoURL}>
       <Link to='/'><h1 className="eng">MLB MANAGEMENT</h1></Link>
       {modalState ? <MemberModal /> : null}
-    </HeaderContainer>
+    </HeaderContainer> : <></>}</>
   )
 }
 

@@ -1,13 +1,16 @@
 import styled from "styled-components";
-
-export const HeaderContainer = styled.div`
+interface HeaderContainerProps {
+  photoURL: string | null
+}
+export const HeaderContainer = styled.div<HeaderContainerProps>`
   display: flex;
   max-width: 800px;
   margin: 0 auto;
   flex-direction: column;
   padding: 0 20px;
-  gap: 20px;
+  gap: 12px;
   h1 {
+    width: 100%;
     padding: 20px 0 0;
     font-size: 1.5rem;
     color: #0B4240;
@@ -16,8 +19,28 @@ export const HeaderContainer = styled.div`
   }
   .btns {
     display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+    .photo {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #333 url(${props => props.photoURL ? props.photoURL : ''}) center center/cover;
+    }
+    .hi {
+      font-size: 0.8rem;
+    }
+    .logout {
+      margin: 0 0 0 auto;
+      border: none;
+      background: #FFA3A3;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      padding: 4px 10px;
+      color: #fff;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
   }
 `
 export const  JoinModalWrapper = styled.div`

@@ -2,14 +2,15 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
-import type { Member } from '../store/slice'
+import { loginUserSend, type Member } from '../store/slice'
+
 
 //firebase 초기화
 const app = initializeApp(firebaseConfig)
 //데이터베이스
-const database = getDatabase(app)
+export const database = getDatabase(app)
 //회원관련
-const auth = getAuth(app)
+export const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 const facebookProvider = new FacebookAuthProvider()
 //database 
@@ -63,19 +64,8 @@ export const authFunc = {
 
   //구글 로그인
   loginGoogle () {
-    signInWithRedirect(auth, googleProvider)
-    .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result)
-    const token = credential?.accessToken
-    // The signed-in user info.
-    const user = (result as any).user
-    console.log(user)
-    // IdP data available using getAdditionalUserInfo(result)
-    }).catch((error) => {
-      console.log(error)
-    }) 
-    
+    // signInWithRedirect(auth, googleProvider)
+    signInWithPopup(auth, googleProvider)
   },
 
   loginFacebook() {
@@ -85,41 +75,24 @@ export const authFunc = {
   //로그인
   loginAccount(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user
-      console.log('로그인')
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
-    })
   },
 
   //유저 확인
   stateAccount() {
-    console.log('확인실행')
-
-    onAuthStateChanged(auth, (user: any) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid
         console.log(uid + '가 로그인 상태')
-        // ...
       } else {
         console.log('로그아웃 상태')
-        // User is signed out
-        // ...
       }
     })
   },
 
   //로그아웃
   logout() {
-    signOut(auth)
     console.log('로그아웃')
+    signOut(auth)
   }
 }
 

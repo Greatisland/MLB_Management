@@ -4,9 +4,10 @@ import Swal from "sweetalert2"
 import { dbFunc } from "../firebase/firebaseFunc"
 
 const MemberFeeBtn = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser } = useAppSelector(state => state.membersData)
 
   const allDone = () => {
+    if(loginUser.level >= 3) {
     Swal.fire({
       title: `모든 회원의 회비가 납부처리됩니다.`,
       text: "이번 달 회비가 모두 납부되었나요?",
@@ -32,10 +33,18 @@ const MemberFeeBtn = () => {
         })
         return
       }else{return}
-    })
+    })} else {
+      Swal.fire({
+        icon: 'warning',
+        title: '총무 계정만 가능해요!',
+         showConfirmButton: false,
+        timer: 800
+      })
+    }
   }
 
   const allNone = () => {
+    if(loginUser.level >= 3) {
     Swal.fire({
       title: `모든 회원의 회비가 미납처리됩니다.`,
       text: "다음 달 회비관리를 위해 초기화해야 할 경우 이 기능을 사용해주세요.",
@@ -61,7 +70,14 @@ const MemberFeeBtn = () => {
         })
         return
       }else{return}
-    })
+    })} else {
+      Swal.fire({
+        icon: 'warning',
+        title: '총무 계정만 가능해요!',
+         showConfirmButton: false,
+        timer: 800
+      })
+    }
   }
 
   return (

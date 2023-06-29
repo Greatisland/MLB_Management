@@ -9,7 +9,7 @@ import { dbFunc } from "../firebase/firebaseFunc"
 const MemberModal = () => {
   
   const dispatch = useAppDispatch()
-  const { sendMember } = useAppSelector(state => state.membersData)
+  const { sendMember, loginUser } = useAppSelector(state => state.membersData)
   const [state, setState] = useState({
     name: sendMember.name || '',
     join: sendMember.join || '',
