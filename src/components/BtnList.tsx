@@ -2,11 +2,9 @@ import { Btn, BtnListContainer } from "../style/globalStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal, sendMember } from "../store/slice"
 import { BiMale, BiFemale, BiMaleFemale } from 'react-icons/bi'
-import { useNavigate  } from "react-router"
 import Swal from "sweetalert2"
 
 const BtnList = () => {
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
 
@@ -49,13 +47,9 @@ const BtnList = () => {
         <span className="female">여<BiFemale /></span>
         <span className="number">{totalGender('여')}</span>
       </Btn>
-      <Btn onClick={()=> handleAddMember()}>
+      <Btn className="memberAdd" onClick={()=> handleAddMember()}>
         <p>회원추가</p>
       </Btn>
-      <Btn onClick={() => {navigate('/searchpage')}}>
-        <p>검색</p>
-      </Btn>
-
     </BtnListContainer>
   )
 }

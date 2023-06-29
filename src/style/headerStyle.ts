@@ -35,8 +35,8 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
       border: none;
       background: #FFA3A3;
       border-radius: 30px;
-      font-size: 0.9rem;
-      padding: 4px 10px;
+      font-size: 0.8rem;
+      padding: 5px 20px;
       color: #fff;
       box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
       cursor: pointer;

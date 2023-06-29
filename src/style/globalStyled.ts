@@ -18,13 +18,13 @@ export const BtnListContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 10px;
-  padding: 0 10px;
 `
 
 export const Btn = styled.div`
   display: flex;
   font-size: 0.8rem;
   border-radius: 30px;
+  align-items: center;
   cursor: pointer;
   select {
     border: none;
@@ -51,15 +51,15 @@ export const Btn = styled.div`
     padding: 5px 20px;
     background: #282833;
     color: #fff;
-    border-radius: 12px;
+    border-radius: 30px;
     box-sizing: border-box;
     border: none;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   &.totalReview {
     display: flex;
-    width: 100%;
+    flex: 1;
     gap: 2px;
-    padding: 0 0 12px;
     justify-content: center;
     align-items: center;
     span {
@@ -69,6 +69,9 @@ export const Btn = styled.div`
     .number {
       padding: 0 24px 0 0;
     }
+  }
+  &.memberAdd {
+    margin: 0 0 0 auto;
   }
 
 `

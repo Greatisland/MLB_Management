@@ -1,10 +1,17 @@
 import { HomeListContainer } from "../style/homeStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal, sendMember, sortState } from "../store/slice"
+import { SearchBarPart } from "../style/partPageStyled"
+import { useState } from "react"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
+
+  const [ search, setSearch ] = useState('')
+
+  const searchMembersData = membersData.filter(member => member[1].name.includes(search))
+
 
   const handleAddMember = (member: any) => {
     //레벨 2 이상부터 운영진
@@ -25,6 +32,10 @@ const HomeList = () => {
   }
 
   return (
+    <>      
+    <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
+      <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."></input>
+    </SearchBarPart>
     <HomeListContainer>
       <table>
         <thead>
@@ -37,7 +48,7 @@ const HomeList = () => {
           </tr>
         </thead>
         <tbody>
-          {membersData.map((member, i) => (
+          {searchMembersData.map((member, i) => (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].name}</td>
               <td>{member[1].join}</td>
@@ -49,6 +60,7 @@ const HomeList = () => {
         </tbody>
       </table>
     </HomeListContainer>
+    </>
   )
 }
 

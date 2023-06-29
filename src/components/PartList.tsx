@@ -1,16 +1,26 @@
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { sortState } from "../store/slice"
-import { PartListContainer } from "../style/partPageStyled"
+import { PartListContainer, SearchBarPart } from "../style/partPageStyled"
 import { dateCalc } from "./dateCalc"
 import { togglePartModal, sendMember } from "../store/slice"
+import { useState } from "react"
 
 const PartList = () => {
   const { membersData } = useAppSelector(state => state.membersData)
   const dispatch = useAppDispatch()
 
+  const [ search, setSearch ] = useState('')
+
+  const searchMembersData = membersData.filter(member => member[1].name.includes(search))
+
 
   return (
+    <>
+    <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
+      <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."/>
+    </SearchBarPart>
     <PartListContainer>
+
       <table>
         <thead>
           <tr>
@@ -21,7 +31,7 @@ const PartList = () => {
           </tr>
         </thead>
         <tbody>
-        {membersData.map((member, i) => (
+        {searchMembersData.map((member, i) => (
           <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].name}</td>
             <td>{member[1].total || 0} 회</td>
@@ -32,6 +42,7 @@ const PartList = () => {
         </tbody>
       </table>
     </PartListContainer>
+    </>
   )
 }
 

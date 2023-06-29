@@ -169,3 +169,25 @@ export const PartModalContainer = styled.div`
     cursor: pointer;
   }
 `
+
+export const SearchBarPart = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 100%;;
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    &:focus {
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: scale(1.02)
+    }
+  }
+`

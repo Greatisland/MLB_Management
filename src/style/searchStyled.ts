@@ -11,11 +11,9 @@ export const SearchBar = styled.form`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: #f5f5f5;
   input {
     width: 100%;;
-    height: 40px;
-    padding: 10px 20px;
+    padding: 2px 20px;
     font-size: 0.8rem;
     border: none;
     border-radius: 20px;
