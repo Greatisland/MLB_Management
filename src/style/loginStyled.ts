@@ -32,7 +32,7 @@ export const LoginContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     svg {
       font-size: 1.7rem;
-      fill: #000;
+      fill: rgb(25,103,210);
     }
   }
   .eng {

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
 import { loginUserSend, type Member } from '../store/slice'
@@ -12,6 +12,7 @@ export const database = getDatabase(app)
 //회원관련
 export const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
+const facebookProvider = new FacebookAuthProvider()
 //database 
 const dbRef = ref(database, '/memberList')
 
@@ -65,6 +66,12 @@ export const authFunc = {
   loginGoogle () {
     // signInWithRedirect(auth, googleProvider)
     signInWithPopup(auth, googleProvider)
+  },
+  
+  //페이스북 로그인
+  loginFacebook () {
+    // signInWithRedirect(auth, googleProvider)
+    signInWithPopup(auth, facebookProvider)
   },
 
   //로그인
