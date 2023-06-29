@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
 import { loginUserSend, type Member } from '../store/slice'
@@ -12,7 +12,6 @@ export const database = getDatabase(app)
 //회원관련
 export const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
-const facebookProvider = new FacebookAuthProvider()
 //database 
 const dbRef = ref(database, '/memberList')
 
@@ -68,30 +67,13 @@ export const authFunc = {
     signInWithPopup(auth, googleProvider)
   },
 
-  loginFacebook() {
-    signInWithRedirect(auth, facebookProvider)
-  },
-
   //로그인
   loginAccount(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password)
   },
 
-  //유저 확인
-  stateAccount() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid
-        console.log(uid + '가 로그인 상태')
-      } else {
-        console.log('로그아웃 상태')
-      }
-    })
-  },
-
   //로그아웃
   logout() {
-    console.log('로그아웃')
     signOut(auth)
   }
 }
