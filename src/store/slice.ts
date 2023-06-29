@@ -165,9 +165,7 @@ const membersDataSlice = createSlice({
     //로그인 유저 전송
     loginUserSend (state, action) {state.loginUser = action.payload},
 
-    //로그아웃
-    logoutUserSend (state) {state.loginUser = ''}
   }
 })
-export const { sortState, toggleModal, togglePartModal, sendMember, setMembers, loginUserSend, logoutUserSend } = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, sendMember, setMembers, loginUserSend } = membersDataSlice.actions
 export default membersDataSlice.reducer
