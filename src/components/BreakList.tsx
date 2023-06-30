@@ -41,11 +41,11 @@ const BreakList = () => {
       <table>
         <thead>
           <tr>
-            <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
-            <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
-            <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
+            <th>이름</th>
+            <th>가입일</th>
+            <th>년생</th>
             {loginUser.level >= 2 ?
-            <th onClick={() => {dispatch(sortState('etc'))}}>메모</th>:null}
+            <th>메모</th>:null}
           </tr>
         </thead>
         <tbody>
