@@ -142,7 +142,7 @@ const MemberModal = () => {
           <div className="checkFlex">
           <p>휴식기 여부</p>
           <CheckboxContainer>
-            <HiddenCheckbox checked={state.break} onChange={e => setState({...state, break: e.target.checked})}/>
+            <HiddenCheckbox checked={state.break} onChange={(e: React.FormEvent) => setState({...state, break: e.target.checked})}/>
             <StyledCheckbox />
           </CheckboxContainer>
           </div>

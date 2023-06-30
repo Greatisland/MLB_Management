@@ -44,7 +44,9 @@ const BanModal = ({setIsModal}: Props) => {
           <input type="text" value={data.content} onChange={(e) => setData({...data, content: e.target.value})}/>
           <input type="submit" value="완료"></input>
         </form>
-        <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+        <div className="btnWrapper">
+          <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+        </div>
       </JoinModalContainer>
     </JoinModalWrapper>
   )

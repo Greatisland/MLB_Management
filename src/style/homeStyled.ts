@@ -51,9 +51,3 @@ export const HomeListContainer = styled.div`
   }
 `
 
-export const BanTopContainer = styled.div`
-  display: flex;
-  div {
-    margin: 0 0 0 auto;
-  }
-`

@@ -60,7 +60,6 @@ export const  JoinModalContainer = styled.div`
   width: 80%;
   max-width: 300px;
   max-height: 700px;
-  height: 80%;
   overflow-y: scroll;
   scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;
@@ -176,8 +175,20 @@ export const  JoinModalContainer = styled.div`
       cursor: pointer;
     }
   }
-
+  .checkFlex {
+    display: flex;
+    margin: 10px 0 0;
+    gap: 20px;
+  }
 `
+
+export const BanTopContainer = styled.div`
+  display: flex;
+  div {
+    margin: 0 0 0 auto;
+  }
+`
+
 
 export const CheckboxContainer = styled.label`
   display: block;
