@@ -41,7 +41,7 @@ export const HomeListContainer = styled.div`
     text-align: start;
     font-size: 0.7rem;
     letter-spacing: -0.01rem;
-    color: #199E98
+    color: #199E98;
   }
   .date {
     letter-spacing: -0.04rem;

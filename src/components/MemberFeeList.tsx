@@ -19,7 +19,7 @@ const MemberFeeList = () => {
       let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
       let joinYear = String(memberJoin.getFullYear())
   
-      if(member[1].special === '' && member[1].target === '' && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+      if(member[1].special === '' && member[1].target === '' && !member[1].break && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
         return true
       }
     }).sort((a, b) => {
@@ -34,7 +34,7 @@ const MemberFeeList = () => {
     setPayMembers(filteredPayMembers)
   
     const filteredNoPayMembers = membersData.filter(member => {
-      if(member[1].special || member[1].target === '기타'){
+      if(member[1].special || member[1].target === '기타' || member[1].break){
         return true
       }
     }).sort((a, b) => {
@@ -120,10 +120,10 @@ const MemberFeeList = () => {
           <div className="member" key={i}>
             <ul>
               <li>{member[1].name}</li>
-              <li>{member[1].special ? member[1].special : '기타'}</li>
+              <li>{member[1].special ? member[1].special : (member[1].break ? '휴식기' : '기타')}</li>
             </ul>
             {
-              member[1].special !== '모임장' && member[1].special !== '운영진' && member[1].target === '기타' ? 
+              member[1].special !== '모임장' && member[1].special !== '운영진' && !member[1].break && member[1].target === '기타' ? 
               <span><TiUserAdd onClick={() => handleSwitching(member, '')} /></span> : null
             }
           </div>
