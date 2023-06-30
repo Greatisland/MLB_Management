@@ -14,14 +14,25 @@ export interface Member {
   special?: string
   total?: number
   totalHost?: number
+  break?: boolean
   [key: `${number}month`]: number
   [key: `${number}monthHost`]: number
+}
+
+export interface Ban {
+  id?: string
+  name: string
+  date: string
+  content: string
+  state?: boolean
 }
 
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]
+  banData: [string, Ban][]
   sendMember: Member
+  sendBan: Ban
   modalState: boolean
   modalPartState: boolean
   sortDirection : {
@@ -45,6 +56,7 @@ interface InitialState {
 
 const initialState: InitialState = {
   membersData: [],
+  banData: [],
   sendMember: {
     id: '',
     name: '',
@@ -53,7 +65,15 @@ const initialState: InitialState = {
     gender:'',
     state: false,
     etc: '',
-    special: ''
+    special: '',
+    break: false
+  },
+  sendBan: {
+    id: '',
+    name: '',
+    date: '',
+    content: '',
+    state: false
   },
   modalState: false,
   modalPartState: false,
@@ -83,9 +103,8 @@ const membersDataSlice = createSlice({
   reducers: {
 
     //데이터 세팅
-    setMembers (state, action) {
-      state.membersData = action.payload
-    },
+    setMembers (state, action) {state.membersData = action.payload},
+    setBanMembers (state, action) {state.banData = action.payload},
 
     //멤버 정렬
     sortState (state, action) {
@@ -167,10 +186,11 @@ const membersDataSlice = createSlice({
 
     //모달 전송
     sendMember (state, action) {state.sendMember = action.payload},
+    sendBan (state, action) {state.sendBan = action.payload},
 
     //로그인 유저 전송
     loginUserSend (state, action) {state.loginUser = action.payload},
   }
 })
-export const { sortState, toggleModal, togglePartModal, sendMember, setMembers, loginUserSend } = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, sendMember, setBanMembers, setMembers, sendBan, loginUserSend } = membersDataSlice.actions
 export default membersDataSlice.reducer

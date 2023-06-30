@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const HomeContainer = styled.div`
   display: flex;
   max-width: 800px;
@@ -10,6 +9,7 @@ export const HomeContainer = styled.div`
 `
 export const HomeListContainer = styled.div`
   border-radius: 30px;
+  margin: 0 0 20px;
   background: #f9f9f9;
   overflow: hidden;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
@@ -48,5 +48,12 @@ export const HomeListContainer = styled.div`
   }
   .etc {
     color: #199E98;
+  }
+`
+
+export const BanTopContainer = styled.div`
+  display: flex;
+  div {
+    margin: 0 0 0 auto;
   }
 `

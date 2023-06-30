@@ -178,3 +178,52 @@ export const  JoinModalContainer = styled.div`
   }
 
 `
+
+export const CheckboxContainer = styled.label`
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+`;
+
+export const StyledCheckbox = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 2px solid #555;
+  border-radius: 4px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  ${HiddenCheckbox}:checked ~ & {
+    background-color: #2196F3;
+  }
+
+  ${HiddenCheckbox}:checked ~ &:after {
+    display: block;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+`;
