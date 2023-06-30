@@ -71,6 +71,16 @@ export const LoginContainer = styled.div`
       cursor: pointer;
       font-size: 0.7rem;
     }
+    input[type='password'] {
+      border: none;
+      background: #eee;
+      border-radius: 30px;
+      padding: 5px 10px;
+      margin: 0 0 10px 0;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      cursor: pointer;
+    }
     input[type='submit'] {
       border: none;
       background: #FFA3A3;

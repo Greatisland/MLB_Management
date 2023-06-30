@@ -95,8 +95,8 @@ export const  JoinModalContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;
-
   }
+
 
   input[type='date'] {
     border: none; 
