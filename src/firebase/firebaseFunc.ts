@@ -65,7 +65,12 @@ export const dbFunc = {
     const memberRef = ref(database, `/banList/${memberId}`)
     update(memberRef, updatedMember)
   },
-  
+
+  // 밴 삭제
+  removeBan(memberId: string) {
+    const memberRef = ref(database, `/banList/${memberId}`)
+    remove(memberRef)
+  },
 }
 
 //회원 관련 함수

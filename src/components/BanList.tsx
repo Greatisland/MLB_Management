@@ -2,7 +2,6 @@ import { BanTopContainer, HomeListContainer } from "../style/homeStyled"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { Btn } from "../style/globalStyled"
 import { useState } from "react"
-import Swal from "sweetalert2"
 import BanModal from "./BanModal"
 import { sendBan } from "../store/slice"
 

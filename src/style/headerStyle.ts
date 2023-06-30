@@ -182,14 +182,6 @@ export const  JoinModalContainer = styled.div`
   }
 `
 
-export const BanTopContainer = styled.div`
-  display: flex;
-  div {
-    margin: 0 0 0 auto;
-  }
-`
-
-
 export const CheckboxContainer = styled.label`
   display: block;
   position: relative;

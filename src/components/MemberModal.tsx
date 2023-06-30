@@ -1,5 +1,5 @@
 import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../style/headerStyle"
-import { useState } from "react"
+import { useState, ChangeEvent } from "react"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal } from "../store/slice"
 import Swal from "sweetalert2"
@@ -21,7 +21,7 @@ const MemberModal = () => {
     target: '',
     break: sendMember.break || false
   })
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -142,7 +142,7 @@ const MemberModal = () => {
           <div className="checkFlex">
           <p>휴식기 여부</p>
           <CheckboxContainer>
-            <HiddenCheckbox checked={state.break} onChange={(e: React.FormEvent) => setState({...state, break: e.target.checked})}/>
+            <HiddenCheckbox checked={state.break} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, break: e.target.checked})}/>
             <StyledCheckbox />
           </CheckboxContainer>
           </div>
