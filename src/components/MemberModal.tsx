@@ -1,4 +1,4 @@
-import { JoinModalContainer, JoinModalWrapper } from "../style/headerStyle"
+import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../style/headerStyle"
 import { useState } from "react"
 import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal } from "../store/slice"
@@ -18,7 +18,8 @@ const MemberModal = () => {
     gender: sendMember.gender || '',
     pay: false,
     special: sendMember.special || '',
-    target: ''
+    target: '',
+    break: sendMember.break || false
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,7 +34,8 @@ const MemberModal = () => {
       sendMember.year !== state.year ||
       sendMember.etc !== state.etc ||
       sendMember.gender !== state.gender ||
-      sendMember.special !== state.special
+      sendMember.special !== state.special ||
+      sendMember.break !== state.break
       )
       ){
         dbFunc.updateMember(sendMember.id as string, state)
@@ -137,6 +139,13 @@ const MemberModal = () => {
             <option value="모임장">모임장</option>
             <option value="운영진">운영진</option>
           </select>
+          <div className="checkFlex">
+          <p>휴식기 여부</p>
+          <CheckboxContainer>
+            <HiddenCheckbox checked={state.break} onChange={e => setState({...state, break: e.target.checked})}/>
+            <StyledCheckbox />
+          </CheckboxContainer>
+          </div>
           <input type="submit" value="완료"></input>
         </form>
         <div className='btnWrapper'>

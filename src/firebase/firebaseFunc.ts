@@ -1,20 +1,23 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
-import { type Member } from '../store/slice'
+import { type Member, type Ban } from '../store/slice'
 import Swal from 'sweetalert2'
 
 //firebase 초기화
 const app = initializeApp(firebaseConfig)
+
 //데이터베이스
 export const database = getDatabase(app)
+
 //회원관련
 export const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
-const facebookProvider = new FacebookAuthProvider()
+
 //database 
 const dbRef = ref(database, '/memberList')
+const banRef = ref(database, '/banList')
 
 //데이터베이스 함수
 export const dbFunc = {
@@ -43,6 +46,26 @@ export const dbFunc = {
       callback(Object.entries(snapshot.val()))
     })
   },
+
+  // 밴 리스트 읽어오기
+  getBanMembers(callback: any){
+    onValue(banRef, (snapshot) => {
+      callback(Object.entries(snapshot.val()))
+    })
+  },
+
+  // 밴 추가
+  addBan(member: Ban) {
+    const newMemberRef = push(banRef)
+    set(newMemberRef, member)
+  },
+
+  // 밴 수정
+  updateBan(memberId: string, updatedMember: Partial<Ban>) {
+    const memberRef = ref(database, `/banList/${memberId}`)
+    update(memberRef, updatedMember)
+  },
+  
 }
 
 //회원 관련 함수
@@ -52,7 +75,7 @@ export const authFunc = {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // 사용자 계정이 생성되었습니다.
-    const user = userCredential.user;
+    const user = userCredential.user
 
     // 사용자 프로필 정보를 업데이트합니다.
     return updateProfile(user, {
@@ -71,12 +94,6 @@ export const authFunc = {
     signInWithPopup(auth, googleProvider)
   },
   
-  //페이스북 로그인
-  loginFacebook () {
-    // signInWithRedirect(auth, facebookProvider)
-    signInWithPopup(auth, facebookProvider)
-  },
-
   //로그인
   loginAccount(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password)

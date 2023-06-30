@@ -1,5 +1,7 @@
 import BtnList from "../components/BtnList"
 import HomeList from "../components/HomeList"
+import BreakList from "../components/BreakList"
+import BanList from "../components/BanList"
 import { HomeContainer } from "../style/homeStyled"
 import Footer from "../components/Footer"
 import { useAppDispatch, useAppSelector } from "../store/hook"
@@ -72,6 +74,8 @@ const Home = () => {
     <HomeContainer>
       <BtnList />
       <HomeList />
+      <BreakList />
+      <BanList />
       <Footer />
     </HomeContainer>
   )}
