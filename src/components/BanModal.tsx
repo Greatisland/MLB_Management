@@ -45,8 +45,8 @@ const BanModal = ({setIsModal}: Props) => {
           <input type="submit" value="완료"></input>
         </form>
         <div className="btnWrapper">
-          {sendBan.state ? <div className="delete" onClick={() => {dbFunc.removeBan(sendBan.id as string), setIsModal(false)}}>삭제</div> : null}
           <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+          {sendBan.state ? <div className="delete" onClick={() => {dbFunc.removeBan(sendBan.id as string), setIsModal(false)}}>삭제</div> : null}
         </div>
       </JoinModalContainer>
     </JoinModalWrapper>
