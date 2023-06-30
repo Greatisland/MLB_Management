@@ -40,7 +40,7 @@ const BanModal = ({setIsModal}: Props) => {
           <input type="text" value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
           <p>추가일</p>
           <input type="date" value={data.date} onChange={(e) => setData({...data, date: e.target.value})}/>
-          <p>내용</p>
+          <p>사유</p>
           <input type="text" value={data.content} onChange={(e) => setData({...data, content: e.target.value})}/>
           <input type="submit" value="완료"></input>
         </form>

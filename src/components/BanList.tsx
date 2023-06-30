@@ -22,7 +22,7 @@ const BanList = () => {
           <tr>
             <th>이름</th>
             <th>차단일</th>
-            <th>설명</th>
+            <th>사유</th>
           </tr>
         </thead>
         <tbody>
