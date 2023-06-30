@@ -56,10 +56,7 @@ const Home = () => {
     </HomeContainer>
   )}
   if(!loginUser.state){return <LoginPage />}
-  return (
-    <>
-    </>
-  )
+  return <></>
 }
 
 export default Home

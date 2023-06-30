@@ -7,6 +7,7 @@ export const PartPageContainer = styled.div`
   margin: 0 auto;
   gap: 20px;
   padding: 20px 20px 90px 20px;
+  overflow: hidden;
 `
 
 const componentStyles = css`
