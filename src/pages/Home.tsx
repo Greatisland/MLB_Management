@@ -8,12 +8,12 @@ import Splash from "../components/Splash"
 import { useState, useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { loginUserSend } from "../store/slice"
-import { auth } from "../firebase/firebaseFunc"
+import { auth, dbFunc } from "../firebase/firebaseFunc"
 import { database } from "../firebase/firebaseFunc"
 import { onValue, ref } from "firebase/database"
 
 const Home = () => {
-  const { loginUser } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser } = useAppSelector(state => state.membersData)
   const dispatch = useAppDispatch()
   const [ isLoading, setIsLoading ] = useState(true)
   useEffect(() => {
@@ -26,7 +26,8 @@ const Home = () => {
         name: user ? user.displayName : '',
         photoURL: user ? user.photoURL : '',
         state: user ? true : false,
-        level: user ? level : 1
+        level: user ? level : 1,
+        email: user ? user.email: ''
       }))}
       if(user){
         // 로그인 된 경우, 실시간 데이터베이스에서 회원 등급 가져옴
@@ -36,12 +37,30 @@ const Home = () => {
           send(data)
           setIsLoading(false)
         })
+
+        const currentLoginMember = () => {
+          //현재 로그인한 사용자의 데이터베이스 찾기
+          let index = membersData.findIndex((member) => {
+            if(member[1].name === user.displayName){
+              return member
+            }
+          })
+          //찾지 못할 경우 함수 종료
+          if(index === -1){return}
+      
+          const memberId = membersData[index][0]
+          const updateDB = {email: user.email, uid: user.uid}
+          dbFunc.updateMember(membersData[index][0], updateDB)
+        }
+
+        currentLoginMember()
       }else{
         //로그아웃 시 로그인 화면으로 이동
         send(1)
         setIsLoading(false)
       }
     })
+    
     
 
     // 컴포넌트 unmount시 리스너 해제

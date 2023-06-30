@@ -4,6 +4,7 @@ import { toggleModal, sendMember, sortState } from "../store/slice"
 import { SearchBarPart } from "../style/partPageStyled"
 import { useState } from "react"
 import Swal from "sweetalert2"
+import { dbFunc } from "../firebase/firebaseFunc"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
@@ -13,6 +14,20 @@ const HomeList = () => {
 
   const searchMembersData = membersData.filter(member => member[1].name.includes(search))
 
+  const currentLoginMember = () => {
+    //현재 로그인한 사용자의 데이터베이스 찾기
+    let index = membersData.findIndex((member) => {
+      if(member[1].name === loginUser.name){
+        return member
+      }
+    })
+    //찾지 못할 경우 함수 종료
+    if(index === -1){return}
+
+    const memberId = membersData[index][0]
+    const updateDB = {email: loginUser.email, uid: loginUser.uid}
+    dbFunc.updateMember(membersData[index][0], updateDB)
+  }
 
   const handleAddMember = (member: any) => {
     //레벨 2 이상부터 운영진
