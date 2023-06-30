@@ -13,7 +13,9 @@ const MemberFeeTotal = () => {
     let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
     let joinYear = String(memberJoin.getFullYear())
 
-    if(member[1].target === '' && !member[1].special && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+    //차례대로,
+    //면제 사유 없고 && 운영진 아니고 && 휴식기 아니고 && 신입 아닐 때
+    if(member[1].target === '' && !member[1].special && !member[1].break && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
       return true
     }
   })
