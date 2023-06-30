@@ -37,7 +37,7 @@ const LoginPage = () => {
         {isModal ? <JoinModal setIsModal={setIsModal}/> : null}
         <form className="loginForm" onSubmit={handleLogin}>
           <input type="text" ref={emailRef} placeholder="이메일을 입력하세요"></input>
-          <input type="text" ref={pwRef} placeholder="비밀번호를 입력하세요"></input>
+          <input type="password" ref={pwRef} placeholder="비밀번호를 입력하세요"></input>
           <input type="submit" value="로그인" />
         </form>
         <div className="loginBtn joinBtn" onClick={() => setIsModal(true)}>
@@ -54,7 +54,6 @@ const LoginPage = () => {
           <FaUserCircle />
           게스트로 시작
         </div>
-
         <Footer />
       </LoginContainer>
     </LoginWrapper>

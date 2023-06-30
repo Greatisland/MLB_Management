@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import firebaseConfig from './firebaseConfig'
 import { type Member } from '../store/slice'
@@ -48,17 +48,20 @@ export const dbFunc = {
 //회원 관련 함수
 export const authFunc = {
   //이메일 회원가입
-  createAccount(email: string, password: string) {
+  createAccount(email: string, password: string, displayName: string) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user
-      // ...
+    // 사용자 계정이 생성되었습니다.
+    const user = userCredential.user;
+
+    // 사용자 프로필 정보를 업데이트합니다.
+    return updateProfile(user, {
+        displayName,
+      })
     })
     .catch((error) => {
       const errorCode = error.code
       const errorMessage = error.message
-      // ..
     })
   },
 

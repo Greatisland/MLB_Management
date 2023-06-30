@@ -11,20 +11,40 @@ const JoinModal = ({setIsModal}: Props) => {
   const email = useRef<HTMLInputElement>(null)
   const pw = useRef<HTMLInputElement>(null)
   const pwCheck = useRef<HTMLInputElement>(null)
+  const displayName = useRef<HTMLInputElement>(null)
   
   const handleJoin = (e: React.FormEvent) => {
     e.preventDefault()
     const emailValue = email.current?.value || ''
     const pwValue = pw.current?.value || ''
     const pwCheckValue = pwCheck.current?.value || ''
+    const displayNameValue = displayName.current?.value || ''
 
     // 정규 표현식: 소문자 또는 대문자 알파벳, 숫자만 허용
     const regex = /^[A-Za-z0-9]+$/;
     // 문자열이 정규 표현식과 일치하는지 검사
-    if(regex.test(emailValue)){
+    if(!emailValue){
+      Swal.fire({
+        icon: 'error',
+        title: '이메일을 작성해주세요.',
+         showConfirmButton: false,
+        timer: 800
+      })
+      return
+    } else if(regex.test(emailValue)){
       Swal.fire({
         icon: 'error',
         title: '올바른 이메일을 작성해주세요.',
+         showConfirmButton: false,
+        timer: 800
+      })
+      return
+    }
+
+    if(!displayNameValue){
+      Swal.fire({
+        icon: 'error',
+        title: '닉네임을 작성해주세요.',
          showConfirmButton: false,
         timer: 800
       })
@@ -50,13 +70,15 @@ const JoinModal = ({setIsModal}: Props) => {
       })
       return
     }
-    authFunc.createAccount(emailValue,pwValue)
+    authFunc.createAccount(emailValue,pwValue,displayNameValue)
   }
 
   return (
     <CreateModalContainer>
       <h2>회원가입</h2>
       <form onSubmit={handleJoin}>
+        <p>닉네임 입력</p>
+        <input type="text" ref={displayName} placeholder="이름을 입력해주세요." />
         <p>이메일 입력</p>
         <input type="text" ref={email} placeholder="ex) abc@naver.com" />
         <p>비밀번호 입력</p>

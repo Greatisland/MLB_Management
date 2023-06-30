@@ -42,6 +42,7 @@ const Home = () => {
         setIsLoading(false)
       }
     })
+    
 
     // 컴포넌트 unmount시 리스너 해제
     return () => unsubscribe()
