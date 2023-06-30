@@ -39,6 +39,7 @@ interface InitialState {
     photoURL: string
     level: number
     state: boolean
+    email: string
   }
 }
 
@@ -70,6 +71,7 @@ const initialState: InitialState = {
     name: '',
     photoURL: '',
     level: 1,
+    email: '',
     state: false
   },
 }

@@ -21,7 +21,7 @@ const JoinModal = ({setIsModal}: Props) => {
     const displayNameValue = displayName.current?.value || ''
 
     // 정규 표현식: 소문자 또는 대문자 알파벳, 숫자만 허용
-    const regex = /^[A-Za-z0-9]+$/;
+    const regex = /^[A-Za-z0-9]+$/
     // 문자열이 정규 표현식과 일치하는지 검사
     if(!emailValue){
       Swal.fire({
@@ -77,8 +77,8 @@ const JoinModal = ({setIsModal}: Props) => {
     <CreateModalContainer>
       <h2>회원가입</h2>
       <form onSubmit={handleJoin}>
-        <p>닉네임 입력</p>
-        <input type="text" ref={displayName} placeholder="이름을 입력해주세요." />
+        <p>이름 입력</p>
+        <input type="text" ref={displayName} placeholder="정확한 이름을 입력해주세요." />
         <p>이메일 입력</p>
         <input type="text" ref={email} placeholder="ex) abc@naver.com" />
         <p>비밀번호 입력</p>
