@@ -7,9 +7,8 @@ import Swal from "sweetalert2"
 const BtnList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
-
-  const totalMembers = membersData.length
-  const totalGender = (param: string) => {return membersData.reduce((acc: number, member) => {
+  const totalMembers = membersData.filter(member => !member[1].break)
+  const totalGender = (param: string) => {return totalMembers.reduce((acc: number, member) => {
     let gender = member[1].gender
     if(gender === param) {return acc + 1}
       else {return acc}
@@ -41,7 +40,7 @@ const BtnList = () => {
     <BtnListContainer>
       <Btn className='totalReview'>
         <span className="total">총원<BiMaleFemale/></span>
-        <span className="number">{totalMembers}</span>
+        <span className="number">{totalMembers.length}</span>
         <span className="male">남<BiMale /></span>
         <span className="number">{totalGender('남')}</span>
         <span className="female">여<BiFemale /></span>

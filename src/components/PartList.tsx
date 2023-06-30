@@ -7,11 +7,13 @@ import { useState } from "react"
 
 const PartList = () => {
   const { membersData } = useAppSelector(state => state.membersData)
+  //휴식기 제외
+  const totalMember = membersData.filter(member => !member[1].break)
   const dispatch = useAppDispatch()
 
   const [ search, setSearch ] = useState('')
 
-  const searchMembersData = membersData.filter(member => member[1].name.includes(search))
+  const searchMembersData = totalMember.filter(member => member[1].name.includes(search))
 
 
   return (
