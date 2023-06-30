@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from "../store/hook"
 import { toggleModal, sendMember, sortState } from "../store/slice"
 import { SearchBarPart } from "../style/partPageStyled"
 import { useState } from "react"
+import Swal from "sweetalert2"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
@@ -28,6 +29,13 @@ const HomeList = () => {
           special: member[1].special 
         }
       ))
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: '운영진 계정만 회원정보 수정이 가능해요!',
+         showConfirmButton: false,
+        timer: 800
+      })
     }
   }
 
