@@ -2,7 +2,7 @@ import AppRouter from './router/AppRouter'
 import { GlobalStyle } from './style/globalStyled'
 import { useEffect } from "react"
 import { useAppDispatch } from './store/hook'
-import {  setMembers, setBanMembers } from './store/slice'
+import {  setMembers, setBanMembers, setHof } from './store/slice'
 import ScrollToTop from './components/ScrollToTop'
 import { dbFunc } from './firebase/firebaseFunc'
 import { useNavigate } from 'react-router'
@@ -13,6 +13,7 @@ const App = () => {
   useEffect(() => {
     dbFunc.getAllMembers((data: any) => dispatch(setMembers(data)))
     dbFunc.getBanMembers((data: any) => dispatch(setBanMembers(data)))
+    dbFunc.getHof((data: any) => dispatch(setHof(data)))
   },[dispatch])
 
   //새로고침 시 404에러를 해결하기 위해 모든 경로에서 새로고침시 초기페이지로 리다이렉트

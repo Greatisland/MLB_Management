@@ -27,10 +27,21 @@ export interface Ban {
   state?: boolean
 }
 
+export interface Hof {
+  eventName: string
+  eventDate: string
+  fClass: string
+  imgUrl: string
+  sClass?: string
+  tClass?: string
+  anotherClass?: string
+}
+
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]
   banData: [string, Ban][]
+  hofData: [string, Hof][]
   sendMember: Member
   sendBan: Ban
   modalState: boolean
@@ -57,6 +68,7 @@ interface InitialState {
 const initialState: InitialState = {
   membersData: [],
   banData: [],
+  hofData: [],
   sendMember: {
     id: '',
     name: '',
@@ -105,6 +117,7 @@ const membersDataSlice = createSlice({
     //데이터 세팅
     setMembers (state, action) {state.membersData = action.payload},
     setBanMembers (state, action) {state.banData = action.payload},
+    setHof (state, action) {state.hofData = action.payload},
 
     //멤버 정렬
     sortState (state, action) {
@@ -192,5 +205,5 @@ const membersDataSlice = createSlice({
     loginUserSend (state, action) {state.loginUser = action.payload},
   }
 })
-export const { sortState, toggleModal, togglePartModal, sendMember, setBanMembers, setMembers, sendBan, loginUserSend } = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, sendMember, setBanMembers, setMembers, setHof, sendBan, loginUserSend } = membersDataSlice.actions
 export default membersDataSlice.reducer

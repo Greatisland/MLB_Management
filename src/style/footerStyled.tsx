@@ -10,7 +10,9 @@ export const FooterContainer = styled.div`
   z-index: 1;
   background: #E3CBCB;
   a {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    font-weight: normal;
+    letter-spacing: -0.02rem;
     font-weight: bold;
     padding: 20px;
   }

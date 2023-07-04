@@ -13,6 +13,7 @@ import { loginUserSend } from "../store/slice"
 import { auth, dbFunc } from "../firebase/firebaseFunc"
 import { database } from "../firebase/firebaseFunc"
 import { onValue, ref } from "firebase/database"
+import ImageUpload from "../components/ImageUpload"
 
 const Home = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -17,7 +17,18 @@ export const BtnListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   gap: 10px;
+  .hofTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    font-size: 1.1rem;
+    color: #000;
+    letter-spacing: 0.2rem;
+  }
 `
 
 export const Btn = styled.div`
@@ -91,14 +102,7 @@ export const ScrollToTopBtnContainer = styled.div`
     height: 80%;
   }
 `
-const anim = keyframes`
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`
+
 export const SplashContainer = styled.div`
   position: fixed;
   top: 0;

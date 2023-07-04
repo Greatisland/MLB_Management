@@ -11,6 +11,7 @@ const Footer = () => {
         <Link to='/infopage'>회원관리</Link>
         <Link to='/partpage'>참석관리</Link>
         <Link to='/memberfee'>회비관리</Link>
+        <Link to='/halloffame'>명예의 전당</Link>
       </FooterContainer> :
       <></>
     }

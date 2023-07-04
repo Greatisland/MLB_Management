@@ -1,12 +1,9 @@
-import { initializeApp } from 'firebase/app'
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
-import firebaseConfig from './firebaseConfig'
 import { type Member, type Ban } from '../store/slice'
 import Swal from 'sweetalert2'
-
-//firebase 초기화
-const app = initializeApp(firebaseConfig)
+import { app } from "./firebaseConfig"
 
 //데이터베이스
 export const database = getDatabase(app)
@@ -18,6 +15,7 @@ const googleProvider = new GoogleAuthProvider()
 //database 
 const dbRef = ref(database, '/memberList')
 const banRef = ref(database, '/banList')
+const hofRef = ref(database, '/halloffame')
 
 //데이터베이스 함수
 export const dbFunc = {
@@ -70,6 +68,19 @@ export const dbFunc = {
   removeBan(memberId: string) {
     const memberRef = ref(database, `/banList/${memberId}`)
     remove(memberRef)
+  },
+
+  // Hof 추가
+  addHof(hof: any) {
+    const newHofRef = push(hofRef)
+    set(newHofRef, hof)
+  },
+
+  // Hof 읽어오기
+  getHof(callback: any){
+    onValue(hofRef, (snapshot) => {
+      callback(Object.entries(snapshot.val()))
+    })
   },
 }
 

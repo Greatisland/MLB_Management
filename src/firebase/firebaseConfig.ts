@@ -1,3 +1,5 @@
+import { initializeApp } from 'firebase/app'
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTHDOMAIN,
@@ -9,4 +11,5 @@ const firebaseConfig = {
   databaseURL: import.meta.env.VITE_DATABASEURL,
 }
 
-export default firebaseConfig
+//firebase 초기화
+export const app = initializeApp(firebaseConfig)
