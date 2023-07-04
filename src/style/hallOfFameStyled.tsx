@@ -12,8 +12,9 @@ export const HallOfFameContainer = styled.div`
 export const HofListContainer = styled.div`
   display: grid;
   border-radius: 20px;
-  overflow: hidden;
-  background: #2e1403;
+  /* overflow: hidden; */
+  /* background: #2e1403; */
+
   gap: 20px;
 `
 interface ImgUrl {
@@ -24,11 +25,13 @@ const backImgUrl = 'https://firebasestorage.googleapis.com/v0/b/mlb-management.a
 
 export const HofCardContainer = styled.div<ImgUrl>`
   display: flex;
-  padding: 30px 15px;
+  padding: 20px 15px;
   gap: 15px;
   box-sizing: border-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background: #362104;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  background: #3f1a02;
+  /* border-radius: 20px; */
+  border: 4px solid #000;;
   color: #fff;
   .leftSide {
     display: flex;
