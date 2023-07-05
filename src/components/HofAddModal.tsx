@@ -20,16 +20,20 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     fTrack: award?.[1].fTrack || '',
     imgUrl: award?.[1].imgUrl || '',
     fLink: award?.[1].fLink || '',
+    fLink2: award?.[1].fLink2 || '',
 
     sClass: award?.[1].sClass || '',
     sTrack: award?.[1].sTrack || '',
     sLink: award?.[1].sLink || '',
+    sLink2: award?.[1].sLink2 || '',
     tClass: award?.[1].tClass || '',
     tTrack: award?.[1].tTrack || '',
     tLink: award?.[1].tLink || '',
+    tLink2: award?.[1].tLink2|| '',
     anotherClass: award?.[1].anotherClass || '',
     anotherTrack: award?.[1].anotherTrack || '',
     anotherLink: award?.[1].anotherLink || '',
+    anotherLink2: award?.[1].anotherLink2 || '',
   })
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -87,6 +91,8 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.fTrack} onChange={e => setState({...state, fTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>1등 Youtube 링크(선택)</p>
           <input type="text" value={state.fLink} onChange={e => setState({...state, fLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+          <p>1등 공동수상 Youtube 링크(선택)</p>
+          <input type="text" value={state.fLink2} onChange={e => setState({...state, fLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
 
           <p>2등</p>
           <input type="text" value={state.sClass} onChange={e => setState({...state, sClass: e.target.value})} placeholder="있을 경우 입력하세요." />
@@ -94,6 +100,8 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.sTrack} onChange={e => setState({...state, sTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>2등 Youtube 링크(선택)</p>
           <input type="text" value={state.sLink} onChange={e => setState({...state, sLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+          <p>2등 공동수상 Youtube 링크(선택)</p>
+          <input type="text" value={state.sLink2} onChange={e => setState({...state, sLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
 
           <p>3등</p>
           <input type="text" value={state.tClass} onChange={e => setState({...state, tClass: e.target.value})} placeholder="있을 경우 입력하세요." />
@@ -101,6 +109,8 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.tTrack} onChange={e => setState({...state, tTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>3등 Youtube 링크(선택)</p>
           <input type="text" value={state.tLink} onChange={e => setState({...state, tLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+          <p>3등 공동수상 Youtube 링크(선택)</p>
+          <input type="text" value={state.tLink2} onChange={e => setState({...state, tLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
 
           <p>인기상</p>
           <input type="text" value={state.anotherClass} onChange={e => setState({...state, anotherClass: e.target.value})} placeholder="있을 경우 입력하세요." />
@@ -108,6 +118,8 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.anotherTrack} onChange={e => setState({...state, anotherTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>인기상 Youtube 링크(선택)</p>
           <input type="text" value={state.anotherLink} onChange={e => setState({...state, anotherLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+          <p>인기상 공동수상 Youtube 링크(선택)</p>
+          <input type="text" value={state.anotherLink2} onChange={e => setState({...state, anotherLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
 
 
           <p>이미지 업로드(필수)</p>

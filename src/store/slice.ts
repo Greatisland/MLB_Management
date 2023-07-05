@@ -43,6 +43,10 @@ export interface Hof {
   sLink?: string
   tLink?: string
   anotherLink?: string
+  fLink2?: string
+  sLink2?: string
+  tLink2?: string
+  anotherLink2?: string
 }
 
 //state 초기 값

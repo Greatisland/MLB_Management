@@ -22,6 +22,7 @@ const HofCard = ({award, onClick} : Props) => {
           <p className="name">{award.fClass}</p>
           <p className="track">{award.fTrack}</p>
           {award.fLink ? <a href={award.fLink} target="_blank">Live<AiFillYoutube /></a> : null}
+          {award.fLink2 ? <a href={award.fLink2} target="_blank">Live<AiFillYoutube /></a> : null}
         </li>
         <li>
           {award.sClass ? (
@@ -30,6 +31,7 @@ const HofCard = ({award, onClick} : Props) => {
           <p className="name">{award.sClass}</p>
           <p className="track">{award.sTrack}</p>
           {award.sLink ? <a href={award.sLink} target="_blank">Live<AiFillYoutube /></a> : null}
+          {award.sLink2 ? <a href={award.sLink2} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>
@@ -40,6 +42,7 @@ const HofCard = ({award, onClick} : Props) => {
           <p className="name">{award.tClass}</p>
           <p className="track">{award.tTrack}</p>
           {award.tLink ? <a href={award.tLink} target="_blank">Live<AiFillYoutube /></a> : null}
+          {award.tLink2 ? <a href={award.tLink2} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>
@@ -50,6 +53,7 @@ const HofCard = ({award, onClick} : Props) => {
           <p className="name">{award.anotherClass}</p>
           <p className="track">{award.anotherTrack}</p>
           {award.anotherLink ? <a href={award.anotherLink} target="_blank">Live<AiFillYoutube /></a> : null}
+          {award.anotherLink2 ? <a href={award.anotherLink2} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>
