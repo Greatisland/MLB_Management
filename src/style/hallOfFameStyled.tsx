@@ -107,9 +107,7 @@ export const HofCardContainer = styled.div<ImgUrl>`
         fill: #c90000;
       }
     }
-
   }
-
 `
 
 export const HofAddModalWrapper = styled.div`
@@ -117,26 +115,23 @@ export const HofAddModalWrapper = styled.div`
   height: 100%;
   color: #333;
   background: rgba(0, 0, 0, 0.4);
-  position: fixed;
+  position: absolute;
+  top: 0; left: 0;
   z-index: 2;
   top: 0;
   left: 0;
-  padding: 20px 0 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 `
 
 export const HofModalContainer = styled.div`
-  width: 80%;
-  max-width: 300px;
-  max-height: 700px;
+  width: 100%;
   overflow-y: scroll;
   scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;
-  border-radius: 30px;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 80px 20px 160px;
   display: flex;
   flex-direction: column;
   &::-webkit-scrollbar {

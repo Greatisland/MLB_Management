@@ -73,7 +73,35 @@ const HofAddModal = ({setIsModal, award} : Props) => {
         confirmButtonText: "넹 ㅠㅠ",
       })
     }
+  }
 
+  const deleteAward = (hofId: string) => {
+    if(hofId !== ''){
+      Swal.fire({
+        title: `정말로 ${state?.eventName}를 가요제 정보에서 지우시겠어요?`,
+        // text: "탈퇴한 회원일 경우 지워주세요!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e99797',
+        cancelButtonColor: '#4ec6e4',
+        confirmButtonText: '지우겠습니다.',
+        cancelButtonText: '지우지 않겠습니다.'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: '삭제완료',
+            html: `
+            ${state.eventName}가 삭제되었어요!
+            `,
+            showConfirmButton: false,
+            timer: 1000
+          })
+          dbFunc.removeHof(hofId)
+        }
+      })
+    }
+    setIsModal(false)
   }
 
   return(
@@ -130,6 +158,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
         </form>
         <div className='btnWrapper'>
           <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+          {award ? <div className="delete" onClick={() => {deleteAward(award[0] as string)}}>삭제</div> : null}
         </div>
       </HofModalContainer>
     </HofAddModalWrapper>

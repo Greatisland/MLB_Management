@@ -88,6 +88,12 @@ export const dbFunc = {
       callback(Object.entries(snapshot.val()))
     })
   },
+
+  // Hof 삭제
+  removeHof(hofId: string) {
+    const hofRef = ref(database, `/halloffame/${hofId}`)
+    remove(hofRef)
+  },
 }
 
 //회원 관련 함수
