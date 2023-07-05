@@ -60,7 +60,7 @@ const HomeList = () => {
           {searchMembersData.map((member, i) => (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].name}</td>
-              <td>{member[1].join}</td>
+              <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].year.slice(2)}</td>
               {loginUser.level >= 2 ?
               <td>{member[1].etc || ''}</td> : null}

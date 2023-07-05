@@ -11,52 +11,49 @@ export const HallOfFameContainer = styled.div`
 
 export const HofListContainer = styled.div`
   display: grid;
-  border-radius: 20px;
-  /* overflow: hidden; */
-  /* background: #2e1403; */
-
-  gap: 20px;
 `
 interface ImgUrl {
   imgUrl: string
 }
 
-const backImgUrl = 'https://firebasestorage.googleapis.com/v0/b/mlb-management.appspot.com/o/background.jpg?alt=media&token=3a2646d2-549d-4e3e-b46a-54c486c2a1f5'
-
 export const HofCardContainer = styled.div<ImgUrl>`
   display: flex;
-  padding: 20px 15px;
+  padding: 40px 15px;
   gap: 15px;
   box-sizing: border-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  background: #3f1a02;
-  /* border-radius: 20px; */
-  border: 4px solid #000;;
+  background: #181717;
+
   color: #fff;
   .leftSide {
     display: flex;
     flex-direction: column;
     gap: 10px;
     .textSide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url(${backImgUrl}) center center/cover repeat;
-    border-radius: 12px;
-    box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-    h3 {
-      font-size: 1rem;
-      letter-spacing: 0.04rem;
-    }
-    p {
-      font-size: 0.8rem;
-      color: #444;
-    }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #181717;
+      border-top: 2px solid #c5a26e;
+      border-bottom: 2px solid #c5a26e;
+      padding: 4px 0;
+      border-radius: 12px;
+      box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
+      h3 {
+        font-size: 1rem;
+        letter-spacing: 0.04rem;
+        color: #f2c684;
+      }
+      p {
+        font-size: 0.8rem;
+        color: #c5a26e;
+      }
     }
     .imgCon {
-      width: 40vw;
-      height: 45vw;
+      width: 45vw;
+      max-width: 400px;
+      height: 50vw;
+      max-height: 450px;
       border-radius: 10px;
       box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
       background: #333 url(${props => props.imgUrl}) center center/cover;
@@ -66,23 +63,48 @@ export const HofCardContainer = styled.div<ImgUrl>`
   .rightSide {
     flex: 1;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     justify-content: center;
     padding: 15px;
     border-radius: 12px;
-    background: url(${backImgUrl}) repeat;
+    background: #181717;
+    border: 2px solid #c5a26e;
     box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-    span {
-      font-weight: bold;
-      color: #642b0a;
-      margin: 0 0 4px;
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    p {
-      font-size: 0.8rem;
+    span {
+      display: block;
+      font-weight: bold;
+      color: #c5a26e;
+      margin: 0 0 4px 0;
+    }
+    p.name {
+      font-size: 0.9rem;
       letter-spacing: 0.04rem;
       color: #f9f9f9;
-      margin: 0 0 8px;
     }
+    p.track {
+      font-size: 0.75rem;
+      letter-spacing: 0.04rem;
+      color: #b6b6b6;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #fff;
+      gap: 4px;
+      svg {
+        font-size: 1.5rem;
+        fill: #c90000;
+      }
+    }
+
   }
 
 `

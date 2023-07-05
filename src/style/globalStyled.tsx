@@ -25,9 +25,15 @@ export const BtnListContainer = styled.div`
     align-items: center;
     gap: 5px;
     flex: 1;
-    font-size: 1.1rem;
-    color: #000;
+    font-size: 1.4rem;
+    background: #181717;
+    padding: 8px;
+    color: #c5a26e;
     letter-spacing: 0.2rem;
+    border-radius: 12px;
+    svg {
+      fill: #c5a26e;
+    }
   }
 `
 

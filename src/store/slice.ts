@@ -31,10 +31,18 @@ export interface Hof {
   eventName: string
   eventDate: string
   fClass: string
+  fTrack: string
   imgUrl: string
   sClass?: string
+  sTrack?: string
   tClass?: string
+  tTrack?: string
   anotherClass?: string
+  anotherTrack?: string
+  fLink?: string
+  sLink?: string
+  tLink?: string
+  anotherLink?: string
 }
 
 //state 초기 값

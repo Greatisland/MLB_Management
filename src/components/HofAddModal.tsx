@@ -11,10 +11,19 @@ const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
     eventName: '',
     eventDate: '',
     fClass: '',
+    fTrack: '',
     imgUrl: '',
+    fLink: '',
+
     sClass: '',
+    sTrack: '',
+    sLink: '',
     tClass: '',
-    anotherClass: ''
+    tTrack: '',
+    tLink: '',
+    anotherClass: '',
+    anotherTrack: '',
+    anotherLink: '',
   })
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +46,7 @@ const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if(Object.values(state).slice(0, 4).every(value => value !== '')){
+    if(Object.values(state).slice(0, 5).every(value => value !== '')){
       dbFunc.addHof(state)
       setIsModal(false)
     }else{
@@ -61,14 +70,36 @@ const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
           <input type="text" value={state.eventName} onChange={e => setState({...state, eventName: e.target.value})} placeholder="가요제 이름을 입력하세요." />
           <p>가요제 날짜(필수)</p>
           <input type="date" value={state.eventDate} onChange={e => setState({...state, eventDate: e.target.value})} placeholder="날짜를 선택해주세요." />
+
           <p>1등(필수)</p>
           <input type="text" value={state.fClass} onChange={e => setState({...state, fClass: e.target.value})} placeholder="여러 명일 경우 ,로 구분 (ex: 김철수, 김영희)" />
+          <p>1등 곡 이름(필수)</p>
+          <input type="text" value={state.fTrack} onChange={e => setState({...state, fTrack: e.target.value})} placeholder="가수 - 곡 제목" />
+          <p>1등 Youtube 링크(선택)</p>
+          <input type="text" value={state.fLink} onChange={e => setState({...state, fLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+
           <p>2등</p>
           <input type="text" value={state.sClass} onChange={e => setState({...state, sClass: e.target.value})} placeholder="있을 경우 입력하세요." />
+          <p>3등 곡 이름</p>
+          <input type="text" value={state.sTrack} onChange={e => setState({...state, sTrack: e.target.value})} placeholder="가수 - 곡 제목" />
+          <p>2등 Youtube 링크(선택)</p>
+          <input type="text" value={state.sLink} onChange={e => setState({...state, sLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+
           <p>3등</p>
           <input type="text" value={state.tClass} onChange={e => setState({...state, tClass: e.target.value})} placeholder="있을 경우 입력하세요." />
+          <p>3등 곡 이름</p>
+          <input type="text" value={state.tTrack} onChange={e => setState({...state, tTrack: e.target.value})} placeholder="가수 - 곡 제목" />
+          <p>3등 Youtube 링크(선택)</p>
+          <input type="text" value={state.tLink} onChange={e => setState({...state, tLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+
           <p>인기상</p>
           <input type="text" value={state.anotherClass} onChange={e => setState({...state, anotherClass: e.target.value})} placeholder="있을 경우 입력하세요." />
+          <p>인기상 곡 이름</p>
+          <input type="text" value={state.anotherTrack} onChange={e => setState({...state, anotherTrack: e.target.value})} placeholder="가수 - 곡 제목" />
+          <p>인기상 Youtube 링크(선택)</p>
+          <input type="text" value={state.anotherLink} onChange={e => setState({...state, anotherLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
+
+
           <p>이미지 업로드(필수)</p>
           <input type="file" onChange={handleUpload} />
           {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}

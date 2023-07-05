@@ -35,7 +35,7 @@ const BanList = () => {
               state: true
             }))}}>
               <td>{member[1].name}</td>
-              <td>{member[1].date}</td>
+              <td>{member[1].date.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].content}</td>
             </tr>
           ))}
