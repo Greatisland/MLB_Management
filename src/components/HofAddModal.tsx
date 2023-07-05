@@ -56,7 +56,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if(Object.values(state).slice(0, 5).every(value => value !== '')){
+    if(Object.values(state).slice(0, 3).every(value => value !== '')){
       if(award){
         dbFunc.updateHof(award[0], state)
       }else{
@@ -115,7 +115,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
 
           <p>1등(필수)</p>
           <input type="text" value={state.fClass} onChange={e => setState({...state, fClass: e.target.value})} placeholder="여러 명일 경우 ,로 구분 (ex: 김철수, 김영희)" />
-          <p>1등 곡 이름(필수)</p>
+          <p>1등 곡 이름</p>
           <input type="text" value={state.fTrack} onChange={e => setState({...state, fTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>1등 Youtube 링크(선택)</p>
           <input type="text" value={state.fLink} onChange={e => setState({...state, fLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
@@ -150,7 +150,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.anotherLink2} onChange={e => setState({...state, anotherLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
 
 
-          <p>이미지 업로드(필수)</p>
+          <p>이미지 업로드</p>
           <input type="file" onChange={handleUpload} />
           {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>

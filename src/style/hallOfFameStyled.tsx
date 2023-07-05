@@ -20,6 +20,9 @@ interface ImgUrl {
 export const HofCardContainer = styled.div<ImgUrl>`
   display: flex;
   flex-direction: column;
+  @media (min-width: 768px){
+    flex-direction: row;
+  }
   padding: 40px 15px;
   gap: 15px;
   box-sizing: border-box;
@@ -28,6 +31,7 @@ export const HofCardContainer = styled.div<ImgUrl>`
   .leftSide {
     display: flex;
     flex-direction: column;
+
     gap: 10px;
     .textSide {
       display: flex;
@@ -52,7 +56,10 @@ export const HofCardContainer = styled.div<ImgUrl>`
     }
     .imgCon {
       width: 100%;
-      max-width: 400px;
+      @media (min-width: 768px){
+        width: 42vw;
+        max-width: 500px;
+      }
       height: 60vw;
       max-height: 450px;
       border-radius: 10px;
