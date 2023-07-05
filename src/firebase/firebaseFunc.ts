@@ -1,6 +1,7 @@
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
+import { getAnalytics } from "firebase/analytics";
 import { type Member, type Ban, type Hof } from '../store/slice'
 import Swal from 'sweetalert2'
 import { app } from "./firebaseConfig"
@@ -16,6 +17,9 @@ const googleProvider = new GoogleAuthProvider()
 const dbRef = ref(database, '/memberList')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
+
+//애널리틱스
+const analytics = getAnalytics(app)
 
 //데이터베이스 함수
 export const dbFunc = {

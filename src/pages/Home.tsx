@@ -13,7 +13,6 @@ import { loginUserSend } from "../store/slice"
 import { auth, dbFunc } from "../firebase/firebaseFunc"
 import { database } from "../firebase/firebaseFunc"
 import { onValue, ref } from "firebase/database"
-import ImageUpload from "../components/ImageUpload"
 
 const Home = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
@@ -32,6 +31,7 @@ const Home = () => {
         level: user ? level : 1,
         email: user ? user.email: ''
       }))}
+
       if(user){
         // 로그인 된 경우, 실시간 데이터베이스에서 회원 등급 가져옴
         const userRoleRef = ref(database, 'userLevels/' + user.uid);
@@ -53,7 +53,7 @@ const Home = () => {
       
           const memberId = membersData[index][0]
           const updateDB = {email: user.email, uid: user.uid}
-          dbFunc.updateMember(membersData[index][0], updateDB)
+          dbFunc.updateMember(memberId, updateDB)
         }
 
         currentLoginMember()
