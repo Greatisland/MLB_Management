@@ -23,15 +23,19 @@ const HofBtnList = () => {
     }
   }
   return (
-    <BtnListContainer>
-      <p className="hofTitle eng"><GiTrophy />Hall Of Fame<GiTrophy/></p>
+    <>
       {loginUser.level >= 2 ? 
       <Btn className="memberAdd" onClick={handleModal}>
         <p>수상기록 추가</p>
       </Btn> : null
-      }     
+      }    
+    <BtnListContainer>
+
+      <p className="hofTitle eng"><GiTrophy />Hall Of Fame<GiTrophy/></p>
+ 
       {isModal ? <HofAddModal setIsModal={setIsModal}/> : null}
     </BtnListContainer>
+    </>
   )
 }
 

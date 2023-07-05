@@ -3,10 +3,13 @@ import styled from "styled-components";
 export const HallOfFameContainer = styled.div`
   display: flex;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
   flex-direction: column;
   gap: 20px;
   padding: 20px 20px 90px 20px;
+  background: #181717;
+
+  
 `
 
 export const HofListContainer = styled.div`
@@ -21,7 +24,6 @@ export const HofCardContainer = styled.div<ImgUrl>`
   padding: 40px 15px;
   gap: 15px;
   box-sizing: border-box;
-  background: #181717;
 
   color: #fff;
   .leftSide {
@@ -90,7 +92,8 @@ export const HofCardContainer = styled.div<ImgUrl>`
     }
     p.track {
       font-size: 0.75rem;
-      letter-spacing: 0.04rem;
+      letter-spacing: -0.04rem;
+      text-align: center;
       color: #b6b6b6;
     }
     a {

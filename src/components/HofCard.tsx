@@ -1,8 +1,11 @@
 import { HofCardContainer } from "../style/hallOfFameStyled"
 import { AiFillYoutube } from 'react-icons/ai';
 import type { Hof } from "../store/slice"
-
-const HofCard = ({award} : {award: Hof}) => {
+interface Props {
+  onClick: () => void
+  award: Hof
+}
+const HofCard = ({award} : Props) => {
   return (
     <HofCardContainer imgUrl={award.imgUrl}>
       <div className="leftSide">
@@ -18,7 +21,7 @@ const HofCard = ({award} : {award: Hof}) => {
           <span>우승</span>
           <p className="name">{award.fClass}</p>
           <p className="track">{award.fTrack}</p>
-          {award.fLink ? <a href={award.fLink}>Live<AiFillYoutube /></a> : null}
+          {award.fLink ? <a href={award.fLink} target="_blank">Live<AiFillYoutube /></a> : null}
         </li>
         <li>
           {award.sClass ? (
@@ -26,7 +29,7 @@ const HofCard = ({award} : {award: Hof}) => {
           <span>준우승</span>
           <p className="name">{award.sClass}</p>
           <p className="track">{award.sTrack}</p>
-          {award.sLink ? <a href={award.sLink}>Live<AiFillYoutube /></a> : null}
+          {award.sLink ? <a href={award.sLink} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>
@@ -36,7 +39,7 @@ const HofCard = ({award} : {award: Hof}) => {
           <span>3등</span>
           <p className="name">{award.tClass}</p>
           <p className="track">{award.tTrack}</p>
-          {award.tLink ? <a href={award.tLink}>Live<AiFillYoutube /></a> : null}
+          {award.tLink ? <a href={award.tLink} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>
@@ -46,7 +49,7 @@ const HofCard = ({award} : {award: Hof}) => {
           <span>인기상</span>
           <p className="name">{award.anotherClass}</p>
           <p className="track">{award.anotherTrack}</p>
-          {award.anotherLink ? <a href={award.anotherLink}>Live<AiFillYoutube /></a> : null}
+          {award.anotherLink ? <a href={award.anotherLink} target="_blank">Live<AiFillYoutube /></a> : null}
           </>
           ) : null}
         </li>

@@ -31,6 +31,8 @@ export const BtnListContainer = styled.div`
     color: #c5a26e;
     letter-spacing: 0.2rem;
     border-radius: 12px;
+    border-top: 2px solid #c5a26e;
+    border-bottom: 2px solid #c5a26e;
     svg {
       fill: #c5a26e;
     }
