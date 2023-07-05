@@ -154,7 +154,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="file" onChange={handleUpload} />
           {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
-          <input type="submit" value="완료"></input>
+          <input type="submit" className="submit" value="완료"></input>
         </form>
         <div className='btnWrapper'>
           <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>

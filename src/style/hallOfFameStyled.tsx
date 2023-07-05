@@ -8,8 +8,6 @@ export const HallOfFameContainer = styled.div`
   gap: 20px;
   padding: 20px 20px 90px 20px;
   background: #181717;
-
-  
 `
 
 export const HofListContainer = styled.div`
@@ -21,6 +19,7 @@ interface ImgUrl {
 
 export const HofCardContainer = styled.div<ImgUrl>`
   display: flex;
+  flex-direction: column;
   padding: 40px 15px;
   gap: 15px;
   box-sizing: border-box;
@@ -52,9 +51,9 @@ export const HofCardContainer = styled.div<ImgUrl>`
       }
     }
     .imgCon {
-      width: 45vw;
+      width: 100%;
       max-width: 400px;
-      height: 50vw;
+      height: 60vw;
       max-height: 450px;
       border-radius: 10px;
       box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
@@ -112,7 +111,6 @@ export const HofCardContainer = styled.div<ImgUrl>`
 
 export const HofAddModalWrapper = styled.div`
   width: 100%;
-  height: 100%;
   color: #333;
   background: rgba(0, 0, 0, 0.4);
   position: absolute;

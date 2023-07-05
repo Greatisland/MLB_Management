@@ -121,7 +121,7 @@ export const  JoinModalContainer = styled.div`
     cursor: pointer;
   }
 
-  input[type='submit'] {
+  input[type='submit'], .submit {
     border: none;
     background: #FF9CC7;
     border-radius: 30px;

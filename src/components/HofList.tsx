@@ -16,6 +16,7 @@ const HofList = () => {
 
   const handleModal = (award: [string, Hof]) => {
     if(loginUser.level >= 2){
+      window.scrollTo(0,0)
       setSendAward(award)
       setIsModal(true)
 
