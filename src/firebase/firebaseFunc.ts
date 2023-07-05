@@ -1,7 +1,7 @@
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
-import { type Member, type Ban } from '../store/slice'
+import { type Member, type Ban, type Hof } from '../store/slice'
 import Swal from 'sweetalert2'
 import { app } from "./firebaseConfig"
 
@@ -71,9 +71,15 @@ export const dbFunc = {
   },
 
   // Hof 추가
-  addHof(hof: any) {
+  addHof(hof: Hof) {
     const newHofRef = push(hofRef)
     set(newHofRef, hof)
+  },
+
+  // Hof 수정
+  updateHof(hofId: string, updateHof: Partial<Hof>) {
+    const hofRef = ref(database, `/halloffame/${hofId}`)
+    update(hofRef, updateHof)
   },
 
   // Hof 읽어오기

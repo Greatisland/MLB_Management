@@ -5,11 +5,11 @@ interface Props {
   onClick: () => void
   award: Hof
 }
-const HofCard = ({award} : Props) => {
+const HofCard = ({award, onClick} : Props) => {
   return (
     <HofCardContainer imgUrl={award.imgUrl}>
       <div className="leftSide">
-        <div className="textSide">
+        <div className="textSide" onClick={onClick}>
           <h3>{award.eventName}</h3>
           <p>{(award.eventDate).replace(/-/g, '.')}</p>
         </div>

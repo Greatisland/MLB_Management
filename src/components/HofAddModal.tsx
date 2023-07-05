@@ -3,27 +3,33 @@ import { ChangeEvent, useState } from "react"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { dbFunc } from "../firebase/firebaseFunc"
 import Swal from "sweetalert2"
+import type { Hof } from "../store/slice"
+
+interface Props {
+  setIsModal: (value: boolean) => void
+  award?: [string, Hof]
+}
 
 
-const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
+const HofAddModal = ({setIsModal, award} : Props) => {
   const storage = getStorage()
   const [state, setState] = useState({
-    eventName: '',
-    eventDate: '',
-    fClass: '',
-    fTrack: '',
-    imgUrl: '',
-    fLink: '',
+    eventName: award?.[1].eventName || '',
+    eventDate: award?.[1].eventDate || '',
+    fClass: award?.[1].fClass || '',
+    fTrack: award?.[1].fTrack || '',
+    imgUrl: award?.[1].imgUrl || '',
+    fLink: award?.[1].fLink || '',
 
-    sClass: '',
-    sTrack: '',
-    sLink: '',
-    tClass: '',
-    tTrack: '',
-    tLink: '',
-    anotherClass: '',
-    anotherTrack: '',
-    anotherLink: '',
+    sClass: award?.[1].sClass || '',
+    sTrack: award?.[1].sTrack || '',
+    sLink: award?.[1].sLink || '',
+    tClass: award?.[1].tClass || '',
+    tTrack: award?.[1].tTrack || '',
+    tLink: award?.[1].tLink || '',
+    anotherClass: award?.[1].anotherClass || '',
+    anotherTrack: award?.[1].anotherTrack || '',
+    anotherLink: award?.[1].anotherLink || '',
   })
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +53,11 @@ const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if(Object.values(state).slice(0, 5).every(value => value !== '')){
-      dbFunc.addHof(state)
+      if(award){
+        dbFunc.updateHof(award[0], state)
+      }else{
+        dbFunc.addHof(state)
+      }
       setIsModal(false)
     }else{
       Swal.fire({
@@ -80,7 +90,7 @@ const HofAddModal = ({setIsModal} : {setIsModal: (value: boolean) => void}) => {
 
           <p>2등</p>
           <input type="text" value={state.sClass} onChange={e => setState({...state, sClass: e.target.value})} placeholder="있을 경우 입력하세요." />
-          <p>3등 곡 이름</p>
+          <p>2등 곡 이름</p>
           <input type="text" value={state.sTrack} onChange={e => setState({...state, sTrack: e.target.value})} placeholder="가수 - 곡 제목" />
           <p>2등 Youtube 링크(선택)</p>
           <input type="text" value={state.sLink} onChange={e => setState({...state, sLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />

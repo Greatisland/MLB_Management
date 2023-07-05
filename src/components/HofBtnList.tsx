@@ -33,7 +33,7 @@ const HofBtnList = () => {
 
       <p className="hofTitle eng"><GiTrophy />Hall Of Fame<GiTrophy/></p>
  
-      {isModal ? <HofAddModal setIsModal={setIsModal}/> : null}
+      {isModal ? <HofAddModal setIsModal={setIsModal} /> : null}
     </BtnListContainer>
     </>
   )
