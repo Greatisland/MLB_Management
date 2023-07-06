@@ -7,7 +7,7 @@ interface Props {
 }
 const HofCard = ({award, onClick} : Props) => {
   return (
-    <HofCardContainer imgUrl={award.imgUrl}>
+    <HofCardContainer $imgurl={award.imgUrl}>
       <div className="leftSide">
         <div className="textSide" onClick={onClick}>
           <h3>{award.eventName}</h3>

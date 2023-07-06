@@ -1,6 +1,6 @@
 import styled from "styled-components";
 interface HeaderContainerProps {
-  photoURL: string | null
+  $photourl: string | null
 }
 export const HeaderContainer = styled.div<HeaderContainerProps>`
   display: flex;
@@ -25,7 +25,7 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
       width: 35px;
       height: 35px;
       border-radius: 50%;
-      background: #333 url(${props => props.photoURL ? props.photoURL : ''}) center center/cover;
+      background: #333 url(${props => props.$photourl ? props.$photourl : ''}) center center/cover;
     }
     .hi {
       font-size: 0.8rem;

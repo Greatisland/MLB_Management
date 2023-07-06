@@ -13,11 +13,11 @@ export const HallOfFameContainer = styled.div`
 export const HofListContainer = styled.div`
   display: grid;
 `
-interface ImgUrl {
-  imgUrl: string
+interface Imgurl {
+  $imgurl: string
 }
 
-export const HofCardContainer = styled.div<ImgUrl>`
+export const HofCardContainer = styled.div<Imgurl>`
   display: flex;
   flex-direction: column;
   @media (min-width: 768px){
@@ -64,7 +64,7 @@ export const HofCardContainer = styled.div<ImgUrl>`
       max-height: 450px;
       border-radius: 10px;
       box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-      background: #333 url(${props => props.imgUrl}) center center/cover;
+      background: #333 url(${props => props.$imgurl}) center center/cover;
     }
   }
 
