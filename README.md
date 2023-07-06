@@ -33,3 +33,5 @@ admin 계정을 분리하여 계정에 따라 보여지는 정보 및 접근할 
 <img src="https://img.shields.io/badge/React.Chart.js2-FF6384?style=for-the-badge&logo=chartjs&logoColor=FF6384">
 <br /><br />
 
+## 주요 기능
+
