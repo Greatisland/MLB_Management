@@ -3,7 +3,8 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
@@ -11,12 +12,13 @@ import {
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend
 );
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { dateCalc } from './dateCalc';
 import { GraphAttendContainer } from "../style/graphPageStyled";
 interface Props {
@@ -24,10 +26,10 @@ interface Props {
 }
 
 
-const GraphAttend = ({members} : Props) => {
+const GraphPersonal = ({members} : Props) => {
 
-  //참석 총량
-  let totality = []
+  //총 인원
+  let totality = [50, 50, 50, 50 ,50 ,50, 50  ]
   //참석 인원
   let personal = []
 
@@ -61,12 +63,13 @@ const GraphAttend = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `총 참석 발생`
+        text: `총 인원 대비 참석한 사람 수`
       },
     },
     scales: {
       y: {
         min: 0,
+        max: 60,
         ticks: {
           beginAtZero: true,
           stepSize: 1,
@@ -80,23 +83,25 @@ const GraphAttend = ({members} : Props) => {
     labels,
     datasets: [
       {
-        label: '참석 횟수',
+        label: '총 인원',
         data: totality,
-        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
-      // {
-      //   label: '참석한 사람 수',
-      //   data: personal,
-      //   backgroundColor: 'rgb(53, 162, 235)',
-      // },
+      {
+        label: '참석한 사람 수',
+        data: personal,
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
     ],
   };
   return (
     <GraphAttendContainer>
-      <Bar options={options} data={data} />
-      <p>매 달마다 몇 번의 참석이 있었는지 확인합니다.</p>
+      <Line options={options} data={data} />
+      <p>매달 모임의 전체 인원 숫자와 참석한 멤버의 숫자를 확인합니다.</p>
     </GraphAttendContainer>
   )
 }
 
-export default GraphAttend
+export default GraphPersonal
