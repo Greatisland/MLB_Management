@@ -1,4 +1,3 @@
-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";

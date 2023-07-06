@@ -10,7 +10,7 @@ export const HomeContainer = styled.div`
 export const HomeListContainer = styled.div`
   border-radius: 30px;
   margin: 0 0 20px;
-  background: #f9f9f9;
+  background: ${props => props.theme.white2};
   overflow: hidden;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   table {
@@ -20,7 +20,7 @@ export const HomeListContainer = styled.div`
     border-collapse: collapse;
   }
   thead {
-    background: #E3CBCB;
+    background: ${props => props.theme.pink};
   }
   thead, tbody, tr {
     width: 100%;
@@ -41,13 +41,13 @@ export const HomeListContainer = styled.div`
     text-align: start;
     font-size: 0.7rem;
     letter-spacing: -0.01rem;
-    color: #199E98;
+    color: ${props => props.theme.green};
   }
   .date {
     letter-spacing: -0.04rem;
   }
   .etc {
-    color: #199E98;
+    color: ${props => props.theme.green};
   }
 `
 

@@ -29,13 +29,13 @@ export const BtnListContainer = styled.div`
     font-size: 1.4rem;
     background: #181717;
     padding: 8px;
-    color: #c5a26e;
+    color: ${props => props.theme.brown};
     letter-spacing: 0.2rem;
     border-radius: 12px;
-    border-top: 2px solid #c5a26e;
-    border-bottom: 2px solid #c5a26e;
+    border-top: 2px solid ${props => props.theme.brown};
+    border-bottom: 2px solid ${props => props.theme.brown};
     svg {
-      fill: #c5a26e;
+      fill: ${props => props.theme.brown};
     }
   }
 `
@@ -51,7 +51,7 @@ export const Btn = styled.div`
     color: #fff;
     padding: 5px 20px;
     border-radius: 12px;
-    background: #282833;
+    background: ${props => props.theme.gray2};
     ::-webkit-scrollbar {
         width: 15px;
     }
@@ -69,7 +69,7 @@ export const Btn = styled.div`
   }
   p {
     padding: 5px 20px;
-    background: #282833;
+    background: ${props => props.theme.gray2};
     color: #fff;
     border-radius: 30px;
     box-sizing: border-box;
@@ -122,6 +122,5 @@ export const SplashContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
-  background: #FA7462;
-  background: #FA7462;
+  background: ${props => props.theme.pink2};
 `

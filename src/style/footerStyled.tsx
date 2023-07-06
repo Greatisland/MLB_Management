@@ -8,12 +8,23 @@ export const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   z-index: 1;
-  background: #E3CBCB;
+  background: ${props => props.theme.pink};
   a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
     font-size: 0.8rem;
     font-weight: normal;
     letter-spacing: -0.02rem;
-    font-weight: bold;
-    padding: 20px;
+    svg {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+    p {
+      width: 100%;
+      text-align: center;
+    }
   }
 `

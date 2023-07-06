@@ -1,3 +1,4 @@
+import { ThemeProvider } from "styled-components";
 import AppRouter from './router/AppRouter'
 import { GlobalStyle } from './style/globalStyled'
 import { useEffect } from "react"
@@ -6,6 +7,7 @@ import {  setMembers, setBanMembers, setHof } from './store/slice'
 import ScrollToTop from './components/ScrollToTop'
 import { dbFunc } from './firebase/firebaseFunc'
 import { useNavigate } from 'react-router'
+import { originTheme } from "./style/theme";
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -39,11 +41,11 @@ const App = () => {
   }, [navigate])
 
   return (
-    <>
+    <ThemeProvider theme={originTheme}>
       <GlobalStyle />
       <ScrollToTop />
       <AppRouter />
-    </>
+    </ThemeProvider>
   )
 }
 
