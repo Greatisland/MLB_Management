@@ -61,7 +61,7 @@ const GraphAttend = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `총 참석 횟수 및 참가한 사람 수`
+        text: `총 참석 횟수 및 참석한 사람 수`
       },
     },
     scales: {
@@ -80,12 +80,12 @@ const GraphAttend = ({members} : Props) => {
     labels,
     datasets: [
       {
-        label: '총 참석횟수',
+        label: '참석 발생',
         data: totality,
         backgroundColor: 'rgb(255, 99, 132)',
       },
       {
-        label: '참가한 사람 수',
+        label: '참석한 사람 수',
         data: personal,
         backgroundColor: 'rgb(53, 162, 235)',
       },
