@@ -30,6 +30,6 @@ admin 계정을 분리하여 계정에 따라 보여지는 정보 및 접근할 
 <img src="https://img.shields.io/badge/Styled Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=reactrouter&logoColor=white">
 <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=FFCA28">
-<img src="https://img.shields.io/badge/Reactchartjs2FF6384?style=for-the-badge&logo=chart.js&logoColor=FF6384">
+<img src="https://img.shields.io/badge/Reactchartjs2FF6384?style=for-the-badge&logo=chartjs&logoColor=FF6384">
 <br /><br />
 
