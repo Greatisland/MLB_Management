@@ -33,10 +33,16 @@ export interface Hof {
   fClass: string
   fTrack: string
   imgUrl: string
+  imgUrl2?: string
+  imgUrl3?: string
+  imgUrl4?: string
+  sAward?: string
   sClass?: string
   sTrack?: string
+  tAward?: string
   tClass?: string
   tTrack?: string
+  anotherAward?: string
   anotherClass?: string
   anotherTrack?: string
   fLink?: string

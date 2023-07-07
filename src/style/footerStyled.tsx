@@ -8,7 +8,8 @@ export const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   z-index: 1;
-  background: ${props => props.theme.pink};
+  border-top: 1px solid ${props => props.theme.gray};
+  background: #fff;
   a {
     display: flex;
     flex-wrap: wrap;
@@ -21,8 +22,10 @@ export const FooterContainer = styled.div`
     svg {
       width: 100%;
       font-size: 1.2rem;
+      fill: #333;
     }
     p {
+      color: #333;
       width: 100%;
       text-align: center;
     }

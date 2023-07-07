@@ -1,19 +1,41 @@
-import { HofCardContainer } from "../style/hallOfFameStyled"
+import { HofCardContainer, StyledSwiper } from "../style/hallOfFameStyled"
 import { AiFillYoutube } from 'react-icons/ai';
 import type { Hof } from "../store/slice"
+import { SwiperSlide } from "swiper/react";
+import 'swiper/css';
+
 interface Props {
   onClick: () => void
   award: Hof
 }
 const HofCard = ({award, onClick} : Props) => {
   return (
-    <HofCardContainer $imgurl={award.imgUrl}>
+    
+    <HofCardContainer>
+
       <div className="leftSide">
         <div className="textSide" onClick={onClick}>
           <h3>{award.eventName}</h3>
           <p>{(award.eventDate).replace(/-/g, '.')}</p>
         </div>
-        <div className="imgCon"></div>
+        <div className="swiper_container">
+          <StyledSwiper
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={true}
+            $imgurl={award.imgUrl}
+            $imgurl2={award.imgUrl2}
+            $imgurl3={award.imgUrl3}
+            $imgurl4={award.imgUrl4}
+          >
+            <SwiperSlide className="one"></SwiperSlide>
+            {award.imgUrl2 ? <SwiperSlide className="two"></SwiperSlide> : null}
+            {award.imgUrl3 ? <SwiperSlide className="three"></SwiperSlide> : null}
+            {award.imgUrl4 ? <SwiperSlide className="four"></SwiperSlide> : null}
+          </StyledSwiper>
+        </div>
+
+
       </div>
 
       <ul className="rightSide">
@@ -27,7 +49,7 @@ const HofCard = ({award, onClick} : Props) => {
         <li>
           {award.sClass ? (
           <>
-          <span>준우승</span>
+          <span>{award.sAward}</span>
           <p className="name">{award.sClass}</p>
           <p className="track">{award.sTrack}</p>
           {award.sLink ? <a href={award.sLink} target="_blank">Live<AiFillYoutube /></a> : null}
@@ -38,7 +60,7 @@ const HofCard = ({award, onClick} : Props) => {
         <li>
           {award.tClass ? (
           <>
-          <span>3등</span>
+          <span>{award.tAward}</span>
           <p className="name">{award.tClass}</p>
           <p className="track">{award.tTrack}</p>
           {award.tLink ? <a href={award.tLink} target="_blank">Live<AiFillYoutube /></a> : null}
@@ -49,7 +71,7 @@ const HofCard = ({award, onClick} : Props) => {
         <li>
           {award.anotherClass ? (
           <>
-          <span>인기상</span>
+          <span>{award.anotherAward}</span>
           <p className="name">{award.anotherClass}</p>
           <p className="track">{award.anotherTrack}</p>
           {award.anotherLink ? <a href={award.anotherLink} target="_blank">Live<AiFillYoutube /></a> : null}

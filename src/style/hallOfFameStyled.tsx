@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const HallOfFameContainer = styled.div`
   display: flex;
@@ -15,9 +16,12 @@ export const HofListContainer = styled.div`
 `
 interface Imgurl {
   $imgurl: string
+  $imgurl2?: string
+  $imgurl3?: string
+  $imgurl4?: string
 }
 
-export const HofCardContainer = styled.div<Imgurl>`
+export const HofCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 768px){
@@ -54,7 +58,10 @@ export const HofCardContainer = styled.div<Imgurl>`
         color: #c5a26e;
       }
     }
-    .imgCon {
+    .swiper_container {
+      width: 100%;
+    }
+    /* .imgCon {
       width: 100%;
       @media (min-width: 768px){
         width: 42vw;
@@ -64,8 +71,8 @@ export const HofCardContainer = styled.div<Imgurl>`
       max-height: 450px;
       border-radius: 10px;
       box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-      background: #333 url(${props => props.$imgurl}) center center/cover;
-    }
+      background: #333 center center/cover;
+    } */
   }
 
   .rightSide {
@@ -170,6 +177,7 @@ export const HofModalContainer = styled.div`
 
   input[type='date'] {
     border: none; 
+    width: 100%;
     position: relative;
     padding: 5px 10px;
     background: #eee;
@@ -265,3 +273,40 @@ export const HofModalContainer = styled.div`
     gap: 20px;
   }
 `
+
+export const StyledSwiper = styled(Swiper)<Imgurl>`
+  width: 100%;
+  overflow: hidden;
+  @media (min-width: 768px){
+    width: 42vw;
+    max-width: 500px;
+  }
+  .swiper-wrapper {
+    width: 100%;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+    width: 100% !important;
+    height: 60vw;
+    max-height: 450px;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
+    &.one {
+      background: #333 url(${props => props.$imgurl}) center center/cover;
+    }
+    &.two {
+      background: #333 url(${props => props.$imgurl2}) center center/cover;
+    }
+    &.three {
+      background: #333 url(${props => props.$imgurl3}) center center/cover;
+    }
+    &.four {
+      background: #333 url(${props => props.$imgurl4}) center center/cover;
+    }
+  }
+`;

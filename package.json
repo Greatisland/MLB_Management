@@ -31,7 +31,8 @@
     "react-router-dom": "^6.13.0",
     "styled-components": "^6.0.1",
     "styled-normalize": "^8.0.7",
-    "sweetalert2": "^11.7.12"
+    "sweetalert2": "^11.7.12",
+    "swiper": "^10.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
