@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 
 export const HallOfFameContainer = styled.div`
   display: flex;

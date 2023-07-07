@@ -26,11 +26,7 @@ interface Props {
 
 const GraphMeeting = ({members} : Props) => {
 
-  //참석 총량
-  let totality = []
-  //참석 인원
-  let personal = []
-
+  //벙 숫자
   let meeting = []
 
   //계산
@@ -44,8 +40,7 @@ const GraphMeeting = ({members} : Props) => {
       return acc
     }, [0, 0])
 
-    totality.push(result[0] || 0)
-    personal.push(result[1] || 0)
+    meeting.push(result[0] || 0)
   }
 
   //x축

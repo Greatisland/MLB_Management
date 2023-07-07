@@ -28,22 +28,18 @@ const GraphAttend = ({members} : Props) => {
 
   //참석 총량
   let totality = []
-  //참석 인원
-  let personal = []
 
   //계산
   for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
-    const result = members.reduce((acc: [number, number], member) => {
+    const result = members.reduce((acc: number, member) => {
       const targetValue = member[1][`${i}month` as any]
       if (targetValue) {
-        acc[0] += Number(targetValue)
-        acc[1]++
+        acc += Number(targetValue)
       }
       return acc
-    }, [0, 0])
+    }, 0)
 
-    totality.push(result[0] || 0)
-    personal.push(result[1] || 0)
+    totality.push(result || 0)
   }
 
   //x축
@@ -61,7 +57,7 @@ const GraphAttend = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `총 참석 발생`
+        text: `전체통계 - 총 참석`
       },
     },
     scales: {
@@ -84,17 +80,12 @@ const GraphAttend = ({members} : Props) => {
         data: totality,
         backgroundColor: 'rgb(255, 99, 132)',
       },
-      // {
-      //   label: '참석한 사람 수',
-      //   data: personal,
-      //   backgroundColor: 'rgb(53, 162, 235)',
-      // },
     ],
   };
   return (
     <GraphAttendContainer>
       <Bar options={options} data={data} />
-      <p>매 달마다 몇 번의 참석이 있었는지 확인합니다.</p>
+      <p>모임에서 몇 번의 참석이 있었는지 확인합니다.</p>
     </GraphAttendContainer>
   )
 }

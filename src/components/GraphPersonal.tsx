@@ -27,25 +27,31 @@ interface Props {
 
 
 const GraphPersonal = ({members} : Props) => {
+  const totalMembers = members.filter(member => !member[1].break)
 
   //총 인원
-  let totality = [50, 50, 50, 50 ,50 ,50, 50  ]
+  let totality = [40, 42, 45, 42 ,42 ,47, totalMembers.length] 
+//이년 39
+//1월 추가 +2 + 8 이탈 -4
+//2월 추가 +3 + 1 이탈 -2
+//3월 추가 +4 + 4 이탈 - 5
+//4월 추가 +3 이탈 -6
+//5월 추가 +4 이탈 -4
+//6월 추가 +7 이탈 - 2
   //참석 인원
   let personal = []
 
-  //계산
+  //참석 인원 계산
   for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
-    const result = members.reduce((acc: [number, number], member) => {
+    const result = totalMembers.reduce((acc: number, member) => {
       const targetValue = member[1][`${i}month` as any]
       if (targetValue) {
-        acc[0] += Number(targetValue)
-        acc[1]++
+        acc++
       }
       return acc
-    }, [0, 0])
+    }, 0)
 
-    totality.push(result[0] || 0)
-    personal.push(result[1] || 0)
+    personal.push(result || 0)
   }
 
   //x축
