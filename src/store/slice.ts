@@ -55,6 +55,14 @@ export interface Hof {
   anotherLink2?: string
 }
 
+export interface Board {
+  title: string
+  content: string
+  date: string
+  secret: boolean
+  uid: string
+}
+
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]

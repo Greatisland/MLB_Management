@@ -1,16 +1,21 @@
 import Footer from "../components/Footer"
-import SecretBoardBtn from "../components/SecretBoardBtn"
 import SecretBoardList from "../components/SecretBoardList"
-import SecretBoardView from "../components/SecretBoardView"
-import SecretBoardWrite from "../components/SecretBoardWrite"
 import { SecretBoardContainer } from "../style/secretBoardStyled"
+import { useState, useEffect } from "react"
+import { dbFunc } from "../firebase/firebaseFunc"
+
 const SecretBoard = () => {
+  const [ board, setBoard ] = useState([])
+
+  useEffect(() => {
+    dbFunc.getBoard((value) => {
+      setBoard(value)
+    })
+  }, [])
+  
   return (
     <SecretBoardContainer>
-      <SecretBoardBtn />
-      <SecretBoardList />
-      <SecretBoardView />
-      <SecretBoardWrite />
+      <SecretBoardList board={board}/>
       <Footer />
     </SecretBoardContainer>
   )

@@ -1,5 +1,5 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithRedirect, signInWithPopup, signOut  } from "firebase/auth"
-import { getDatabase, remove, ref, onValue, push, set, update } from 'firebase/database'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut  } from "firebase/auth"
+import { getDatabase, remove, ref, onValue, push, set, update, get } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
 import { type Member, type Ban, type Hof } from '../store/slice'
 import Swal from 'sweetalert2'
@@ -16,6 +16,7 @@ const googleProvider = new GoogleAuthProvider()
 const dbRef = ref(database, '/memberList')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
+const boardRef = ref(database, '/board')
 
 //애널리틱스
 const analytics = getAnalytics(app)
@@ -97,6 +98,48 @@ export const dbFunc = {
     const hofRef = ref(database, `/halloffame/${hofId}`)
     remove(hofRef)
   },
+
+  // 글 추가
+  addArticle(article: any) {
+    const newArticleRef = push(boardRef)
+    set(newArticleRef, article)
+  },
+
+  // 글 수정
+  updateArticle(articleId: string, updateArticle: any) {
+    const articleRef = ref(database, `/board/${articleId}`)
+    update(articleRef, updateArticle)
+  },
+
+  // 글 삭제
+  removeArticle(articleId: string) {
+    const articleRef = ref(database, `/board/${articleId}`)
+    remove(articleRef)
+  },
+
+  // 게시판 읽어오기
+  getBoard(callback: any) {
+    onValue(boardRef, (snapshot) => {
+      callback(Object.entries(snapshot.val()))
+    })
+  },
+
+  // 글 읽어오기
+  async getArticle(articleId: string | undefined) {
+    const articleRef = ref(database, `/board/${articleId}`)
+    
+    try {
+      const snapshot = await get(articleRef)
+      
+      if (snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        console.log('No data available')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 //회원 관련 함수
