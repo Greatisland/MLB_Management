@@ -7,7 +7,9 @@ export const SecretBoardContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   padding: 20px 20px 90px 20px;
-
+  .notice {
+    font-size: 0.6rem;
+  }
   .titleView {
     padding: 10px;
     border-bottom: 1px solid #999;
@@ -17,12 +19,14 @@ export const SecretBoardContainer = styled.div`
   .contentView {
     padding: 10px;
     letter-spacing: 0.04rem;
+    min-height: 20vh;
   }
 `
 
 export const SecretBoardBtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 10px;
   button {
     border: none;
@@ -99,3 +103,58 @@ export const EditorContainer = styled.form`
   }
 `
 
+export const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
+
+export const CommentBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  .name {
+    width: 50%;
+    font-size: 0.8rem;
+  }
+  .date {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    font-size: 0.7rem;
+  }
+  .content {
+    border-top: 1px solid #ccc;
+    padding: 10px 0 0;
+    flex: 1;
+    font-size: 0.9rem;
+  }
+`
+
+export const CommentForm = styled.form`
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 20px 0;
+  button {
+    border: none;
+    background: none;
+  }
+  input {
+    width: 80%;
+    border: none;
+    padding: 4px;
+    border-bottom: 1px solid #ccc;
+  }
+  textarea {
+    width: 80%;
+    min-height: 50px;
+    resize: none;
+    padding: 4px;
+    border: 1px solid #ccc;
+  }
+`

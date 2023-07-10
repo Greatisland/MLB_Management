@@ -6,6 +6,14 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { useAppSelector } from "../store/hook"
 import Swal from "sweetalert2"
 
+export const getToday = () => {
+  const date = new Date()
+  const year = String(date.getFullYear())
+  const month = String(date.getMonth() + 1).padStart(2,'0')
+  const day = String(date.getDate()).padStart(2,'0')
+  return `${year}.${month}.${day}`
+}
+
 const SecretBoardWrite = () => {
   const { id } = useParams()
   const { loginUser } = useAppSelector(state => state.membersData)
@@ -16,13 +24,7 @@ const SecretBoardWrite = () => {
 
   const navigate = useNavigate()
 
-  const getToday = () => {
-    const date = new Date()
-    const year = String(date.getFullYear())
-    const month = String(date.getMonth() + 1).padStart(2,'0')
-    const day = String(date.getDate()).padStart(2,'0')
-    return `${year}.${month}.${day}`
-  }
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,7 +38,7 @@ const SecretBoardWrite = () => {
     }else{
       //신규 글 작성
       const date = getToday()
-      const add = {title, content, date, secret, uid: loginUser.uid}
+      const add = {title, content, date, secret, uid: loginUser.uid, comments: []}
       if(title && content){
         dbFunc.addArticle(add)
         Swal.fire({

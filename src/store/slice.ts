@@ -61,6 +61,11 @@ export interface Board {
   date: string
   secret: boolean
   uid: string
+  comments: {
+    nickName: string
+    contents: string
+    date: string
+  }[]
 }
 
 //state 초기 값
