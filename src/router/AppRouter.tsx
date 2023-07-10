@@ -5,7 +5,6 @@ import PartPage from "../pages/PartPage";
 import Home from "../pages/Home";
 import HallOfFame from "../pages/HallOfFame";
 import SecretBoard from "../pages/SecretBoard";
-import GraphPage from "../pages/GraphPage";
 
 const AppRouter = () => {
   return (
