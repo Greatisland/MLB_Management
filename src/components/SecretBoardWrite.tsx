@@ -26,17 +26,38 @@ const SecretBoardWrite = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    //기존 글 수정
     if(id !== '0'){
       const update = {
         title, content, secret
       }
       dbFunc.updateArticle(id as string, update)
     }else{
+      //신규 글 작성
       const date = getToday()
       const add = {title, content, date, secret, uid: loginUser.uid}
-      dbFunc.addArticle(add)
+      if(title && content){
+        dbFunc.addArticle(add)
+        Swal.fire({
+          icon: 'success',
+          title: `글이 작성되었어요!`,
+          showConfirmButton: false,
+          timer: 800
+        })
+      navigate('/secretboard')
+
+      }else{
+        Swal.fire({
+          html: `
+            제목과 내용을 채워주세요!
+          `,
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonText: "알겠습니다 ㅠㅠ",
+        })
+      }
     }
-    navigate('/secretboard')
   }
 
   useEffect(() => {
@@ -50,8 +71,35 @@ const SecretBoardWrite = () => {
   }, [])
 
   const handleDelete = () => {
-    dbFunc.removeArticle(id)
-    navigate('/secretboard')
+    Swal.fire({
+      title: `정말로 지우시겠어요?`,
+      text: "한번 지우면 복구할 수 없어요!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e99797',
+      cancelButtonColor: '#4ec6e4',
+      confirmButtonText: '지우겠습니다.',
+      cancelButtonText: '지우지 않겠습니다.'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'success',
+          title: '삭제완료',
+          html: `
+          글이 사라졌어요!
+          `,
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if(typeof id === 'string'){
+          dbFunc.removeArticle(id)
+        }
+        navigate('/secretboard')
+      }else{
+        return
+      }
+    })
+
   }
 
   return (

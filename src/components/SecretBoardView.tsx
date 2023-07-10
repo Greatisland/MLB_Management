@@ -29,7 +29,7 @@ const SecretBoardView = () => {
     <SecretBoardContainer>
       <SecretBoardBtnContainer>
         <Btn onClick={() => navigate('/secretboard')}><p>나가기</p></Btn>
-        {loginUser.uid === article?.uid ?
+        {loginUser.uid === article?.uid || loginUser.level >= 4 ?
         <Btn><button onClick={handleUpdate}><p>수정</p></button></Btn> :
         null}
       </SecretBoardBtnContainer>

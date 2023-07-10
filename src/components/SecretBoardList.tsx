@@ -1,14 +1,12 @@
-import { dbFunc } from "../firebase/firebaseFunc"
 import { Btn } from "../style/globalStyled"
 import { Link, useNavigate } from "react-router-dom"
 import { SecretBoardBtnContainer, SecretBoardListContainer } from "../style/secretBoardStyled"
-import { useState, useEffect } from "react"
 import type { Board } from "../store/slice"
 import { useAppSelector } from "../store/hook"
 import { VscGistSecret } from 'react-icons/vsc'
 
-const SecretBoardList = ({board}: [string, Board][]) => {
-  const dummy = new Array(10).fill({title: '제목', content: '내용', date: '2002-11-11'})
+
+const SecretBoardList = ({board}: {board :[string, Board][]}) => {
   const navigate = useNavigate()
 
   const { loginUser } = useAppSelector(state => state.membersData)
@@ -18,7 +16,7 @@ const SecretBoardList = ({board}: [string, Board][]) => {
       <SecretBoardBtnContainer>
         <Btn><Link to={`/boardwrite/0`}><p>글쓰기</p></Link></Btn>
       </SecretBoardBtnContainer>
-      {board.map((article: any, i) => {
+      {board.map((article: any, i: number) => {
         //비밀글일때
         if(article[1].secret){
           //운영진이거나 작성자면 렌더링

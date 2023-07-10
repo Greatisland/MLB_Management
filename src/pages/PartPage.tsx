@@ -19,7 +19,7 @@ const PartPage = () => {
       {modalPartState ? <PartModal /> : null}
       <Footer />
     </PartPageContainer> :
-    <></>}
+    <>로그인 안됨!</>}
     </>
   )
 }
