@@ -64,11 +64,10 @@ const Home = () => {
       }
     })
     
-    
 
     // 컴포넌트 unmount시 리스너 해제
     return () => unsubscribe()
-  }, [])
+  }, [loginUser.state])
 
   if(isLoading){return <Splash />}
   if(loginUser.state){return (
@@ -79,9 +78,7 @@ const Home = () => {
       <BanList />
       <Footer />
     </HomeContainer>
-  )}
-  if(!loginUser.state){return <LoginPage />}
-  return <><Splash /></>
+  )}else{return <LoginPage />}
 }
 
 export default Home

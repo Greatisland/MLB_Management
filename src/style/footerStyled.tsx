@@ -12,6 +12,7 @@ export const FooterContainer = styled.div`
   background: #fff;
   a {
     display: flex;
+    width: 20%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;

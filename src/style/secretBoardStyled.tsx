@@ -8,3 +8,12 @@ export const SecretBoardContainer = styled.div`
   gap: 20px;
   padding: 20px 20px 90px 20px;
 `
+
+export const SecretBoardBtnContainer = styled.div`
+
+`
+
+export const SecretBoardListContainer = styled.div`
+  
+
+`
