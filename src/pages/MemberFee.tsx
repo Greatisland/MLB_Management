@@ -18,7 +18,7 @@ const MemberFee = () => {
       <MemberFeeList />
       <Footer />
     </MemberFeeContainer> :
-    <></>}
+    <>로그인 안됨!</>}
     </>
   )
 }
