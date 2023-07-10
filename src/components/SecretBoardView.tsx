@@ -78,8 +78,8 @@ const SecretBoardView = () => {
           </CommentBox>
         ))}
         <CommentForm onSubmit={handleComment}>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-          <textarea value={con} onChange={(e) => setCon(e.target.value)}/>
+          <input type="text" maxLength={10} value={name} onChange={(e) => setName(e.target.value)}/>
+          <textarea value={con} maxLength={200} onChange={(e) => setCon(e.target.value)}/>
           <Btn><button><p>댓글 등록</p></button></Btn>
         </CommentForm>
       </CommentContainer>

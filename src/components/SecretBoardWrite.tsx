@@ -35,6 +35,7 @@ const SecretBoardWrite = () => {
         title, content, secret
       }
       dbFunc.updateArticle(id as string, update)
+      navigate('/secretboard')
     }else{
       //신규 글 작성
       const date = getToday()
@@ -117,8 +118,9 @@ const SecretBoardWrite = () => {
         <br /><br />운영진에게 하고싶은 말이나 피드백 등을 자유롭게 남겨주세요! (예: 모임원 ooo님을 칭찬합니다)
         </p>
 
-        <input type="text" className="titleArea" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="제목을 입력해주세요."/>
-        <textarea className="contentArea" value={content} onChange={(e) => setContent(e.target.value)} placeholder="내용을 입력해주세요."/>
+        <input type="text" className="titleArea" maxLength={20} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="제목을 입력해주세요."/>
+        <textarea className="contentArea" maxLength={1000} value={content} onChange={(e) => setContent(e.target.value)} placeholder="내용을 입력해주세요."/>
+        <p className="notice">글의 내용은 1000자 이하로 제한됩니다.</p>
       </EditorContainer>
 
 

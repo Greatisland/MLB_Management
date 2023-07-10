@@ -20,6 +20,7 @@ export const SecretBoardContainer = styled.div`
     padding: 10px;
     letter-spacing: 0.04rem;
     min-height: 20vh;
+    white-space: pre-wrap;
   }
 `
 
@@ -100,6 +101,7 @@ export const EditorContainer = styled.form`
     min-height: 60vh;
     resize: none;
     line-height: 25px;
+    white-space: pre-wrap;
   }
 `
 
@@ -128,6 +130,7 @@ export const CommentBox = styled.div`
     padding: 10px 0 0;
     flex: 1;
     font-size: 0.9rem;
+    white-space: pre-wrap;
   }
 `
 
@@ -156,5 +159,6 @@ export const CommentForm = styled.form`
     resize: none;
     padding: 4px;
     border: 1px solid #ccc;
+    white-space: pre-wrap;
   }
 `
