@@ -49,6 +49,13 @@ export const SecretBoardListContainer = styled.div`
     border-bottom: 1px solid #f2f2f2;
     margin: 0 0 10px 0;
     .title {
+      margin: 0 10px 0;
+    }
+    .commentAmount {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.9rem;
     }
     .secretMark {
       font-size: 0.7rem;

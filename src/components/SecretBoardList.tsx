@@ -4,6 +4,7 @@ import { SecretBoardBtnContainer, SecretBoardListContainer } from "../style/secr
 import type { Board } from "../store/slice"
 import { useAppSelector } from "../store/hook"
 import { VscGistSecret } from 'react-icons/vsc'
+import { AiOutlineComment } from 'react-icons/ai'
 
 
 const SecretBoardList = ({board}: {board :[string, Board][]}) => {
@@ -23,14 +24,19 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
           if(loginUser.level >= 2 || loginUser.uid === article[1].uid){
             return (
               <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
-                <span className="secretMark"><VscGistSecret />비밀글</span><span className="title">{article[1]?.title}</span><span className="date">{article[1]?.date}</span>
+                <span className="secretMark"><VscGistSecret />비밀글</span>
+                <span className="title">{article[1]?.title}</span>
+                <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+                <span className="date">{article[1]?.date}</span>
               </div>
             )
           }
         }else {
           return (
             <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
-              <span>{article[1]?.title}</span><span className="date">{article[1]?.date}</span>
+              <span className="title">{article[1]?.title}</span>
+              <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+              <span className="date">{article[1]?.date}</span>
             </div>
           )
         }
