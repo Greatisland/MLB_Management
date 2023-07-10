@@ -8,7 +8,7 @@ const SecretBoard = () => {
   const [ board, setBoard ] = useState([])
 
   useEffect(() => {
-    dbFunc.getBoard((value) => {
+    dbFunc.getBoard((value: any) => {
       setBoard(value)
     })
   }, [])
