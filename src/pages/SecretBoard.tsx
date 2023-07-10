@@ -15,7 +15,7 @@ const SecretBoard = () => {
   
   return (
     <SecretBoardContainer>
-      <p className="notice">익명게시판은 무조건 익명으로 글이 작성되며 누가 썼는지 확인할 수 없습니다. 자유롭게 아무말이나 써주세요!
+      <p className="notice">칭찬게시판은 익명게시판이며 글을 누가 썼는지 확인할 수 없습니다. 자유롭게 아무말이나 써주세요!
       </p>
       <SecretBoardList board={board}/>
       <Footer />

@@ -39,6 +39,7 @@ const SecretBoardView = () => {
 
       const updatedArticle = await dbFunc.getArticle(id)
       setArticle(updatedArticle)
+
     }else{
       Swal.fire({
         html: `
@@ -49,6 +50,7 @@ const SecretBoardView = () => {
         confirmButtonText: "알겠습니다 ㅠㅠ",
       })
     }
+    setCon('')
   }
 
   useEffect(() => {
@@ -77,7 +79,7 @@ const SecretBoardView = () => {
         ))}
         <CommentForm onSubmit={handleComment}>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-          <textarea onChange={(e) => setCon(e.target.value)}/>
+          <textarea value={con} onChange={(e) => setCon(e.target.value)}/>
           <Btn><button><p>댓글 등록</p></button></Btn>
         </CommentForm>
       </CommentContainer>

@@ -13,7 +13,7 @@ const Footer = () => {
         <Link to='/infopage'><AiOutlineUser /><p>회원관리</p></Link>
         <Link to='/partpage'><AiFillEdit /><p>참석관리</p></Link>
         <Link to='/memberfee'><GiMoneyStack /><p>회비관리</p></Link>
-        <Link to='/secretboard'><AiFillDatabase /><p>익명게시판</p></Link>
+        <Link to='/secretboard'><AiFillDatabase /><p>칭찬게시판</p></Link>
         <Link to='/halloffame'><AiFillTrophy /><p>명예의 전당</p></Link>
       </FooterContainer> :
       <></>
