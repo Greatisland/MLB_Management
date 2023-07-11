@@ -98,6 +98,8 @@ export const LoginContainer = styled.div`
 
 export const CreateModalContainer = styled.div`
   display: flex;
+  width: 80%;
+  max-width: 500px;
   flex-direction: column;
   position: fixed;
   top: 50%;
@@ -108,6 +110,7 @@ export const CreateModalContainer = styled.div`
   border-radius: 30px;
   gap: 20px;
   padding: 40px 30px;
+  box-sizing: border-box;
   form {
     display: flex;
     flex-direction: column;
@@ -121,7 +124,7 @@ export const CreateModalContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   input[type='submit'] {
     border: none;

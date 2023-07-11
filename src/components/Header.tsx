@@ -16,7 +16,7 @@ const Header = () => {
       {loginUser.state ? 
       <div className="btns">
         {loginUser.photoURL? <div className="photo" /> : null}
-        <p className="hi">{loginUser.name ? loginUser.name : (loginUser.level >= 2 ? '뮤라밸 운영진' : '뮤라밸 회원')}님, 안녕하세요!</p>
+        <p className="hi">{loginUser.name ? loginUser.name : (loginUser.level >= 2 ? '뮤라밸 운영진' : '뮤라밸 게스트')}님, 안녕하세요!</p>
         <div className="logout" onClick={() => {
           navigate('/')
           authFunc.logout()

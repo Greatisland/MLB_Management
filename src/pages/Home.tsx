@@ -37,7 +37,7 @@ const Home = () => {
         const userRoleRef = ref(database, 'userLevels/' + user.uid);
         onValue(userRoleRef, (snapshot) => {
           const data = snapshot.val()
-          send(data)
+          send(data?.level)
           setIsLoading(false)
         })
 

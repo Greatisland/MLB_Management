@@ -78,7 +78,7 @@ const JoinModal = ({setIsModal}: Props) => {
       <h2>회원가입</h2>
       <form onSubmit={handleJoin}>
         <p>이름 입력</p>
-        <input type="text" ref={displayName} placeholder="정확한 이름을 입력해주세요." />
+        <input type="text" ref={displayName} placeholder="정확한 이름을 입력해주세요. ex)김현진" />
         <p>이메일 입력</p>
         <input type="text" ref={email} placeholder="ex) abc@naver.com" />
         <p>비밀번호 입력</p>
