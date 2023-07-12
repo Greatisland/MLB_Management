@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { dateCalc } from "../components/dateCalc"
+import { dateCalc } from "../components/common/dateCalc"
 
 export interface Member {
   id?: string

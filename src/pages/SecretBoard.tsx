@@ -1,5 +1,5 @@
-import Footer from "../components/Footer"
-import SecretBoardList from "../components/SecretBoardList"
+import Footer from "../components/common/Footer"
+import SecretBoardList from "../components/secretboard/SecretBoardList"
 import { SecretBoardContainer } from "../style/secretBoardStyled"
 import { useState, useEffect } from "react"
 import { dbFunc } from "../firebase/firebaseFunc"

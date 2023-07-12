@@ -1,9 +1,9 @@
-import MemberFeeList from "../components/MemberFeeList"
+import MemberFeeList from "../components/memberfee/MemberFeeList"
 import { MemberFeeContainer } from "../style/memberFeeStyled"
-import { dateCalc } from "../components/dateCalc"
-import MemberFeeBtn from "../components/MemberFeeBtn"
-import MemberFeeTotal from "../components/MemberFeeTotal"
-import Footer from "../components/Footer"
+import { dateCalc } from "../components/common/dateCalc"
+import MemberFeeBtn from "../components/memberfee/MemberFeeBtn"
+import MemberFeeTotal from "../components/memberfee/MemberFeeTotal"
+import Footer from "../components/common/Footer"
 import { useAppSelector } from "../store/hook"
 
 const MemberFee = () => {
