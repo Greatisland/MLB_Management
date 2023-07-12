@@ -62,7 +62,31 @@ const MemberFeeList = () => {
 
   const handleSwitching = (member: any, param: string) => {
     if(loginUser.level >= 3){
-      dbFunc.updateMember(member[0], {target: param})
+      Swal.fire({
+        title: `${param === '기타' ? 
+        member[1].name + '님을 회비에서 제외시킬까요?' :
+        member[1].name + '님을 회비에 포함시킬까요?'}`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#e99797',
+        cancelButtonColor: '#4ec6e4',
+        confirmButtonText: '네. 변경할게요.',
+        cancelButtonText: '아뇨. 안바꿀게요.'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: '변경완료',
+            html: `
+            ${member[1].name}님의 회비 상태가 변경되었어요!!
+            `,
+            showConfirmButton: false,
+            timer: 1000
+          })
+        dbFunc.updateMember(member[0], {target: param})
+        }else{return}
+      })
+
     } else {
       Swal.fire({
         icon: 'warning',
