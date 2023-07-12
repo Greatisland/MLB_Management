@@ -4,7 +4,7 @@ import { GlobalStyle } from './style/globalStyled'
 import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from './store/hook'
 import {  setMembers, setBanMembers, setHof } from './store/slice'
-import ScrollToTop from './components/ScrollToTop'
+import ScrollToTop from './components/common/ScrollToTop'
 import { dbFunc } from './firebase/firebaseFunc'
 import { useNavigate } from 'react-router'
 import { originTheme } from "./style/theme";

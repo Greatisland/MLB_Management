@@ -1,7 +1,7 @@
-import { Btn, BtnListContainer } from "../style/globalStyled"
+import { Btn, BtnListContainer } from "../../style/globalStyled"
 import { useState } from "react"
 import HofAddModal from "./HofAddModal"
-import { useAppSelector } from "../store/hook"
+import { useAppSelector } from "../../store/hook"
 import Swal from "sweetalert2"
 import { GiTrophy } from 'react-icons/gi';
 

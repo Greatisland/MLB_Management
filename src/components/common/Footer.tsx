@@ -1,6 +1,6 @@
-import { FooterContainer } from "../style/footerStyled"
+import { FooterContainer } from "../../style/footerStyled"
 import { Link } from "react-router-dom"
-import { useAppSelector } from "../store/hook"
+import { useAppSelector } from "../../store/hook"
 import { AiOutlineUser, AiFillEdit, AiFillDatabase, AiFillTrophy } from 'react-icons/ai'; 
 import { GiMoneyStack } from 'react-icons/gi'; 
 

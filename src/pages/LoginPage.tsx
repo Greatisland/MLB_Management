@@ -3,12 +3,12 @@ import { authFunc } from "../firebase/firebaseFunc"
 import { useState, useEffect, useRef } from "react"
 import { useAppSelector } from "../store/hook"
 import { useNavigate } from "react-router"
-import Footer from "../components/Footer"
+import Footer from "../components/common/Footer"
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { FaUserCircle } from 'react-icons/fa';
 import { auth } from "../firebase/firebaseFunc"
-import JoinModal from "../components/JoinModal"
+import JoinModal from "../components/common/JoinModal"
 
 const LoginPage = () => {
   const [ isModal, setIsModal ] = useState(false)

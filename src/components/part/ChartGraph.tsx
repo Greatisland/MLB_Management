@@ -18,8 +18,8 @@ ChartJS.register(
   Legend
 );
 import { Line } from 'react-chartjs-2';
-import { dateCalc } from './dateCalc';
-import type { Member } from '../store/slice';
+import { dateCalc } from '../common/dateCalc';
+import type { Member } from '../../store/slice';
 
 const ChartGraph = ({ member }: { member: Member }) => {
 

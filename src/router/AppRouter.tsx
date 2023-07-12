@@ -5,8 +5,8 @@ import PartPage from "../pages/PartPage";
 import Home from "../pages/Home";
 import HallOfFame from "../pages/HallOfFame";
 import SecretBoard from "../pages/SecretBoard";
-import SecretBoardView from "../components/SecretBoardView";
-import SecretBoardWrite from "../components/SecretBoardWrite";
+import SecretBoardView from "../components/secretboard/SecretBoardView";
+import SecretBoardWrite from "../components/secretboard/SecretBoardWrite";
 
 const AppRouter = () => {
   return (

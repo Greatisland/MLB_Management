@@ -1,11 +1,11 @@
-import { CheckState, MemberFeeListContainer, MembersTarget } from "../style/memberFeeStyled"
-import { useAppSelector } from "../store/hook"
+import { CheckState, MemberFeeListContainer, MembersTarget } from "../../style/memberFeeStyled"
+import { useAppSelector } from "../../store/hook"
 import { useState, useEffect } from "react";
 import { TiUserAdd, TiUserDelete } from 'react-icons/ti';
-import { dbFunc } from "../firebase/firebaseFunc";
-import { dateCalc } from "./dateCalc";
+import { dbFunc } from "../../firebase/firebaseFunc";
+import { dateCalc } from "../common/dateCalc";
 import Swal from "sweetalert2";
-import type { Member } from "../store/slice";
+import type { Member } from "../../store/slice";
 
 const MemberFeeList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)

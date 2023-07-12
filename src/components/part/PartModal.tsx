@@ -1,8 +1,8 @@
-import { PartModalContainer, PartModalWrapper } from "../style/partPageStyled"
+import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled"
 import ChartGraph from "./ChartGraph"
-import { useAppSelector, useAppDispatch } from "../store/hook"
-import { togglePartModal } from "../store/slice"
-import { dateCalc } from "./dateCalc"
+import { useAppSelector, useAppDispatch } from "../../store/hook"
+import { togglePartModal } from "../../store/slice"
+import { dateCalc } from "../common/dateCalc"
 
 const PartModal = () => {
   const dispatch = useAppDispatch()

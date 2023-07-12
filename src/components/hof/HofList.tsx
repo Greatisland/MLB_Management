@@ -1,9 +1,9 @@
-import { HofListContainer } from "../style/hallOfFameStyled"
+import { HofListContainer } from "../../style/hallOfFameStyled"
 import HofCard from "./HofCard"
-import { useAppSelector } from "../store/hook"
+import { useAppSelector } from "../../store/hook"
 import HofAddModal from "./HofAddModal"
 import { useState } from "react"
-import type { Hof } from "../store/slice"
+import type { Hof } from "../../store/slice"
 import Swal from "sweetalert2"
 
 const HofList = () => {

@@ -1,6 +1,6 @@
-import { MemberFeeTotalContainer } from "../style/memberFeeStyled"
-import { useAppSelector } from "../store/hook"
-import { dateCalc } from "./dateCalc";
+import { MemberFeeTotalContainer } from "../../style/memberFeeStyled"
+import { useAppSelector } from "../../store/hook"
+import { dateCalc } from "../common/dateCalc";
 import { FaCoins } from 'react-icons/fa';
 import { GiCoins } from 'react-icons/gi';
 import { RiHandCoinLine } from 'react-icons/ri';

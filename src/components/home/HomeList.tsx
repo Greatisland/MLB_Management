@@ -1,12 +1,18 @@
-import { HomeListContainer } from "../style/homeStyled"
-import { useAppSelector, useAppDispatch } from "../store/hook"
-import { toggleModal, sendMember, sortState } from "../store/slice"
+import { HomeListContainer } from "../../style/homeStyled"
+import { useAppSelector, useAppDispatch } from "../../store/hook"
+import { toggleModal, sendMember, sortState } from "../../store/slice"
+import { SearchBarPart } from "../../style/partPageStyled"
+import { useState } from "react"
 import Swal from "sweetalert2"
 
-const BreakList = () => {
+
+const HomeList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
-  const breakMembersData = membersData.filter(member => member[1].break)
+
+  const [ search, setSearch ] = useState('')
+
+  const searchMembersData = membersData.filter(member => member[1].name.includes(search) && !member[1].break)
 
   const handleAddMember = (member: any) => {
     //레벨 2 이상부터 운영진
@@ -35,21 +41,23 @@ const BreakList = () => {
   }
 
   return (
-    <>{loginUser.level >= 2 ?
-    <><h3 className="title">휴식기</h3>
+    <>
+    <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
+      <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."></input>
+    </SearchBarPart>
     <HomeListContainer>
       <table>
         <thead>
           <tr>
-            <th>이름</th>
-            <th>가입일</th>
-            <th>년생</th>
+            <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
+            <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
+            <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
             {loginUser.level >= 2 ?
-            <th>메모</th>:null}
+            <th onClick={() => {dispatch(sortState('etc'))}}>메모</th>:null}
           </tr>
         </thead>
         <tbody>
-          {breakMembersData.map((member, i) => (
+          {searchMembersData.map((member, i) => (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].name}</td>
               <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
@@ -60,10 +68,9 @@ const BreakList = () => {
           ))}
         </tbody>
       </table>
-    </HomeListContainer></> :
-    <></>}
+    </HomeListContainer>
     </>
   )
 }
 
-export default BreakList
+export default HomeList

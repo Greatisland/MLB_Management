@@ -1,6 +1,6 @@
-import { HofCardContainer, StyledSwiper } from "../style/hallOfFameStyled"
+import { HofCardContainer, StyledSwiper } from "../../style/hallOfFameStyled"
 import { AiFillYoutube } from 'react-icons/ai';
-import type { Hof } from "../store/slice"
+import type { Hof } from "../../store/slice"
 import { SwiperSlide } from "swiper/react";
 import 'swiper/css';
 

@@ -1,6 +1,6 @@
-import Footer from "../components/Footer"
-import HofBtnList from "../components/HofBtnList"
-import HofList from "../components/HofList"
+import Footer from "../components/common/Footer"
+import HofBtnList from "../components/hof/HofBtnList"
+import HofList from "../components/hof/HofList"
 import { HallOfFameContainer } from "../style/hallOfFameStyled"
 
 const HallOfFame = () => {

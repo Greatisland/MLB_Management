@@ -17,7 +17,7 @@ ChartJS.register(
   Legend
 );
 import { Bar } from 'react-chartjs-2';
-import { dateCalc } from './dateCalc';
+import { dateCalc } from './common/dateCalc';
 import { GraphAttendContainer } from "../style/graphPageStyled";
 interface Props {
   members: [string, Member][]

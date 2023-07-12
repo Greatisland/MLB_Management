@@ -1,9 +1,9 @@
-import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../style/headerStyle"
+import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle"
 import { useState, ChangeEvent } from "react"
-import { useAppSelector, useAppDispatch } from "../store/hook"
-import { toggleModal } from "../store/slice"
+import { useAppSelector, useAppDispatch } from "../../store/hook"
+import { toggleModal } from "../../store/slice"
 import Swal from "sweetalert2"
-import { dbFunc } from "../firebase/firebaseFunc"
+import { dbFunc } from "../../firebase/firebaseFunc"
 
 
 const MemberModal = () => {

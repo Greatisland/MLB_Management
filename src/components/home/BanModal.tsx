@@ -1,7 +1,7 @@
-import { dbFunc } from "../firebase/firebaseFunc"
-import { JoinModalContainer, JoinModalWrapper } from "../style/headerStyle"
+import { dbFunc } from "../../firebase/firebaseFunc"
+import { JoinModalContainer, JoinModalWrapper } from "../../style/headerStyle"
 import { useState } from "react"
-import { useAppSelector } from "../store/hook"
+import { useAppSelector } from "../../store/hook"
 
 interface Props {
   setIsModal: (value: boolean) => void

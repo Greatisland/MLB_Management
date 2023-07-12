@@ -1,8 +1,8 @@
-import { useAppSelector } from "../store/hook"
-import { PartResultContainer } from "../style/partPageStyled"
+import { useAppSelector } from "../../store/hook"
+import { PartResultContainer } from "../../style/partPageStyled"
 import { useState, useEffect } from "react"
-import { dateCalc } from "./dateCalc"
-import type { Member } from "../store/slice"
+import { dateCalc } from "../common/dateCalc"
+import type { Member } from "../../store/slice"
 
 const PartResult = () => {
   const { membersData } = useAppSelector(state => state.membersData)

@@ -1,5 +1,5 @@
-import { SplashContainer } from "../style/globalStyled"
-import { LoginContainer } from "../style/loginStyled"
+import { SplashContainer } from "../../style/globalStyled"
+import { LoginContainer } from "../../style/loginStyled"
 import LinearProgress from '@mui/material/LinearProgress'; 
 
 const Splash = () => {
