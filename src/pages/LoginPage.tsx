@@ -50,10 +50,10 @@ const LoginPage = () => {
         </div>
         </>
         : null}
-        <div className="loginBtn guestBtn" onClick={() => authFunc.loginAccount('guest@mlb.com', 'abc123')}>
+        {/* <div className="loginBtn guestBtn" onClick={() => authFunc.loginAccount('guest@mlb.com', 'abc123')}>
           <FaUserCircle />
           게스트로 시작
-        </div>
+        </div> */}
         <Footer />
       </LoginContainer>
     </LoginWrapper>
