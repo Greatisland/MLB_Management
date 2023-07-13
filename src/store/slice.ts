@@ -8,7 +8,9 @@ export interface Member {
   year: string
   gender: string
   etc: string
+  approval: boolean
   state?: boolean
+  uid?: string
   target?: string
   pay?: boolean
   special?: string
@@ -109,7 +111,8 @@ const initialState: InitialState = {
     state: false,
     etc: '',
     special: '',
-    break: false
+    break: false,
+    approval: false
   },
   sendBan: {
     id: '',

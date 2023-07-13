@@ -19,7 +19,8 @@ const MemberModal = () => {
     pay: false,
     special: sendMember.special || '',
     target: '',
-    break: sendMember.break || false
+    break: sendMember.break || false,
+    approval: sendMember.approval || false
   })
   
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,13 +36,37 @@ const MemberModal = () => {
       sendMember.etc !== state.etc ||
       sendMember.gender !== state.gender ||
       sendMember.special !== state.special ||
-      sendMember.break !== state.break
+      sendMember.break !== state.break ||
+      sendMember.approval !== state.approval
       )
       ){
-        dbFunc.updateMember(sendMember.id as string, state)
-        dispatch(toggleModal())
+        if(
+          state.name !== '' &&
+          state.join !== '' &&
+          state.year !== '' &&
+          state.gender !== ''
+        ){
+          dbFunc.updateMember(sendMember.id as string, state)
+          dispatch(toggleModal())
+        }else{
+          Swal.fire({
+            html: `
+              회원 정보를 모두 채워주세요!
+            `,
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonText: "알겠습니다 ㅠㅠ",
+          })
+        }
       }else if(sendMember.state){
-        dispatch(toggleModal())
+        Swal.fire({
+          html: `
+            아무것도 변경되지 않았어요!
+          `,
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonText: "넵..",
+        })
       }else if(
 
       //신규회원 추가
@@ -59,7 +84,7 @@ const MemberModal = () => {
         timer: 800
       })
       dispatch(toggleModal())
-    } else if(!sendMember.state) {
+    }else if(!sendMember.state) {
       Swal.fire({
         html: `
           회원 정보를 모두 채워주세요!
@@ -143,6 +168,11 @@ const MemberModal = () => {
           <p>휴식기 여부</p>
           <CheckboxContainer>
             <HiddenCheckbox checked={state.break} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, break: e.target.checked})}/>
+            <StyledCheckbox />
+          </CheckboxContainer>
+          <p>회원 승인 여부</p>
+          <CheckboxContainer>
+            <HiddenCheckbox checked={state.approval} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, approval: e.target.checked})}/>
             <StyledCheckbox />
           </CheckboxContainer>
           </div>

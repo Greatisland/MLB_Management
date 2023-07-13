@@ -14,6 +14,7 @@ const googleProvider = new GoogleAuthProvider()
 
 //database 
 const dbRef = ref(database, '/memberList')
+const dbPendingRef = ref(database, '/memberPenddingList')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
@@ -25,13 +26,13 @@ const analytics = getAnalytics(app)
 export const dbFunc = {
 
   // 멤버 추가
-  addMember(member: Member) {
+  addMember(member: any) {
     const newMemberRef = push(dbRef)
     set(newMemberRef, member)
   },
 
   // 멤버 수정
-  updateMember(memberId: string, updatedMember: Partial<Member>) {
+  updateMember(memberId: string, updatedMember: any) {
     const memberRef = ref(database, `/memberList/${memberId}`)
     update(memberRef, updatedMember)
   },
@@ -164,7 +165,6 @@ export const authFunc = {
 
   //구글 로그인
   loginGoogle () {
-    // signInWithRedirect(auth, googleProvider)
     signInWithPopup(auth, googleProvider)
   },
   

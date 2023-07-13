@@ -44,7 +44,7 @@ const JoinModal = ({setIsModal}: Props) => {
     if(!displayNameValue){
       Swal.fire({
         icon: 'error',
-        title: '닉네임을 작성해주세요.',
+        title: '이름을 작성해주세요.',
          showConfirmButton: false,
         timer: 800
       })

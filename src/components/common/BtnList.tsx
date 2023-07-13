@@ -7,7 +7,7 @@ import Swal from "sweetalert2"
 const BtnList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
-  const totalMembers = membersData.filter(member => !member[1].break)
+  const totalMembers = membersData.filter(member => !member[1].break && member[1].approval)
   const totalGender = (param: string) => {return totalMembers.reduce((acc: number, member) => {
     let gender = member[1].gender
     if(gender === param) {return acc + 1}

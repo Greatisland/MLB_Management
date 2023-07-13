@@ -6,7 +6,6 @@ import { useNavigate } from "react-router"
 import Footer from "../components/common/Footer"
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { FaUserCircle } from 'react-icons/fa';
 import { auth } from "../firebase/firebaseFunc"
 import JoinModal from "../components/common/JoinModal"
 
@@ -50,10 +49,6 @@ const LoginPage = () => {
         </div>
         </>
         : null}
-        {/* <div className="loginBtn guestBtn" onClick={() => authFunc.loginAccount('guest@mlb.com', 'abc123')}>
-          <FaUserCircle />
-          게스트로 시작
-        </div> */}
         <Footer />
       </LoginContainer>
     </LoginWrapper>
