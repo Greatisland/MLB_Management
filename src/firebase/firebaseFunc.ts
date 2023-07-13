@@ -14,7 +14,7 @@ const googleProvider = new GoogleAuthProvider()
 
 //database 
 const dbRef = ref(database, '/memberList')
-const dbPendingRef = ref(database, '/memberPenddingList')
+const accountRef = ref(database, '/userLevels')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
@@ -26,7 +26,7 @@ const analytics = getAnalytics(app)
 export const dbFunc = {
 
   // 멤버 추가
-  addMember(member: any) {
+  addMember(member: Member) {
     const newMemberRef = push(dbRef)
     set(newMemberRef, member)
   },
@@ -48,6 +48,26 @@ export const dbFunc = {
     onValue(dbRef, (snapshot) => {
       callback(Object.entries(snapshot.val()))
     })
+  },
+
+  // 계정 수정하기
+  updateAccount(memberId: string, updatedMember: any) {
+    const memberRef = ref(database, `/userLevels/${memberId}`)
+    update(memberRef, updatedMember)
+  },
+
+
+  // 전원 계정 리스트 읽어오기
+  getAllAccount(callback: any) {
+    onValue(accountRef, (snapshot) => {
+      callback(Object.entries(snapshot.val()))
+    })
+  },
+
+  // 계정 레벨정보 삭제
+  removeAccount(memberId: string) {
+    const memberRef = ref(database, `/userLevels/${memberId}`)
+    remove(memberRef)
   },
 
   // 밴 리스트 읽어오기
@@ -155,6 +175,15 @@ export const authFunc = {
     // 사용자 프로필 정보를 업데이트합니다.
     return updateProfile(user, {
         displayName,
+      })
+    })
+    .then(() => {
+      signOut(auth)
+      Swal.fire({
+        icon: 'success',
+        title: '성공적으로 가입되었어요!',
+        showConfirmButton: false,
+        timer: 800
       })
     })
     .catch((error) => {

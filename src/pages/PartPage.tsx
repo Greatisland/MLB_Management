@@ -5,13 +5,14 @@ import PartResult from "../components/part/PartResult"
 import { PartPageContainer } from "../style/partPageStyled"
 import { useAppSelector } from "../store/hook"
 import Footer from "../components/common/Footer"
+import Waiting from "../components/common/Waiting"
 
 const PartPage = () => {
   const { modalPartState, loginUser } = useAppSelector(state => state.membersData)
 
   return (
     <>
-    {loginUser.state ? 
+    {loginUser.level >= 1 ? 
     <PartPageContainer>
       <PartAward />
       <PartResult />
@@ -19,7 +20,7 @@ const PartPage = () => {
       {modalPartState ? <PartModal /> : null}
       <Footer />
     </PartPageContainer> :
-    <>로그인 안됨!</>}
+    <Waiting />}
     </>
   )
 }

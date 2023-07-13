@@ -1,55 +1,62 @@
 import { HomeListContainer } from "../../style/homeStyled"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { toggleModal, sendMember, sortState } from "../../store/slice"
-import { SearchBarPart } from "../../style/partPageStyled"
-import { useState } from "react"
+import { useAppSelector } from "../../store/hook"
 import Swal from "sweetalert2"
 import { dbFunc } from "../../firebase/firebaseFunc"
 
 const PenddingList = () => {
-  const { membersData, loginUser } = useAppSelector(state => state.membersData)
-  const dispatch = useAppDispatch()
-  const penddingMembersData = membersData.filter(member => !member[1].approval)
-  // penddingMembersData.forEach(member => dbFunc.removeMember(member[0]))
-  const handleAddMember = (member: any) => {
+  const { accountList, loginUser } = useAppSelector(state => state.membersData)
+  const handleAddAccount = (account: any) => {
     //레벨 2 이상부터 운영진
     if(loginUser.level >= 2){
-      dispatch(toggleModal()), dispatch(sendMember(
-        {
-          id: member[0],
-          name: member[1].name,
-          join: member[1].join,
-          year: member[1].year,
-          gender: member[1].gender,
-          etc: member[1].etc || '',
-          state: true,
-          special: member[1].special,
-          break: member[1].break || false,
-          approval: member[1].approval
+      Swal.fire({
+        title: `${account[1].name}님의 계정을 승인할까요?`,
+        text: "승인할 경우 해당 계정은 이 어플을 이용할 수 있습니다.",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#e99797',
+        cancelButtonColor: '#4ec6e4',
+        confirmButtonText: '네.',
+        cancelButtonText: '아니요.'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: '완료',
+            html: `
+            승인 완료되었습니다!
+            `,
+            showConfirmButton: false,
+            timer: 1000
+          })
+          dbFunc.updateAccount(account[0], {...account[1], level: 1})
+          return
+        }else{
+          dbFunc.removeAccount(account[0])
         }
-      ))
+      })
     } else {
       Swal.fire({
         icon: 'warning',
-        title: '운영진 계정만 회원정보 수정이 가능해요!',
+        title: '운영진 계정만 수정이 가능해요!',
          showConfirmButton: false,
         timer: 800
       })
     }
   }
+  const penddingList = accountList.filter(account => account[1]?.level < 1)
   return (<>
-    {penddingMembersData.length !== 0 ? 
+    {loginUser.level >= 2 && penddingList.length !== 0 ? 
     <HomeListContainer>
       <table>
         <thead>
           <tr>
-            <th>회원 대기자</th>
+            <th>계정 승인대기</th>
           </tr>
         </thead>
         <tbody>
-          {penddingMembersData.map((member, i) => (
-            <tr key={i} onClick={() => handleAddMember(member)}>
-              <td>{member[1].name}</td>
+          {penddingList.map((account, i) => (
+            <tr key={i} onClick={() => handleAddAccount(account)}>
+              <td>{account[1]?.name}</td>
             </tr>
           ))}
         </tbody>

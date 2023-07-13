@@ -11,58 +11,15 @@ import Splash from "../components/common/Splash"
 import { useState, useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { loginUserSend } from "../store/slice"
-import { auth, dbFunc } from "../firebase/firebaseFunc"
+import { auth } from "../firebase/firebaseFunc"
 import { database } from "../firebase/firebaseFunc"
-import { onValue, ref } from "firebase/database"
-import type { Member } from "../store/slice"
+import { onValue, ref, set } from "firebase/database"
+import Waiting from "../components/common/Waiting"
 
 const Home = () => {
-  const { membersData: membersDataFromRedux, loginUser } = useAppSelector(state => state.membersData)
+  const { loginUser } = useAppSelector(state => state.membersData)
   const dispatch = useAppDispatch()
   const [ isLoading, setIsLoading ] = useState(true)
-  const [membersData, setMembersData] = useState<[string, Member][] | null>(null)
-
-  //membersData를 로컬에 저장
-  useEffect(() => {
-    setMembersData(membersDataFromRedux)
-  }, [membersDataFromRedux])
-
-
-  const handleUser = () => {
-    console.log(isLoading)
-    if(!isLoading && membersData && loginUser.state){
-      console.log(loginUser)
-      console.log(membersData)
-      //현재 로그인한 사용자의 데이터베이스 찾기
-      const currentUser = membersData.find((member) => {
-        return member[1].name === loginUser.name
-      })
-      console.log(currentUser)
-      //찾을 경우
-      if(currentUser){
-        //승인되지 않은 유저의 경우 uid, email 업데이트 및 승인
-        if(!currentUser[1].approval){
-          const updateDB = {email: loginUser.email, uid: loginUser.uid, approval: true}
-          dbFunc.updateMember(currentUser[0], updateDB)
-        }
-      }else if(!currentUser){
-        //찾지 못할 경우 신규 사용자 추가
-        const updateNewDB = {
-          email: loginUser.email, uid: loginUser.uid, name: loginUser.name, level: 1,
-          join: '',
-          year: '',
-          etc: '',
-          gender: '',
-          pay: false,
-          special: '',
-          target: '',
-          approval: false,
-          break: false
-        }
-        dbFunc.addMember(updateNewDB)
-      }
-    }
-  }
 
   useEffect(() => {
     //로그인 상태 확인
@@ -74,7 +31,7 @@ const Home = () => {
         name: user ? user.displayName : '',
         photoURL: user ? user.photoURL : '',
         state: user ? true : false,
-        level: user ? level : 1,
+        level: user ? level : 0,
         email: user ? user.email: ''
       }))}
 
@@ -83,12 +40,21 @@ const Home = () => {
         const userRoleRef = ref(database, 'userLevels/' + user.uid)
         onValue(userRoleRef, (snapshot) => {
           const data = snapshot.val()
-          send(data?.level)
+          if(data){
+            //계정 데이터베이스가 있을 경우 저장된 회원 등급 전송
+            send(data?.level)
+          }else if(user.displayName){
+            //없을 경우 계정 데이터베이스 생성 후 레벨 0 전송
+            const accountRef = ref(database, '/userLevels/' + user.uid)
+            const newAccount = {name: user.displayName, level: 0}
+            set(accountRef, newAccount)
+            send(0)
+          }
           setIsLoading(false)
         })
       }else{
         //로그아웃 시 로그인 화면으로 이동
-        send(1)
+        send(0)
         setIsLoading(false)
       }
     })
@@ -97,20 +63,20 @@ const Home = () => {
     return () => unsubscribe()
   }, [loginUser.state])
 
-  // useEffect(() => {
-  //   handleUser()
-  // }, [isLoading, loginUser.state, membersData])
-
   if(isLoading){return <Splash />}
-  if(loginUser.state){return (
-    <HomeContainer>
-      <BtnList />
-      <PenddingList />
-      <HomeList />
-      <BreakList />
-      <BanList />
-      <Footer />
-    </HomeContainer>
+  if(loginUser.state){return (<>
+    {loginUser.level >= 1 ? 
+      <HomeContainer>
+        <BtnList />
+        <PenddingList />
+        <HomeList />
+        <BreakList />
+        <BanList />
+        <Footer />
+      </HomeContainer> :
+      <Waiting />
+    }
+  </>
   )}else{return <LoginPage />}
 }
 

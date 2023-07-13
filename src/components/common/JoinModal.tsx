@@ -2,12 +2,14 @@ import { useRef } from "react"
 import Swal from "sweetalert2"
 import { authFunc } from "../../firebase/firebaseFunc"
 import { CreateModalContainer } from "../../style/loginStyled"
+import { useAppDispatch } from "../../store/hook"
 
 interface Props {
   setIsModal: (value: boolean) => void
 }
 
 const JoinModal = ({setIsModal}: Props) => {
+
   const email = useRef<HTMLInputElement>(null)
   const pw = useRef<HTMLInputElement>(null)
   const pwCheck = useRef<HTMLInputElement>(null)
@@ -71,6 +73,7 @@ const JoinModal = ({setIsModal}: Props) => {
       return
     }
     authFunc.createAccount(emailValue,pwValue,displayNameValue)
+    setIsModal(false)
   }
 
   return (

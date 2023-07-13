@@ -13,7 +13,7 @@ const HomeList = () => {
   const [ search, setSearch ] = useState('')
 
   //가입 승인상태이고 휴식기가 아닐 때
-  const searchMembersData = membersData.filter(member => member[1]?.name?.includes(search) && !member[1].break && member[1].approval)
+  const searchMembersData = membersData.filter(member => member[1]?.name?.includes(search) && !member[1].break)
 
   const handleAddMember = (member: any) => {
     //레벨 2 이상부터 운영진

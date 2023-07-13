@@ -27,6 +27,10 @@ const LoginPage = () => {
     authFunc.loginAccount(email,pw)
   }
 
+  const handleGoogleLogin = () => {
+    authFunc.loginGoogle()
+  }
+
   return (
     <LoginWrapper>
       <LoginContainer>
@@ -43,7 +47,7 @@ const LoginPage = () => {
           <BsPersonBoundingBox />
           회원가입
         </div>
-        <div className="loginBtn" onClick={() => authFunc.loginGoogle()}>
+        <div className="loginBtn" onClick={handleGoogleLogin}>
           <FcGoogle />
           구글 로그인
         </div>
