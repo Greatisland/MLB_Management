@@ -57,13 +57,14 @@ const ChartGraph = ({ member }: { member: Member }) => {
     },
     scales: {
       y: {
-          ticks: {
-              beginAtZero: true,
-              stepSize: 1,
-              precision: 0
-          }
+        min: 0,
+        ticks: {
+          beginAtZero: true,
+          stepSize: 1,
+          precision: 0
+        }
       }
-  }
+    }
   }
 
   const data = {

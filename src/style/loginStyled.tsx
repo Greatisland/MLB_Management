@@ -10,7 +10,7 @@ export const LoginWrapper = styled.div`
   justify-content: center;
   align-items: center;
   z-index: -1;
-  background: #FA7462;
+  background: #ffffff;
 `
 
 export const SplashCom = styled.div`
@@ -32,14 +32,14 @@ export const LoginContainer = styled.div`
   width: 80%;
   max-width: 400px;
   gap: 30px;
-  border: 8px solid #fff;
+  border: 8px solid #ddd;
   padding: 40px 15px;
   box-sizing: border-box;
   .loginBtn {
     width: 100%;
     padding: 10px 35px;
     box-sizing: border-box;
-    background: #fff;
+    background: #f6f6f6;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@ export const LoginContainer = styled.div`
     }
   }
   .eng {
-    color: #fff;
+    color: #ccc;
   }
   .loginForm {
     display: flex;
@@ -112,7 +112,7 @@ export const LoginContainer = styled.div`
     }
     input[type='submit'] {
       border: none;
-      background: ${props => props.theme.green};
+      background: ${props => props.theme.pink2};
       border-radius: 10px;
       width: 100%;
       padding: 10px 0;
