@@ -2,7 +2,7 @@ import { HomeListContainer } from "../../style/homeStyled"
 import { useAppSelector } from "../../store/hook"
 import Swal from "sweetalert2"
 import { dbFunc } from "../../firebase/firebaseFunc"
-
+import { LinearProgress } from "@mui/material"
 const PenddingList = () => {
   const { accountList, loginUser } = useAppSelector(state => state.membersData)
   const handleAddAccount = (account: any) => {
@@ -50,17 +50,18 @@ const PenddingList = () => {
       <table>
         <thead>
           <tr>
-            <th>계정 승인대기</th>
+            <th className="pendding">계정 승인대기</th>
           </tr>
         </thead>
         <tbody>
           {penddingList.map((account, i) => (
             <tr key={i} onClick={() => handleAddAccount(account)}>
-              <td>{account[1]?.name}</td>
+              <td className="pendding">{account[1]?.name}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <LinearProgress color="inherit"  />
     </HomeListContainer> : null}</>
   )
 }

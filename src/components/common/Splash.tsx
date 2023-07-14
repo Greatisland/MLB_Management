@@ -1,14 +1,14 @@
 import { SplashContainer } from "../../style/globalStyled"
-import { LoginContainer } from "../../style/loginStyled"
-import LinearProgress from '@mui/material/LinearProgress'; 
+import { SplashCom } from "../../style/loginStyled"
+import { LinearProgress } from "@mui/material"
 
 const Splash = () => {
   return (
     <SplashContainer>
-      <LoginContainer>
+      <SplashCom>
         <h1 className="eng">MLB<br />Management</h1>
-        <LinearProgress color="secondary" />
-      </LoginContainer>
+        <LinearProgress />
+      </SplashCom>
     </SplashContainer>
   )
 }
