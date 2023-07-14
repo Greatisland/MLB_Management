@@ -12,7 +12,7 @@ const Footer = () => {
       <FooterContainer>
         <Link to='/infopage'><AiOutlineUser /><p>회원관리</p></Link>
         <Link to='/partpage'><AiFillEdit /><p>참석관리</p></Link>
-        <Link to='/memberfee'><GiMoneyStack /><p>회비관리</p></Link>
+        {loginUser.level >= 2 ? <Link to='/memberfee'><GiMoneyStack /><p>회비관리</p></Link> : null}
         <Link to='/secretboard'><AiFillDatabase /><p>칭찬게시판</p></Link>
         <Link to='/halloffame'><AiFillTrophy /><p>명예의 전당</p></Link>
       </FooterContainer> :
