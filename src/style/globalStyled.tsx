@@ -93,7 +93,6 @@ export const Btn = styled.div`
   &.memberAdd {
     margin: 0 0 0 auto;
   }
-
 `
 
 export const ScrollToTopBtnContainer = styled.div`

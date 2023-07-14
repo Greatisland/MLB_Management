@@ -102,7 +102,6 @@ const SecretBoardWrite = () => {
         return
       }
     })
-
   }
 
   return (
@@ -114,8 +113,8 @@ const SecretBoardWrite = () => {
           {id !== '0' ? <Btn onClick={handleDelete}><p>삭제</p></Btn> : null}
           <Btn><button><p>완료</p></button></Btn>
         </SecretBoardBtnContainer>
-        <p className="notice">비공개에 체크할 경우 일반회원은 이 글을 볼 수 없으며 작성자와 운영진만 볼 수 있습니다.
-        <br /><br />운영진에게 하고싶은 말이나 피드백 등을 자유롭게 남겨주세요! (예: 모임원 ooo님을 칭찬합니다)
+        <p className="notice">비공개에 체크할 경우 일반회원은 이 글을 볼 수 없으며 작성자 본인과 운영진만 볼 수 있습니다. 건의사항, 피드백, 아무 말 등 자유롭게 사용하세요.
+        <br /><br />
         </p>
 
         <input type="text" className="titleArea" maxLength={20} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="제목을 입력해주세요."/>

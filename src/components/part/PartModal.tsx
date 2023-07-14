@@ -34,11 +34,12 @@ const PartModal = () => {
               </tr>
               <tr>
                 <td>{dateCalc('flatMonth')}월 참석</td>
-                <td>{thisMember?.[1] ? (thisMember[1] as any)[`${dateCalc('flatMonth')}month`] : 0}</td>
+                <td>{thisMember?.[1] ? (thisMember[1] as any)[`${dateCalc('flatMonth')}month`] ? 
+                (thisMember[1] as any)[`${dateCalc('flatMonth')}month`] : 0 : 0}</td>
               </tr>
               <tr>
                 <td>벙 개설</td>
-                <td>{thisMember?.[1] ? thisMember[1].totalHost : '0'}</td>
+                <td>{thisMember?.[1] ? thisMember[1].totalHost ? thisMember[1].totalHost : 0 : 0}</td>
               </tr>
             </tbody>
           </table>
