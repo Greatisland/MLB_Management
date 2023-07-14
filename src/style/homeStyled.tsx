@@ -49,6 +49,9 @@ export const HomeListContainer = styled.div`
   .etc {
     color: ${props => props.theme.green};
   }
+  .pendding {
+    width: 100%;
+  }
 `
 
 export const BanTopContainer = styled.div`

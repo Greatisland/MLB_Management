@@ -14,6 +14,17 @@ export const LoginWrapper = styled.div`
 
 `
 
+export const SplashCom = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 8px solid #fff;
+  padding: 40px 15px;
+  gap: 30px;
+  .eng {
+    color: #fff;
+  }
+`
+
 export const LoginContainer = styled.div`
   position: relative;
   display: flex;
