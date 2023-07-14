@@ -20,6 +20,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 80%;
+  max-width: 400px;
   gap: 30px;
   border: 8px solid #fff;
   padding: 40px 15px;
