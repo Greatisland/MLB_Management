@@ -6,6 +6,7 @@ import { dbFunc } from "../firebase/firebaseFunc"
 import { useAppSelector } from "../store/hook"
 import Waiting from "../components/common/Waiting"
 
+
 const SecretBoard = () => {
   const [ board, setBoard ] = useState([])
   const { loginUser } = useAppSelector(state => state.membersData)

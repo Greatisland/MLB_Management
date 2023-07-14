@@ -104,6 +104,8 @@ export const ScrollToTopBtnContainer = styled.div`
   width: 30px;
   height: 30px;
   position: fixed;
+  z-index: 99;
+  background: #fff;
   bottom: 100px;
   right: 20px;
   svg {

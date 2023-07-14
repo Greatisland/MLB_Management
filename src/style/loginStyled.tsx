@@ -11,14 +11,13 @@ export const LoginWrapper = styled.div`
   align-items: center;
   z-index: -1;
   background: #FA7462;
-
 `
 
 export const SplashCom = styled.div`
   display: flex;
   flex-direction: column;
   border: 8px solid #fff;
-  padding: 40px 15px;
+  padding: 40px 25px;
   gap: 30px;
   .eng {
     color: #fff;
