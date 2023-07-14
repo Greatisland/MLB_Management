@@ -19,8 +19,7 @@ const MemberModal = () => {
     pay: false,
     special: sendMember.special || '',
     target: '',
-    break: sendMember.break || false,
-    approval: sendMember.approval || false
+    break: sendMember.break || false
   })
   
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,8 +35,7 @@ const MemberModal = () => {
       sendMember.etc !== state.etc ||
       sendMember.gender !== state.gender ||
       sendMember.special !== state.special ||
-      sendMember.break !== state.break ||
-      sendMember.approval !== state.approval
+      sendMember.break !== state.break
       )
       ){
         if(
