@@ -7,6 +7,7 @@ import { useAppSelector } from "../store/hook"
 import Footer from "../components/common/Footer"
 import Waiting from "../components/common/Waiting"
 
+
 const PartPage = () => {
   const { modalPartState, loginUser } = useAppSelector(state => state.membersData)
 

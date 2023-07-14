@@ -2,6 +2,7 @@ import { SplashContainer } from "../../style/globalStyled"
 import { SplashCom } from "../../style/loginStyled"
 import { LinearProgress } from "@mui/material"
 
+
 const Splash = () => {
   return (
     <SplashContainer>
