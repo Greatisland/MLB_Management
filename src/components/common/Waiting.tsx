@@ -1,8 +1,10 @@
+import { HomeContainer } from "../../style/homeStyled"
 const Waiting = () => {
   return (
-    <>
-    뮤라밸 회원인지 운영진이 확인 전까지는 어플리케이션을 사용할 수 없어요 ㅠㅠ
-    </>
+    <HomeContainer>
+    뮤라밸 회원인지 운영진 확인 대기중입니다. <br />
+    잠시만 기다려주세요...
+    </HomeContainer>
   )
 }
 

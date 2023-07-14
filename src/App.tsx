@@ -26,7 +26,7 @@ const App = () => {
     if(!loginUser.state){
       navigate('/')
     }
-  }, [navigate])
+  }, [navigate, loginUser.state])
 
   return (
     <ThemeProvider theme={originTheme}>

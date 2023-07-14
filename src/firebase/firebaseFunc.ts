@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut  } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update, get } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
 import { type Member, type Ban, type Hof } from '../store/slice'
@@ -181,7 +181,7 @@ export const authFunc = {
       signOut(auth)
       Swal.fire({
         icon: 'success',
-        title: '성공적으로 가입되었어요!',
+        title: '성공적으로 가입되었어요! 로그인을 진행해주세요.',
         showConfirmButton: false,
         timer: 800
       })
@@ -213,6 +213,19 @@ export const authFunc = {
   //로그아웃
   logout() {
     signOut(auth)
+  },
+
+  //비밀번호 재설정
+  resetPass(email: string) {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code
+      const errorMessage = error.message
+    })
   }
 }
 

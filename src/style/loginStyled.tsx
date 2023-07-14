@@ -18,20 +18,26 @@ export const LoginContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 80%;
   gap: 30px;
   border: 8px solid #fff;
-  padding: 40px 30px;
+  padding: 40px 15px;
+  box-sizing: border-box;
   .loginBtn {
+    width: 100%;
     padding: 10px 35px;
+    box-sizing: border-box;
     background: #fff;
     border-radius: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     font-size: 1rem;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     svg {
-      font-size: 1.7rem;
+      font-size: 1.4rem;
     }
 
   }
@@ -54,18 +60,29 @@ export const LoginContainer = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    width: 220px;
+    gap: 15px;
+    width: 100%;
     border: 2px solid #fff;
     border-radius: 10px;
     padding: 20px 10px;
     box-sizing: border-box;
+    .reset {
+      flex: 1;
+      color: #fff;
+      background: ${props => props.theme.brown};
+      border-radius: 10px;
+      padding: 5px 10px;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.7rem;
+    }
     input[type='text'] {
       width: 100%;
       border: none;
       background: #eee;
       border-radius: 10px;
-      padding: 5px 10px;
+      padding: 10px 10px;
       box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
       text-align: center;
       cursor: pointer;
@@ -76,7 +93,7 @@ export const LoginContainer = styled.div`
       border: none;
       background: #eee;
       border-radius: 10px;
-      padding: 5px 10px;
+      padding: 10px 10px;
       box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
       text-align: center;
       cursor: pointer;
@@ -84,12 +101,14 @@ export const LoginContainer = styled.div`
     }
     input[type='submit'] {
       border: none;
-      background: #FFA3A3;
+      background: ${props => props.theme.green};
       border-radius: 10px;
       width: 100%;
-      padding: 7px 0;
+      padding: 10px 0;
+      margin: 10px 0 0;
       color: #fff;
-      letter-spacing: 0.04rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.08rem;
       box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
       cursor: pointer;
     }

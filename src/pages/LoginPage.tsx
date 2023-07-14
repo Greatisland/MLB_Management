@@ -3,7 +3,6 @@ import { authFunc } from "../firebase/firebaseFunc"
 import { useState, useEffect, useRef } from "react"
 import { useAppSelector } from "../store/hook"
 import { useNavigate } from "react-router"
-import Footer from "../components/common/Footer"
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from "../firebase/firebaseFunc"
@@ -31,6 +30,10 @@ const LoginPage = () => {
     authFunc.loginGoogle()
   }
 
+  const handleReset = () => {
+
+  }
+
   return (
     <LoginWrapper>
       <LoginContainer>
@@ -42,6 +45,7 @@ const LoginPage = () => {
           <input type="text" ref={emailRef} placeholder="이메일을 입력하세요"></input>
           <input type="password" ref={pwRef} placeholder="비밀번호를 입력하세요"></input>
           <input type="submit" value="로그인" />
+          {/* <div className="reset" onClick={handleReset}>비밀번호 재설정</div> */}
         </form>
         <div className="loginBtn joinBtn" onClick={() => setIsModal(true)}>
           <BsPersonBoundingBox />
@@ -53,7 +57,6 @@ const LoginPage = () => {
         </div>
         </>
         : null}
-        <Footer />
       </LoginContainer>
     </LoginWrapper>
   )
