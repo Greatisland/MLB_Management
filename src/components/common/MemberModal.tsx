@@ -168,11 +168,6 @@ const MemberModal = () => {
             <HiddenCheckbox checked={state.break} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, break: e.target.checked})}/>
             <StyledCheckbox />
           </CheckboxContainer>
-          <p>회원 승인 여부</p>
-          <CheckboxContainer>
-            <HiddenCheckbox checked={state.approval} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, approval: e.target.checked})}/>
-            <StyledCheckbox />
-          </CheckboxContainer>
           </div>
           <input type="submit" value="완료"></input>
         </form>
