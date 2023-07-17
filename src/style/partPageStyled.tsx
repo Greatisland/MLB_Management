@@ -92,6 +92,22 @@ export const PartListContainer = styled.div`
     cursor: pointer;
   }
 `
+
+export const DangerText = styled.tr`
+  .tag::after {
+    content: '위험!'; // 텍스트 추가
+    font-size: 0.7rem; // 폰트 크기
+    color: #b22222; // 텍스트 색상
+    padding: 0.15rem 0.2rem; // 텍스트 주위의 패딩
+    margin-left: 0.2rem; // 텍스트 왼쪽의 마진
+    border-radius: 2rem; // 가상 요소의 모서리를 둥글게
+    background-color: #ffffff; // 가상 요소의 배경 색상
+    display: inline-block; // 가상 요소를 인라인 블록으로 만들어 텍스트를 중심으로 패딩이 적용되게 함
+  }
+  background: #f5eaea;
+`
+
+
 export const PartModalWrapper = styled.div`
   width: 100%;
   height: 100%;

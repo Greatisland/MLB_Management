@@ -16,6 +16,7 @@ export interface Member {
   total?: number
   totalHost?: number
   break?: boolean
+  danger?: boolean
   [key: `${number}month`]: number
   [key: `${number}monthHost`]: number
 }

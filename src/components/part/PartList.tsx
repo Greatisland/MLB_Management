@@ -1,12 +1,12 @@
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { sortState } from "../../store/slice"
-import { PartListContainer, SearchBarPart } from "../../style/partPageStyled"
+import { DangerText, PartListContainer, SearchBarPart } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
 import { togglePartModal, sendMember } from "../../store/slice"
 import { useState } from "react"
 
 const PartList = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser } = useAppSelector(state => state.membersData)
   //휴식기 제외
   const totalMember = membersData.filter(member => !member[1].break)
   const dispatch = useAppDispatch()
@@ -34,6 +34,13 @@ const PartList = () => {
         </thead>
         <tbody>
         {searchMembersData.map((member, i) => (
+          loginUser.level >= 2 && member[1].danger ?
+          <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
+            <td className="tag">{member[1].name}</td>
+            <td>{member[1].total || 0} 회</td>
+            <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
+            <td>{member[1].totalHost || 0} 회</td>
+          </DangerText> : 
           <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].name}</td>
             <td>{member[1].total || 0} 회</td>
