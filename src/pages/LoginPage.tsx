@@ -39,8 +39,6 @@ const LoginPage = () => {
     <LoginWrapper>
       <LoginContainer>
         <h1 className="eng">MLB<br />Management</h1>
-        {!auth.currentUser ? 
-        <>
         {isModal ? <JoinModal setIsModal={setIsModal}/> : null}
         <form className="loginForm" onSubmit={handleLogin}>
           <input type="text" ref={emailRef} placeholder="이메일을 입력하세요"></input>
@@ -56,8 +54,6 @@ const LoginPage = () => {
           <FcGoogle />
           구글 로그인
         </div>
-        </>
-        : null}
       </LoginContainer>
     </LoginWrapper>
   )
