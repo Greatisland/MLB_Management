@@ -5,7 +5,7 @@
     부산의 노래모임인 뮤라밸의 회원관리 어플리케이션
     <br />
     <a href="https://mlb-management.vercel.app"><strong>배포: Vercel</strong></a><br />
-    <a href="https://play.google.com/store/apps/details?id=app.vercel.mlb_management.twa&hl=ko&gl=US">구글 플레이스토어</a>
+    <a href="https://play.google.com/store/apps/details?id=app.vercel.mlb_management.twa&hl=ko&gl=US"><strong>구글 플레이스토어</strong></a>
   </p>
 </div>
 
