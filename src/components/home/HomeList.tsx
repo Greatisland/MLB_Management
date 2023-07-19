@@ -9,7 +9,6 @@ import Swal from "sweetalert2"
 const HomeList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
-
   const [ search, setSearch ] = useState('')
 
   //가입 승인상태이고 휴식기가 아닐 때

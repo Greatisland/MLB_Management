@@ -85,7 +85,7 @@ const JoinModal = ({setIsModal}: Props) => {
         <p>이메일 입력</p>
         <input type="text" ref={email} placeholder="ex) abc@naver.com" />
         <p>비밀번호 입력</p>
-        <input type="text" ref={pw} placeholder="비밀번호 입력" />
+        <input type="text" ref={pw} placeholder="비밀번호는 6자리 이상으로 작성해주세요." />
         <p>비밀번호 확인</p>
         <input type="text" ref={pwCheck} placeholder="비밀번호 확인" />
         <input type="submit" value={'가입하기'} />
