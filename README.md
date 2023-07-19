@@ -5,6 +5,7 @@
     부산의 노래모임인 뮤라밸의 회원관리 어플리케이션
     <br />
     <a href="https://mlb-management.vercel.app"><strong>배포: Vercel</strong></a>
+    <a href="https://play.google.com/store/apps/details?id=app.vercel.mlb_management.twa&hl=ko&gl=US">구글 플레이스토어 출시</a>
   </p>
 </div>
 
@@ -19,6 +20,7 @@
 - admin 계정을 분리하여 계정에 따라 보여지는 정보 및 접근할 수 있는 기능을 단계적으로 제한하였습니다.<br />
 - 백엔드 서버는 파이어베이스를 사용하여 구성하였습니다.<br />
 - 기본 베이스는 리액트이며, PWA(Progressive Web App)으로 제작하여 모바일 환경에서도 앱으로 사용 가능합니다.<br />
+- PWA를 바탕으로 구글 플레이스토어에 출시했습니다. (구글 플레이스토어 검색: 뮤라밸 매니지먼트)
 
 <br /><br /><br />
 
@@ -35,3 +37,5 @@
 
 ## 주요 기능
 
+
+## 트러블 슈팅
