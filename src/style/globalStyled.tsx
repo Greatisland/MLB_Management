@@ -100,16 +100,16 @@ export const ScrollToTopBtnContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   position: fixed;
   z-index: 99;
   background: #fff;
   bottom: 100px;
   right: 20px;
   svg {
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
   }
 `
 
