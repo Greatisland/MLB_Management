@@ -1,7 +1,9 @@
-import { HofCardContainer, StyledSwiper } from "../../style/hallOfFameStyled"
+import { HofCardContainer, SwiperContainer, StyledSwiperSlide } from "../../style/hallOfFameStyled"
 import { AiFillYoutube } from 'react-icons/ai';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import type { Hof } from "../../store/slice"
-import { SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 
 interface Props {
@@ -18,24 +20,27 @@ const HofCard = ({award, onClick} : Props) => {
           <h3>{award.eventName}</h3>
           <p>{(award.eventDate).replace(/-/g, '.')}</p>
         </div>
-        <div className="swiper_container">
-          <StyledSwiper
+        <SwiperContainer>
+          <Swiper
+            modules={[Navigation]} 
             spaceBetween={0}
             slidesPerView={1}
+            navigation={{
+              nextEl: '.right',
+              prevEl: '.left'
+            }}
             loop={true}
-            $imgurl={award.imgUrl}
-            $imgurl2={award.imgUrl2}
-            $imgurl3={award.imgUrl3}
-            $imgurl4={award.imgUrl4}
           >
-            <SwiperSlide className="one"></SwiperSlide>
-            {award.imgUrl2 ? <SwiperSlide className="two"></SwiperSlide> : null}
-            {award.imgUrl3 ? <SwiperSlide className="three"></SwiperSlide> : null}
-            {award.imgUrl4 ? <SwiperSlide className="four"></SwiperSlide> : null}
-          </StyledSwiper>
-        </div>
-
-
+            {award.imgUrl2 ? <>
+              <IoIosArrowBack className="left" />
+              <IoIosArrowForward className="right" /> 
+            </> : null}
+            <StyledSwiperSlide ImgUrl={award.imgUrl} />
+            {award.imgUrl2 ? <StyledSwiperSlide ImgUrl={award.imgUrl2} /> : null}
+            {award.imgUrl3 ? <StyledSwiperSlide ImgUrl={award.imgUrl3} /> : null}
+            {award.imgUrl4 ? <StyledSwiperSlide ImgUrl={award.imgUrl4} /> : null}
+          </Swiper>
+        </SwiperContainer>
       </div>
 
       <ul className="rightSide">
