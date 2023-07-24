@@ -1,4 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../store/hook"
+import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
 import { sortState } from "../../store/slice"
 import { DangerText, PartListContainer, SearchBarPart } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
@@ -14,7 +15,6 @@ const PartList = () => {
   const [ search, setSearch ] = useState('')
 
   const searchMembersData = totalMember.filter(member => member[1].name.includes(search))
-
 
   return (
     <>
@@ -36,13 +36,27 @@ const PartList = () => {
         {searchMembersData.map((member, i) => (
           loginUser.level >= 2 && member[1].danger ?
           <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
-            <td className="tag">{member[1].name}</td>
+            <td className="tag">{member[1].special === '모임장' ?
+                <StyledFaCrown bgColor='#ffac4c' /> : 
+                member[1].special === '운영진' ? 
+                <StyledFaStar bgColor='#fc7b7b' /> : null
+              }{member[1].name}</td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{member[1].totalHost || 0} 회</td>
           </DangerText> : 
           <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
-            <td>{member[1].name}</td>
+            <td>{member[1].special === '모임장' ?
+                <StyledFaCrown bgColor='#ffac4c' /> : 
+                member[1].special === '운영진' ? 
+                <StyledFaStar bgColor='#fc7b7b' /> : null}
+
+              {member[1].name}
+
+              {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 7 ?
+               <span className="tagHot">Hot!</span> : null}
+
+            </td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{member[1].totalHost || 0} 회</td>

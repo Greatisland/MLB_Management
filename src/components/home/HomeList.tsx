@@ -1,10 +1,9 @@
-import { HomeListContainer } from "../../style/homeStyled"
+import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal, sendMember, sortState } from "../../store/slice"
 import { SearchBarPart } from "../../style/partPageStyled"
 import { useState } from "react"
 import Swal from "sweetalert2"
-
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
@@ -60,7 +59,11 @@ const HomeList = () => {
         <tbody>
           {searchMembersData.map((member, i) => (
             <tr key={i} onClick={() => handleAddMember(member)}>
-              <td>{member[1].name}</td>
+              <td>{member[1].special === '모임장' ?
+                <StyledFaCrown bgColor='#ffac4c' /> : 
+                member[1].special === '운영진' ? 
+                <StyledFaStar bgColor='#fc7b7b' /> : null
+              }{member[1].name}</td>
               <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].year.slice(2)}</td>
               {loginUser.level >= 2 ?

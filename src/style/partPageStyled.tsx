@@ -85,24 +85,35 @@ export const PartListContainer = styled.div`
     border-bottom: 1px solid #fff;
   }
   th, td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
     width: 25%;
     padding: 8px 0;
     text-align: center;
     font-size: 0.85rem;
     cursor: pointer;
+    .tagHot {
+      font-size: 0.2rem; 
+      color: #fff;
+      padding: 0.05rem 0.2rem;
+      border-radius: 2rem;
+      background: ${props => props.theme.pink3};
+    }
   }
 `
 
 export const DangerText = styled.tr`
   .tag::after {
-    content: '위험!'; // 텍스트 추가
-    font-size: 0.7rem; // 폰트 크기
-    color: #b22222; // 텍스트 색상
-    padding: 0.15rem 0.2rem; // 텍스트 주위의 패딩
-    margin-left: 0.2rem; // 텍스트 왼쪽의 마진
-    border-radius: 2rem; // 가상 요소의 모서리를 둥글게
-    background-color: #ffffff; // 가상 요소의 배경 색상
-    display: inline-block; // 가상 요소를 인라인 블록으로 만들어 텍스트를 중심으로 패딩이 적용되게 함
+    content: '위험!'; 
+    font-size: 0.7rem; 
+    color: #b22222; 
+    padding: 0.15rem 0.2rem; 
+    margin-left: 0.2rem; 
+    border-radius: 2rem; 
+    background-color: #ffffff; 
+    display: inline-block; 
   }
   background: #f5eaea;
 `

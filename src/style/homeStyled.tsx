@@ -1,4 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { FaCrown, FaStar } from 'react-icons/fa';
+
 export const HomeContainer = styled.div`
   display: flex;
   max-width: 800px;
@@ -7,6 +9,25 @@ export const HomeContainer = styled.div`
   gap: 20px;
   padding: 20px 20px 90px 20px;
 `
+
+const svgStyles = css`
+  font-size: 0.7rem;
+`
+
+interface SvgProps {
+  bgColor: string
+}
+
+export const StyledFaCrown = styled(FaCrown)<SvgProps>`
+  ${svgStyles}
+  fill: ${props => props.bgColor};
+`
+
+export const StyledFaStar = styled(FaStar)<SvgProps>`
+  ${svgStyles}
+  fill: ${props => props.bgColor}
+`
+
 export const HomeListContainer = styled.div`
   border-radius: 30px;
   margin: 0 0 20px;
@@ -31,6 +52,10 @@ export const HomeListContainer = styled.div`
     border-bottom: 1px solid #fff;
   }
   th, td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
     width: 25%;
     padding: 8px 0;
     text-align: center;
