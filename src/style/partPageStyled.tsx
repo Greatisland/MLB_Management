@@ -95,7 +95,7 @@ export const PartListContainer = styled.div`
     font-size: 0.85rem;
     cursor: pointer;
     .tagHot {
-      font-size: 0.2rem; 
+      font-size: 0.5rem; 
       color: #fff;
       padding: 0.05rem 0.2rem;
       border-radius: 2rem;
@@ -107,12 +107,12 @@ export const PartListContainer = styled.div`
 export const DangerText = styled.tr`
   .tag::after {
     content: '위험!'; 
-    font-size: 0.7rem; 
+    font-size: 0.5rem; 
     color: #b22222; 
-    padding: 0.15rem 0.2rem; 
+    padding: 0.05rem 0.2rem;
     margin-left: 0.2rem; 
     border-radius: 2rem; 
-    background-color: #ffffff; 
+    background: #ffffff; 
     display: inline-block; 
   }
   background: #f5eaea;
