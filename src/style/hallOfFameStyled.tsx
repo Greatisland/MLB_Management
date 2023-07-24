@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Swiper } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 
 export const HallOfFameContainer = styled.div`
   display: flex;
@@ -14,12 +14,6 @@ export const HallOfFameContainer = styled.div`
 export const HofListContainer = styled.div`
   display: grid;
 `
-interface Imgurl {
-  $imgurl: string
-  $imgurl2?: string
-  $imgurl3?: string
-  $imgurl4?: string
-}
 
 export const HofCardContainer = styled.div`
   display: flex;
@@ -58,9 +52,7 @@ export const HofCardContainer = styled.div`
         color: #c5a26e;
       }
     }
-    .swiper_container {
-      width: 100%;
-    }
+
     /* .imgCon {
       width: 100%;
       @media (min-width: 768px){
@@ -274,39 +266,46 @@ export const HofModalContainer = styled.div`
   }
 `
 
-export const StyledSwiper = styled(Swiper)<Imgurl>`
+export const SwiperContainer = styled.div`
   width: 100%;
-  overflow: hidden;
+  position: relative;
   @media (min-width: 768px){
     width: 42vw;
     max-width: 500px;
   }
-  .swiper-wrapper {
-    width: 100%;
+  svg {
+    position: absolute;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.3);
+    fill: #fff;
+    z-index: 999;
+    top: calc(50% - 10px);
+    &.left {
+      left: 10px;
+    }
+    &.right {
+      right: 10px;
+    }
   }
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
+`
 
-    width: 100% !important;
-    height: 60vw;
-    max-height: 450px;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-    &.one {
-      background: #333 url(${props => props.$imgurl}) center center/cover;
-    }
-    &.two {
-      background: #333 url(${props => props.$imgurl2}) center center/cover;
-    }
-    &.three {
-      background: #333 url(${props => props.$imgurl3}) center center/cover;
-    }
-    &.four {
-      background: #333 url(${props => props.$imgurl4}) center center/cover;
-    }
-  }
-`;
+interface ImgUrl {
+  ImgUrl: string
+}
+
+export const StyledSwiperSlide = styled(SwiperSlide)<ImgUrl>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+
+  width: 100% !important;
+  height: 60vw;
+  max-height: 450px;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
+  background: #333 url(${props => props.ImgUrl}) center center/cover;
+  
+`
