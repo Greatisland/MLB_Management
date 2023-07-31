@@ -18,11 +18,11 @@ const PartModal = () => {
   }
 
   //평균률 확인
-  const averCheck = () => {
+  const averCheck = (member) => {
     let aver = {total: 0, count: 0, result: 0}
 
     //가입월 확인
-    const thisDate = new Date(thisMember[1].join)
+    const thisDate = new Date(member.join)
     const date = new Date()
     let joinMonth = 0
     if(thisDate.getFullYear() === date.getFullYear()){
@@ -31,11 +31,11 @@ const PartModal = () => {
   
     //계산
     for (let i = joinMonth; i <= Number(dateCalc('flatMonth')); i++) {
-      const monthValue = thisMember[1][`${i}month` as keyof Member]
+      const monthValue = member[`${i}month` as keyof Member]
       aver.total += (monthValue ? Number(monthValue) : 0)
       aver.count++
     }
-
+    
     //평균값이 첫재 소수점까지만 보이도록 
     return Math.floor((aver.result = aver.total / aver.count) * 10) / 10
   }
@@ -43,7 +43,7 @@ const PartModal = () => {
   return (
     <PartModalWrapper>
       <PartModalContainer>
-        <ChartGraph member={thisMember[1]} aver={averCheck()}/>
+        <ChartGraph member={thisMember[1]} aver={averCheck(thisMember[1])}/>
         <div className="textArea">
           <table>
             <thead>
@@ -58,7 +58,7 @@ const PartModal = () => {
               </tr>
               <tr>
                 <td>펑균 참석율</td>
-                <td>{averCheck()}</td>
+                <td>{averCheck(thisMember[1])}</td>
               </tr>
               <tr>
                 <td>벙 개설횟수</td>
