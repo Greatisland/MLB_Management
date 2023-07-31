@@ -21,24 +21,26 @@ import { Line } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import type { Member } from '../../store/slice';
 
-const ChartGraph = ({ member }: { member: Member }) => {
+const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
 
   //참여횟수
   let part = []
   //개설횟수
   let open = []
+  //평균
+  let averList = new Array(12).fill(aver)
 
   //계산
   for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
-    const monthValue = member[`${i}month` as keyof Member];
-    const monthHostValue = member[`${i}monthHost` as keyof Member];
-
-    part.push(monthValue ? Number(monthValue) : 0);
-    open.push(monthHostValue ? Number(monthHostValue) : 0);
+    const monthValue = member[`${i}month` as keyof Member]
+    const monthHostValue = member[`${i}monthHost` as keyof Member]
+    
+    part.push(monthValue ? Number(monthValue) : 0)
+    open.push(monthHostValue ? Number(monthHostValue) : 0)
   }
 
   //x축
-  const basicLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+  const basicLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
   const labels = basicLabels.slice(0, Number(dateCalc('flatMonth')))
   
   
@@ -81,6 +83,12 @@ const ChartGraph = ({ member }: { member: Member }) => {
         data: open,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+      {
+        label: '평균 참석율',
+        data: averList,
+        borderColor: 'rgb(255, 99, 132, 0.1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.3)',
       },
     ],
   };
