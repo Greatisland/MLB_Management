@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
 import { sortState } from "../../store/slice"
-import { DangerText, PartListContainer, SearchBarPart } from "../../style/partPageStyled"
+import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
 import { averCheck } from "../common/averCheck"
 import { togglePartModal, sendMember } from "../../store/slice"
@@ -17,11 +17,27 @@ const PartList = () => {
 
   const searchMembersData = totalMember.filter(member => member[1].name.includes(search))
 
+  const date = new Date()
+  const currentYear = date.getFullYear()
+  const currentMonth = date.getMonth() + 1
+
   return (
     <>
     <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
       <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."/>
     </SearchBarPart>
+    <TagExplain>
+      <span className="exp">모임장</span>
+      <StyledFaCrown bgColor='#ffac4c' className='iconExp' />
+      <span className="exp">운영진</span>
+      <StyledFaStar bgColor='#fc7b7b' className='iconExp' />
+      <span className="exp">참석 상위권</span>
+      <span className="tagHot">Hot!</span>
+      <span className="exp">신입</span>
+      <span className="tagNew">New!</span>
+      <span className="exp">복귀</span>
+      <span className="tagBack">Back!</span>
+    </TagExplain>
     <PartListContainer>
 
       <table>
@@ -37,8 +53,12 @@ const PartList = () => {
         <tbody>
         {searchMembersData.map((member, i) => {
           let memberJoin = new Date(member[1].join)
+          let memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
           let joinMonth = memberJoin.getMonth() + 1
           let joinYear = String(memberJoin.getFullYear())
+          let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
+          let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
+
           if(joinYear === dateCalc('year') && (
             Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
           )){}
@@ -78,8 +98,12 @@ const PartList = () => {
                 (joinYear === dateCalc('year') && (
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
                 )) ? <span className="tagNew">New!</span> : null
+              }{
+                comeYear === currentYear && comeMonth === currentMonth ? 
+                <span className="tagBack">Back!</span> :
+                null
               }
-              {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 7 ?
+              {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 6 ?
                <span className="tagHot">Hot!</span> : null}
               </div>
             </td>
