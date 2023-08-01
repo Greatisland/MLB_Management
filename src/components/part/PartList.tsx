@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
 import { sortState } from "../../store/slice"
-import { DangerText, PartListContainer, SearchBarPart, NewfaceText } from "../../style/partPageStyled"
+import { DangerText, PartListContainer, SearchBarPart } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
 import { averCheck } from "../common/averCheck"
 import { togglePartModal, sendMember } from "../../store/slice"
