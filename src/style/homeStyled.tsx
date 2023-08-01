@@ -21,11 +21,17 @@ interface SvgProps {
 export const StyledFaCrown = styled(FaCrown)<SvgProps>`
   ${svgStyles}
   fill: ${props => props.bgColor};
+  &.iconExp {
+    margin: 0 10px 0 0;
+  }
 `
 
 export const StyledFaStar = styled(FaStar)<SvgProps>`
   ${svgStyles}
-  fill: ${props => props.bgColor}
+  fill: ${props => props.bgColor};
+  &.iconExp {
+    margin: 0 10px 0 0;
+  }
 `
 
 export const HomeListContainer = styled.div`

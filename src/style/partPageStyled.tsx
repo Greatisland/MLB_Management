@@ -68,6 +68,14 @@ export const PartResultContainer = styled.div`
   }
 `
 
+const tagStyles = css`
+  font-size: 0.5rem; 
+  color: #fff;
+  padding: 0.05rem 0.2rem;
+  border-radius: 2rem; 
+`
+
+
 export const PartListContainer = styled.div`
   ${componentStyles}
   flex-direction: column;
@@ -105,24 +113,20 @@ export const PartListContainer = styled.div`
       flex-wrap: wrap;
       align-items: center;
       .tagHot {
-        font-size: 0.5rem; 
-        color: #fff;
-        padding: 0.05rem 0.2rem;
-        border-radius: 2rem;
+        ${tagStyles}
         background: ${props => props.theme.pink3};
       }
       .tagNew {
-        font-size: 0.5rem; 
-        color: #fff;
-        padding: 0.05rem 0.2rem;
-        border-radius: 2rem; 
+        ${tagStyles}
         background: ${props => props.theme.green};
       }
+      .tagBack {
+        ${tagStyles} 
+        background: ${props => props.theme.brown};
+      }
       .tagDanger {
-        font-size: 0.5rem; 
+        ${tagStyles}
         color: #b22222; 
-        padding: 0.05rem 0.2rem;
-        border-radius: 2rem; 
         background: #ffffff; 
       }
     }
@@ -242,5 +246,35 @@ export const SearchBarPart = styled.form`
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transform: scale(1.02)
     }
+  }
+`
+
+export const TagExplain = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  .exp {
+    font-size: 0.8rem;
+  }
+  .tagHot {
+    ${tagStyles}
+    margin: 0 10px 0 0;
+    background: ${props => props.theme.pink3};
+  }
+  .tagNew {
+    ${tagStyles}
+    margin: 0 10px 0 0;
+    background: ${props => props.theme.green};
+  }
+  .tagBack {
+    ${tagStyles}
+    margin: 0 10px 0 0;
+    background: ${props => props.theme.brown};
+  }
+  .tagDanger {
+    ${tagStyles}
+    margin: 0 10px 0 0;
+    color: #b22222; 
+    background: #ffffff; 
   }
 `
