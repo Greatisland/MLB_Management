@@ -69,6 +69,7 @@ export interface Board {
     nickName: string
     contents: string
     date: string
+    uid: string
   }[]
 }
 
