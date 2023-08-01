@@ -5,6 +5,16 @@ export const GlobalStyle = createGlobalStyle`
   * {margin: 0; padding: 0; color: #333;}
   a {text-decoration: none;}
   ul, ol {list-style: none;}
+  html, body {
+    scrollbar-width: thin; /* 스크롤바 너비 */
+    &::-webkit-scrollbar {
+      width: 3px; /* 스크롤바 너비 */
+      background: rgba(0, 0, 0, 0); /* 스크롤바 배경색 */
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #FFA3A3; /* 스크롤바 색상 */
+    }
+  }
   html, body, button, input, select {
     font-family: 'Noto Sans KR', sans-serif;
   }

@@ -35,25 +35,50 @@ const PartList = () => {
           </tr>
         </thead>
         <tbody>
-        {searchMembersData.map((member, i) => (
+        {searchMembersData.map((member, i) => {
+          let memberJoin = new Date(member[1].join)
+          let joinMonth = memberJoin.getMonth() + 1
+          let joinYear = String(memberJoin.getFullYear())
+          if(joinYear === dateCalc('year') && (
+            Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
+          )){}
+          return (
           loginUser.level >= 2 && member[1].danger ?
           <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
-            <td className="tag">{member[1].special === '모임장' ?
+            <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null
-              }{member[1].name}</td>
+                
+              }{member[1].name}
+              <div className="tagContainer">
+                <span className="tagDanger">위험!</span>
+              {//신입태그
+                (joinYear === dateCalc('year') && (
+                  Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
+                )) ? <span className="tagNew">New!</span> : null
+              }</div></td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{averCheck(member[1])} 회</td>
             {/* <td>{member[1].totalHost || 0} 회</td> */}
-          </DangerText> : 
+          </DangerText>
+
+          :
+
           <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null}
               {member[1].name}
+              <div className="tagContainer">
+              {
+                //신입태그
+                (joinYear === dateCalc('year') && (
+                  Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
+                )) ? <span className="tagNew">New!</span> : null
+              }</div>
               {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 7 ?
                <span className="tagHot">Hot!</span> : null}
             </td>
@@ -62,7 +87,7 @@ const PartList = () => {
             <td>{averCheck(member[1])} 회</td>
             {/* <td>{member[1].totalHost || 0} 회</td> */}
           </tr>
-        ))}
+        )})}
         </tbody>
       </table>
     </PartListContainer>
