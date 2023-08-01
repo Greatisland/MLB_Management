@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { dateCalc } from "../components/common/dateCalc"
+import { averCheck } from "../components/common/averCheck"
 
 export interface Member {
   id?: string
   name: string
   join: string
+  comeback?: string
   year: string
   gender: string
   etc: string
@@ -92,6 +94,7 @@ interface InitialState {
     yearPart: number
     monthPart: number
     yearHost: number
+    aver: number
   }
   loginUser: {
     uid: string
@@ -118,6 +121,7 @@ const initialState: InitialState = {
     etc: '',
     special: '',
     break: false,
+    comeback: ''
   },
   sendBan: {
     id: '',
@@ -135,7 +139,8 @@ const initialState: InitialState = {
     etc: 1,
     yearPart: 1,
     monthPart: 1,
-    yearHost: 1
+    yearHost: 1,
+    aver: 1
   },
   loginUser: {
     uid: '',
@@ -171,7 +176,8 @@ const membersDataSlice = createSlice({
             etc: 1,
             yearPart: 1,
             monthPart: 1,
-            yearHost: 1
+            yearHost: 1,
+            aver: 1
         }
       }
   
@@ -229,12 +235,25 @@ const membersDataSlice = createSlice({
           return (Number(bPart) - Number(aPart)) * state.sortDirection.yearHost
         })
         state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
-      } 
+      } else if (action.payload === 'aver') {
+        state.membersData.sort((a, b) => {
+          return (averCheck(b[1]) - averCheck(a[1])) * state.sortDirection.aver
+        })
+        state.sortDirection.aver = -state.sortDirection.aver
+      }
     },
 
     //모달 
-    toggleModal (state) {state.modalState = !state.modalState},
-    togglePartModal (state) {state.modalPartState = !state.modalPartState},
+    toggleModal (state) {
+      state.modalState = !state.modalState
+      if(state.modalState){document.body.classList.add('no-scroll')}
+      else{document.body.classList.remove('no-scroll')}
+    },
+    togglePartModal (state) {
+      state.modalPartState = !state.modalPartState
+      if(state.modalPartState){document.body.classList.add('no-scroll')}
+      else{document.body.classList.remove('no-scroll')}
+    },
 
     //모달 전송
     sendMember (state, action) {state.sendMember = action.payload},

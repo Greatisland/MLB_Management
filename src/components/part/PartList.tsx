@@ -3,6 +3,7 @@ import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
 import { sortState } from "../../store/slice"
 import { DangerText, PartListContainer, SearchBarPart } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
+import { averCheck } from "../common/averCheck"
 import { togglePartModal, sendMember } from "../../store/slice"
 import { useState } from "react"
 
@@ -29,7 +30,8 @@ const PartList = () => {
             <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
             <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
             <th onClick={() => {dispatch(sortState('monthPart'))}}>이번달 참석</th>
-            <th onClick={() => {dispatch(sortState('yearHost'))}}>벙 개설</th>
+            <th onClick={() => {dispatch(sortState('aver'))}}>평균 참석</th>
+            {/* <th onClick={() => {dispatch(sortState('yearHost'))}}>벙 개설</th> */}
           </tr>
         </thead>
         <tbody>
@@ -43,23 +45,22 @@ const PartList = () => {
               }{member[1].name}</td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
-            <td>{member[1].totalHost || 0} 회</td>
+            <td>{averCheck(member[1])} 회</td>
+            {/* <td>{member[1].totalHost || 0} 회</td> */}
           </DangerText> : 
           <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null}
-
               {member[1].name}
-
               {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 7 ?
                <span className="tagHot">Hot!</span> : null}
-
             </td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
-            <td>{member[1].totalHost || 0} 회</td>
+            <td>{averCheck(member[1])} 회</td>
+            {/* <td>{member[1].totalHost || 0} 회</td> */}
           </tr>
         ))}
         </tbody>

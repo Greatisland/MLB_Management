@@ -2,35 +2,17 @@ import { useAppSelector } from "../../store/hook"
 import { PartResultContainer } from "../../style/partPageStyled"
 import { useState, useEffect } from "react"
 import { dateCalc } from "../common/dateCalc"
+import { averCheck } from "../common/averCheck"
 import type { Member } from "../../store/slice"
+
+interface NewProp {
+  aver: number
+}
 
 const PartResult = () => {
   const { membersData } = useAppSelector(state => state.membersData)
-  let [ rising, setRising ] = useState<[string, Member][]>([])
+  let [ rising, setRising ] = useState<(Member & NewProp)[]>([])
   let [ hosting, setHosting ] = useState<[string, Member][]>([])
-
-  //평균률 확인
-  const averCheck = (member) => {
-    let aver = {total: 0, count: 0, result: 0}
-
-    //가입월 확인
-    const thisDate = new Date(member.join)
-    const date = new Date()
-    let joinMonth = 0
-    if(thisDate.getFullYear() === date.getFullYear()){
-      joinMonth = thisDate.getMonth() + 1
-    }
-  
-    //계산
-    for (let i = joinMonth; i <= Number(dateCalc('flatMonth')); i++) {
-      const monthValue = member[`${i}month` as keyof Member]
-      aver.total += (monthValue ? Number(monthValue) : 0)
-      aver.count++
-    }
-    
-    //평균값이 첫재 소수점까지만 보이도록 
-    return Math.floor((aver.result = aver.total / aver.count) * 10) / 10
-  }
 
   useEffect(() => {
     let filterMember = [...membersData].filter((member) => {
@@ -42,11 +24,11 @@ const PartResult = () => {
       )){return member}
     }).map(member => {
       // 새로운 객체를 생성하여 원본 데이터를 수정하지 않도록 함
-      let newMember = [member[0], {...member[1]}]
-      newMember[1].aver = averCheck(newMember[1])
+      let newMember: Member & NewProp = {...member[1], aver: 0}
+      newMember.aver = averCheck(newMember)
       return newMember
     }).sort((a, b) => {
-      return (b[1].aver || 0) - (a[1].aver || 0)
+      return (b.aver || 0) - (a.aver || 0)
     })
 
     let filterMemberHost = [...membersData].sort((a, b) => {
@@ -63,16 +45,16 @@ const PartResult = () => {
         <li>최고의 벙주</li>
       </ul>
       <ul>
-        <li>{rising[0] && rising[0][1] ? `${rising[0][1].name} - 평균 ${rising[0][1].aver}회` : 'N/A'}</li>
-        <li>{hosting[0] && hosting[0][1] ? `${hosting[0][1].name} - ${hosting[0][1].totalHost}회 개설!` : 'N/A'}</li>
+        <li>{rising[0] ? <>{rising[0].name} <span>평균 {rising[0].aver}회</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[0][1] ? <>{hosting[0][1].name} <span>{hosting[0][1].totalHost}회 개설!</span></> : 'N/A'}</li>
       </ul>
       <ul>
-        <li>{rising[1] && rising[1][1] ? `${rising[1][1].name} - 평균 ${rising[1][1].aver}회` : 'N/A'}</li>
-        <li>{hosting[1] && hosting[1][1] ? `${hosting[1][1].name} - ${hosting[1][1].totalHost}회 개설!` : 'N/A'}</li>
+        <li>{rising[1] ? <>{rising[1].name} <span>평균 {rising[1].aver}회</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[1][1] ? <>{hosting[1][1].name} <span>{hosting[1][1].totalHost}회 개설!</span></> : 'N/A'}</li>
       </ul>
       <ul>
-        <li>{rising[2] && rising[2][1] ? `${rising[2][1].name} - 평균 ${rising[2][1].aver}회` : 'N/A'}</li>
-        <li>{hosting[2] && hosting[2][1] ? `${hosting[2][1].name} - ${hosting[2][1].totalHost}회 개설!` : 'N/A'}</li>
+        <li>{rising[2] ? <>{rising[2].name} <span>평균 {rising[2].aver}회</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[2][1] ? <>{hosting[2][1].name} <span>{hosting[2][1].totalHost}회 개설!</span></> : 'N/A'}</li>
       </ul>
     </PartResultContainer>
   )
