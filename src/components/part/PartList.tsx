@@ -99,7 +99,7 @@ const PartList = () => {
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
                 )) ? <span className="tagNew">New!</span> : null
               }{
-                comeYear === currentYear && (comeMonth === currentMonth || comeMonth + 1 === currentMonth) ? 
+                comeYear === currentYear && (comeMonth = currentMonth || comeMonth + 1 === currentMonth || comeMonth + 2 === currentMonth) ? 
                 <span className="tagBack">Back!</span> :
                 null
               }
