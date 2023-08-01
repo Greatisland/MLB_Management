@@ -98,30 +98,41 @@ export const PartListContainer = styled.div`
     text-align: center;
     font-size: 0.85rem;
     cursor: pointer;
-    .tagHot {
-      font-size: 0.5rem; 
-      color: #fff;
-      padding: 0.05rem 0.2rem;
-      border-radius: 2rem;
-      background: ${props => props.theme.pink3};
+    .tagContainer {
+      max-width: 31px;
+      gap: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .tagHot {
+        font-size: 0.5rem; 
+        color: #fff;
+        padding: 0.05rem 0.2rem;
+        border-radius: 2rem;
+        background: ${props => props.theme.pink3};
+      }
+      .tagNew {
+        font-size: 0.5rem; 
+        color: #fff;
+        padding: 0.05rem 0.2rem;
+        border-radius: 2rem; 
+        background: ${props => props.theme.green};
+      }
+      .tagDanger {
+        font-size: 0.5rem; 
+        color: #b22222; 
+        padding: 0.05rem 0.2rem;
+        border-radius: 2rem; 
+        background: #ffffff; 
+      }
     }
+
   }
 `
 
 export const DangerText = styled.tr`
-  .tag::after {
-    content: '위험!'; 
-    font-size: 0.5rem; 
-    color: #b22222; 
-    padding: 0.05rem 0.2rem;
-    margin-left: 0.2rem; 
-    border-radius: 2rem; 
-    background: #ffffff; 
-    display: inline-block; 
-  }
   background: #f5eaea;
 `
-
 
 export const PartModalWrapper = styled.div`
   width: 100%;

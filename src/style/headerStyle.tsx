@@ -63,7 +63,6 @@ export const  JoinModalWrapper = styled.div`
   &::-webkit-scrollbar-thumb {
     background: #FFA3A3; /* 스크롤바 색상 */
   }
-
 `
 
 export const  JoinModalContainer = styled.div`
