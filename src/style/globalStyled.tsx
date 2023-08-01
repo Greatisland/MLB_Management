@@ -8,7 +8,10 @@ export const GlobalStyle = createGlobalStyle`
   html, body, button, input, select {
     font-family: 'Noto Sans KR', sans-serif;
   }
-
+  .no-scroll {
+    overflow: hidden;
+    height: 100%;
+  }
   .eng {
     font-family: 'Montserrat', sans-serif;
   }

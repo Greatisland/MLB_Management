@@ -1,5 +1,5 @@
 import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle"
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal } from "../../store/slice"
 import Swal from "sweetalert2"
@@ -13,6 +13,7 @@ const MemberModal = () => {
   const [state, setState] = useState({
     name: sendMember.name || '',
     join: sendMember.join || '',
+    comeback: sendMember.comeback || '',
     year: sendMember.year || '',
     etc: sendMember.etc || '',
     gender: sendMember.gender || '',
@@ -21,7 +22,19 @@ const MemberModal = () => {
     target: '',
     break: sendMember.break || false
   })
-  
+
+  //휴식기 체크박스 해제할 경우 오늘 날짜로 복귀일 추가
+  useEffect(() => {
+    if(sendMember.break !== state.break && !state.break){
+      const currentDate: Date = new Date()
+      const year: number = currentDate.getFullYear()
+      let month: string = (currentDate.getMonth() + 1).toString().padStart(2, '0')
+      let date: string = currentDate.getDate().toString().padStart(2, '0')
+      const formattedDate: string = `${year}-${month}-${date}`
+      setState({...state, comeback: formattedDate})
+    }
+  }, [state.break])
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -35,9 +48,11 @@ const MemberModal = () => {
       sendMember.etc !== state.etc ||
       sendMember.gender !== state.gender ||
       sendMember.special !== state.special ||
-      sendMember.break !== state.break
+      sendMember.break !== state.break ||
+      sendMember.comeback !== state.comeback
       )
       ){
+        //수정할 때 정보를 모두 채운 경우
         if(
           state.name !== '' &&
           state.join !== '' &&
@@ -162,6 +177,11 @@ const MemberModal = () => {
             <option value="모임장">모임장</option>
             <option value="운영진">운영진</option>
           </select>
+          {sendMember.comeback ? 
+          <>
+          <p>복귀일</p>
+          <input type="date" value={state.comeback} onChange={e => setState({...state, comeback: e.target.value})} placeholder="날짜를 선택해주세요."></input>
+          </> : null}
           <div className="checkFlex">
           <p>휴식기 여부</p>
           <CheckboxContainer>

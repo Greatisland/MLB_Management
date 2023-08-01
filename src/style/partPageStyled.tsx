@@ -50,9 +50,13 @@ export const PartResultContainer = styled.div`
     justify-content: space-between;
     li {
       flex: 1;
-      color: #777;
+      color: #666;
       font-size: 0.8rem;
       text-align: center;
+      span {
+        font-size: 0.7rem;
+        color: #999;
+      }
     }
   }
 
@@ -124,12 +128,21 @@ export const PartModalWrapper = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
+  overflow-y: auto;
   z-index: 2;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  scrollbar-width: thin; /* 스크롤바 너비 */
+  &::-webkit-scrollbar {
+    width: 3px; /* 스크롤바 너비 */
+    background: rgba(0, 0, 0, 0); /* 스크롤바 배경색 */
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #FFA3A3; /* 스크롤바 색상 */
+  }
 `
 
 export const PartModalContainer = styled.div`
@@ -140,6 +153,7 @@ export const PartModalContainer = styled.div`
   scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;
   border-radius: 30px;
+  margin: auto 0;
   gap: 20px;
   padding: 40px 20px;
   display: flex;

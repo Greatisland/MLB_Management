@@ -48,26 +48,14 @@ export const  JoinModalWrapper = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
+  overflow-y: auto;
   z-index: 2;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-`
-
-export const  JoinModalContainer = styled.div`
-  width: 80%;
-  max-width: 300px;
-  max-height: 700px;
-  overflow-y: scroll;
+  align-items: flex-start;
   scrollbar-width: thin; /* 스크롤바 너비 */
-  background: #fff;
-  border-radius: 30px;
-  gap: 20px;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
   &::-webkit-scrollbar {
     width: 3px; /* 스크롤바 너비 */
     background: rgba(0, 0, 0, 0); /* 스크롤바 배경색 */
@@ -76,6 +64,19 @@ export const  JoinModalContainer = styled.div`
     background: #FFA3A3; /* 스크롤바 색상 */
   }
 
+`
+
+export const  JoinModalContainer = styled.div`
+  width: 80%;
+  max-width: 300px;
+  max-height: 700px;
+  background: #fff;
+  border-radius: 30px;
+  gap: 20px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
   form {
     display: flex;
     flex-direction: column;

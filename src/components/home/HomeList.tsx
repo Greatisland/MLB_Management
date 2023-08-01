@@ -27,7 +27,8 @@ const HomeList = () => {
           state: true,
           special: member[1].special,
           break: member[1].break || false,
-          approval: member[1].approval || false
+          approval: member[1].approval || false,
+          comeback: member[1].comeback || ''
         }
       ))
     } else {

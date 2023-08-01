@@ -21,7 +21,8 @@ const BreakList = () => {
           etc: member[1].etc || '',
           state: true,
           special: member[1].special,
-          break: member[1].break || false
+          break: member[1].break || false,
+          comeback: member[1].comeback || ''
         }
       ))
     } else {
