@@ -78,9 +78,10 @@ const PartList = () => {
                 (joinYear === dateCalc('year') && (
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
                 )) ? <span className="tagNew">New!</span> : null
-              }</div>
+              }
               {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 7 ?
                <span className="tagHot">Hot!</span> : null}
+              </div>
             </td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
