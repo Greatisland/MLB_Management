@@ -252,9 +252,11 @@ export const SearchBarPart = styled.form`
 export const TagExplain = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 3px;
   .exp {
     font-size: 0.8rem;
+    letter-spacing: -0.04rem;
   }
   .tagHot {
     ${tagStyles}
