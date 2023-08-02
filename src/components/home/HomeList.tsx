@@ -1,7 +1,9 @@
 import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
+import { TagExplain } from "../../style/partPageStyled"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal, sendMember, sortState } from "../../store/slice"
 import { SearchBarPart } from "../../style/partPageStyled"
+import { dateCalc } from "../common/dateCalc"
 import { useState } from "react"
 import Swal from "sweetalert2"
 
@@ -41,11 +43,23 @@ const HomeList = () => {
     }
   }
 
+  const date = new Date()
+  const currentYear = date.getFullYear()
+  const currentMonth = date.getMonth() + 1
+
   return (
     <>
     <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
       <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."></input>
     </SearchBarPart>
+    <TagExplain>
+      <span className="exp">모임장
+      <StyledFaCrown bgColor='#ffac4c' className='iconExp' />
+      </span>
+      <span className="exp">운영진
+      <StyledFaStar bgColor='#fc7b7b' className='iconExp' />
+      </span>
+    </TagExplain>
     <HomeListContainer>
       <table>
         <thead>
@@ -58,19 +72,42 @@ const HomeList = () => {
           </tr>
         </thead>
         <tbody>
-          {searchMembersData.map((member, i) => (
+          {searchMembersData.map((member, i) => {
+            let memberJoin = new Date(member[1].join)
+            let memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
+            let joinMonth = memberJoin.getMonth() + 1
+            let joinYear = String(memberJoin.getFullYear())
+            let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
+            let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
+
+            return (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null
-              }{member[1].name}</td>
+              }{member[1].name}
+                <div className="tagContainer">
+                {
+                  //신입태그
+                  (joinYear === dateCalc('year') && (
+                    Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
+                  )) ? <span className="tagNew">신입</span> : null
+                }{
+                  comeYear === currentYear && (comeMonth === currentMonth || comeMonth + 1 === currentMonth || comeMonth + 2 === currentMonth) ? 
+                  <span className="tagBack">복귀</span> :
+                  null
+                }
+                {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 5 ?
+                <span className="tagHot">Hot</span> : null}
+                </div>
+              </td>
               <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].year.slice(2)}</td>
               {loginUser.level >= 2 ?
               <td>{member[1].etc || ''}</td> : null}
             </tr>
-          ))}
+          )})}
         </tbody>
       </table>
     </HomeListContainer>

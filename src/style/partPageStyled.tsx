@@ -252,7 +252,6 @@ export const SearchBarPart = styled.form`
 `
 
 export const TagExplain = styled.div`
-  /* ${componentStyles} */
   padding: 5px;
   display: flex;
   align-items: center;

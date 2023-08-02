@@ -33,18 +33,8 @@ const PartList = () => {
       <span className="exp">운영진
       <StyledFaStar bgColor='#fc7b7b' className='iconExp' />
       </span>
-      <span className="exp">참석 상위권
-      <span className="tagHot">Hot!</span>
-      </span>
-      <span className="exp">신입
-      <span className="tagNew">New!</span>
-      </span>
-      <span className="exp">복귀
-      <span className="tagBack">Back!</span>
-      </span>
     </TagExplain>
     <PartListContainer>
-
       <table>
         <thead>
           <tr>
@@ -52,7 +42,6 @@ const PartList = () => {
             <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
             <th onClick={() => {dispatch(sortState('monthPart'))}}>이번달 참석</th>
             <th onClick={() => {dispatch(sortState('aver'))}}>평균 참석</th>
-            {/* <th onClick={() => {dispatch(sortState('yearHost'))}}>벙 개설</th> */}
           </tr>
         </thead>
         <tbody>
@@ -64,9 +53,6 @@ const PartList = () => {
           let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
           let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
 
-          if(joinYear === dateCalc('year') && (
-            Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
-          )){}
           return (
           loginUser.level >= 2 && member[1].danger ?
           <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
@@ -86,7 +72,6 @@ const PartList = () => {
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{averCheck(member[1])} 회</td>
-            {/* <td>{member[1].totalHost || 0} 회</td> */}
           </DangerText>
 
           :
@@ -102,20 +87,19 @@ const PartList = () => {
                 //신입태그
                 (joinYear === dateCalc('year') && (
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
-                )) ? <span className="tagNew">New!</span> : null
+                )) ? <span className="tagNew">신입</span> : null
               }{
                 comeYear === currentYear && (comeMonth === currentMonth || comeMonth + 1 === currentMonth || comeMonth + 2 === currentMonth) ? 
-                <span className="tagBack">Back!</span> :
+                <span className="tagBack">복귀</span> :
                 null
               }
-              {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 6 ?
-               <span className="tagHot">Hot!</span> : null}
+              {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 5 ?
+               <span className="tagHot">Hot</span> : null}
               </div>
             </td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{averCheck(member[1])} 회</td>
-            {/* <td>{member[1].totalHost || 0} 회</td> */}
           </tr>
         )})}
         </tbody>

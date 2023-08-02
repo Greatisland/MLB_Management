@@ -18,6 +18,15 @@ interface SvgProps {
   bgColor: string
 }
 
+const tagStyles = css`
+  font-size: 0.5rem; 
+  width: 33px;
+  color: #fff;
+  text-align: center;
+  padding: 0.05rem 0.2rem;
+  border-radius: 2rem; 
+`
+
 export const StyledFaCrown = styled(FaCrown)<SvgProps>`
   ${svgStyles}
   fill: ${props => props.bgColor};
@@ -67,6 +76,30 @@ export const HomeListContainer = styled.div`
     text-align: center;
     font-size: 0.85rem;
     cursor: pointer;
+    .tagContainer {
+      max-width: 31px;
+      gap: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .tagHot {
+        ${tagStyles}
+        background: ${props => props.theme.pink3};
+      }
+      .tagNew {
+        ${tagStyles}
+        background: ${props => props.theme.green};
+      }
+      .tagBack {
+        ${tagStyles} 
+        background: ${props => props.theme.brown};
+      }
+      .tagDanger {
+        ${tagStyles}
+        color: #b22222; 
+        background: #ffffff; 
+      }
+    }
   }
   td:nth-child(4) {
     text-align: start;
