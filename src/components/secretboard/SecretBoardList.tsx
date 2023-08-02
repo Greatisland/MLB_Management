@@ -10,7 +10,7 @@ import { AiOutlineComment } from 'react-icons/ai'
 const SecretBoardList = ({board}: {board :[string, Board][]}) => {
   const navigate = useNavigate()
 
-  const { loginUser } = useAppSelector(state => state.membersData)
+  const { loginUser, membersData } = useAppSelector(state => state.membersData)
 
   return (
     <SecretBoardListContainer>
@@ -22,6 +22,18 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
         if(article[1].secret){
           //운영진이거나 작성자면 렌더링
           if(loginUser.level >= 2 || loginUser.uid === article[1].uid){
+
+            if(loginUser.level >= 4){
+              return (
+                <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
+                  <span className="secretMark"><VscGistSecret />비밀글</span>
+                  <span className="title">{article[1]?.title}</span>
+                  <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+                  <span className="date">{article[1]?.date}</span>
+                </div>
+              )
+            }
+
             return (
               <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
                 <span className="secretMark"><VscGistSecret />비밀글</span>
@@ -31,7 +43,7 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
               </div>
             )
           }
-        }else {
+        } else {
           return (
             <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
               <span className="title">{article[1]?.title}</span>
