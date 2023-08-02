@@ -2,8 +2,9 @@ import { HomeContainer } from "../../style/homeStyled"
 const Waiting = () => {
   return (
     <HomeContainer>
-    뮤라밸 회원인지 운영진 확인 대기중입니다. <br />
-    잠시만 기다려주세요...
+    운영진이 아직 확인 전이에요... <br />
+    잠시만 기다려주세요... <br />
+    혹시 너무 오래걸리면 운영진에게 가입했다고 말씀해주세요!
     </HomeContainer>
   )
 }

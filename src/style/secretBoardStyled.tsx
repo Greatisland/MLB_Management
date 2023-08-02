@@ -44,7 +44,6 @@ export const SecretBoardListContainer = styled.div`
   gap: 10px;
   .list {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     border-bottom: 1px solid #f2f2f2;
     margin: 0 0 10px 0;
@@ -57,10 +56,16 @@ export const SecretBoardListContainer = styled.div`
       gap: 3px;
       font-size: 0.9rem;
     }
+    .secretName {
+      font-size: 0.6rem;
+      color: #868686;
+      padding: 2px 4px;
+      gap: 3px;
+    }
     .secretMark {
       font-size: 0.7rem;
       padding: 2px 4px;
-      margin: 0 5px 0;
+      margin: 0 5px 0 0;
       display: flex;
       align-items: center;
       background: ${props => props.theme.pink};
@@ -124,6 +129,10 @@ export const CommentBox = styled.div`
   .name {
     width: 50%;
     font-size: 0.8rem;
+    .secretName {
+      font-size: 0.6rem;
+      color: #868686;
+    }
   }
   .date {
     display: flex;

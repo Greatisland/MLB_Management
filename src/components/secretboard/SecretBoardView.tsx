@@ -11,7 +11,7 @@ import { getToday } from "./SecretBoardWrite"
 const SecretBoardView = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { loginUser } = useAppSelector(state => state.membersData)
+  const { loginUser, accountList } = useAppSelector(state => state.membersData)
 
   const [ article, setArticle ] = useState<Board>()
 
@@ -70,13 +70,15 @@ const SecretBoardView = () => {
       <p className="titleView">{article?.title}</p>
       <p className="contentView">{article?.content}</p>
       <CommentContainer>
-        {article?.comments?.map((comment, i) => (
+        {article?.comments?.map((comment, i) => {
+          const secret = accountList.find(account => account[0] === comment.uid)
+          return (
           <CommentBox key={i}>
-            <span className="name">{comment.nickName}</span>
+            <span className="name">{comment.nickName}{secret ? <span className="secretName">{secret[1].name}</span> : null}</span>
             <span className="date">{comment.date}</span>
             <span className="content">{comment.contents}</span>
           </CommentBox>
-        ))}
+        )})}
         <CommentForm onSubmit={handleComment}>
           <input type="text" maxLength={10} value={name} onChange={(e) => setName(e.target.value)}/>
           <textarea value={con} maxLength={200} onChange={(e) => setCon(e.target.value)}/>
