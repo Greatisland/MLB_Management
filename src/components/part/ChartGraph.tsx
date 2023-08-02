@@ -30,6 +30,7 @@ const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
   //평균
   let averList = new Array(12).fill(aver)
 
+
   //계산
   for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
     const monthValue = member[`${i}month` as keyof Member]
@@ -38,10 +39,25 @@ const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
     part.push(monthValue ? Number(monthValue) : 0)
     open.push(monthHostValue ? Number(monthHostValue) : 0)
   }
+  
+  const date = new Date()
+  const joinDate = new Date(member.join)
+  const joinYear = joinDate.getFullYear()
+  const joinMonth = joinDate.getMonth() + 1
+
+  //그래프를 시작할 달
+  let monthStart = 0
+
+  //가입달부터 그래프 시작
+  if(date.getFullYear() === joinYear){
+    monthStart = joinMonth - 1
+    part = part.slice(monthStart)
+    open = open.slice(monthStart)
+  }
 
   //x축
   const basicLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-  const labels = basicLabels.slice(0, Number(dateCalc('flatMonth')))
+  const labels = basicLabels.slice(monthStart, Number(dateCalc('flatMonth')))
   
   
 
