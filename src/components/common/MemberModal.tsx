@@ -20,12 +20,13 @@ const MemberModal = () => {
     pay: false,
     special: sendMember.special || '',
     target: '',
-    break: sendMember.break || false
+    break: sendMember.break || false,
+    state: sendMember.state || false
   })
 
   //휴식기 체크박스 해제할 경우 오늘 날짜로 복귀일 추가
   useEffect(() => {
-    if(sendMember.break !== state.break && !state.break){
+    if(state.state && sendMember.break !== state.break && !state.break){
       const currentDate: Date = new Date()
       const year: number = currentDate.getFullYear()
       let month: string = (currentDate.getMonth() + 1).toString().padStart(2, '0')
