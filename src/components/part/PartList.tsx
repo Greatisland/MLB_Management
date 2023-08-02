@@ -27,16 +27,21 @@ const PartList = () => {
       <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."/>
     </SearchBarPart>
     <TagExplain>
-      <span className="exp">모임장</span>
+      <span className="exp">모임장
       <StyledFaCrown bgColor='#ffac4c' className='iconExp' />
-      <span className="exp">운영진</span>
+      </span>
+      <span className="exp">운영진
       <StyledFaStar bgColor='#fc7b7b' className='iconExp' />
-      <span className="exp">참석 상위권</span>
+      </span>
+      <span className="exp">참석 상위권
       <span className="tagHot">Hot!</span>
-      <span className="exp">신입</span>
+      </span>
+      <span className="exp">신입
       <span className="tagNew">New!</span>
-      <span className="exp">복귀</span>
+      </span>
+      <span className="exp">복귀
       <span className="tagBack">Back!</span>
+      </span>
     </TagExplain>
     <PartListContainer>
 

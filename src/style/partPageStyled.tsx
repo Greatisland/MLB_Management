@@ -70,7 +70,9 @@ export const PartResultContainer = styled.div`
 
 const tagStyles = css`
   font-size: 0.5rem; 
+  width: 33px;
   color: #fff;
+  text-align: center;
   padding: 0.05rem 0.2rem;
   border-radius: 2rem; 
 `
@@ -100,7 +102,7 @@ export const PartListContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3px;
+    gap: 6px;
     width: 25%;
     padding: 8px 0;
     text-align: center;
@@ -250,32 +252,33 @@ export const SearchBarPart = styled.form`
 `
 
 export const TagExplain = styled.div`
+  /* ${componentStyles} */
+  padding: 5px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 3px;
+  gap: 6px;
   .exp {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     letter-spacing: -0.04rem;
+    display: flex;
+    gap: 2px;
+    align-items: center;
   }
   .tagHot {
     ${tagStyles}
-    margin: 0 10px 0 0;
     background: ${props => props.theme.pink3};
   }
   .tagNew {
     ${tagStyles}
-    margin: 0 10px 0 0;
     background: ${props => props.theme.green};
   }
   .tagBack {
     ${tagStyles}
-    margin: 0 10px 0 0;
     background: ${props => props.theme.brown};
   }
   .tagDanger {
     ${tagStyles}
-    margin: 0 10px 0 0;
     color: #b22222; 
     background: #ffffff; 
   }
