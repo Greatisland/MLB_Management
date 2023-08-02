@@ -26,12 +26,12 @@ const SecretBoardView = () => {
   const handleComment = async (e: React.FormEvent) => {
     e.preventDefault()
     if(con){
-      const updateComments = {comments: [{nickName: '', contents: '', date: ''}]}
+      const updateComments = {comments: [{nickName: '', contents: '', date: '',  uid: ''}]}
       if(article?.comments){
-        article?.comments.push({nickName: name, contents: con, date: getToday()})
+        article?.comments.push({nickName: name, contents: con, date: getToday(), uid: loginUser.uid})
         updateComments.comments = article.comments
       }else{
-        updateComments.comments = [{nickName: name, contents: con, date: getToday()}]
+        updateComments.comments = [{nickName: name, contents: con, date: getToday(), uid: loginUser.uid}]
       }
       if(typeof id === 'string'){
         dbFunc.updateArticle(id, updateComments)
