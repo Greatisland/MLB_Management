@@ -101,6 +101,9 @@ export const HomeListContainer = styled.div`
       }
     }
   }
+  th:first-child, td:first-child {
+    width: 30%;
+  }
   td:nth-child(4) {
     text-align: start;
     font-size: 0.7rem;

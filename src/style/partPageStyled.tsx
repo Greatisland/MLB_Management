@@ -132,7 +132,9 @@ export const PartListContainer = styled.div`
         background: #ffffff; 
       }
     }
-
+  }
+  th:first-child, td:first-child {
+    width: 30%;
   }
 `
 

@@ -59,6 +59,10 @@ const HomeList = () => {
       <span className="exp">운영진
       <StyledFaStar bgColor='#fc7b7b' className='iconExp' />
       </span>
+      <span className="exp">
+        최근 참석 상위권 (지난 3개월 기준)
+        <span className="tagHot">Hot</span>
+      </span>
     </TagExplain>
     <HomeListContainer>
       <table>
@@ -80,6 +84,10 @@ const HomeList = () => {
             let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
             let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
 
+            let hotCount = ((member[1] as any)[`${dateCalc('flatMonth')}month`] + 
+            (member[1] as any)[`${Number(dateCalc('flatMonth')) - 1}month`] +
+            (member[1] as any)[`${Number(dateCalc('flatMonth')) - 2}month`])
+
             return (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].special === '모임장' ?
@@ -98,7 +106,7 @@ const HomeList = () => {
                   <span className="tagBack">복귀</span> :
                   null
                 }
-                {(member[1] as any)[`${dateCalc('flatMonth')}month`] >= 5 ?
+                {hotCount >= 15 ?
                 <span className="tagHot">Hot</span> : null}
                 </div>
               </td>
