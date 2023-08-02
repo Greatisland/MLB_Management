@@ -81,8 +81,7 @@ export const HomeListContainer = styled.div`
       align-items: center;
       .tagHot {
         ${tagStyles}
-        /* background: ${props => props.theme.pink3}; */
-        background: #fa3737;
+        background: ${props => props.theme.pink3};
       }
       .tagNew {
         ${tagStyles}

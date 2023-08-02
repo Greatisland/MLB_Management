@@ -116,8 +116,7 @@ export const PartListContainer = styled.div`
       align-items: center;
       .tagHot {
         ${tagStyles}
-        /* background: ${props => props.theme.pink3}; */
-        background: #fa3737;
+        background: ${props => props.theme.pink3};
       }
       .tagNew {
         ${tagStyles}
@@ -269,8 +268,7 @@ export const TagExplain = styled.div`
   }
   .tagHot {
     ${tagStyles}
-    /* background: ${props => props.theme.pink3}; */
-    background: #fa3737;
+    background: ${props => props.theme.pink3};
   }
   .tagNew {
     ${tagStyles}
