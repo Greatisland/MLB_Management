@@ -30,9 +30,6 @@ const tagStyles = css`
 export const StyledFaCrown = styled(FaCrown)<SvgProps>`
   ${svgStyles}
   fill: ${props => props.bgColor};
-  &.iconExp {
-    margin: 0 10px 0 0;
-  }
 `
 
 export const StyledFaStar = styled(FaStar)<SvgProps>`
@@ -84,7 +81,8 @@ export const HomeListContainer = styled.div`
       align-items: center;
       .tagHot {
         ${tagStyles}
-        background: ${props => props.theme.pink3};
+        /* background: ${props => props.theme.pink3}; */
+        background: #fa3737;
       }
       .tagNew {
         ${tagStyles}
@@ -102,7 +100,7 @@ export const HomeListContainer = styled.div`
     }
   }
   th:first-child, td:first-child {
-    width: 30%;
+    width: 32%;
   }
   td:nth-child(4) {
     text-align: start;

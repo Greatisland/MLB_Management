@@ -116,7 +116,8 @@ export const PartListContainer = styled.div`
       align-items: center;
       .tagHot {
         ${tagStyles}
-        background: ${props => props.theme.pink3};
+        /* background: ${props => props.theme.pink3}; */
+        background: #fa3737;
       }
       .tagNew {
         ${tagStyles}
@@ -134,7 +135,7 @@ export const PartListContainer = styled.div`
     }
   }
   th:first-child, td:first-child {
-    width: 30%;
+    width: 34%;
   }
 `
 
@@ -258,7 +259,7 @@ export const TagExplain = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 12px;
   .exp {
     font-size: 0.6rem;
     letter-spacing: -0.04rem;
@@ -268,7 +269,8 @@ export const TagExplain = styled.div`
   }
   .tagHot {
     ${tagStyles}
-    background: ${props => props.theme.pink3};
+    /* background: ${props => props.theme.pink3}; */
+    background: #fa3737;
   }
   .tagNew {
     ${tagStyles}
