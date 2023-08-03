@@ -104,7 +104,7 @@ export const  JoinModalContainer = styled.div`
 
   input[type='text'], .awardCount {
     border: none;
-    background: #eee;
+    background: #f6f6f6;
     border-radius: 30px;
     padding: 5px 10px !important;
     text-align: center !important;
@@ -123,7 +123,7 @@ export const  JoinModalContainer = styled.div`
     box-sizing: border-box;
     gap: 10px;
     svg {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
   }
 
@@ -132,7 +132,7 @@ export const  JoinModalContainer = styled.div`
     border: none; 
     position: relative;
     padding: 5px 10px !important;
-    background: #eee;
+    background: #f6f6f6;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     font-size: 0.8rem;
@@ -170,7 +170,7 @@ export const  JoinModalContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     padding: 4px !important;
     border-radius: 12px;
-    background: #eee;
+    background: #f6f6f6;
     text-align: center;
     margin: 0 0 10px 0;
     cursor: pointer;
@@ -185,7 +185,7 @@ export const  JoinModalContainer = styled.div`
       background: #13131f;
     }
     option {
-      background: #eee;
+      background: #f6f6f6;
       color: #333;
     }
   }
@@ -254,7 +254,7 @@ export const StyledCheckbox = styled.span`
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: #f6f6f6;
   border: 2px solid #555;
   border-radius: 4px;
 
@@ -297,14 +297,14 @@ export const NormalModalContainer = styled.div`
   }
 
   span {
-  border: none;
-  font-size: 0.8rem;
-  background: #eee;
-  border-radius: 30px;
-  padding: 5px 10px;
-  margin: 0 0 10px 0;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
-  text-align: center;
+    border: none;
+    font-size: 0.8rem;
+    background: #f6f6f6;
+    border-radius: 30px;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    text-align: center;
   }
   .awardCount {
     display: flex;
