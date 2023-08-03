@@ -1,5 +1,5 @@
 import { Btn } from "../../style/globalStyled"
-import { SecretBoardBtnContainer, SecretBoardContainer, CommentContainer, CommentBox, CommentForm } from "../../style/secretBoardStyled"
+import { SecretBoardBtnContainer, SecretBoardContainer, CommentContainer, CommentBox, CommentForm, ViewUserListContainer } from "../../style/secretBoardStyled"
 import { useParams, useNavigate } from "react-router"
 import { dbFunc } from "../../firebase/firebaseFunc"
 import { useState, useEffect } from "react"
@@ -53,10 +53,15 @@ const SecretBoardView = () => {
     setCon('')
   }
 
+  //글 정보 가져오기
   useEffect(() => {
     dbFunc.getArticle(id).then((data) => {
       setArticle(data)
     })
+  }, [])
+
+  useEffect(() => {
+    if(id) dbFunc.incrementViewCount(id, loginUser.name)
   }, [])
 
   return (
@@ -67,6 +72,12 @@ const SecretBoardView = () => {
         <Btn><button onClick={handleUpdate}><p>수정</p></button></Btn> :
         null}
       </SecretBoardBtnContainer>
+      {loginUser.level >= 4 ? 
+      <ViewUserListContainer>
+        {article?.viewUsers?.map((user, i) => (
+          <span key={i}>{user}</span>
+        ))}
+      </ViewUserListContainer> : null}
       <p className="titleView">{article?.title}</p>
       <p className="contentView">{article?.content}</p>
       <CommentContainer>

@@ -65,6 +65,8 @@ export interface Board {
   date: string
   secret: boolean
   uid: string
+  viewCount?: number
+  viewUsers?: string[]
   comments: {
     nickName: string
     contents: string

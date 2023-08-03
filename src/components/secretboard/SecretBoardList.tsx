@@ -4,7 +4,7 @@ import { SecretBoardBtnContainer, SecretBoardListContainer } from "../../style/s
 import type { Board } from "../../store/slice"
 import { useAppSelector } from "../../store/hook"
 import { VscGistSecret } from 'react-icons/vsc'
-import { AiOutlineComment } from 'react-icons/ai'
+import { AiOutlineComment, AiOutlineEye } from 'react-icons/ai'
 
 
 const SecretBoardList = ({board}: {board :[string, Board][]}) => {
@@ -22,7 +22,7 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
         if(article[1].secret){
           //운영진이거나 작성자면 렌더링
           if(loginUser.level >= 2 || loginUser.uid === article[1].uid){
-
+            //모임장일때
             if(loginUser.level >= 4){
               const secret = accountList.find(account => account[0] === article[1].uid)
               return (
@@ -31,6 +31,7 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
                   {secret ? <span className="secretName">{secret[1]?.name}</span> : null}
                   <span className="title">{article[1]?.title}</span>
                   <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+                  <span className="viewAmount"><AiOutlineEye />{article[1]?.viewCount ? article[1].viewCount : 0}</span>
                   <span className="date">{article[1]?.date}</span>
                 </div>
               )
@@ -41,6 +42,7 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
                 <span className="secretMark"><VscGistSecret />비밀글</span>
                 <span className="title">{article[1]?.title}</span>
                 <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+                <span className="viewAmount"><AiOutlineEye />{article[1]?.viewCount ? article[1].viewCount : 0}</span>
                 <span className="date">{article[1]?.date}</span>
               </div>
             )
@@ -48,12 +50,13 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
         } else {
           if(loginUser.level >= 4){
             const secret = accountList.find(account => account[0] === article[1].uid)
-
+            //모임장일때
             return (
               <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
                 {secret ? <span className="secretName">{secret[1]?.name}</span> : null}
                 <span className="title">{article[1]?.title}</span>
                 <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+                <span className="viewAmount"><AiOutlineEye />{article[1]?.viewCount ? article[1].viewCount : 0}</span>
                 <span className="date">{article[1]?.date}</span>
               </div>
             )
@@ -62,6 +65,7 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
             <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
               <span className="title">{article[1]?.title}</span>
               <span className="commentAmount"><AiOutlineComment />{article[1]?.comments ? article[1].comments.length : 0}</span>
+              <span className="viewAmount"><AiOutlineEye />{article[1]?.viewCount ? article[1].viewCount : 0}</span>
               <span className="date">{article[1]?.date}</span>
             </div>
           )

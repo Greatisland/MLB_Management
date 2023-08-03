@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail  } from "firebase/auth"
-import { getDatabase, remove, ref, onValue, push, set, update, get } from 'firebase/database'
+import { getDatabase, remove, ref, onValue, push, set, update, get, runTransaction } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
 import { type Member, type Ban, type Hof } from '../store/slice'
 import Swal from 'sweetalert2'
@@ -160,6 +160,27 @@ export const dbFunc = {
     } catch (error) {
       console.error(error)
     }
+  },
+
+  //칭찬게시판 글 조회수 저장
+  incrementViewCount(postId: string, userName: string) {
+    const viewedPosts: { [key: string]: boolean } = JSON.parse(localStorage.getItem('viewedPosts') || '{}')
+    const postRef = ref(database, `/board/${postId}`)
+    if(!viewedPosts[postId]){
+      runTransaction(postRef, (post) => {
+        if (post) {
+          post.viewCount = (post.viewCount || 0) + 1
+          if(post.viewUsers){
+            post.viewUsers = [...new Set([...post.viewUsers, userName])]
+          }else{
+            post.viewUsers = [userName]
+          }
+        }
+        return post
+      })
+    }
+    viewedPosts[postId] = true
+    localStorage.setItem('viewedPosts', JSON.stringify(viewedPosts))
   }
 }
 

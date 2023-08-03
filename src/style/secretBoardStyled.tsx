@@ -48,13 +48,26 @@ export const SecretBoardListContainer = styled.div`
     border-bottom: 1px solid #f2f2f2;
     margin: 0 0 10px 0;
     .title {
+      flex: 1;
+      white-space: nowrap;  
+      overflow: hidden;   
+      text-overflow: ellipsis;
       margin: 0 10px 0;
+      font-size: 0.9rem;
+      letter-spacing: -0.04rem;
     }
-    .commentAmount {
+    .commentAmount, .viewAmount {
       display: flex;
       align-items: center;
-      gap: 3px;
-      font-size: 0.9rem;
+      gap: 0.5px;
+      font-size: 0.8rem;
+      color: #666;
+      svg {
+        fill: #666;
+      }
+    }
+    .commentAmount {
+      margin: 0 5px 0 0;
     }
     .secretName {
       font-size: 0.6rem;
@@ -72,7 +85,7 @@ export const SecretBoardListContainer = styled.div`
       gap: 3px;
     }
     .date {
-      margin: 0 0 0 auto;
+      margin: 0 0 0 20px;
       font-size: 0.8rem;
     }
   }
@@ -177,4 +190,8 @@ export const CommentForm = styled.form`
     border: 1px solid #ccc;
     white-space: pre-wrap;
   }
+`
+
+export const ViewUserListContainer = styled.div`
+  
 `
