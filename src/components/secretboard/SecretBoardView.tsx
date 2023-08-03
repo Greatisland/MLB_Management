@@ -74,7 +74,7 @@ const SecretBoardView = () => {
       </SecretBoardBtnContainer>
       <p className="titleView">{article?.title}</p>
       <p className="contentView">{article?.content}</p>
-      {loginUser.level >= 4 ? 
+      {loginUser.level >= 2 ? 
       <ViewUserListContainer>
         {article?.viewUsers?.map((user, i) => (
           <span key={i}>{user}</span>

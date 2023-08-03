@@ -22,8 +22,8 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
         if(article[1].secret){
           //운영진이거나 작성자면 렌더링
           if(loginUser.level >= 2 || loginUser.uid === article[1].uid){
-            //모임장일때
-            if(loginUser.level >= 4){
+            //운영진일떄
+            if(loginUser.level >= 2){
               const secret = accountList.find(account => account[0] === article[1].uid)
               return (
                 <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
@@ -48,9 +48,9 @@ const SecretBoardList = ({board}: {board :[string, Board][]}) => {
             )
           }
         } else {
-          if(loginUser.level >= 4){
+          if(loginUser.level >= 2){
             const secret = accountList.find(account => account[0] === article[1].uid)
-            //모임장일때
+            //운영진일때
             return (
               <div className="list" key={i} onClick={() => {navigate(`/boardview/${article[0]}`)}}>
                 {secret ? <span className="secretName">{secret[1]?.name}</span> : null}
