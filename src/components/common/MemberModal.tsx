@@ -3,6 +3,7 @@ import { useState, ChangeEvent, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal } from "../../store/slice"
 import Swal from "sweetalert2"
+import { StyledGiTrophy } from "../../style/homeStyled"
 import { dbFunc } from "../../firebase/firebaseFunc"
 
 
@@ -181,7 +182,11 @@ const MemberModal = () => {
           </select>
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
-            <span className="awardCount">{sendMember.awardCount}</span>
+            <span className="awardCount">{
+              new Array(sendMember.awardCount).map((trophy, i) => (
+                <StyledGiTrophy bgColor='#f00' />
+              ))
+            }</span>
           </> : null}
           {sendMember.comeback ? 
           <>
@@ -208,12 +213,16 @@ const MemberModal = () => {
           <p>가입일</p>
           <span>{state.join.split('-').join('.')}</span>
           <p>년생</p>
-          <span>{state.year}</span>
+          <span>{state.year}년생</span>
           <p>성별</p>
           <span>{state.gender}</span>
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
-            <span>{sendMember.awardCount}</span>
+            <span className="awardCount">{
+              new Array(sendMember.awardCount).fill('').map((trophy, i) => (
+                <StyledGiTrophy bgColor='#c5a26e' />
+              ))
+            }</span>
           </> : null}
           {sendMember.comeback ? 
           <>

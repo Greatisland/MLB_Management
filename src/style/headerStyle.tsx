@@ -284,6 +284,14 @@ export const NormalModalContainer = styled.div`
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   text-align: center;
   }
+  .awardCount {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    svg {
+      font-size: 1.2rem;
+    }
+  }
   .delete, .cancle {
     flex: 1;
     border: none;
