@@ -1,4 +1,4 @@
-import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
+import { HomeListContainer, StyledFaCrown, StyledFaStar, StyledGiTrophy } from "../../style/homeStyled"
 import { TagExplain } from "../../style/partPageStyled"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal, sendMember, sortState } from "../../store/slice"
@@ -27,7 +27,8 @@ const HomeList = () => {
         special: member[1].special,
         break: member[1].break || false,
         approval: member[1].approval || false,
-        comeback: member[1].comeback || ''
+        comeback: member[1].comeback || '',
+        awardCount: member[1].awardCount || 0
       }
     ))
   }
@@ -85,6 +86,9 @@ const HomeList = () => {
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null
+              }{
+                member[1].topPrizeWinner ? 
+                <StyledGiTrophy bgColor='#ffac4c' />: null
               }{member[1].name}
                 <div className="tagContainer">
                 {

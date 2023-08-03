@@ -179,6 +179,8 @@ const MemberModal = () => {
             <option value="모임장">모임장</option>
             <option value="운영진">운영진</option>
           </select>
+          <p>가요제 수상횟수</p>
+          <span className="awardCount">{sendMember.awardCount}</span>
           {sendMember.comeback ? 
           <>
           <p>복귀일</p>
@@ -207,6 +209,10 @@ const MemberModal = () => {
           <span>{state.year}</span>
           <p>성별</p>
           <span>{state.gender}</span>
+          {sendMember.awardCount ? <>
+            <p>가요제 수상횟수</p>
+            <span>{sendMember.awardCount}</span>
+          </> : null}
           {sendMember.comeback ? 
           <>
           <p>복귀일</p>

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { FaCrown, FaStar } from 'react-icons/fa';
+import { GiTrophy } from 'react-icons/gi'
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -38,6 +39,11 @@ export const StyledFaStar = styled(FaStar)<SvgProps>`
   &.iconExp {
     margin: 0 10px 0 0;
   }
+`
+
+export const StyledGiTrophy = styled(GiTrophy)<SvgProps>`
+  ${svgStyles}
+  fill: ${props => props.bgColor};
 `
 
 export const HomeListContainer = styled.div`

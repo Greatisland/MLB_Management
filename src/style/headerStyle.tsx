@@ -68,7 +68,7 @@ export const  JoinModalWrapper = styled.div`
 export const  JoinModalContainer = styled.div`
   width: 80%;
   max-width: 300px;
-  max-height: 700px;
+  max-height: 1000px;
   background: #fff;
   border-radius: 30px;
   gap: 20px;
@@ -81,11 +81,12 @@ export const  JoinModalContainer = styled.div`
     flex-direction: column;
     gap: 8px;
   }
-   p {
-    font-weight: bold;
-   }
+  p {
+  font-weight: bold;
+  }
 
-  input[type='text'] {
+
+  input[type='text'], .awardCount {
     border: none;
     background: #eee;
     border-radius: 30px;
@@ -141,6 +142,7 @@ export const  JoinModalContainer = styled.div`
     border-radius: 12px;
     background: #eee;
     text-align: center;
+    margin: 0 0 10px 0;
     cursor: pointer;
     ::-webkit-scrollbar {
         width: 15px;
