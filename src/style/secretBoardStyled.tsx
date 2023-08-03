@@ -193,5 +193,15 @@ export const CommentForm = styled.form`
 `
 
 export const ViewUserListContainer = styled.div`
-  
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+  border-radius: 20px;
+  background: #f9f9f9;
+  padding: 5px 10px;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+  span {
+    color: #333;
+    font-size: 0.6rem;
+  }
 `

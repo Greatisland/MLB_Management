@@ -230,3 +230,45 @@ export const StyledCheckbox = styled.span`
     transform: rotate(45deg);
   }
 `;
+
+export const NormalModalContainer = styled.div`
+  width: 80%;
+  max-width: 300px;
+  max-height: 700px;
+  background: #fff;
+  border-radius: 30px;
+  gap: 10px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  
+  p {
+  font-weight: bold;
+  }
+
+  span {
+  border: none;
+  font-size: 0.8rem;
+  background: #eee;
+  border-radius: 30px;
+  padding: 5px 10px;
+  margin: 0 0 10px 0;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  }
+  .delete, .cancle {
+    flex: 1;
+    border: none;
+    background: #FFA3A3;
+    margin: 20px 0 0 0;
+    border-radius: 30px;
+    padding: 8px 10px;
+    color: #fff;
+    letter-spacing: 0.04rem;
+    text-align: center;
+    font-size: 0.8rem;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+`

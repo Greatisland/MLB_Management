@@ -5,7 +5,6 @@ import { toggleModal, sendMember, sortState } from "../../store/slice"
 import { SearchBarPart } from "../../style/partPageStyled"
 import { dateCalc } from "../common/dateCalc"
 import { useState } from "react"
-import Swal from "sweetalert2"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
@@ -16,31 +15,21 @@ const HomeList = () => {
   const searchMembersData = membersData.filter(member => member[1]?.name?.includes(search) && !member[1].break)
 
   const handleAddMember = (member: any) => {
-    //레벨 2 이상부터 운영진
-    if(loginUser.level >= 2){
-      dispatch(toggleModal()), dispatch(sendMember(
-        {
-          id: member[0],
-          name: member[1].name,
-          join: member[1].join,
-          year: member[1].year,
-          gender: member[1].gender,
-          etc: member[1].etc || '',
-          state: true,
-          special: member[1].special,
-          break: member[1].break || false,
-          approval: member[1].approval || false,
-          comeback: member[1].comeback || ''
-        }
-      ))
-    } else {
-      Swal.fire({
-        icon: 'warning',
-        title: '운영진 계정만 회원정보 수정이 가능해요!',
-         showConfirmButton: false,
-        timer: 800
-      })
-    }
+    dispatch(toggleModal()), dispatch(sendMember(
+      {
+        id: member[0],
+        name: member[1].name,
+        join: member[1].join,
+        year: member[1].year,
+        gender: member[1].gender,
+        etc: member[1].etc || '',
+        state: true,
+        special: member[1].special,
+        break: member[1].break || false,
+        approval: member[1].approval || false,
+        comeback: member[1].comeback || ''
+      }
+    ))
   }
 
   const date = new Date()

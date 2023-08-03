@@ -26,13 +26,6 @@ const BtnList = () => {
         etc: '',
         state: false
       }))
-    } else {
-      Swal.fire({
-        icon: 'warning',
-        title: '운영진 계정만 가능해요!',
-         showConfirmButton: false,
-        timer: 800
-      })
     }
   }
 
@@ -46,9 +39,10 @@ const BtnList = () => {
         <span className="female">여<BiFemale /></span>
         <span className="number">{totalGender('여')}</span>
       </Btn>
+      {loginUser.level >= 2 ? 
       <Btn className="memberAdd" onClick={()=> handleAddMember()}>
         <p>회원추가</p>
-      </Btn>
+      </Btn> : null}
     </BtnListContainer>
   )
 }

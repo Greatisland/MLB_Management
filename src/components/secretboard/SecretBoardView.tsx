@@ -72,14 +72,14 @@ const SecretBoardView = () => {
         <Btn><button onClick={handleUpdate}><p>수정</p></button></Btn> :
         null}
       </SecretBoardBtnContainer>
+      <p className="titleView">{article?.title}</p>
+      <p className="contentView">{article?.content}</p>
       {loginUser.level >= 4 ? 
       <ViewUserListContainer>
         {article?.viewUsers?.map((user, i) => (
           <span key={i}>{user}</span>
         ))}
       </ViewUserListContainer> : null}
-      <p className="titleView">{article?.title}</p>
-      <p className="contentView">{article?.content}</p>
       <CommentContainer>
         {article?.comments?.map((comment, i) => {
           const secret = accountList.find(account => account[0] === comment.uid)

@@ -1,4 +1,4 @@
-import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle"
+import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, NormalModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle"
 import { useState, ChangeEvent, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../store/hook"
 import { toggleModal } from "../../store/slice"
@@ -9,7 +9,7 @@ import { dbFunc } from "../../firebase/firebaseFunc"
 const MemberModal = () => {
   
   const dispatch = useAppDispatch()
-  const { sendMember } = useAppSelector(state => state.membersData)
+  const { loginUser, sendMember } = useAppSelector(state => state.membersData)
   const [state, setState] = useState({
     name: sendMember.name || '',
     join: sendMember.join || '',
@@ -148,6 +148,7 @@ const MemberModal = () => {
 
   return (
     <JoinModalWrapper>
+      {loginUser.level >= 2 ?
       <JoinModalContainer>
         <form onSubmit={handleSubmit}>
           <p>이름</p>
@@ -196,7 +197,23 @@ const MemberModal = () => {
           <div className="cancle" onClick={() => {cancleMember()}}>취소</div>
           {sendMember.state ? <div className="delete" onClick={() => {deleteMenber(sendMember.id as string)}}>회원정보 삭제</div> : null}
         </div>
-      </JoinModalContainer>
+      </JoinModalContainer> :
+      <NormalModalContainer>
+          <p>이름</p>
+          <span>{state.name}</span>
+          <p>가입일</p>
+          <span>{state.join.split('-').join('.')}</span>
+          <p>년생</p>
+          <span>{state.year}</span>
+          <p>성별</p>
+          <span>{state.gender}</span>
+          {sendMember.comeback ? 
+          <>
+          <p>복귀일</p>
+          <span>{state.comeback.split('-').join('.')}</span>
+          </> : null}
+          <div className="cancle" onClick={() => {cancleMember()}}>나가기</div>
+      </NormalModalContainer>}
     </JoinModalWrapper>
   )
 }
