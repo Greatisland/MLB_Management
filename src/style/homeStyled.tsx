@@ -9,6 +9,14 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   padding: 20px 20px 90px 20px;
+  .wait {
+    display: flex;
+    height: 100vh;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const svgStyles = css`

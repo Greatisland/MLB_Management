@@ -194,6 +194,7 @@ export const CommentForm = styled.form`
 
 export const ViewUserListContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
   gap: 10px;
   border-radius: 20px;

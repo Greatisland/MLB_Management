@@ -169,8 +169,6 @@ const MemberModal = () => {
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
-          <p>메모</p>
-          <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
           <p>운영진 여부</p>
           <select value={state.special} onChange={e => {
             const specialData = e.target.value || ''
@@ -193,6 +191,8 @@ const MemberModal = () => {
           <p>복귀일</p>
           <input type="date" value={state.comeback} onChange={e => setState({...state, comeback: e.target.value})} placeholder="날짜를 선택해주세요."></input>
           </> : null}
+          <p>메모</p>
+          <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
           <div className="checkFlex">
           <p>휴식기 여부</p>
           <CheckboxContainer>
