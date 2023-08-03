@@ -96,6 +96,9 @@ export const  JoinModalContainer = styled.div`
     display: block;
     height: 27px;
     text-align: center !important;
+    text-align-last:center;
+    text-align:center;
+    -moz-text-align-last:center;
   }
 
 
