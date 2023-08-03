@@ -85,7 +85,7 @@ const SecretBoardView = () => {
           const secret = accountList.find(account => account[0] === comment.uid)
           return (
           <CommentBox key={i}>
-            <span className="name">{comment.nickName}{secret ? <span className="secretName">{secret[1].name}</span> : null}</span>
+            <span className="name">{comment.nickName}{secret && loginUser.level >= 4 ? <span className="secretName">{secret[1].name}</span> : null}</span>
             <span className="date">{comment.date}</span>
             <span className="content">{comment.contents}</span>
           </CommentBox>

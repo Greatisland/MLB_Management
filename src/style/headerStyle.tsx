@@ -115,6 +115,7 @@ export const  JoinModalContainer = styled.div`
 
   .awardCount {
     display: flex;
+    flex-wrap: nowrap;
     font-size: 0.8rem;
     align-items: center;
     justify-content: center;
