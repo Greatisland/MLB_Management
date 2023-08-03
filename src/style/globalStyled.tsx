@@ -18,6 +18,16 @@ export const GlobalStyle = createGlobalStyle`
   html, body, button, input, select {
     font-family: 'Noto Sans KR', sans-serif;
   }
+  input, textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+  }
   .no-scroll {
     overflow: hidden;
     height: 100%;
