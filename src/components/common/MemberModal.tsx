@@ -183,7 +183,7 @@ const MemberModal = () => {
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
             <span className="awardCount">{
-              new Array(sendMember.awardCount).map((trophy, i) => (
+              new Array(sendMember.awardCount).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#bb8900' />
               ))
             }</span>
@@ -219,8 +219,8 @@ const MemberModal = () => {
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
             <span className="awardCount">{
-              new Array(sendMember.awardCount).fill('').map((trophy, i) => (
-                <StyledGiTrophy bgColor='#bb8900' />
+              new Array(sendMember.awardCount).fill('').map((_, i) => (
+                <StyledGiTrophy bgColor='#bb8900' key={i}/>
               ))
             }</span>
           </> : null}
