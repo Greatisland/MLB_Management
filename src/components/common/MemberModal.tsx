@@ -184,7 +184,7 @@ const MemberModal = () => {
             <p>가요제 수상횟수</p>
             <span className="awardCount">{
               new Array(sendMember.awardCount).fill('').map((_, i) => (
-                <StyledGiTrophy bgColor='#bb8900' />
+                <StyledGiTrophy bgColor='#bb8900' key={i}/>
               ))
             }</span>
           </> : null}

@@ -120,6 +120,10 @@ export const  JoinModalContainer = styled.div`
     justify-content: center;
     height: 27px;
     box-sizing: border-box;
+    gap: 10px;
+    svg {
+      font-size: 1.2rem;
+    }
   }
 
 
