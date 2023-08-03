@@ -160,7 +160,7 @@ export const  JoinModalContainer = styled.div`
     letter-spacing: 0.04rem;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    margin: 40px 0 0;
+    /* margin: 40px 0 0; */
   }
 
   select {
@@ -211,6 +211,23 @@ export const  JoinModalContainer = styled.div`
     display: flex;
     margin: 10px 0 0;
     gap: 20px;
+  }
+
+  .extraBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 10px 0;
+    gap: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    svg {
+      font-size: 1.2rem;
+      fill: ${props => props.theme.brown};
+      fill: #333;
+      /* background: ${props => props.theme.pink}; */
+      /* border-radius: 50%; */
+    }
   }
 `
 

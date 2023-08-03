@@ -5,13 +5,15 @@ import { toggleModal } from "../../store/slice"
 import Swal from "sweetalert2"
 import { StyledGiTrophy } from "../../style/homeStyled"
 import { dbFunc } from "../../firebase/firebaseFunc"
+import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
 
 
 const MemberModal = () => {
   
   const dispatch = useAppDispatch()
   const { loginUser, sendMember } = useAppSelector(state => state.membersData)
-  const [state, setState] = useState({
+  const [ extra, setExtra ] = useState(false)
+  const [ state, setState ] = useState({
     name: sendMember.name || '',
     join: sendMember.join || '',
     comeback: sendMember.comeback || '',
@@ -145,6 +147,10 @@ const MemberModal = () => {
     dispatch(toggleModal())
   }
 
+  const handleExtra = () => {
+    setExtra(!extra)
+  }
+
   const dummyArray = new Array(15).fill('년생')
 
   return (
@@ -169,15 +175,7 @@ const MemberModal = () => {
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
-          <p>운영진 여부</p>
-          <select value={state.special} onChange={e => {
-            const specialData = e.target.value || ''
-            setState({...state, special: specialData})
-          }}>
-            <option value="">일반회원</option>
-            <option value="모임장">모임장</option>
-            <option value="운영진">운영진</option>
-          </select>
+
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
             <span className="awardCount">{
@@ -191,6 +189,18 @@ const MemberModal = () => {
           <p>복귀일</p>
           <input type="date" value={state.comeback} onChange={e => setState({...state, comeback: e.target.value})} placeholder="날짜를 선택해주세요."></input>
           </> : null}
+
+          {/* 토글 영역 */}
+          {extra ? <>
+          <p>운영진 여부</p>
+          <select value={state.special} onChange={e => {
+            const specialData = e.target.value || ''
+            setState({...state, special: specialData})
+          }}>
+            <option value="">일반회원</option>
+            <option value="모임장">모임장</option>
+            <option value="운영진">운영진</option>
+          </select>
           <p>메모</p>
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
           <div className="checkFlex">
@@ -199,6 +209,13 @@ const MemberModal = () => {
             <HiddenCheckbox checked={state.break} onChange={(e: ChangeEvent<HTMLInputElement>) => setState({...state, break: e.target.checked})}/>
             <StyledCheckbox />
           </CheckboxContainer>
+          </div>
+          </> : null}
+
+          <div className="extraBtn" onClick={handleExtra}>
+            {extra ? 
+            <><TfiArrowCircleUp />추가 정보 닫기</> :
+            <><TfiArrowCircleDown />추가 정보 보기</>}
           </div>
           <input type="submit" value="완료"></input>
         </form>
