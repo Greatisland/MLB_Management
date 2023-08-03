@@ -90,7 +90,7 @@ export const  JoinModalContainer = styled.div`
     border: none;
     background: #eee;
     border-radius: 30px;
-    padding: 5px 10px;
+    padding: 5px 10px !important;
     margin: 0 0 10px 0;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -101,7 +101,7 @@ export const  JoinModalContainer = styled.div`
   input[type='date'] {
     border: none; 
     position: relative;
-    padding: 5px 10px;
+    padding: 5px 10px !important;
     background: #eee;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
@@ -126,7 +126,7 @@ export const  JoinModalContainer = styled.div`
     border: none;
     background: #FF9CC7;
     border-radius: 30px;
-    padding: 8px 10px;
+    padding: 8px 10px !important;
     
     color: #fff;
     letter-spacing: 0.04rem;
@@ -138,7 +138,7 @@ export const  JoinModalContainer = styled.div`
   select {
     border: none;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
-    padding: 4px;
+    padding: 4px !important;
     border-radius: 12px;
     background: #eee;
     text-align: center;
