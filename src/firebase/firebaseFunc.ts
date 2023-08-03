@@ -163,10 +163,10 @@ export const dbFunc = {
   },
 
   //칭찬게시판 글 조회수 저장
-  incrementViewCount(postId: string, uid: string) {
+  incrementViewCount(postId: string, userName: string) {
     const viewedPosts: { [key: string]: boolean } = JSON.parse(localStorage.getItem('viewedPosts') || '{}')
     const postRef = ref(database, `/board/${postId}`)
-    const userName = ref(database, `/userLevels/${uid}`)
+    // const userName = ref(database, `/userLevels/${uid}`)
     if(!viewedPosts[postId]){
       runTransaction(postRef, (post) => {
         if (post) {
