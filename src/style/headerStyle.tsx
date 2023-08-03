@@ -93,6 +93,7 @@ export const  JoinModalContainer = styled.div`
   }
 
   select {
+    display: block;
     height: 27px;
     text-align: center !important;
   }
