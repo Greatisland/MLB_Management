@@ -87,7 +87,13 @@ export const  JoinModalContainer = styled.div`
   }
 
   input {
+    height: 27px;
     flex: 1;
+    text-align: center !important;
+  }
+
+  select {
+    height: 27px;
     text-align: center !important;
   }
 
