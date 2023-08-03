@@ -82,7 +82,13 @@ export const  JoinModalContainer = styled.div`
     gap: 8px;
   }
   p {
-  font-weight: bold;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  input {
+    flex: 1;
+    text-align: center !important;
   }
 
 
@@ -91,10 +97,18 @@ export const  JoinModalContainer = styled.div`
     background: #eee;
     border-radius: 30px;
     padding: 5px 10px !important;
+    text-align: center !important;
     margin: 0 0 10px 0;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
-    text-align: center;
     cursor: pointer;
+  }
+
+  .awardCount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 27px;
+    box-sizing: border-box;
   }
 
 
@@ -105,7 +119,6 @@ export const  JoinModalContainer = styled.div`
     background: #eee;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
-    text-align: center;
     font-size: 0.8rem;
     margin: 0 0 10px 0;
   }
@@ -127,7 +140,6 @@ export const  JoinModalContainer = styled.div`
     background: #FF9CC7;
     border-radius: 30px;
     padding: 8px 10px !important;
-    
     color: #fff;
     letter-spacing: 0.04rem;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
@@ -136,6 +148,8 @@ export const  JoinModalContainer = styled.div`
   }
 
   select {
+    flex: 1;
+    width: 100%;
     border: none;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     padding: 4px !important;
