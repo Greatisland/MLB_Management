@@ -52,19 +52,6 @@ export const HofCardContainer = styled.div`
         color: #c5a26e;
       }
     }
-
-    /* .imgCon {
-      width: 100%;
-      @media (min-width: 768px){
-        width: 42vw;
-        max-width: 500px;
-      }
-      height: 60vw;
-      max-height: 450px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
-      background: #333 center center/cover;
-    } */
   }
 
   .rightSide {
@@ -123,7 +110,7 @@ export const HofAddModalWrapper = styled.div`
   position: fixed;
   top: 0;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 100;
   left: 0;
   display: flex;
   justify-content: center;
