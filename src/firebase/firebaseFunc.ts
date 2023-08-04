@@ -163,23 +163,27 @@ export const dbFunc = {
   },
 
   //칭찬게시판 글 조회수 저장
-  incrementViewCount(postId: string, userName: string) {
+  incrementViewCount(postId: string, uid: string) {
     const viewedPosts: { [key: string]: boolean } = JSON.parse(localStorage.getItem('viewedPosts') || '{}')
     const postRef = ref(database, `/board/${postId}`)
-    // const userName = ref(database, `/userLevels/${uid}`)
-    if(!viewedPosts[postId]){
-      runTransaction(postRef, (post) => {
-        if (post) {
-          post.viewCount = (post.viewCount || 0) + 1
-          if(post.viewUsers){
-            post.viewUsers = [...new Set([...post.viewUsers, userName])]
-          }else{
-            post.viewUsers = [userName]
+    const userNameRef = ref(database, `/userLevels/${uid}`)
+    onValue(userNameRef, (snapshot) => {
+      const userName = snapshot.val()
+      if(!viewedPosts[postId]){
+        runTransaction(postRef, (post) => {
+          if (post) {
+            post.viewCount = (post.viewCount || 0) + 1
+            if(post.viewUsers){
+              post.viewUsers = [...new Set([...post.viewUsers, userName])]
+            }else{
+              post.viewUsers = [userName]
+            }
           }
-        }
-        return post
-      })
-    }
+          return post
+        })
+      }
+    })
+
     viewedPosts[postId] = true
     localStorage.setItem('viewedPosts', JSON.stringify(viewedPosts))
   }
