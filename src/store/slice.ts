@@ -19,7 +19,10 @@ export interface Member {
   totalHost?: number
   break?: boolean
   danger?: boolean
-  awardCount?: number
+  awardCount?: {
+    fClass?: number
+    sClass?: number
+  }
   topPrizeWinner?: boolean
   secondPriseWinner?: boolean
   [key: `${number}month`]: number
@@ -128,7 +131,7 @@ const initialState: InitialState = {
     special: '',
     break: false,
     comeback: '',
-    awardCount: 0
+    awardCount: {}
   },
   sendBan: {
     id: '',

@@ -28,7 +28,7 @@ const HomeList = () => {
         break: member[1].break || false,
         approval: member[1].approval || false,
         comeback: member[1].comeback || '',
-        awardCount: member[1].awardCount || 0
+        awardCount: member[1].awardCount || null
       }
     ))
   }
