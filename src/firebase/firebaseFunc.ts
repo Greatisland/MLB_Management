@@ -164,6 +164,7 @@ export const dbFunc = {
 
   //칭찬게시판 글 조회수 저장
   incrementViewCount(postId: string, uid: string) {
+    //로컬스토리지에 저장하여 중복집계 방지
     const viewedPosts: { [key: string]: boolean } = JSON.parse(localStorage.getItem('viewedPosts') || '{}')
     const postRef = ref(database, `/board/${postId}`)
     const userNameRef = ref(database, `/userLevels/${uid}`)
@@ -174,9 +175,9 @@ export const dbFunc = {
           if (post) {
             post.viewCount = (post.viewCount || 0) + 1
             if(post.viewUsers){
-              post.viewUsers = [...new Set([...post.viewUsers, userName])]
+              post.viewUsers = [...new Set([...post.viewUsers, userName.name])]
             }else{
-              post.viewUsers = [userName]
+              post.viewUsers = [userName.name]
             }
           }
           return post

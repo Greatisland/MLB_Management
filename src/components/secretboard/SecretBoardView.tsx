@@ -77,7 +77,7 @@ const SecretBoardView = () => {
       {loginUser.level >= 4 ? 
       <ViewUserListContainer>
         {article?.viewUsers?.map((user, i) => (
-          <span key={i}>{user}</span>
+          <span key={i}>{user ? user : ''}</span>
         ))}
       </ViewUserListContainer> : null}
       <CommentContainer>
