@@ -13,6 +13,7 @@ interface Props {
 
 const HofAddModal = ({setIsModal, award} : Props) => {
   const storage = getStorage()
+  const [ addAward, setAddAward ] = useState(0)
   const [state, setState] = useState({
     eventName: award?.[1].eventName || '',
     eventDate: award?.[1].eventDate || '',
@@ -41,6 +42,11 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     anotherLink: award?.[1].anotherLink || '',
     anotherLink2: award?.[1].anotherLink2 || '',
   })
+
+  const handleCloseModal = () => {
+    setIsModal(false)
+    document.body.classList.remove('no-scroll')
+  }
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>, param: number) => {
     if (e.target.files) {
@@ -72,7 +78,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
       }else{
         dbFunc.addHof(state)
       }
-      setIsModal(false)
+      handleCloseModal()
     }else{
       Swal.fire({
         html: `
@@ -89,7 +95,6 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     if(hofId !== ''){
       Swal.fire({
         title: `정말로 ${state?.eventName}를 가요제 정보에서 지우시겠어요?`,
-        // text: "탈퇴한 회원일 경우 지워주세요!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#e99797',
@@ -111,7 +116,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
         }
       })
     }
-    setIsModal(false)
+    handleCloseModal()
   }
 
   return(
@@ -137,8 +142,9 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="file" onChange={(e) => handleUpload(e, 1)} />
           {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
-          <br /><hr /><br />
 
+          {addAward >= 1 ? <>
+          <br /><hr /><br />
           <p>2번 상 이름</p>
           <input type="text" value={state.sAward} onChange={e => setState({...state, sAward: e.target.value})} placeholder="2번 상 이름을 입력하세요."/>
           <p>2번상 수상자</p>
@@ -153,8 +159,10 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="file" onChange={(e) => handleUpload(e, 2)} />
           {state.imgUrl2 && <img src={state.imgUrl2} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
-          <br /><hr /><br />
+          </> : null}
 
+          {addAward >= 2 ? <>
+          <br /><hr /><br />
           <p>3번 상 이름</p>
           <input type="text" value={state.tAward} onChange={e => setState({...state, tAward: e.target.value})} placeholder="2번 상 이름을 입력하세요."/>
           <p>3번상 수상자</p>
@@ -169,8 +177,10 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="file" onChange={(e) => handleUpload(e, 3)} />
           {state.imgUrl3 && <img src={state.imgUrl3} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
-          <br /><hr /><br />
+          </> : null}
 
+          {addAward >= 3 ? <>
+          <br /><hr /><br />
           <p>4번 상 이름</p>
           <input type="text" value={state.anotherAward} onChange={e => setState({...state, anotherAward: e.target.value})} placeholder="2번 상 이름을 입력하세요."/>
           <p>4번상 수상자</p>
@@ -185,11 +195,15 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="file" onChange={(e) => handleUpload(e, 4)} />
           {state.imgUrl4 && <img src={state.imgUrl4} alt="Uploaded" />}
           <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
+          </> : null}
+          {addAward < 3 ? 
+          <div className="addBtn" onClick={() => setAddAward(addAward + 1)}>상 추가</div>
+          : null
+          }   
           <input type="submit" className="submit" value="완료" />
-
         </form>
         <div className='btnWrapper'>
-          <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+          <div className="cancle" onClick={handleCloseModal}>취소</div>
           {award ? <div className="delete" onClick={() => {deleteAward(award[0] as string)}}>삭제</div> : null}
         </div>
       </HofModalContainer>

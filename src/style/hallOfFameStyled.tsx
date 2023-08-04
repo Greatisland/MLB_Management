@@ -117,12 +117,13 @@ export const HofCardContainer = styled.div`
 
 export const HofAddModalWrapper = styled.div`
   width: 100%;
+  height: 100%;
   color: #333;
   background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 0; left: 0;
-  z-index: 2;
+  position: fixed;
   top: 0;
+  overflow-y: auto;
+  z-index: 2;
   left: 0;
   display: flex;
   justify-content: center;
@@ -135,7 +136,7 @@ export const HofModalContainer = styled.div`
   scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;
   gap: 20px;
-  padding: 80px 20px 160px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   &::-webkit-scrollbar {
@@ -172,6 +173,7 @@ export const HofModalContainer = styled.div`
     width: 100%;
     position: relative;
     padding: 5px 10px;
+    box-sizing: border-box;
     background: #eee;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
@@ -241,6 +243,21 @@ export const HofModalContainer = styled.div`
       color: #333;
     }
   }
+
+  .addBtn {
+    border: none;
+    background: ${props=> props.theme.green};
+    border-radius: 30px;
+    padding: 8px 10px;
+    margin: 20px 0 0;
+    color: #fff;
+    letter-spacing: 0.04rem;
+    text-align: center;
+    font-size: 0.8rem;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+
   .btnWrapper {
     display: flex;
     justify-content: space-around;

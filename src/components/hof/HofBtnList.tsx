@@ -1,5 +1,5 @@
 import { Btn, BtnListContainer } from "../../style/globalStyled"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import HofAddModal from "./HofAddModal"
 import { useAppSelector } from "../../store/hook"
 import Swal from "sweetalert2"
@@ -9,10 +9,13 @@ const HofBtnList = () => {
 
   const { loginUser } = useAppSelector(state => state.membersData)
   const [ isModal, setIsModal ] = useState(false)
+  const [scrollPos, setScrollPos] = useState(0)
 
   const handleModal = () => {
     if(loginUser.level >= 2){
+      setScrollPos(window.scrollY)
       setIsModal(true)
+      document.body.classList.add('no-scroll')
     }else{
       Swal.fire({
         icon: 'warning',
@@ -22,6 +25,7 @@ const HofBtnList = () => {
       })
     }
   }
+
   return (
     <>
       {loginUser.level >= 2 ? 
