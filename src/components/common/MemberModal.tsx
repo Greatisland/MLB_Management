@@ -180,11 +180,11 @@ const MemberModal = () => {
             <p>가요제 수상횟수</p>
             <span className="awardCount">
               {
-              new Array(sendMember.awardCount.fClass).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#bb8900' key={i}/>
               ))}
               {
-              new Array(sendMember.awardCount.sClass).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#c0c0c0' key={i}/>
               ))}
             </span>
@@ -242,11 +242,11 @@ const MemberModal = () => {
             <p>가요제 수상횟수</p>
             <span className="awardCount">
               {
-              new Array(sendMember.awardCount.fClass).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#bb8900' key={i}/>
               ))}
               {
-              new Array(sendMember.awardCount.sClass).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#c0c0c0' key={i}/>
               ))}
             </span>
