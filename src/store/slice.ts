@@ -38,6 +38,7 @@ export interface Ban {
 }
 
 export interface Hof {
+  [key: string]: string | undefined
   eventName: string
   eventDate: string
   fClass: string
