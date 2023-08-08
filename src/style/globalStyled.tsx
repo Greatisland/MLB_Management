@@ -116,6 +116,12 @@ export const Btn = styled.div`
   &.memberAdd {
     margin: 0 0 0 auto;
   }
+  #check {
+    width: 20px; height: 20px;
+    border: 1px solid #333;
+    appearance: auto;
+    -webkit-appearance: auto;
+  }
 `
 
 export const ScrollToTopBtnContainer = styled.div`
