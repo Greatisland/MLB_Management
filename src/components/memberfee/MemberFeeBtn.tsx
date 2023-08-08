@@ -88,7 +88,8 @@ const handleFee = () => {
       autocapitalize: 'off'
     },
     showCancelButton: true,
-    confirmButtonText: 'Look up',
+    confirmButtonText: '변경',
+    cancelButtonText: '취소',
     showLoaderOnConfirm: true,
     preConfirm: (gold) => {
       if(!isNaN(gold)){ // 입력값이 숫자일 경우
