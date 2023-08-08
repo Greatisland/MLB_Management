@@ -45,8 +45,9 @@ const PartList = () => {
         <thead>
           <tr>
             <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
+            <th className="index">순번</th>
             <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
-            <th onClick={() => {dispatch(sortState('monthPart'))}}>이번달 참석</th>
+            <th onClick={() => {dispatch(sortState('monthPart'))}}>금월 참석</th>
             <th onClick={() => {dispatch(sortState('aver'))}}>평균 참석</th>
           </tr>
         </thead>
@@ -79,6 +80,7 @@ const PartList = () => {
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
                 )) ? <span className="tagNew">New!</span> : null
               }</div></td>
+            <td className="index">{i+1}</td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{averCheck(member[1])} 회</td>
@@ -107,6 +109,7 @@ const PartList = () => {
                <span className="tagHot">Hot</span> : null}
               </div>
             </td>
+            <td className="index">{i+1}</td>
             <td>{member[1].total || 0} 회</td>
             <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
             <td>{averCheck(member[1])} 회</td>

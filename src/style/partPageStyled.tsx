@@ -93,6 +93,7 @@ export const PartListContainer = styled.div`
   thead, tbody, tr {
     width: 100%;
   }
+
   tr {
     display: flex;
     justify-content: space-around;
@@ -103,7 +104,7 @@ export const PartListContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 6px;
-    width: 25%;
+    width: 22%;
     padding: 8px 0;
     text-align: center;
     font-size: 0.85rem;
@@ -132,6 +133,12 @@ export const PartListContainer = styled.div`
         background: #ffffff; 
       }
     }
+  }
+  .index {
+    width: 10%;
+  }
+  td.index {
+    font-size: 0.6rem;
   }
   th:first-child, td:first-child {
     width: 34%;

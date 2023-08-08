@@ -61,6 +61,7 @@ const HomeList = () => {
         <thead>
           <tr>
             <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
+            <th className="index">순번</th>
             <th onClick={() => {dispatch(sortState('join'))}}>가입일</th>
             <th onClick={() => {dispatch(sortState('year'))}}>년생</th>
             {loginUser.level >= 2 ?
@@ -102,6 +103,7 @@ const HomeList = () => {
                 <span className="tagHot">Hot</span> : null}
                 </div>
               </td>
+              <td className="index">{i+1}</td>
               <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].year.slice(2)}</td>
               {loginUser.level >= 2 ?

@@ -77,6 +77,10 @@ export const HomeListContainer = styled.div`
     justify-content: space-around;
     border-bottom: 1px solid #fff;
   }
+  td.index {
+    font-size: 0.6rem;
+  }
+
   th, td {
     display: flex;
     justify-content: center;
@@ -87,6 +91,10 @@ export const HomeListContainer = styled.div`
     text-align: center;
     font-size: 0.85rem;
     cursor: pointer;
+    &.index {
+    width: 10%;
+
+    }
     .tagContainer {
       max-width: 31px;
       gap: 2px;
@@ -115,7 +123,7 @@ export const HomeListContainer = styled.div`
   th:first-child, td:first-child {
     width: 32%;
   }
-  td:nth-child(4) {
+  td:nth-child(5) {
     text-align: start;
     font-size: 0.7rem;
     letter-spacing: -0.01rem;
