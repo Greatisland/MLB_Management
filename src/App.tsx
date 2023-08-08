@@ -3,7 +3,7 @@ import AppRouter from './router/AppRouter.tsx'
 import { GlobalStyle } from './style/globalStyled.tsx'
 import { useState, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from './store/hook.ts'
-import {  setMembers, setBanMembers, setHof, setAccountList } from './store/slice.ts'
+import {  setMembers, setBanMembers, setHof, setAccountList, setFee } from './store/slice.ts'
 import ScrollToTop from './components/common/ScrollToTop.tsx'
 import { originTheme } from "./style/theme.tsx";
 import Splash from "./components/common/Splash.tsx";
@@ -25,6 +25,7 @@ const App = () => {
     dbFunc.getBanMembers((data: any) => dispatch(setBanMembers(data)))
     dbFunc.getHof((data: any) => dispatch(setHof(data)))
     dbFunc.getAllAccount((data: any) => dispatch(setAccountList(data)))
+    dbFunc.getFee((data:any) => dispatch(setFee(data)))
   },[dispatch])
 
 

@@ -43,6 +43,16 @@ export const BtnListContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 10px;
+  .fee {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    p {
+      width: 100%;
+      max-width: 130px;
+      text-align: center;
+    }
+  }
   .hofTitle {
     display: flex;
     justify-content: center;

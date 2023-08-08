@@ -4,7 +4,7 @@ import Swal from "sweetalert2"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 
 const MemberFeeBtn = () => {
-  const { membersData, loginUser } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser, fee } = useAppSelector(state => state.membersData)
 
   const allDone = () => {
     if(loginUser.level >= 3) {
@@ -80,13 +80,40 @@ const MemberFeeBtn = () => {
     }
   }
 
+const handleFee = () => {
+  Swal.fire({
+    title: `회비 금액을 수정해주세요. 현재 회비는 ${fee.gold.toLocaleString()}원 입니다.`,
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+    preConfirm: (gold) => {
+      if(!isNaN(gold)){ // 입력값이 숫자일 경우
+        return dbFunc.updateFee(Number(gold))
+      } else {
+        Swal.showValidationMessage(`숫자만 입력해주세요.`) // 숫자가 아닐 경우 에러 메시지 표시
+      }
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('완료!', '회비가 변경되었어요.', 'success')
+      }
+  })
+}
   return (
     <BtnListContainer>
-      <Btn onClick={() => {allDone()}}>
-        <p>모두 납부완료</p>
+      <Btn className="fee" onClick={() => {handleFee()}}>
+        <p>회비금액 <br />조정</p>
       </Btn>
-      <Btn onClick={() => {allNone()}}>
-        <p>모두 미납처리</p>
+      <Btn className="fee" onClick={() => {allDone()}}>
+        <p>모두 <br />납부완료</p>
+      </Btn>
+      <Btn className="fee" onClick={() => {allNone()}}>
+        <p>모두 <br />미납처리</p>
       </Btn>
     </BtnListContainer>
   )

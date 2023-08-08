@@ -115,6 +115,7 @@ interface InitialState {
     email: string
   }
   accountList : [string, Account][]
+  fee: {gold: number}
 }
 
 const initialState: InitialState = {
@@ -161,7 +162,10 @@ const initialState: InitialState = {
     email: '',
     state: false
   },
-  accountList: []
+  accountList: [],
+  fee: {
+    gold: 0
+  }
 }
 
 //reducer, state를 모두 관리할 slice
@@ -175,6 +179,7 @@ const membersDataSlice = createSlice({
     setBanMembers (state, action) {state.banData = action.payload},
     setHof (state, action) {state.hofData = action.payload},
     setAccountList (state, action) {state.accountList = action.payload},
+    setFee (state, action) {state.fee = action.payload},
 
     //멤버 정렬
     sortState (state, action) {
@@ -275,5 +280,5 @@ const membersDataSlice = createSlice({
 
   }
 })
-export const { sortState, toggleModal, togglePartModal, sendMember, setBanMembers, setMembers, setHof, sendBan, loginUserSend, setAccountList } = membersDataSlice.actions
+export const { sortState, toggleModal, togglePartModal, setFee, sendMember, setBanMembers, setMembers, setHof, sendBan, loginUserSend, setAccountList } = membersDataSlice.actions
 export default membersDataSlice.reducer

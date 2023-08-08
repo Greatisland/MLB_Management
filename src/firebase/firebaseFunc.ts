@@ -18,6 +18,7 @@ const accountRef = ref(database, '/userLevels')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
+const feeRef = ref(database, '/fee')
 
 //애널리틱스
 const analytics = getAnalytics(app)
@@ -187,7 +188,26 @@ export const dbFunc = {
 
     viewedPosts[postId] = true
     localStorage.setItem('viewedPosts', JSON.stringify(viewedPosts))
-  }
+  },
+
+  //회비 수정
+  updateFee(updateFee: number) {
+    return new Promise<void>((resolve, reject) => {
+      try{
+        set(feeRef, {gold: updateFee})
+        resolve()
+      }catch(error){
+        reject(error)
+      }
+    })
+  },
+
+  //회비 읽어오기
+  getFee(callback: any){
+    onValue(feeRef, (snapshot) => {
+      callback(snapshot.val())
+    })
+  },
 }
 
 //회원 관련 함수

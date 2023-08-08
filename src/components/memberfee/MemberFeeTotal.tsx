@@ -7,7 +7,7 @@ import { RiHandCoinLine } from 'react-icons/ri';
 
 
 const MemberFeeTotal = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, fee } = useAppSelector(state => state.membersData)
   let payMembers = membersData.filter(member => {
     let memberJoin = new Date(member[1].join)
     let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
@@ -36,9 +36,9 @@ const MemberFeeTotal = () => {
     }, 0)
 
     if(param === 'done'){
-      return (complete * 15000).toLocaleString()
+      return (complete * fee.gold).toLocaleString()
     }else{
-      return ((payMembers.length * 15000) - (complete * 15000)).toLocaleString()
+      return ((payMembers.length * fee.gold) - (complete * fee.gold)).toLocaleString()
     }
   }
   
