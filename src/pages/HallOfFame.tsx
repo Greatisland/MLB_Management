@@ -1,10 +1,10 @@
-import Footer from "../components/common/Footer"
-import HofBtnList from "../components/hof/HofBtnList"
-import HofList from "../components/hof/HofList"
-import { HallOfFameContainer } from "../style/hallOfFameStyled"
-import { useAppSelector } from "../store/hook"
-import Waiting from "../components/common/Waiting"
-import ScrollToTopBtn from "../components/common/ScrollToTopBtn"
+import Footer from "../components/common/Footer.tsx"
+import HofBtnList from "../components/hof/HofBtnList.tsx"
+import HofList from "../components/hof/HofList.tsx"
+import { HallOfFameContainer } from "../style/hallOfFameStyled.tsx"
+import { useAppSelector } from "../store/hook.ts"
+import Waiting from "../components/common/Waiting.tsx"
+import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 
 
 const HallOfFame = () => {

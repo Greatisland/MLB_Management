@@ -1,10 +1,10 @@
-import Footer from "../components/common/Footer"
-import SecretBoardList from "../components/secretboard/SecretBoardList"
-import { SecretBoardContainer } from "../style/secretBoardStyled"
+import Footer from "../components/common/Footer.tsx"
+import SecretBoardList from "../components/secretboard/SecretBoardList.tsx"
+import { SecretBoardContainer } from "../style/secretBoardStyled.tsx"
 import { useState, useEffect } from "react"
-import { dbFunc } from "../firebase/firebaseFunc"
-import { useAppSelector } from "../store/hook"
-import Waiting from "../components/common/Waiting"
+import { dbFunc } from "../firebase/firebaseFunc.ts"
+import { useAppSelector } from "../store/hook.ts"
+import Waiting from "../components/common/Waiting.tsx"
 
 
 const SecretBoard = () => {

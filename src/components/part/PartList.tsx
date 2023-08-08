@@ -1,10 +1,10 @@
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
-import { sortState } from "../../store/slice"
-import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled"
-import { dateCalc } from "../common/dateCalc"
-import { averCheck } from "../common/averCheck"
-import { togglePartModal, sendMember } from "../../store/slice"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
+import { sortState } from "../../store/slice.ts"
+import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
+import { dateCalc } from "../common/dateCalc.ts"
+import { averCheck } from "../common/averCheck.ts"
+import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 
 const PartList = () => {

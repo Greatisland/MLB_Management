@@ -1,9 +1,9 @@
-import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled"
-import ChartGraph from "./ChartGraph"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { togglePartModal } from "../../store/slice"
-import { dateCalc } from "../common/dateCalc"
-import { averCheck } from "../common/averCheck"
+import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled.tsx"
+import ChartGraph from "./ChartGraph.tsx"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { togglePartModal } from "../../store/slice.ts"
+import { dateCalc } from "../common/dateCalc.ts"
+import { averCheck } from "../common/averCheck.ts"
 
 const PartModal = () => {
   const dispatch = useAppDispatch()

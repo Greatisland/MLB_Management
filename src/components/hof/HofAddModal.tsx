@@ -1,9 +1,9 @@
-import { HofAddModalWrapper, HofModalContainer } from "../../style/hallOfFameStyled"
+import { HofAddModalWrapper, HofModalContainer } from "../../style/hallOfFameStyled.tsx"
 import { ChangeEvent, useState } from "react"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import Swal from "sweetalert2"
-import type { Hof } from "../../store/slice"
+import type { Hof } from "../../store/slice.ts"
 
 interface Props {
   setIsModal: (value: boolean) => void

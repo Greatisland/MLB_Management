@@ -1,11 +1,11 @@
-import PartAward from "../components/part/PartAward"
-import PartList from "../components/part/PartList"
-import PartModal from "../components/part/PartModal"
-import PartResult from "../components/part/PartResult"
-import { PartPageContainer } from "../style/partPageStyled"
-import { useAppSelector } from "../store/hook"
-import Footer from "../components/common/Footer"
-import Waiting from "../components/common/Waiting"
+import PartAward from "../components/part/PartAward.tsx"
+import PartList from "../components/part/PartList.tsx"
+import PartModal from "../components/part/PartModal.tsx"
+import PartResult from "../components/part/PartResult.tsx"
+import { PartPageContainer } from "../style/partPageStyled.tsx"
+import { useAppSelector } from "../store/hook.ts"
+import Footer from "../components/common/Footer.tsx"
+import Waiting from "../components/common/Waiting.tsx"
 
 
 const PartPage = () => {

@@ -1,11 +1,11 @@
-import MemberFeeList from "../components/memberfee/MemberFeeList"
-import { MemberFeeContainer } from "../style/memberFeeStyled"
-import { dateCalc } from "../components/common/dateCalc"
-import MemberFeeBtn from "../components/memberfee/MemberFeeBtn"
-import MemberFeeTotal from "../components/memberfee/MemberFeeTotal"
-import Footer from "../components/common/Footer"
-import { useAppSelector } from "../store/hook"
-import Waiting from "../components/common/Waiting"
+import MemberFeeList from "../components/memberfee/MemberFeeList.tsx"
+import { MemberFeeContainer } from "../style/memberFeeStyled.tsx"
+import { dateCalc } from "../components/common/dateCalc.ts"
+import MemberFeeBtn from "../components/memberfee/MemberFeeBtn.tsx"
+import MemberFeeTotal from "../components/memberfee/MemberFeeTotal.tsx"
+import Footer from "../components/common/Footer.tsx"
+import { useAppSelector } from "../store/hook.ts"
+import Waiting from "../components/common/Waiting.tsx"
 
 
 const MemberFee = () => {

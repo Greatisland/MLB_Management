@@ -1,12 +1,12 @@
-import { LoginContainer, LoginWrapper } from "../style/loginStyled"
-import { authFunc } from "../firebase/firebaseFunc"
+import { LoginContainer, LoginWrapper } from "../style/loginStyled.tsx"
+import { authFunc } from "../firebase/firebaseFunc.ts"
 import { useState, useEffect, useRef } from "react"
-import { useAppSelector } from "../store/hook"
+import { useAppSelector } from "../store/hook.ts"
 import { useNavigate } from "react-router"
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { auth } from "../firebase/firebaseFunc"
-import JoinModal from "../components/common/JoinModal"
+import { auth } from "../firebase/firebaseFunc.ts"
+import JoinModal from "../components/common/JoinModal.tsx"
 
 
 const LoginPage = () => {

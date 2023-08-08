@@ -1,5 +1,5 @@
-import { SplashContainer } from "../../style/globalStyled"
-import { SplashCom } from "../../style/loginStyled"
+import { SplashContainer } from "../../style/globalStyled.tsx"
+import { SplashCom } from "../../style/loginStyled.tsx"
 import { LinearProgress } from "@mui/material"
 
 

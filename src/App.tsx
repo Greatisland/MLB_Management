@@ -1,18 +1,18 @@
 import { ThemeProvider } from "styled-components";
-import AppRouter from './router/AppRouter'
-import { GlobalStyle } from './style/globalStyled'
+import AppRouter from './router/AppRouter.tsx'
+import { GlobalStyle } from './style/globalStyled.tsx'
 import { useState, useEffect } from "react"
-import { useAppSelector, useAppDispatch } from './store/hook'
-import {  setMembers, setBanMembers, setHof, setAccountList } from './store/slice'
-import ScrollToTop from './components/common/ScrollToTop'
-import { originTheme } from "./style/theme";
-import Splash from "./components/common/Splash";
+import { useAppSelector, useAppDispatch } from './store/hook.ts'
+import {  setMembers, setBanMembers, setHof, setAccountList } from './store/slice.ts'
+import ScrollToTop from './components/common/ScrollToTop.tsx'
+import { originTheme } from "./style/theme.tsx";
+import Splash from "./components/common/Splash.tsx";
 import { onValue, ref, set } from "firebase/database"
-import { auth, database, dbFunc } from "./firebase/firebaseFunc"
+import { auth, database, dbFunc } from "./firebase/firebaseFunc.ts"
 import { onAuthStateChanged } from "firebase/auth"
-import { loginUserSend } from "./store/slice"
-import LoginPage from "./pages/LoginPage"
-import Waiting from "./components/common/Waiting";
+import { loginUserSend } from "./store/slice.ts"
+import LoginPage from "./pages/LoginPage.tsx"
+import Waiting from "./components/common/Waiting.tsx";
 
 const App = () => {
   const dispatch = useAppDispatch()

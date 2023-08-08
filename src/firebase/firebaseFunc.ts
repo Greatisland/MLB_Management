@@ -1,7 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail  } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update, get, runTransaction } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
-import { type Member, type Ban, type Hof } from '../store/slice'
+import { type Member, type Ban, type Hof } from '../store/slice.ts'
 import Swal from 'sweetalert2'
 import { app } from "./firebaseConfig"
 

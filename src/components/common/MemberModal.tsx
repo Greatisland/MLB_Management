@@ -1,10 +1,10 @@
-import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, NormalModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle"
+import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, NormalModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle.tsx"
 import { useState, ChangeEvent, useEffect } from "react"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { toggleModal } from "../../store/slice"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { toggleModal } from "../../store/slice.ts"
 import Swal from "sweetalert2"
-import { StyledGiTrophy } from "../../style/homeStyled"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { StyledGiTrophy } from "../../style/homeStyled.tsx"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
 
 

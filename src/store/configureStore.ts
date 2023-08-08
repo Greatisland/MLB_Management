@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import membersDataSlice from "./slice";
+import membersDataSlice from "./slice.ts";
 
 const store = configureStore({
   reducer: {

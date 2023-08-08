@@ -1,7 +1,7 @@
-import { useAppSelector } from "../../store/hook";
-import { PartAwardContainer } from "../../style/partPageStyled"
+import { useAppSelector } from "../../store/hook.ts";
+import { PartAwardContainer } from "../../style/partPageStyled.tsx"
 import { GiPartyPopper } from 'react-icons/gi';
-import { dateCalc } from "../common/dateCalc";
+import { dateCalc } from "../common/dateCalc.ts";
 
 const PartAward = () => {
 

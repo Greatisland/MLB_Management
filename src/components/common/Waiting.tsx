@@ -1,4 +1,4 @@
-import { HomeContainer } from "../../style/homeStyled"
+import { HomeContainer } from "../../style/homeStyled.tsx"
 const Waiting = () => {
   return (
     <HomeContainer>

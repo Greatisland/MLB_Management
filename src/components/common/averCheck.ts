@@ -1,5 +1,5 @@
-import type { Member } from "../../store/slice"
-import { dateCalc } from "./dateCalc"
+import type { Member } from "../../store/slice.ts"
+import { dateCalc } from "./dateCalc.ts"
 
 export const averCheck = (member: Member) => {
 

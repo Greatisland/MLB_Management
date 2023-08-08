@@ -1,7 +1,7 @@
-import { Btn, BtnListContainer } from "../../style/globalStyled"
-import { useAppSelector } from "../../store/hook"
+import { Btn, BtnListContainer } from "../../style/globalStyled.tsx"
+import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 
 const MemberFeeBtn = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)

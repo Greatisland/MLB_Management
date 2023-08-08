@@ -1,7 +1,7 @@
-import { Btn, BtnListContainer } from "../../style/globalStyled"
+import { Btn, BtnListContainer } from "../../style/globalStyled.tsx"
 import { useState, useEffect } from "react"
-import HofAddModal from "./HofAddModal"
-import { useAppSelector } from "../../store/hook"
+import HofAddModal from "./HofAddModal.tsx"
+import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"
 import { GiTrophy } from 'react-icons/gi';
 

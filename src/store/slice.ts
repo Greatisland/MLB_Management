@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { dateCalc } from "../components/common/dateCalc"
-import { averCheck } from "../components/common/averCheck"
+import { dateCalc } from "../components/common/dateCalc.ts"
+import { averCheck } from "../components/common/averCheck.ts"
 
 export interface Member {
   id?: string

@@ -1,7 +1,7 @@
-import { HomeListContainer } from "../../style/homeStyled"
-import { useAppSelector } from "../../store/hook"
+import { HomeListContainer } from "../../style/homeStyled.tsx"
+import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { LinearProgress } from "@mui/material"
 
 

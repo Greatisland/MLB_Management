@@ -1,8 +1,8 @@
-import { HeaderContainer } from "../../style/headerStyle"
-import MemberModal from "./MemberModal";
-import { useAppSelector } from "../../store/hook";
+import { HeaderContainer } from "../../style/headerStyle.tsx"
+import MemberModal from "./MemberModal.tsx";
+import { useAppSelector } from "../../store/hook.ts";
 import { Link } from "react-router-dom";
-import { authFunc } from "../../firebase/firebaseFunc";
+import { authFunc } from "../../firebase/firebaseFunc.ts";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {

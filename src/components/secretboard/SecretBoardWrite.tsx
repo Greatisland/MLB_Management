@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { Btn } from "../../style/globalStyled"
-import { EditorContainer, SecretBoardBtnContainer, SecretBoardContainer } from "../../style/secretBoardStyled"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { Btn } from "../../style/globalStyled.tsx"
+import { EditorContainer, SecretBoardBtnContainer, SecretBoardContainer } from "../../style/secretBoardStyled.tsx"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { useAppSelector } from "../../store/hook"
+import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"
 
 export const getToday = () => {

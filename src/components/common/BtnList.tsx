@@ -1,6 +1,6 @@
-import { Btn, BtnListContainer } from "../../style/globalStyled"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { toggleModal, sendMember } from "../../store/slice"
+import { Btn, BtnListContainer } from "../../style/globalStyled.tsx"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { toggleModal, sendMember } from "../../store/slice.ts"
 import { BiMale, BiFemale, BiMaleFemale } from 'react-icons/bi'
 import Swal from "sweetalert2"
 

@@ -1,9 +1,9 @@
-import { BanTopContainer, HomeListContainer } from "../../style/homeStyled"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { Btn } from "../../style/globalStyled"
+import { BanTopContainer, HomeListContainer } from "../../style/homeStyled.tsx"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { Btn } from "../../style/globalStyled.tsx"
 import { useState } from "react"
-import BanModal from "./BanModal"
-import { sendBan } from "../../store/slice"
+import BanModal from "./BanModal.tsx"
+import { sendBan } from "../../store/slice.ts"
 
 const BanList = () => {
   const dispatch = useAppDispatch()

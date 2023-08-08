@@ -1,8 +1,8 @@
-import { Btn } from "../../style/globalStyled"
+import { Btn } from "../../style/globalStyled.tsx"
 import { Link, useNavigate } from "react-router-dom"
-import { SecretBoardBtnContainer, SecretBoardListContainer } from "../../style/secretBoardStyled"
-import type { Board } from "../../store/slice"
-import { useAppSelector } from "../../store/hook"
+import { SecretBoardBtnContainer, SecretBoardListContainer } from "../../style/secretBoardStyled.tsx"
+import type { Board } from "../../store/slice.ts"
+import { useAppSelector } from "../../store/hook.ts"
 import { VscGistSecret } from 'react-icons/vsc'
 import { AiOutlineComment, AiOutlineEye } from 'react-icons/ai'
 

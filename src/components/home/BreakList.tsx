@@ -1,6 +1,6 @@
-import { HomeListContainer } from "../../style/homeStyled"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { toggleModal, sendMember, sortState } from "../../store/slice"
+import { HomeListContainer } from "../../style/homeStyled.tsx"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { toggleModal, sendMember, sortState } from "../../store/slice.ts"
 import Swal from "sweetalert2"
 
 const BreakList = () => {

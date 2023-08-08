@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "../layout/Layout"
-import MemberFee from "../pages/MemberFee";
-import PartPage from "../pages/PartPage";
-import Home from "../pages/Home";
-import HallOfFame from "../pages/HallOfFame";
-import SecretBoard from "../pages/SecretBoard";
-import SecretBoardView from "../components/secretboard/SecretBoardView";
-import SecretBoardWrite from "../components/secretboard/SecretBoardWrite";
+import Layout from "../layout/Layout.tsx"
+import MemberFee from "../pages/MemberFee.tsx";
+import PartPage from "../pages/PartPage.tsx";
+import Home from "../pages/Home.tsx";
+import HallOfFame from "../pages/HallOfFame.tsx";
+import SecretBoard from "../pages/SecretBoard.tsx";
+import SecretBoardView from "../components/secretboard/SecretBoardView.tsx";
+import SecretBoardWrite from "../components/secretboard/SecretBoardWrite.tsx";
 
 const AppRouter = () => {
   return (

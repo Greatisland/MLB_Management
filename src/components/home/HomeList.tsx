@@ -1,9 +1,9 @@
-import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled"
-import { TagExplain } from "../../style/partPageStyled"
-import { useAppSelector, useAppDispatch } from "../../store/hook"
-import { toggleModal, sendMember, sortState } from "../../store/slice"
-import { SearchBarPart } from "../../style/partPageStyled"
-import { dateCalc } from "../common/dateCalc"
+import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
+import { TagExplain } from "../../style/partPageStyled.tsx"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { toggleModal, sendMember, sortState } from "../../store/slice.ts"
+import { SearchBarPart } from "../../style/partPageStyled.tsx"
+import { dateCalc } from "../common/dateCalc.ts"
 import { useState } from "react"
 
 const HomeList = () => {

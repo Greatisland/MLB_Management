@@ -1,12 +1,12 @@
-import BtnList from "../components/common/BtnList"
-import HomeList from "../components/home/HomeList"
-import BreakList from "../components/home/BreakList"
-import BanList from "../components/home/BanList"
-import PenddingList from "../components/home/PenddingList"
-import { HomeContainer } from "../style/homeStyled"
-import Footer from "../components/common/Footer"
-import { useAppSelector } from "../store/hook"
-import Waiting from "../components/common/Waiting"
+import BtnList from "../components/common/BtnList.tsx"
+import HomeList from "../components/home/HomeList.tsx"
+import BreakList from "../components/home/BreakList.tsx"
+import BanList from "../components/home/BanList.tsx"
+import PenddingList from "../components/home/PenddingList.tsx"
+import { HomeContainer } from "../style/homeStyled.tsx"
+import Footer from "../components/common/Footer.tsx"
+import { useAppSelector } from "../store/hook.ts"
+import Waiting from "../components/common/Waiting.tsx"
 
 
 const Home = () => {

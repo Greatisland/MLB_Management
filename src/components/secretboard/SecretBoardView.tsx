@@ -1,12 +1,12 @@
-import { Btn } from "../../style/globalStyled"
-import { SecretBoardBtnContainer, SecretBoardContainer, CommentContainer, CommentBox, CommentForm, ViewUserListContainer } from "../../style/secretBoardStyled"
+import { Btn } from "../../style/globalStyled.tsx"
+import { SecretBoardBtnContainer, SecretBoardContainer, CommentContainer, CommentBox, CommentForm, ViewUserListContainer } from "../../style/secretBoardStyled.tsx"
 import { useParams, useNavigate } from "react-router"
-import { dbFunc } from "../../firebase/firebaseFunc"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { useState, useEffect } from "react"
-import type { Board } from "../../store/slice"
-import { useAppSelector } from "../../store/hook"
+import type { Board } from "../../store/slice.ts"
+import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"
-import { getToday } from "./SecretBoardWrite"
+import { getToday } from "./SecretBoardWrite.tsx"
 
 const SecretBoardView = () => {
   const { id } = useParams()

@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import Swal from "sweetalert2"
-import { authFunc } from "../../firebase/firebaseFunc"
-import { CreateModalContainer } from "../../style/loginStyled"
+import { authFunc } from "../../firebase/firebaseFunc.ts"
+import { CreateModalContainer } from "../../style/loginStyled.tsx"
 
 interface Props {
   setIsModal: (value: boolean) => void
