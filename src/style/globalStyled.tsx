@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
   .eng {
     font-family: 'Montserrat', sans-serif;
   }
-  .page {
+  /* .page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -50,7 +50,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .page-entered {
     transform: translateX(0);
-  }
+  } */
 `
 
 export const BtnListContainer = styled.div`

@@ -7,7 +7,7 @@ import HallOfFame from "../pages/HallOfFame.tsx";
 import SecretBoard from "../pages/SecretBoard.tsx";
 import SecretBoardView from "../components/secretboard/SecretBoardView.tsx";
 import SecretBoardWrite from "../components/secretboard/SecretBoardWrite.tsx";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../store/hook.ts";
 
@@ -29,7 +29,7 @@ const AppRouter = () => {
           const moveIndex = (currentPageIndex + 1) <= pageList.length - 1 ? currentPageIndex + 1 : 0
           navigate(pageList[moveIndex])
         } else if (endX - (startX || 0) > 50) {
-          const moveIndex = (currentPageIndex - 1) >= 0 ? currentPageIndex - 1 : 0
+          const moveIndex = (currentPageIndex - 1) >= 0 ? currentPageIndex - 1 : pageList.length - 1
           navigate(pageList[moveIndex])
         }
       }
@@ -46,9 +46,8 @@ const AppRouter = () => {
   }, [startX, navigate, currentPageIndex])
 
   return (
-    <TransitionGroup>
-      <CSSTransition timeout={300} classNames="page" key={location.key}>
-        <Routes location={location}>
+
+        <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="infopage" element={<Home />} />
@@ -60,9 +59,8 @@ const AppRouter = () => {
           <Route path="halloffame" element={<HallOfFame />} />
         </Route>
       </Routes>
-      </CSSTransition>
-    </TransitionGroup>
-    )
+
+  )
 }
 
 export default AppRouter
