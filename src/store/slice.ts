@@ -167,7 +167,7 @@ const initialState: InitialState = {
   fee: {
     gold: 0
   },
-  isSwiping: true
+  isSwiping: true,
 }
 
 //reducer, state를 모두 관리할 slice

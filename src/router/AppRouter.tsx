@@ -7,17 +7,16 @@ import HallOfFame from "../pages/HallOfFame.tsx";
 import SecretBoard from "../pages/SecretBoard.tsx";
 import SecretBoardView from "../components/secretboard/SecretBoardView.tsx";
 import SecretBoardWrite from "../components/secretboard/SecretBoardWrite.tsx";
-// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../store/hook.ts";
 
 const AppRouter = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { isSwiping, loginUser } = useAppSelector(state => state.membersData)
   const [ startX, setStartX ] = useState<number | null>(null)
-  const pageList = ['/infopage', '/partpage', '/memberfee', '/secretboard', '/halloffame']
-  const currentPageIndex = pageList.findIndex(page => page === location.pathname)
-  const { isSwiping } = useAppSelector(state => state.membersData)
+  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/memberfee', '/secretboard', '/halloffame'] : ['/infopage', '/partpage', '/secretboard', '/halloffame'] 
+  let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       setStartX(e.touches[0].clientX)
@@ -25,7 +24,7 @@ const AppRouter = () => {
     const handleTouchEnd = (e: TouchEvent) => {
       const endX = e.changedTouches[0].clientX
       if(isSwiping){
-        if (startX && startX - endX > 50) {
+        if(startX && startX - endX > 50) {
           const moveIndex = (currentPageIndex + 1) <= pageList.length - 1 ? currentPageIndex + 1 : 0
           navigate(pageList[moveIndex])
         } else if (endX - (startX || 0) > 50) {
@@ -46,20 +45,18 @@ const AppRouter = () => {
   }, [startX, navigate, currentPageIndex])
 
   return (
-
-        <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="infopage" element={<Home />} />
-          <Route path="partpage" element={<PartPage />} />
-          <Route path="memberfee" element={<MemberFee />} />
-          <Route path="secretboard" element={<SecretBoard />} />
-          <Route path="boardview/:id" element={<SecretBoardView />} />
-          <Route path="boardwrite/:id" element={<SecretBoardWrite />} />
-          <Route path="halloffame" element={<HallOfFame />} />
-        </Route>
-      </Routes>
-
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="infopage" element={<Home />} />
+        <Route path="partpage" element={<PartPage />} />
+        <Route path="memberfee" element={<MemberFee />} />
+        <Route path="secretboard" element={<SecretBoard />} />
+        <Route path="boardview/:id" element={<SecretBoardView />} />
+        <Route path="boardwrite/:id" element={<SecretBoardWrite />} />
+        <Route path="halloffame" element={<HallOfFame />} />
+      </Route>
+    </Routes>
   )
 }
 
