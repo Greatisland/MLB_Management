@@ -1,7 +1,7 @@
 import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled.tsx"
 import ChartGraph from "./ChartGraph.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
-import { togglePartModal } from "../../store/slice.ts"
+import { togglePartModal, startSwiping } from "../../store/slice.ts"
 import { dateCalc } from "../common/dateCalc.ts"
 import { averCheck } from "../common/averCheck.ts"
 
@@ -44,7 +44,7 @@ const PartModal = () => {
             </tbody>
           </table>
         </div>
-        <div onClick={() => dispatch(togglePartModal())} className="exit">나가기</div>
+        <div onClick={() => {dispatch(togglePartModal()), dispatch(startSwiping())}} className="exit">나가기</div>
       </PartModalContainer>
     </PartModalWrapper>
   )

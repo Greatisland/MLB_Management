@@ -1,4 +1,13 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail  } from "firebase/auth"
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  updateProfile, 
+  GoogleAuthProvider, 
+  signInWithPopup, 
+  signOut, 
+  sendPasswordResetEmail
+} from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update, get, runTransaction } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
 import { type Member, type Ban, type Hof } from '../store/slice.ts'
@@ -23,7 +32,7 @@ const feeRef = ref(database, '/fee')
 //애널리틱스
 const analytics = getAnalytics(app)
 
-//데이터베이스 함수
+//데이터베이스 메소드
 export const dbFunc = {
 
   // 멤버 추가
@@ -210,16 +219,16 @@ export const dbFunc = {
   },
 }
 
-//회원 관련 함수
+//회원 관련 메소드
 export const authFunc = {
   //이메일 회원가입
   createAccount(email: string, password: string, displayName: string) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-    // 사용자 계정이 생성되었습니다.
+    // 사용자 계정 생성
     const user = userCredential.user
 
-    // 사용자 프로필 정보를 업데이트합니다.
+    // 사용자 프로필 정보 업데이트
     return updateProfile(user, {
         displayName,
       })

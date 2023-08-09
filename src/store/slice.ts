@@ -116,6 +116,7 @@ interface InitialState {
   }
   accountList : [string, Account][]
   fee: {gold: number}
+  isSwiping: boolean
 }
 
 const initialState: InitialState = {
@@ -165,7 +166,8 @@ const initialState: InitialState = {
   accountList: [],
   fee: {
     gold: 0
-  }
+  },
+  isSwiping: true
 }
 
 //reducer, state를 모두 관리할 slice
@@ -278,7 +280,24 @@ const membersDataSlice = createSlice({
     //로그인 유저 전송
     loginUserSend (state, action) {state.loginUser = action.payload},
 
+    //슬라이드 이벤트 비활성
+    stopSwiping (state) {state.isSwiping = false},
+    startSwiping (state) {state.isSwiping = true},
   }
 })
-export const { sortState, toggleModal, togglePartModal, setFee, sendMember, setBanMembers, setMembers, setHof, sendBan, loginUserSend, setAccountList } = membersDataSlice.actions
+export const { 
+  stopSwiping, 
+  startSwiping, 
+  sortState, 
+  toggleModal, 
+  togglePartModal, 
+  setFee, 
+  sendMember, 
+  setBanMembers, 
+  setMembers, 
+  setHof, 
+  sendBan, 
+  loginUserSend, 
+  setAccountList
+} = membersDataSlice.actions
 export default membersDataSlice.reducer

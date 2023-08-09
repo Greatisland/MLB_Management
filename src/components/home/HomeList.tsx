@@ -1,7 +1,7 @@
 import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
 import { TagExplain } from "../../style/partPageStyled.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
-import { toggleModal, sendMember, sortState } from "../../store/slice.ts"
+import { toggleModal, sendMember, sortState, stopSwiping } from "../../store/slice.ts"
 import { SearchBarPart } from "../../style/partPageStyled.tsx"
 import { dateCalc } from "../common/dateCalc.ts"
 import { useState } from "react"
@@ -15,7 +15,7 @@ const HomeList = () => {
   const searchMembersData = membersData.filter(member => member[1]?.name?.includes(search) && !member[1].break)
 
   const handleAddMember = (member: any) => {
-    dispatch(toggleModal()), dispatch(sendMember(
+    dispatch(toggleModal()), dispatch(stopSwiping()), dispatch(sendMember(
       {
         id: member[0],
         name: member[1].name,

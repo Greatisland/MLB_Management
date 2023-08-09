@@ -6,7 +6,7 @@ import Swal from "sweetalert2"
 import { StyledGiTrophy } from "../../style/homeStyled.tsx"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
-
+import { startSwiping, stopSwiping } from "../../store/slice.ts"
 
 const MemberModal = () => {
   
@@ -64,6 +64,7 @@ const MemberModal = () => {
           state.gender !== ''
         ){
           dbFunc.updateMember(sendMember.id as string, state)
+          dispatch(startSwiping())
           dispatch(toggleModal())
         }else{
           Swal.fire({
@@ -100,6 +101,7 @@ const MemberModal = () => {
         showConfirmButton: false,
         timer: 800
       })
+      dispatch(startSwiping())
       dispatch(toggleModal())
     }else if(!sendMember.state) {
       Swal.fire({
@@ -136,6 +138,7 @@ const MemberModal = () => {
             timer: 1000
           })
           dbFunc.removeMember(id)
+          dispatch(startSwiping())
           dispatch(toggleModal())
           return
         }else{return}
@@ -144,6 +147,7 @@ const MemberModal = () => {
   }
 
   const cancleMember = () => {
+    dispatch(startSwiping())
     dispatch(toggleModal())
   }
 

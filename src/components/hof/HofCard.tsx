@@ -4,15 +4,19 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import type { Hof } from "../../store/slice.ts"
 import { Swiper } from "swiper/react";
 import { Navigation } from 'swiper/modules';
+import { useAppDispatch } from "../../store/hook.ts";
+import { stopSwiping, startSwiping } from "../../store/slice.ts";
 import 'swiper/css';
+
 
 interface Props {
   onClick: () => void
   award: Hof
 }
 const HofCard = ({award, onClick} : Props) => {
+  const dispatch = useAppDispatch()
+
   return (
-    
     <HofCardContainer>
 
       <div className="leftSide">
@@ -30,6 +34,8 @@ const HofCard = ({award, onClick} : Props) => {
               prevEl: '.left'
             }}
             loop={true}
+            onTouchStart={() => dispatch(stopSwiping())}
+            onTouchEnd={() => dispatch(startSwiping())}
           >
             {award.imgUrl2 ? <>
               <IoIosArrowBack className="left" />

@@ -3,73 +3,83 @@ import AppRouter from './router/AppRouter.tsx'
 import { GlobalStyle } from './style/globalStyled.tsx'
 import { useState, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from './store/hook.ts'
-import { setMembers, setBanMembers, setHof, setAccountList, setFee, sortState } from './store/slice.ts'
+import { setMembers, setBanMembers, setHof, setAccountList, setFee } from './store/slice.ts'
 import ScrollToTop from './components/common/ScrollToTop.tsx'
-import { originTheme } from "./style/theme.tsx";
-import Splash from "./components/common/Splash.tsx";
+import { originTheme } from "./style/theme.tsx"
+import Splash from "./components/common/Splash.tsx"
 import { onValue, ref, set } from "firebase/database"
 import { auth, database, dbFunc } from "./firebase/firebaseFunc.ts"
 import { onAuthStateChanged } from "firebase/auth"
 import { loginUserSend } from "./store/slice.ts"
 import LoginPage from "./pages/LoginPage.tsx"
-import Waiting from "./components/common/Waiting.tsx";
+import Waiting from "./components/common/Waiting.tsx"
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { loginUser } = useAppSelector(state => state.membersData)
   const [ isLoading, setIsLoading ] = useState(true)
-  useEffect(() => {
-    //초기 데이터 세팅
-    const fetchData = async () => {
-      try {
-        const promises = [
-          new Promise((resolve, reject) => {
-            dbFunc.getAllMembers((data: any, error: any) => {
-              if (error) reject(error)
-              else resolve(data)
-            })
-          }),
-          new Promise((resolve, reject) => {
-            dbFunc.getBanMembers((data: any, error: any) => {
-              if (error) reject(error)
-              else resolve(data)
-            })
-          }),
-          new Promise((resolve, reject) => {
-            dbFunc.getHof((data: any, error: any) => {
-              if (error) reject(error)
-              else resolve(data)
-            })
-          }),
-          new Promise((resolve, reject) => {
-            dbFunc.getAllAccount((data: any, error: any) => {
-              if (error) reject(error)
-              else resolve(data)
-            })
-          }),
-          new Promise((resolve, reject) => {
-            dbFunc.getFee((data: any, error: any) => {
-              if (error) reject(error)
-              else resolve(data)
-            })
-          })
-        ]
+  // useEffect(() => {
+  //   //초기 데이터 세팅
+  //   const fetchData = async () => {
+  //     try {
+  //       const promises = [
+  //         new Promise((resolve, reject) => {
+  //           dbFunc.getAllMembers((data: any, error: any) => {
+  //             if (error) reject(error)
+  //             else resolve(data)
+  //           })
+  //         }),
+  //         new Promise((resolve, reject) => {
+  //           dbFunc.getBanMembers((data: any, error: any) => {
+  //             if (error) reject(error)
+  //             else resolve(data)
+  //           })
+  //         }),
+  //         new Promise((resolve, reject) => {
+  //           dbFunc.getHof((data: any, error: any) => {
+  //             if (error) reject(error)
+  //             else resolve(data)
+  //           })
+  //         }),
+  //         new Promise((resolve, reject) => {
+  //           dbFunc.getAllAccount((data: any, error: any) => {
+  //             if (error) reject(error)
+  //             else resolve(data)
+  //           })
+  //         }),
+  //         new Promise((resolve, reject) => {
+  //           dbFunc.getFee((data: any, error: any) => {
+  //             if (error) reject(error)
+  //             else resolve(data)
+  //           })
+  //         })
+  //       ]
 
-        const [allMembersData, banMembersData, hofData, accountListData, feeData] = await Promise.all(promises)
+  //       const [allMembersData, banMembersData, hofData, accountListData, feeData] = await Promise.all(promises)
           
-        dispatch(setMembers(allMembersData))
-        dispatch(setBanMembers(banMembersData))
-        dispatch(setHof(hofData))
-        dispatch(setAccountList(accountListData))
-        dispatch(setFee(feeData))
+  //       dispatch(setMembers(allMembersData))
+  //       dispatch(setBanMembers(banMembersData))
+  //       dispatch(setHof(hofData))
+  //       dispatch(setAccountList(accountListData))
+  //       dispatch(setFee(feeData))
 
-        dispatch(sortState('monthPart'))
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-    fetchData()
-  }, [dispatch])
+  //       dispatch(sortState('monthPart'))
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [dispatch])
+
+  useEffect(() => {
+    //초기 데이터 받아오기
+    dbFunc.getAllMembers((data: any) => dispatch(setMembers(data)))
+    dbFunc.getBanMembers((data: any) => dispatch(setBanMembers(data)))
+    dbFunc.getHof((data: any) => dispatch(setHof(data)))
+    dbFunc.getAllAccount((data: any) => dispatch(setAccountList(data)))
+    dbFunc.getFee((data: any) => dispatch(setFee(data)))
+    
+  },[dispatch])
 
   useEffect(() => {
     //로그인 상태 확인

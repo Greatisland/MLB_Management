@@ -1,13 +1,15 @@
 import { HofListContainer } from "../../style/hallOfFameStyled.tsx"
 import HofCard from "./HofCard.tsx"
-import { useAppSelector } from "../../store/hook.ts"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import HofAddModal from "./HofAddModal.tsx"
 import { useState } from "react"
+import { stopSwiping } from "../../store/slice.ts"
 import type { Hof } from "../../store/slice.ts"
 import Swal from "sweetalert2"
 
 const HofList = () => {
   const { hofData, loginUser } = useAppSelector(state => state.membersData)
+  const dispatch = useAppDispatch()
   const sortHofData = [...hofData].sort((a, b) => {
     return (new Date(b[1].eventDate).getTime() - new Date(a[1].eventDate).getTime())
   })
@@ -18,6 +20,7 @@ const HofList = () => {
     if(loginUser.level >= 2){
       setSendAward(award)
       setIsModal(true)
+      dispatch(stopSwiping())
       document.body.classList.add('no-scroll')
     }else{
       Swal.fire({
