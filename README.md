@@ -18,6 +18,7 @@
 - 부산에 실제 존속하는 모임인 뮤라밸의 회원관리를 위한 어플리케이션입니다.<br />
 - 회원가입, 회원정보 추가/제거, 참석관리 및 참석정보 통계, 회비납부관리, 가요제 수상 명예의 전당 리스트 관리 등의 기능을 제공합니다.<br />
 - admin 계정을 분리하여 계정에 따라 보여지는 정보 및 접근할 수 있는 기능을 단계적으로 제한하였습니다.<br />
+- Naver Band를 크롤링하여 회원들의 참석 정보를 받아옵니다.
 - 백엔드 서버는 파이어베이스를 사용하여 구성하였습니다.<br />
 - 기본 베이스는 리액트이며, PWA(Progressive Web App)으로 제작하여 모바일 환경에서도 앱으로 사용 가능합니다.<br />
 - PWA를 바탕으로 구글 플레이스토어에 출시했습니다. (구글 플레이스토어 검색: 뮤라밸 매니지먼트)
@@ -33,6 +34,8 @@
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=reactrouter&logoColor=white">
 <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=FFCA28">
 <img src="https://img.shields.io/badge/React.Chart.js2-FF6384?style=for-the-badge&logo=chartjs&logoColor=FF6384">
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodejs&logoColor=339933">
+<img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=40B5A4">
 <br /><br />
 
 ## 주요 기능
