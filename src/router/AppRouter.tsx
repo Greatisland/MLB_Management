@@ -24,10 +24,10 @@ const AppRouter = () => {
     const handleTouchEnd = (e: TouchEvent) => {
       const endX = e.changedTouches[0].clientX
       if(isSwiping){
-        if(startX && startX - endX > 50) {
+        if(startX && startX - endX > 100) {
           const moveIndex = (currentPageIndex + 1) <= pageList.length - 1 ? currentPageIndex + 1 : 0
           navigate(pageList[moveIndex])
-        } else if (endX - (startX || 0) > 50) {
+        } else if (endX - (startX || 0) > 100) {
           const moveIndex = (currentPageIndex - 1) >= 0 ? currentPageIndex - 1 : pageList.length - 1
           navigate(pageList[moveIndex])
         }
