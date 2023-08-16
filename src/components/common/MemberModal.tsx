@@ -174,17 +174,18 @@ const MemberModal = () => {
               <option key={i} value={i + 1988}>{i + 1988 + v}</option>
             ))}
           </select>
+          {sendMember.birth ? 
+          <>
+            <p>생일</p>
+            <span className="birth">{sendMember.birth}</span>
+          </>: null}
           <p>성별</p>
           <select value={state.gender} onChange={e => setState({...state, gender: e.target.value})}>
             <option value={''}>선택</option>
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
-          {sendMember.birth ? 
-          <>
-            <p>생일</p>
-            <span className="birth">{sendMember.birth}</span>
-          </>: null}
+
 
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
