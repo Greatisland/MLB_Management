@@ -22,7 +22,7 @@ const componentStyles = css`
 export const PartAwardContainer = styled.div`
   ${componentStyles}
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 10px;
   background: #FFA3A3;
   svg {
@@ -37,7 +37,6 @@ export const PartAwardContainer = styled.div`
     font-weight: bold;
     font-size: 1.15rem;
   }
-
 `
 
 export const PartResultContainer = styled.div`

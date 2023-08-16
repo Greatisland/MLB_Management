@@ -7,6 +7,7 @@ import { HomeContainer } from "../style/homeStyled.tsx"
 import Footer from "../components/common/Footer.tsx"
 import { useAppSelector } from "../store/hook.ts"
 import Waiting from "../components/common/Waiting.tsx"
+import BirthList from "../components/home/BirthList.tsx"
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
       <HomeContainer>
         <BtnList />
         <PenddingList />
+        <BirthList />
         <HomeList />
         <BreakList />
         <BanList />

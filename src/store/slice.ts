@@ -8,6 +8,7 @@ export interface Member {
   join: string
   comeback?: string
   year: string
+  birth: string
   gender: string
   etc: string
   state?: boolean
@@ -128,6 +129,7 @@ const initialState: InitialState = {
     name: '',
     join: '',
     year: '',
+    birth: '',
     gender:'',
     state: false,
     etc: '',

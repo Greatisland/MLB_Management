@@ -18,6 +18,7 @@ const MemberModal = () => {
     join: sendMember.join || '',
     comeback: sendMember.comeback || '',
     year: sendMember.year || '',
+    birth: sendMember.birth || '',
     etc: sendMember.etc || '',
     gender: sendMember.gender || '',
     pay: false,
@@ -163,9 +164,9 @@ const MemberModal = () => {
       <JoinModalContainer>
         <form onSubmit={handleSubmit}>
           <p>이름</p>
-          <input type="text" value={state.name} onChange={e => setState({...state, name: e.target.value})} placeholder="이름을 입력하세요."></input>
+          <input type="text" value={state.name} onChange={e => setState({...state, name: e.target.value})} placeholder="이름을 입력하세요." />
           <p>가입일</p>
-          <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요."></input>
+          <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요." />
           <p>년생</p>
           <select value={state.year} onChange={e => setState({...state, year: e.target.value})}>
             <option value=''>선택</option>
@@ -179,6 +180,11 @@ const MemberModal = () => {
             <option value={'남'}>남</option>
             <option value={'여'}>여</option>
           </select>
+          {sendMember.birth ? 
+          <>
+            <p>생일</p>
+            <span className="birth">{sendMember.birth}</span>
+          </>: null}
 
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
@@ -240,6 +246,11 @@ const MemberModal = () => {
           <span>{state.join.split('-').join('.')}</span>
           <p>년생</p>
           <span>{state.year}년생</span>
+          {sendMember.birth ? 
+          <>
+            <p>생일</p>
+            <span>{state.birth}</span>
+          </>: null}
           <p>성별</p>
           <span>{state.gender}</span>
           {sendMember.awardCount ? <>

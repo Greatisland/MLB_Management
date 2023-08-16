@@ -102,7 +102,7 @@ export const  JoinModalContainer = styled.div`
   }
 
 
-  input[type='text'], .awardCount {
+  input[type='text'], .awardCount, .birth {
     border: none;
     background: #f6f6f6;
     border-radius: 30px;
@@ -113,7 +113,7 @@ export const  JoinModalContainer = styled.div`
     cursor: pointer;
   }
 
-  .awardCount {
+  .awardCount, .birth {
     display: flex;
     flex-wrap: nowrap;
     font-size: 0.8rem;

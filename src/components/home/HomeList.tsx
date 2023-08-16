@@ -21,6 +21,7 @@ const HomeList = () => {
         name: member[1].name,
         join: member[1].join,
         year: member[1].year,
+        birth: member[1].birth || '',
         gender: member[1].gender,
         etc: member[1].etc || '',
         state: true,
