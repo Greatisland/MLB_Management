@@ -9,7 +9,7 @@ const BirthList = () => {
   //다음달 생일자 명단
   const birthMemberData = membersData.filter((member) => {
     const birthMonth = member[1].birth ? member[1].birth.split('월')[0] : null
-    if(Number(birthMonth) === Number(dateCalc('month')) + 1) return true
+    if(Number(birthMonth) === Number(dateCalc('flatMonth')) + 1) return true
   })
 
   if(birthMemberData.length > 0){return (
