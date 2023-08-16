@@ -281,6 +281,7 @@ export const authFunc = {
     .catch((error) => {
       const errorCode = error.code
       const errorMessage = error.message
+      Swal.fire(`가입자 정보를 찾을 수 없음!`, '가입되지 않은 이메일입니다.', 'error')
     })
   }
 }

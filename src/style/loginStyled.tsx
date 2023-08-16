@@ -82,7 +82,7 @@ export const LoginContainer = styled.div`
       color: #fff;
       background: ${props => props.theme.brown};
       border-radius: 10px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
       text-align: center;
       cursor: pointer;
