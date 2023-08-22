@@ -16,7 +16,7 @@ const SecretBoardView = () => {
   const [ article, setArticle ] = useState<Board>()
 
   //댓글
-  const [ name, setName ] = useState('이름없는 누군가 ')
+  const [ name, setName ] = useState('이름없는 누군가')
   const [ con, setCon ] = useState('')
 
   const handleUpdate = () => {
