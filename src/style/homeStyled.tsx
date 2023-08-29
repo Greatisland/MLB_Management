@@ -12,9 +12,12 @@ export const HomeContainer = styled.div`
   .wait {
     display: flex;
     height: 100vh;
+    font-size: 0.8rem;
+    line-height: 1.67rem;
     gap: 30px;
+    padding: 40px 0 0 0;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 `

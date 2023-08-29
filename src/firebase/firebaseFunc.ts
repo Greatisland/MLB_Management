@@ -243,8 +243,12 @@ export const authFunc = {
       })
     })
     .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
+      Swal.fire({
+        icon: 'warning',
+        title: '이미 존재하는 이메일이에요!',
+        showConfirmButton: false,
+        timer: 800
+      }) 
     })
   },
 

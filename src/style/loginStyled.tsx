@@ -47,17 +47,13 @@ export const LoginContainer = styled.div`
     gap: 10px;
     font-size: 1rem;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     svg {
       font-size: 1.4rem;
     }
 
   }
 
-  .guestBtn {
-    svg {
-      fill: #4169e1;
-    }
-  }
   .joinBtn {
     svg {
       fill: #b8860b;
@@ -128,9 +124,11 @@ export const LoginContainer = styled.div`
 
 export const CreateModalContainer = styled.div`
   display: flex;
-  width: 80%;
-  max-width: 500px;
   flex-direction: column;
+  width: 100%;
+  @media (min-width: 768px){
+    width: 500px;
+  }
   position: fixed;
   top: 50%;
   left: 50%;
@@ -141,6 +139,10 @@ export const CreateModalContainer = styled.div`
   gap: 20px;
   padding: 40px 30px;
   box-sizing: border-box;
+  .notice {
+    font-size: 0.8rem;
+    color: #999;
+  }
   form {
     display: flex;
     flex-direction: column;

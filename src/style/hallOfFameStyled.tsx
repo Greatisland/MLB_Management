@@ -42,6 +42,7 @@ export const HofCardContainer = styled.div`
       padding: 4px 0;
       border-radius: 12px;
       box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
+      cursor: pointer;
       h3 {
         font-size: 1rem;
         letter-spacing: 0.04rem;
@@ -119,6 +120,10 @@ export const HofAddModalWrapper = styled.div`
 
 export const HofModalContainer = styled.div`
   width: 100%;
+  @media (min-width: 768px){
+    width: 600px;
+    padding: 40px;
+  }
   overflow-y: scroll;
   scrollbar-width: thin; /* 스크롤바 너비 */
   background: #fff;

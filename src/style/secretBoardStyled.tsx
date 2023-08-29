@@ -47,6 +47,7 @@ export const SecretBoardListContainer = styled.div`
     align-items: center;
     border-bottom: 1px solid #f2f2f2;
     margin: 0 0 10px 0;
+    cursor: pointer;
     .title {
       flex: 1;
       white-space: nowrap;  

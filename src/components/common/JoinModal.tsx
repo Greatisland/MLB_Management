@@ -22,8 +22,8 @@ const JoinModal = ({setIsModal}: Props) => {
     const pwCheckValue = pwCheck.current?.value || ''
     const displayNameValue = displayName.current?.value || ''
 
-    // 정규 표현식: 소문자 또는 대문자 알파벳, 숫자만 허용
-    const regex = /^[A-Za-z0-9]+$/
+    // 이메일 검증
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
     // 문자열이 정규 표현식과 일치하는지 검사
     if(!emailValue){
       Swal.fire({
@@ -79,6 +79,7 @@ const JoinModal = ({setIsModal}: Props) => {
   return (
     <CreateModalContainer>
       <h2>회원가입</h2>
+      <p className="notice">해당 어플리케이션은 승인제로 운영됩니다. 운영진이 확인하고 계정을 승인할 수 있도록 이름을 정확하게 입력해주세요.</p>
       <form onSubmit={handleJoin}>
         <p>이름 입력</p>
         <input type="text" ref={displayName} placeholder="정확한 이름을 입력해주세요. ex)김현진" />

@@ -1,5 +1,12 @@
 import { Btn } from "../../style/globalStyled.tsx"
-import { SecretBoardBtnContainer, SecretBoardContainer, CommentContainer, CommentBox, CommentForm, ViewUserListContainer } from "../../style/secretBoardStyled.tsx"
+import { 
+  SecretBoardBtnContainer, 
+  SecretBoardContainer, 
+  CommentContainer, 
+  CommentBox, 
+  CommentForm, 
+  ViewUserListContainer
+} from "../../style/secretBoardStyled.tsx"
 import { useParams, useNavigate } from "react-router"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { useState, useEffect } from "react"

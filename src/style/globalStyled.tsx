@@ -107,6 +107,7 @@ export const Btn = styled.div`
     box-sizing: border-box;
     border: none;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
   }
   &.totalReview {
     display: flex;
