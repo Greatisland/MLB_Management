@@ -33,7 +33,7 @@ const JoinModal = ({setIsModal}: Props) => {
         timer: 800
       })
       return
-    } else if(regex.test(emailValue)){
+    } else if(!regex.test(emailValue)){
       Swal.fire({
         icon: 'error',
         title: '올바른 이메일을 작성해주세요.',
