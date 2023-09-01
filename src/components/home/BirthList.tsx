@@ -24,7 +24,7 @@ const BirthList = () => {
   if(birthMemberData.length > 0){return (
     <PartAwardContainer>
       <FaBirthdayCake />
-      <p>다가오는 <span className="date">{monthCount.toString().padStart(2,'0')}</span>월 생일인 회원은 <br /><span className="name">{
+      <p>다가오는 <span className="date">{monthCount.toString().padStart(2,'0')}</span>월 생일인 회원은 <span className="name">{
       birthMemberData.map((member, i) => (
         <span className='name' key={i}>{i !== 0 ? ',': null} {member[1]?.name}</span>
       ))

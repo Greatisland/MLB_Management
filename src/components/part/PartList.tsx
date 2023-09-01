@@ -78,7 +78,7 @@ const PartList = () => {
               {//신입태그
                 (joinYear === dateCalc('year') && (
                   Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
-                )) ? <span className="tagNew">New!</span> : null
+                )) ? <span className="tagNew">신입</span> : null
               }</div></td>
             <td className="index">{i+1}</td>
             <td>{member[1].total || 0} 회</td>
