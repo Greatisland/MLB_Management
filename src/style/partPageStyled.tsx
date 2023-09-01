@@ -36,6 +36,7 @@ export const PartAwardContainer = styled.div`
     color: #fff;
     font-weight: bold;
     font-size: 1.15rem;
+    white-space: nowrap;
   }
 `
 
