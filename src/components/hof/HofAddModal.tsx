@@ -141,22 +141,6 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <input type="text" value={state.eventName} onChange={e => setState({...state, eventName: e.target.value})} placeholder="가요제 이름을 입력하세요." />
           <p>가요제 날짜(필수)</p>
           <input type="date" value={state.eventDate} onChange={e => setState({...state, eventDate: e.target.value})} placeholder="날짜를 선택해주세요." />
-          
-          {/* <br /><hr /><br /> */}
-          {/* <p>1번 상 이름</p>
-          <input type="text" value={state[`fAward` as keyof typeof state]} onChange={e => setState({...state, [`${kind}Award`]: e.target.value})} placeholder="상 이름을 입력하세요."/>
-          <p>1번 상 수상자</p>
-          <input type="text" value={state.fClass} onChange={e => setState({...state, fClass: e.target.value})} placeholder="여러 명일 경우 ,로 구분 (ex: 김철수, 김영희)" />
-          <p>1번 상 곡 이름</p>
-          <input type="text" value={state.fTrack} onChange={e => setState({...state, fTrack: e.target.value})} placeholder="가수 - 곡 제목" />
-          <p>1번 상 Youtube 링크(선택)</p>
-          <input type="text" value={state.fLink} onChange={e => setState({...state, fLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
-          <p>1번 상 공동수상 Youtube 링크(선택)</p>
-          <input type="text" value={state.fLink2} onChange={e => setState({...state, fLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
-          <p>이미지 업로드</p>
-          <input type="file" onChange={(e) => handleUpload(e, 1)} />
-          {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}
-          <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span> */}
 
           {new Array(4).fill('').map((_, i) => {
           let kind = ''

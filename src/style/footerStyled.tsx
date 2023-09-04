@@ -30,5 +30,18 @@ export const FooterContainer = styled.div`
       width: 100%;
       text-align: center;
     }
+    &.spot {
+      background: ${props => props.theme.pink2};
+      svg {
+        width: 100%;
+        font-size: 1.2rem;
+        fill: #fff;
+      }
+      p {
+        color: #fff;
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
 `
