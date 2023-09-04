@@ -26,17 +26,18 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     fLink: award?.[1].fLink || '',
     fLink2: award?.[1].fLink2 || '',
 
-    sAward: award?.[1].sAward || '준우승',
+    sAward: award?.[1].sAward || '',
     sClass: award?.[1].sClass || '',
     sTrack: award?.[1].sTrack || '',
     sLink: award?.[1].sLink || '',
     sLink2: award?.[1].sLink2 || '',
-    tAward: award?.[1].tAward || '3등',
+    tAward: award?.[1].tAward || '',
     tClass: award?.[1].tClass || '',
     tTrack: award?.[1].tTrack || '',
     tLink: award?.[1].tLink || '',
     tLink2: award?.[1].tLink2|| '',
-    anotherAward: award?.[1].anotherAward || '4등',
+
+    anotherAward: award?.[1].anotherAward || '',
     anotherClass: award?.[1].anotherClass || '',
     anotherTrack: award?.[1].anotherTrack || '',
     anotherLink: award?.[1].anotherLink || '',
@@ -45,6 +46,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
 
   //상이 몇개나 추가되었는지
   const [ addAward, setAddAward ] = useState(1)
+  console.log(award?.[1]?.anotherAward)
 
   //추가된 상의 갯수에 따라 초기 렌더링 때 추가ui 오픈
   useEffect(() => {
@@ -127,10 +129,10 @@ const HofAddModal = ({setIsModal, award} : Props) => {
             timer: 1000
           })
           dbFunc.removeHof(hofId)
+          handleCloseModal()
         }
       })
     }
-    handleCloseModal()
   }
 
   return(
@@ -160,7 +162,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
             <p>{i + 1}번 상 이름</p>
             <input type="text" value={state[`${kind}Award` as keyof typeof state]} onChange={e => setState({...state, [`${kind}Award`]: e.target.value})} placeholder="상 이름을 입력하세요."/>
             <p>{i + 1}번 상 수상자</p>
-            <input type="text" value={state[`${kind}Class`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Class`]: e.target.value})} placeholder="있을 경우 입력하세요." />
+            <input type="text" value={state[`${kind}Class`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Class`]: e.target.value})} placeholder="여럿일 경우 ,로 구분해서 입력하세요." />
             <p>{i + 1}번 상 곡 이름</p>
             <input type="text" value={state[`${kind}Track`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Track`]: e.target.value})} placeholder="가수 - 곡 제목" />
             <p>{i + 1}번 상 Youtube 링크(선택)</p>
