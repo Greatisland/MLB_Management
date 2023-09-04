@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.div`
+interface FooterContainerProps {
+  isLevelTwoOrAbove: boolean
+}
+
+export const FooterContainer = styled.div<FooterContainerProps>`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   position: fixed;
   left: 0;
@@ -12,7 +16,7 @@ export const FooterContainer = styled.div`
   background: #fff;
   a {
     display: flex;
-    width: 20%;
+    width: ${props => props.isLevelTwoOrAbove ? '20%' : '25%'};
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -30,6 +34,7 @@ export const FooterContainer = styled.div`
       width: 100%;
       text-align: center;
     }
+
     &.spot {
       background: ${props => props.theme.pink2};
       svg {
