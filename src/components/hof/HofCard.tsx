@@ -51,7 +51,7 @@ const HofCard = ({award, onClick} : Props) => {
 
       <ul className="rightSide">
         <li>
-          <span>우승</span>
+          <span>{award.fAward}</span>
           <p className="name">{award.fClass}</p>
           <p className="track">{award.fTrack}</p>
           {award.fLink ? <a href={award.fLink} target="_blank">Live<AiFillYoutube /></a> : null}

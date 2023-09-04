@@ -42,6 +42,7 @@ export interface Hof {
   [key: string]: string | undefined
   eventName: string
   eventDate: string
+  fAward: string
   fClass: string
   fTrack: string
   imgUrl: string

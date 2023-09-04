@@ -36,6 +36,10 @@ export const PartAwardContainer = styled.div`
     color: #fff;
     font-weight: bold;
     font-size: 1.15rem;
+    letter-spacing: 0.02rem;
+  }
+
+  .partName {
     white-space: nowrap;
   }
 `

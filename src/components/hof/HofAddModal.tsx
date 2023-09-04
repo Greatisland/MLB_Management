@@ -1,5 +1,5 @@
 import { HofAddModalWrapper, HofModalContainer } from "../../style/hallOfFameStyled.tsx"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState, useEffect } from "react"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import Swal from "sweetalert2"
@@ -13,10 +13,10 @@ interface Props {
 
 const HofAddModal = ({setIsModal, award} : Props) => {
   const storage = getStorage()
-  const [ addAward, setAddAward ] = useState(0)
   const [state, setState] = useState<Hof>({
     eventName: award?.[1].eventName || '',
     eventDate: award?.[1].eventDate || '',
+    fAward: award?.[1].fAward || '',
     fClass: award?.[1].fClass || '',
     fTrack: award?.[1].fTrack || '',
     imgUrl: award?.[1].imgUrl || '',
@@ -40,8 +40,22 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     anotherClass: award?.[1].anotherClass || '',
     anotherTrack: award?.[1].anotherTrack || '',
     anotherLink: award?.[1].anotherLink || '',
-    anotherLink2: award?.[1].anotherLink2 || '',
+    anotherLink2: award?.[1].anotherLink2 || ''
   })
+
+  //상이 몇개나 추가되었는지
+  const [ addAward, setAddAward ] = useState(1)
+
+  //추가된 상의 갯수에 따라 초기 렌더링 때 추가ui 오픈
+  useEffect(() => {
+    const calculateAwardCount = () => {
+      if (award?.[1]?.anotherAward) return 4
+      if (award?.[1]?.tAward) return 3
+      if (award?.[1]?.sAward) return 2
+      return 1
+    }
+    setAddAward(calculateAwardCount())
+  }, [])
 
   const handleCloseModal = () => {
     setIsModal(false)
@@ -59,7 +73,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
         getDownloadURL(snapshot.ref)
         .then((downloadUrl) => {
           if(param === 1){
-            setState({...state, imgUrl: downloadUrl})  
+            setState({...state, imgUrl: downloadUrl})
           }else{
             setState({...state, [`imgUrl${param}`]: downloadUrl})
           }
@@ -128,52 +142,58 @@ const HofAddModal = ({setIsModal, award} : Props) => {
           <p>가요제 날짜(필수)</p>
           <input type="date" value={state.eventDate} onChange={e => setState({...state, eventDate: e.target.value})} placeholder="날짜를 선택해주세요." />
           
-          <br /><hr /><br />
-          <p>우승</p>
+          {/* <br /><hr /><br /> */}
+          {/* <p>1번 상 이름</p>
+          <input type="text" value={state[`fAward` as keyof typeof state]} onChange={e => setState({...state, [`${kind}Award`]: e.target.value})} placeholder="상 이름을 입력하세요."/>
+          <p>1번 상 수상자</p>
           <input type="text" value={state.fClass} onChange={e => setState({...state, fClass: e.target.value})} placeholder="여러 명일 경우 ,로 구분 (ex: 김철수, 김영희)" />
-          <p>우승 곡 이름</p>
+          <p>1번 상 곡 이름</p>
           <input type="text" value={state.fTrack} onChange={e => setState({...state, fTrack: e.target.value})} placeholder="가수 - 곡 제목" />
-          <p>우승 Youtube 링크(선택)</p>
+          <p>1번 상 Youtube 링크(선택)</p>
           <input type="text" value={state.fLink} onChange={e => setState({...state, fLink: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
-          <p>우승 공동수상 Youtube 링크(선택)</p>
+          <p>1번 상 공동수상 Youtube 링크(선택)</p>
           <input type="text" value={state.fLink2} onChange={e => setState({...state, fLink2: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
           <p>이미지 업로드</p>
           <input type="file" onChange={(e) => handleUpload(e, 1)} />
           {state.imgUrl && <img src={state.imgUrl} alt="Uploaded" />}
-          <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
+          <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span> */}
 
-          {new Array(3).fill('').map((_, i) => {
+          {new Array(4).fill('').map((_, i) => {
           let kind = ''
           switch (i) {
-            case 0 : kind = 's'
+            case 0 : kind = 'f'
             break
-            case 1 : kind = 't'
+            case 1 : kind = 's'
             break
-            case 2 : kind = 'another'
+            case 2 : kind = 't'
+            break
+            case 3 : kind = 'another'
           }
           return (
             <>
             {addAward >= i + 1 ? <>
             <br /><hr /><br />
-            <p>{i + 2}번 상 이름</p>
+            <p>{i + 1}번 상 이름</p>
             <input type="text" value={state[`${kind}Award` as keyof typeof state]} onChange={e => setState({...state, [`${kind}Award`]: e.target.value})} placeholder="상 이름을 입력하세요."/>
-            <p>{i + 2}번상 수상자</p>
+            <p>{i + 1}번 상 수상자</p>
             <input type="text" value={state[`${kind}Class`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Class`]: e.target.value})} placeholder="있을 경우 입력하세요." />
-            <p>{i + 2}번상 곡 이름</p>
+            <p>{i + 1}번 상 곡 이름</p>
             <input type="text" value={state[`${kind}Track`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Track`]: e.target.value})} placeholder="가수 - 곡 제목" />
-            <p>{i + 2}번상 Youtube 링크(선택)</p>
+            <p>{i + 1}번 상 Youtube 링크(선택)</p>
             <input type="text" value={state[`${kind}Link`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Link`]: e.target.value})} placeholder="Youtube 링크를 입력하세요." />
-            <p>{i + 2}번상 공동수상 Youtube 링크(선택)</p>
+            <p>{i + 1}번 상 공동수상 Youtube 링크(선택)</p>
             <input type="text" value={state[`${kind}Link2`  as keyof typeof state]} onChange={e => setState({...state, [`${kind}Link2`]: e.target.value})} placeholder="공동수상자가 있을 경우 추가 입력하세요." />
             <p>이미지 업로드</p>
-            <input type="file" onChange={(e) => handleUpload(e, 2)} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-            {state[`imgUrl${i + 2}` as keyof typeof state] && <img src={state[`imgUrl${i + 2}` as keyof typeof state]} alt="Uploaded" />}
-            <span>이미지가 업로드 된 걸 확인한 다음 완료를 눌러주세요!</span>
+            <input type="file" onChange={(e) => handleUpload(e, i + 1)} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+            {i + 1 === 1 ? state.imgUrl && <img src={state.imgUrl} alt="Uploaded" /> :
+            state[`imgUrl${i + 1}` as keyof typeof state] && <img src={state[`imgUrl${i + 1}` as keyof typeof state]} alt="Uploaded" />
+            }
+            <span>여기에 이미지가 나오는 걸 확인한 다음 완료를 눌러주세요!</span>
             </> : null}
             </>
           )
           })}
-          {addAward < 3 ? 
+          {addAward < 4 ? 
           <div className="addBtn" onClick={() => setAddAward(addAward + 1)}>상 추가</div>
           : null
           }   
