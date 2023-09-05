@@ -55,8 +55,7 @@ const BreakList = () => {
               <td>{member[1].name}</td>
               <td>{member[1].join.replace(/-/g, '.').slice(2)}</td>
               <td>{member[1].year.slice(2)}</td>
-              {loginUser.level >= 2 ?
-              <td>{member[1].etc || ''}</td> : null}
+              <td className="tdmemo">{member[1].etc || ''}</td>
             </tr>
           ))}
         </tbody>

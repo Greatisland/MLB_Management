@@ -46,7 +46,6 @@ const HofAddModal = ({setIsModal, award} : Props) => {
 
   //상이 몇개나 추가되었는지
   const [ addAward, setAddAward ] = useState(1)
-  console.log(award?.[1]?.anotherAward)
 
   //추가된 상의 갯수에 따라 초기 렌더링 때 추가ui 오픈
   useEffect(() => {

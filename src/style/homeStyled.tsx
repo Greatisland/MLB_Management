@@ -126,7 +126,7 @@ export const HomeListContainer = styled.div`
   th:first-child, td:first-child {
     width: 32%;
   }
-  td:nth-child(5) {
+  .tdmemo {
     text-align: start;
     font-size: 0.7rem;
     letter-spacing: -0.01rem;

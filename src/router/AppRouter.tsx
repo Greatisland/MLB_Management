@@ -2,7 +2,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Layout from "../layout/Layout.tsx";
 import MemberFee from "../pages/MemberFee.tsx";
 import PartPage from "../pages/PartPage.tsx";
-import Home from "../pages/Home.tsx";
+import InfoPage from "../pages/InfoPage.tsx";
 import HallOfFame from "../pages/HallOfFame.tsx";
 import SecretBoard from "../pages/SecretBoard.tsx";
 import SecretBoardView from "../components/secretboard/SecretBoardView.tsx";
@@ -47,8 +47,8 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="infopage" element={<Home />} />
+        <Route index element={<InfoPage />} />
+        <Route path="infopage" element={<InfoPage />} />
         <Route path="partpage" element={<PartPage />} />
         <Route path="memberfee" element={<MemberFee />} />
         <Route path="secretboard" element={<SecretBoard />} />
