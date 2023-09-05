@@ -6,6 +6,7 @@ import { PartPageContainer } from "../style/partPageStyled.tsx"
 import { useAppSelector } from "../store/hook.ts"
 import Footer from "../components/common/Footer.tsx"
 import Waiting from "../components/common/Waiting.tsx"
+import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 
 
 const PartPage = () => {
@@ -19,6 +20,7 @@ const PartPage = () => {
       <PartResult />
       <PartList />
       {modalPartState ? <PartModal /> : null}
+      <ScrollToTopBtn />
       <Footer />
     </PartPageContainer> :
     <Waiting />}
