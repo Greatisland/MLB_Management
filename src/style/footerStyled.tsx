@@ -32,6 +32,7 @@ export const FooterContainer = styled.div<FooterContainerProps>`
     p {
       color: #333;
       width: 100%;
+      font-size: 0.6rem;
       text-align: center;
     }
 
