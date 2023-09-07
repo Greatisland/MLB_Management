@@ -16,7 +16,7 @@ const AppRouter = () => {
   const navigate = useNavigate()
   const { isSwiping, loginUser } = useAppSelector(state => state.membersData)
   const [ startX, setStartX ] = useState<number | null>(null)
-  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/memberfee', '/secretboard', '/graphpage', '/halloffame'] : ['/infopage', '/partpage', '/secretboard', '/graphpage', '/halloffame'] 
+  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {

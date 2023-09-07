@@ -7,6 +7,11 @@ export const GraphPageContainer = styled.div`
   flex-direction: column;
   gap: 60px;
   padding: 20px 20px 90px 20px;
+  .notice {
+    font-size: 0.6rem;
+    color: #999;
+    text-align: center;
+  }
 `
 
 export const GraphAttendContainer = styled.div`

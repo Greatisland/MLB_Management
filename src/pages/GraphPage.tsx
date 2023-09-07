@@ -11,6 +11,7 @@ const GraphPage = () => {
     <GraphPageContainer>
       <LatestHostRanking members={membersData} />
       <HostRanking members={membersData} />
+      <p className="notice">* 통계 그래프는 필요한 통계가 있을 경우 지속적으로 추가 예정입니다. *</p>
       <Footer />
     </GraphPageContainer>
   )
