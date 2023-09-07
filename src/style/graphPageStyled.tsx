@@ -11,7 +11,7 @@ export const GraphPageContainer = styled.div`
 
 export const GraphAttendContainer = styled.div`
   height: 300px;
-
+  margin: 0 0 30px 0;
   p {
     margin: 10px 0 0;
     text-align: center;

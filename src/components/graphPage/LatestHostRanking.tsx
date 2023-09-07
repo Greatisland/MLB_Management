@@ -79,7 +79,7 @@ const LatestHostRanking = ({members} : Props) => {
   return (
     <GraphAttendContainer>
       <Bar options={options} data={data} />
-      <p>지난달 벙 개설 그래프입니다.</p>
+      {/* <p>지난달 벙 개설 그래프입니다.</p> */}
     </GraphAttendContainer>
   )
 }

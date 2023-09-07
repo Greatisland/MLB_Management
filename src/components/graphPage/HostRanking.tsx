@@ -79,7 +79,7 @@ const HostRanking = ({members} : Props) => {
   return (
     <GraphAttendContainer>
       <Bar options={options} data={data} />
-      <p>벙 개설 랭킹 그래프입니다.</p>
+      {/* <p>벙 개설 랭킹 그래프입니다.</p> */}
     </GraphAttendContainer>
   )
 }
