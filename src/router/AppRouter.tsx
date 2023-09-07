@@ -9,13 +9,14 @@ import SecretBoardView from "../components/secretboard/SecretBoardView.tsx";
 import SecretBoardWrite from "../components/secretboard/SecretBoardWrite.tsx";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../store/hook.ts";
+import GraphPage from "../pages/GraphPage.tsx";
 
 const AppRouter = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { isSwiping, loginUser } = useAppSelector(state => state.membersData)
   const [ startX, setStartX ] = useState<number | null>(null)
-  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/memberfee', '/secretboard', '/halloffame'] : ['/infopage', '/partpage', '/secretboard', '/halloffame'] 
+  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/memberfee', '/secretboard', '/graphpage', '/halloffame'] : ['/infopage', '/partpage', '/secretboard', '/graphpage', '/halloffame'] 
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
@@ -54,6 +55,7 @@ const AppRouter = () => {
         <Route path="secretboard" element={<SecretBoard />} />
         <Route path="boardview/:id" element={<SecretBoardView />} />
         <Route path="boardwrite/:id" element={<SecretBoardWrite />} />
+        <Route path="graphpage" element={<GraphPage />} />
         <Route path="halloffame" element={<HallOfFame />} />
       </Route>
     </Routes>
