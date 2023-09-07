@@ -51,7 +51,7 @@ const LatestHostRanking = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `지난달 ${Number(dateCalc('flatMonth')) - 1}월 벙 개설 랭킹`
+        text: `지난달 ${Number(dateCalc('flatMonth')) - 1}월 벙 개설`
       },
     },
     scales: {
@@ -72,7 +72,7 @@ const LatestHostRanking = ({members} : Props) => {
       {
         label: '벙 개설 횟수',
         data: yLabels,
-        backgroundColor: 'rgb(99, 141, 255)',
+        backgroundColor: 'rgb(248, 112, 58)',
       },
     ],
   };

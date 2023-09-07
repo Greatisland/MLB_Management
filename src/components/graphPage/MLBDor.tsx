@@ -24,23 +24,16 @@ interface Props {
 }
 
 
-const GraphAttend = ({members} : Props) => {
+const MLBDor = ({members} : Props) => {
 
-  //참석 총량
-  let totality = []
 
-  //계산
-  for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
-    const result = members.reduce((acc: number, member) => {
-      const targetValue = member[1][`${i}month` as any]
-      if (targetValue) {
-        acc += Number(targetValue)
-      }
-      return acc
-    }, 0)
-
-    totality.push(result || 0)
-  }
+  const AwardSort = [...members].sort((a, b) => {
+    let aOne = a[1]?.awardCount.fClass || 0
+    let aTwo = a[1]?.awardCount.sClass || 0
+    let bOne = b[1]?.awardCount.fClass || 0
+    let bTwo = b[1]?.awardCount.sClass || 0
+    return (bOne * 2 + bTwo) - (aOne * 2 + aTwo)
+  })
 
   //x축
   const basicLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -90,4 +83,4 @@ const GraphAttend = ({members} : Props) => {
   )
 }
 
-export default GraphAttend
+export default MLBDor

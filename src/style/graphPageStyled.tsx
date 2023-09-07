@@ -5,7 +5,7 @@ export const GraphPageContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   flex-direction: column;
-  gap: 60px;
+  gap: 30px;
   padding: 20px 20px 90px 20px;
   .notice {
     font-size: 0.6rem;
@@ -15,8 +15,10 @@ export const GraphPageContainer = styled.div`
 `
 
 export const GraphAttendContainer = styled.div`
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
   height: 300px;
-  margin: 0 0 30px 0;
   p {
     margin: 10px 0 0;
     text-align: center;

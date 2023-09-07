@@ -51,7 +51,7 @@ const HostRanking = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `${dateCalc('flatMonth')}월 벙 개설 랭킹`
+        text: `이번달 ${dateCalc('flatMonth')}월 벙 개설`
       },
     },
     scales: {
