@@ -30,10 +30,10 @@ const MeetingType = ({members} : Props) => {
 
 
 
-  let totality = [2,1,2,2,0]
+  let totality = [2,1,2,2,0, 0]
 
   //x축
-  const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙']
+  const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '기타']
 
   const options = {
     responsive: true,
@@ -61,7 +61,7 @@ const MeetingType = ({members} : Props) => {
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 99, 132, 0.2)',
           'rgba(104, 104, 104, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(64, 255, 223, 0.2)',
         ],
         borderColor: [
           'rgba(255, 206, 86, 1)',
@@ -69,7 +69,7 @@ const MeetingType = ({members} : Props) => {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 99, 132, 1)',
           '#8b8b8b',
-          'rgba(255, 159, 64, 1)',
+          '#40ffd6',
         ],
         borderWidth: 1,
       },
