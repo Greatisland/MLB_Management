@@ -1,4 +1,4 @@
-import type { Member } from "../../store/slice"
+import type { Meet } from "../../store/slice"
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -20,20 +20,25 @@ import { Radar } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import { GraphAttendContainer } from "../../style/graphPageStyled";
 interface Props {
-  members: [string, Member][]
+  meet: Meet[]
 }
 
 
-const Week = ({members} : Props) => {
-
-
-
-
+const Week = ({meet} : Props) => {
   //x축 (월)
-  const labels = ['월', '화', '수', '목', '금', '토', '일']
+  const labels = ['일', '월', '화', '수', '목', '금', '토']
 
   //y축 (개설횟수)
   const yLabels = [0,0,0,0,0,0,0]
+  meet.forEach(month => {
+    month[1]?.forEach(target => {
+      const formatted = target.date
+      .replace('년 ', '-').replace('월 ', '-').split('일')[0]
+
+      const date = new Date(formatted)
+      yLabels[date.getDay()]++
+    })
+  })
 
   const options: any = {
     plugins: {

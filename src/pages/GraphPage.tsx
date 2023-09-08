@@ -8,14 +8,14 @@ import Week from "../components/graphPage/Week.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 
 const GraphPage = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, meetData } = useAppSelector(state => state.membersData)
 
   return (
     <GraphPageContainer>
-      <MeetingType members={membersData} />
+      <MeetingType meet={meetData} />
       <HostRanking members={membersData} />
       <LatestHostRanking members={membersData} />
-      <Week members={membersData} />
+      <Week meet={meetData} />
       <p className="notice">* 통계 그래프는 필요한 통계가 있을 경우 지속적으로 추가 예정입니다. *</p>
       <ScrollToTopBtn />
       <Footer />

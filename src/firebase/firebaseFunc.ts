@@ -28,6 +28,7 @@ const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
 const feeRef = ref(database, '/fee')
+const meetRef = ref(database, '/hostList')
 
 //애널리틱스
 const analytics = getAnalytics(app)
@@ -128,6 +129,13 @@ export const dbFunc = {
   removeHof(hofId: string) {
     const hofRef = ref(database, `/halloffame/${hofId}`)
     remove(hofRef)
+  },
+  
+  // 벙 정보 읽어오기
+  getMeet(callback: any) {
+    onValue(meetRef, (snapshot) => {
+      callback(Object.entries(snapshot.val()))
+    })
   },
 
   // 글 추가

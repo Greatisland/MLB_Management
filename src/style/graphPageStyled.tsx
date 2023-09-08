@@ -15,6 +15,8 @@ export const GraphPageContainer = styled.div`
 `
 
 export const GraphAttendContainer = styled.div`
+  display: flex;
+  justify-content: center;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 20px;

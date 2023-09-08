@@ -1,4 +1,4 @@
-import type { Member } from "../../store/slice"
+import type { Meet } from "../../store/slice"
 import {
   Chart as ChartJS,
   ArcElement,
@@ -22,19 +22,33 @@ import { Pie } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import { GraphAttendContainer } from "../../style/graphPageStyled";
 interface Props {
-  members: [string, Member][]
+  meet : Meet[]
 }
 
 
-const MeetingType = ({members} : Props) => {
-
-
-
-  let totality = [2,1,2,2,0, 0]
-
+const MeetingType = ({meet} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '기타']
+  let nowMonthNumber = Number(dateCalc('flatMonth'))
+  let nowMonthData = meet[nowMonthNumber - 1][1]
+  let total = new Array(labels.length).fill(0)
 
+  nowMonthData.forEach(val => {
+    switch(val.type){
+      case '노래벙' : total[0]++
+      break
+      case '친목벙' : total[1]++
+      break
+      case '운동벙' : total[2]++
+      break
+      case '버스킹' : total[3]++
+      break
+      case '이벤트벙' : total[4]++
+      break
+      case '기타' : total[5]++
+    }
+  })
+  
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -54,7 +68,7 @@ const MeetingType = ({members} : Props) => {
     datasets: [
       {
         label: '열린 횟수',
-        data: totality,
+        data: total,
         backgroundColor: [
           'rgba(255, 206, 86, 0.2)',
           'rgba(54, 162, 235, 0.2)',

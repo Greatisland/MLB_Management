@@ -89,9 +89,19 @@ interface Account {
   level: number
 }
 
+export interface Meet {
+  0: string
+  1: {
+    date: string
+    name: string
+    type: string
+  }[]
+}
+
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]
+  meetData: [Meet]
   banData: [string, Ban][]
   hofData: [string, Hof][]
   sendMember: Member
@@ -123,6 +133,7 @@ interface InitialState {
 
 const initialState: InitialState = {
   membersData: [],
+  meetData: [],
   banData: [],
   hofData: [],
   sendMember: {
@@ -185,6 +196,7 @@ const membersDataSlice = createSlice({
     setHof (state, action) {state.hofData = action.payload},
     setAccountList (state, action) {state.accountList = action.payload},
     setFee (state, action) {state.fee = action.payload},
+    setMeet (state, action) {state.meetData = action.payload},
 
     //멤버 정렬
     sortState (state, action) {
@@ -298,6 +310,7 @@ export const {
   sendMember, 
   setBanMembers, 
   setMembers, 
+  setMeet,
   setHof, 
   sendBan, 
   loginUserSend, 
