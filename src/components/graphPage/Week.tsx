@@ -48,7 +48,7 @@ const Week = ({meet} : Props) => {
       },
       title: {
         display: true,
-        text: `${dateCalc('year')}년 전체 요일별 벙 통계`
+        text: `${dateCalc('year')}년 전체 요일별 벙 개설횟수 통계`
       },
     },
     scales: {
