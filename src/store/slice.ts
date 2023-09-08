@@ -101,7 +101,7 @@ export interface Meet {
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]
-  meetData: [Meet]
+  meetData: Meet[]
   banData: [string, Ban][]
   hofData: [string, Hof][]
   sendMember: Member
