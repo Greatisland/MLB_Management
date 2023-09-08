@@ -41,22 +41,24 @@ const HostRanking = ({members} : Props) => {
 
   //y축 (개설횟수)
   const yLabels = dataLabels.map(val => val[1][`${Number(dateCalc('flatMonth'))}monthHost`])
+  const yMax = Math.max(...yLabels)
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top' as const,
+        display: false
       },
       title: {
         display: true,
-        text: `이번달 ${dateCalc('flatMonth')}월 벙 개설`
+        text: `${dateCalc('flatMonth')}월 벙 개설 횟수`
       },
     },
     scales: {
       y: {
         min: 0,
+        max: yMax > 3 ? yMax : 3,
         ticks: {
           beginAtZero: true,
           stepSize: 1,
@@ -72,7 +74,18 @@ const HostRanking = ({members} : Props) => {
       {
         label: '벙 개설 횟수',
         data: yLabels,
-        backgroundColor: 'rgb(255, 99, 132)',
+        backgroundColor: [
+          'rgba(255, 92, 86, 0.8)',
+          'rgba(235, 90, 54, 0.8)',
+          'rgba(255, 150, 102, 0.8)',
+          'rgba(255, 99, 208, 0.8)',
+          'rgba(236, 130, 43, 0.8)',
+          'rgba(64, 255, 223, 0.8)',
+          'rgba(75, 192, 192, 0.8)', // 편안한 민트
+          'rgba(255, 159, 64, 0.8)',  // 주황색
+          'rgba(205, 85, 85, 0.8)',   // 로즈
+          'rgba(132, 112, 255, 0.8)'  // 라이트 퍼플
+        ],
       },
     ],
   };

@@ -44,7 +44,7 @@ const MeetingType = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `이번달 ${dateCalc('flatMonth')}월 개설된 벙의 종류`
+        text: `${dateCalc('flatMonth')}월 열린 벙의 종류`
       },
     },
   }
