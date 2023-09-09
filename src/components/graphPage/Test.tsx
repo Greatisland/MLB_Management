@@ -1,4 +1,4 @@
-import type { Member } from "../../store/slice"
+import type { Member } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
   CategoryScale,

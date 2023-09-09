@@ -1,4 +1,4 @@
-import type { Meet } from "../../store/slice"
+import type { Meet } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
   ArcElement,
