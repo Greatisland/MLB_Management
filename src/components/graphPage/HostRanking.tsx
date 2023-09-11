@@ -29,6 +29,7 @@ interface Props {
 const HostRanking = ({members} : Props) => {
 
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
+  
   //벙 개설 횟수로 정렬
   const sortedArray = [...members].sort((a, b) => {
     const aMonthHost = a[1][`${nowMonthNumber}monthHost`] || 0

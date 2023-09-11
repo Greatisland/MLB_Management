@@ -30,12 +30,13 @@ export const GraphAttendContainer = styled.div`
   }
   .arrow_container {
     position: absolute;
-    top: 17px;
+    top: 7px;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 140px;
     svg {
+      padding: 10px;
       font-size: 1.2rem;
     }
   }
