@@ -29,7 +29,7 @@ interface Props {
 const HostRanking = ({members} : Props) => {
 
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
-  
+
   //벙 개설 횟수로 정렬
   const sortedArray = [...members].sort((a, b) => {
     const aMonthHost = a[1][`${nowMonthNumber}monthHost`] || 0
@@ -67,6 +67,14 @@ const HostRanking = ({members} : Props) => {
           beginAtZero: true,
           stepSize: 1,
           precision: 0
+        }
+      },
+      x: {
+        ticks: {
+          font: {
+            // 일정 길이 이상되면 이름이 생략되는 문제때문에 삼항연산자 사용해서 폰트크기 줄임
+            size: labels.length > 10 ? 8 : 12
+          }
         }
       }
     }
