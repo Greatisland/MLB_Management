@@ -1,4 +1,6 @@
 import type { Meet } from "../../store/slice.ts"
+import { useState } from "react";
+import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -29,7 +31,8 @@ interface Props {
 const MeetingType = ({meet} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '기타']
-  let nowMonthNumber = Number(dateCalc('flatMonth'))
+  const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
+
   let nowMonthData = meet[nowMonthNumber - 1][1]
   let total = new Array(labels.length).fill(0)
 
@@ -58,7 +61,7 @@ const MeetingType = ({meet} : Props) => {
       },
       title: {
         display: true,
-        text: `${dateCalc('flatMonth')}월 열린 벙의 종류`
+        text: `${nowMonthNumber}월 열린 벙의 종류`
       },
     },
   }
@@ -91,6 +94,18 @@ const MeetingType = ({meet} : Props) => {
   };
   return (
     <GraphAttendContainer>
+      <div className="arrow_container">
+        <BsArrowLeftCircle onClick={() => {
+          if (nowMonthNumber > 1) {
+            setNowMonthNumber(nowMonthNumber - 1)
+          }
+        }} />
+        <BsArrowRightCircle onClick={() => {
+          if (nowMonthNumber < Number(dateCalc('flatMonth'))) {
+            setNowMonthNumber(nowMonthNumber + 1)
+          }
+        }}/>
+      </div>
       <Pie options={options} data={data} />
     </GraphAttendContainer>
   )

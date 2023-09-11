@@ -1,4 +1,6 @@
 import type { Member } from "../../store/slice.ts"
+import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
+import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,21 +28,22 @@ interface Props {
 
 const HostRanking = ({members} : Props) => {
 
+  const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
   //벙 개설 횟수로 정렬
   const sortedArray = [...members].sort((a, b) => {
-    const aMonthHost = a[1][`${Number(dateCalc('flatMonth'))}monthHost`] || 0
-    const bMonthHost = b[1][`${Number(dateCalc('flatMonth'))}monthHost`] || 0
+    const aMonthHost = a[1][`${nowMonthNumber}monthHost`] || 0
+    const bMonthHost = b[1][`${nowMonthNumber}monthHost`] || 0
     return bMonthHost - aMonthHost
   })
 
   //벙 개설 횟수 0인 회원은 명단에서 삭제
-  const dataLabels = sortedArray.filter(val => val[1][`${Number(dateCalc('flatMonth'))}monthHost`])
+  const dataLabels = sortedArray.filter(val => val[1][`${nowMonthNumber}monthHost`])
 
   //x축 (이름)
   const labels = dataLabels.map(val => val[1].name)
 
   //y축 (개설횟수)
-  const yLabels = dataLabels.map(val => val[1][`${Number(dateCalc('flatMonth'))}monthHost`])
+  const yLabels = dataLabels.map(val => val[1][`${nowMonthNumber}monthHost`])
   const yMax = Math.max(...yLabels)
 
   const options = {
@@ -52,7 +55,7 @@ const HostRanking = ({members} : Props) => {
       },
       title: {
         display: true,
-        text: `${dateCalc('flatMonth')}월 벙 개설 횟수`
+        text: `${nowMonthNumber}월 벙 개설 횟수`
       },
     },
     scales: {
@@ -92,7 +95,18 @@ const HostRanking = ({members} : Props) => {
   return (
     <GraphAttendContainer>
       <Bar options={options} data={data} />
-      {/* <p>벙 개설 랭킹 그래프입니다.</p> */}
+      <div className="arrow_container">
+        <BsArrowLeftCircle onClick={() => {
+          if (nowMonthNumber > 1) {
+            setNowMonthNumber(nowMonthNumber - 1)
+          }
+        }} />
+        <BsArrowRightCircle onClick={() => {
+          if (nowMonthNumber < Number(dateCalc('flatMonth'))) {
+            setNowMonthNumber(nowMonthNumber + 1)
+          }
+        }}/>
+      </div>
     </GraphAttendContainer>
   )
 }

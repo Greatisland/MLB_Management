@@ -16,6 +16,7 @@ export const GraphPageContainer = styled.div`
 
 export const GraphAttendContainer = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   border: 1px solid #ccc;
   padding: 10px;
@@ -26,5 +27,16 @@ export const GraphAttendContainer = styled.div`
     text-align: center;
     color: #666;
     font-size: 0.8rem;
+  }
+  .arrow_container {
+    position: absolute;
+    top: 17px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 140px;
+    svg {
+      font-size: 1.2rem;
+    }
   }
 `
