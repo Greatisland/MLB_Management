@@ -48,7 +48,7 @@ const MeetingType = ({meet} : Props) => {
       break
       case '이벤트벙' : total[4]++
       break
-      case '기타' : total[5]++
+      default : total[5]++
     }
   })
   
