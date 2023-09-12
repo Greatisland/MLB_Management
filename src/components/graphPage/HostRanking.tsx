@@ -42,7 +42,7 @@ const HostRanking = ({members} : Props) => {
 
   //x축 (이름)
   const labels = dataLabels.map(val => val[1].name)
-
+  
   //y축 (개설횟수)
   const yLabels = dataLabels.map(val => val[1][`${nowMonthNumber}monthHost`])
   const yMax = Math.max(...yLabels)

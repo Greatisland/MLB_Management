@@ -38,6 +38,7 @@ export const GraphAttendContainer = styled.div`
     svg {
       padding: 10px;
       font-size: 1.2rem;
+      cursor: pointer;
     }
   }
 `
