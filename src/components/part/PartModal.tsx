@@ -1,13 +1,22 @@
 import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled.tsx"
 import ChartGraph from "./ChartGraph.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
-import { togglePartModal, startSwiping } from "../../store/slice.ts"
+import { togglePartModal, startSwiping, stopSwiping } from "../../store/slice.ts"
 import { dateCalc } from "../common/dateCalc.ts"
 import { averCheck } from "../common/averCheck.ts"
+import { useEffect } from "react"
 
 const PartModal = () => {
   const dispatch = useAppDispatch()
   const { membersData, sendMember } = useAppSelector(state => state.membersData)
+  
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
+    }
+  }, [])
 
   const thisMember = membersData.find(member => {
     return member[0] === sendMember.id
@@ -44,7 +53,7 @@ const PartModal = () => {
             </tbody>
           </table>
         </div>
-        <div onClick={() => {dispatch(togglePartModal()), dispatch(startSwiping())}} className="exit">나가기</div>
+        <div onClick={() => dispatch(togglePartModal())} className="exit">나가기</div>
       </PartModalContainer>
     </PartModalWrapper>
   )

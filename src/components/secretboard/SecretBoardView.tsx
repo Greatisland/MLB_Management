@@ -10,12 +10,14 @@ import {
 import { useParams, useNavigate } from "react-router"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { useState, useEffect } from "react"
+import { startSwiping, stopSwiping } from "../../store/slice.ts"
 import type { Board } from "../../store/slice.ts"
-import { useAppSelector } from "../../store/hook.ts"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import Swal from "sweetalert2"
 import { getToday } from "./SecretBoardWrite.tsx"
 
 const SecretBoardView = () => {
+  const dispatch = useAppDispatch()
   const { id } = useParams()
   const navigate = useNavigate()
   const { loginUser, accountList } = useAppSelector(state => state.membersData)
@@ -59,6 +61,14 @@ const SecretBoardView = () => {
     }
     setCon('')
   }
+  
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
+    }
+  }, [])
 
   //글 정보 가져오기
   useEffect(() => {

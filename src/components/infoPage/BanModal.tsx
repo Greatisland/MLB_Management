@@ -1,16 +1,26 @@
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { JoinModalContainer, JoinModalWrapper } from "../../style/headerStyle.tsx"
-import { useState } from "react"
-import { useAppSelector } from "../../store/hook.ts"
+import { useState, useEffect } from "react"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { startSwiping, stopSwiping } from "../../store/slice.ts"
 
 interface Props {
   setIsModal: (value: boolean) => void
 }
 
 const BanModal = ({setIsModal}: Props) => {
+  const dispatch = useAppDispatch()
   const { sendBan } = useAppSelector(state => state.membersData)
   const today = new Date()
   const formattedDate = today.toISOString().substring(0, 10)
+
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
+    }
+  }, [])
 
   const [ data, setData ] = useState({
     name: sendBan.name || '',
@@ -26,9 +36,11 @@ const BanModal = ({setIsModal}: Props) => {
     if(sendBan.state){
       dbFunc.updateBan(sendBan.id as string, addBan)
       setIsModal(false)
+      dispatch(startSwiping())
     }else{
       dbFunc.addBan(addBan)
       setIsModal(false)
+      dispatch(startSwiping())
     }
   }
 
@@ -45,7 +57,7 @@ const BanModal = ({setIsModal}: Props) => {
           <input type="submit" value="완료"></input>
         </form>
         <div className="btnWrapper">
-          <div className="cancle" onClick={() => {setIsModal(false)}}>취소</div>
+          <div className="cancle" onClick={() => {setIsModal(false), dispatch(startSwiping())}}>취소</div>
           {sendBan.state ? <div className="delete" onClick={() => {dbFunc.removeBan(sendBan.id as string), setIsModal(false)}}>삭제</div> : null}
         </div>
       </JoinModalContainer>

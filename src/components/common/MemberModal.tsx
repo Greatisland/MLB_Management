@@ -28,6 +28,14 @@ const MemberModal = () => {
     state: sendMember.state || false
   })
 
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
+    }
+  }, [])
+
   //휴식기 체크박스 해제할 경우 오늘 날짜로 복귀일 추가
   useEffect(() => {
     if(state.state && sendMember.break !== state.break && !state.break){
@@ -65,7 +73,6 @@ const MemberModal = () => {
           state.gender !== ''
         ){
           dbFunc.updateMember(sendMember.id as string, state)
-          dispatch(startSwiping())
           dispatch(toggleModal())
         }else{
           Swal.fire({
@@ -102,7 +109,6 @@ const MemberModal = () => {
         showConfirmButton: false,
         timer: 800
       })
-      dispatch(startSwiping())
       dispatch(toggleModal())
     }else if(!sendMember.state) {
       Swal.fire({
@@ -139,7 +145,6 @@ const MemberModal = () => {
             timer: 1000
           })
           dbFunc.removeMember(id)
-          dispatch(startSwiping())
           dispatch(toggleModal())
           return
         }else{return}
@@ -148,7 +153,6 @@ const MemberModal = () => {
   }
 
   const cancleMember = () => {
-    dispatch(startSwiping())
     dispatch(toggleModal())
   }
 

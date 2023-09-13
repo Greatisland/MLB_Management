@@ -3,6 +3,8 @@ import { ChangeEvent, useState, useEffect } from "react"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import Swal from "sweetalert2"
+import { startSwiping, stopSwiping } from "../../store/slice.ts"
+import { useAppDispatch } from "../../store/hook.ts"
 import type { Hof } from "../../store/slice.ts"
 
 interface Props {
@@ -12,6 +14,16 @@ interface Props {
 
 
 const HofAddModal = ({setIsModal, award} : Props) => {
+  const dispatch = useAppDispatch()
+
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
+    }
+  }, [])
+  
   const storage = getStorage()
   const [state, setState] = useState<Hof>({
     eventName: award?.[1].eventName || '',

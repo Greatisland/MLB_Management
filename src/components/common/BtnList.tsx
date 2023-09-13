@@ -39,7 +39,7 @@ const BtnList = () => {
         <span className="number">{totalGender('여')}</span>
       </Btn>
       {loginUser.level >= 2 ? 
-      <Btn className="memberAdd" onClick={()=> handleAddMember()}>
+      <Btn className="memberAdd" onClick={() => handleAddMember()}>
         <p>회원추가</p>
       </Btn> : null}
     </BtnListContainer>

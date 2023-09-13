@@ -3,7 +3,8 @@ import { Btn } from "../../style/globalStyled.tsx"
 import { EditorContainer, SecretBoardBtnContainer, SecretBoardContainer } from "../../style/secretBoardStyled.tsx"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { useAppSelector } from "../../store/hook.ts"
+import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
+import { startSwiping, stopSwiping } from "../../store/slice.ts"
 import Swal from "sweetalert2"
 
 export const getToday = () => {
@@ -15,6 +16,7 @@ export const getToday = () => {
 }
 
 const SecretBoardWrite = () => {
+  const dispatch = useAppDispatch()
   const { id } = useParams()
   const { loginUser } = useAppSelector(state => state.membersData)
 
@@ -70,6 +72,14 @@ const SecretBoardWrite = () => {
         setContent(data.content)
         setSecret(data.secret)
       })
+    }
+  }, [])
+
+  //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
+  useEffect(() => {
+    dispatch(stopSwiping())
+    return () => {
+      dispatch(startSwiping())
     }
   }, [])
 

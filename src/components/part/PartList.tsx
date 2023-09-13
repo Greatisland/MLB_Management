@@ -4,7 +4,7 @@ import { sortState } from "../../store/slice.ts"
 import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
 import { dateCalc } from "../common/dateCalc.ts"
 import { averCheck } from "../common/averCheck.ts"
-import { togglePartModal, sendMember, stopSwiping } from "../../store/slice.ts"
+import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 
 const PartList = () => {
@@ -66,7 +66,7 @@ const PartList = () => {
 
           return (
           loginUser.level >= 2 && member[1].danger ?
-          <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(stopSwiping()), dispatch(sendMember({id: member[0]}))}}>
+          <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
@@ -88,7 +88,7 @@ const PartList = () => {
 
           :
 
-          <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(stopSwiping()), dispatch(sendMember({id: member[0]}))}}>
+          <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
             <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 

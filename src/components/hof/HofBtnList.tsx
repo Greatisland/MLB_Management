@@ -9,11 +9,9 @@ const HofBtnList = () => {
 
   const { loginUser } = useAppSelector(state => state.membersData)
   const [ isModal, setIsModal ] = useState(false)
-  const [scrollPos, setScrollPos] = useState(0)
 
   const handleModal = () => {
     if(loginUser.level >= 2){
-      setScrollPos(window.scrollY)
       setIsModal(true)
       document.body.classList.add('no-scroll')
     }else{
