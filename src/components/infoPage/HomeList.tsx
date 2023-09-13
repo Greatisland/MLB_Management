@@ -11,8 +11,12 @@ const HomeList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
   const [ search, setSearch ] = useState('')
 
-  //가입 승인상태이고 휴식기가 아닐 때
-  const searchMembersData = membersData.filter(member => member[1]?.name?.includes(search) && !member[1].break)
+  //가입 승인상태이고 휴식기가 아니고 가입대기가 아닐 때
+  const searchMembersData = membersData.filter(member => 
+    member[1]?.name?.includes(search) && 
+    !member[1].break &&
+    member[1].join
+  )
 
   const handleAddMember = (member: any) => {
     dispatch(toggleModal()), dispatch(sendMember(

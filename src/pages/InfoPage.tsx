@@ -9,6 +9,7 @@ import { useAppSelector } from "../store/hook.ts"
 import Waiting from "../components/common/Waiting.tsx"
 import BirthList from "../components/infoPage/BirthList.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
+import WaitList from "../components/infoPage/WaitList.tsx"
 
 
 const InfoPage = () => {
@@ -21,6 +22,7 @@ const InfoPage = () => {
         <PenddingList />
         <BirthList />
         <HomeList />
+        <WaitList />
         <BreakList />
         <BanList />
         <ScrollToTopBtn />

@@ -68,7 +68,7 @@ const MemberModal = () => {
         //수정할 때 정보를 모두 채운 경우
         if(
           state.name !== '' &&
-          state.join !== '' &&
+          // state.join !== '' &&
           state.year !== '' &&
           state.gender !== ''
         ){
@@ -98,7 +98,7 @@ const MemberModal = () => {
       //신규회원 추가
       !sendMember.state &&
       state.name !== '' &&
-      state.join !== '' &&
+      // state.join !== '' &&
       state.year !== '' &&
       state.gender !== ''
       ){
