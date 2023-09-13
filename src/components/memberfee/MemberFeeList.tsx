@@ -19,7 +19,7 @@ const MemberFeeList = () => {
       let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
       let joinYear = String(memberJoin.getFullYear())
   
-      if(member[1].special === '' && member[1].target === '' && !member[1].break && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+      if(member[1].special === '' && member[1].target === '' && !member[1].break && member[1].join && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
         return true
       }
     }).sort((a, b) => {
