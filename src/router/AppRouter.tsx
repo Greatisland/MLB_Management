@@ -15,13 +15,23 @@ const AppRouter = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { isSwiping, loginUser } = useAppSelector(state => state.membersData)
-  const [ startX, setStartX ] = useState<number | null>(null)
-  const pageList = loginUser.level >= 2 ? ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
+  const [ startX, setStartX ] = useState<number | null>(null) // 터치 이벤트 X좌표
+
+  //로그인에 따른 페이지 렌더링 차이
+  const pageList = loginUser.level >= 2 ? 
+    ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : 
+    ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
+  
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
+
   useEffect(() => {
+    
+    //터치 시작 기록
     const handleTouchStart = (e: TouchEvent) => {
       setStartX(e.touches[0].clientX)
     }
+
+    //터치 종료 기록 및 터치 방향에 따른 페이지 라우팅
     const handleTouchEnd = (e: TouchEvent) => {
       const endX = e.changedTouches[0].clientX
       if(isSwiping){

@@ -18,58 +18,6 @@ const App = () => {
   const dispatch = useAppDispatch()
   const { loginUser } = useAppSelector(state => state.membersData)
   const [ isLoading, setIsLoading ] = useState(true)
-  // useEffect(() => {
-  //   //초기 데이터 세팅
-  //   const fetchData = async () => {
-  //     try {
-  //       const promises = [
-  //         new Promise((resolve, reject) => {
-  //           dbFunc.getAllMembers((data: any, error: any) => {
-  //             if (error) reject(error)
-  //             else resolve(data)
-  //           })
-  //         }),
-  //         new Promise((resolve, reject) => {
-  //           dbFunc.getBanMembers((data: any, error: any) => {
-  //             if (error) reject(error)
-  //             else resolve(data)
-  //           })
-  //         }),
-  //         new Promise((resolve, reject) => {
-  //           dbFunc.getHof((data: any, error: any) => {
-  //             if (error) reject(error)
-  //             else resolve(data)
-  //           })
-  //         }),
-  //         new Promise((resolve, reject) => {
-  //           dbFunc.getAllAccount((data: any, error: any) => {
-  //             if (error) reject(error)
-  //             else resolve(data)
-  //           })
-  //         }),
-  //         new Promise((resolve, reject) => {
-  //           dbFunc.getFee((data: any, error: any) => {
-  //             if (error) reject(error)
-  //             else resolve(data)
-  //           })
-  //         })
-  //       ]
-
-  //       const [allMembersData, banMembersData, hofData, accountListData, feeData] = await Promise.all(promises)
-          
-  //       dispatch(setMembers(allMembersData))
-  //       dispatch(setBanMembers(banMembersData))
-  //       dispatch(setHof(hofData))
-  //       dispatch(setAccountList(accountListData))
-  //       dispatch(setFee(feeData))
-
-  //       dispatch(sortState('monthPart'))
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [dispatch])
 
   useEffect(() => {
     //초기 데이터 받아오기
@@ -124,13 +72,15 @@ const App = () => {
     return () => unsubscribe()
   }, [loginUser.state])
 
+  //로딩중일 때 (스플래시 화면)
   if(isLoading){return (<>
       <ThemeProvider theme={originTheme}>
         <GlobalStyle />
         <ScrollToTop />
         <Splash />
       </ThemeProvider>
-  </>)}  
+  </>)}
+  //로그인이 되었을 때, 승인된 회원 or 승인되지 않은 회원 조건부 렌더링
   if(loginUser.state){return (<>
     {loginUser.level >= 1 ? 
     <>
@@ -147,6 +97,7 @@ const App = () => {
         <Waiting />
       </ThemeProvider>
     </>}</>)
+  //로그인되지 않았을 때 (로그인 페이지)
   }else{return (<>
       <ThemeProvider theme={originTheme}>
         <GlobalStyle />

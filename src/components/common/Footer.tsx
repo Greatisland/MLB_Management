@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 const Footer = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   const location = useLocation()
-  const currentPath = location.pathname
+  const currentPath = location.pathname // 현재 위치한 페이지 확인하여 Footer css에 효과 주기 위함
   return (
     <>
     {loginUser.state ? 

@@ -34,8 +34,11 @@ const MeetingType = ({meet} : Props) => {
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   let nowMonthData = meet[nowMonthNumber - 1][1]
+
+  //y축
   let total = new Array(labels.length).fill(0)
 
+  //y축 데이터 바인딩
   nowMonthData.forEach(val => {
     switch(val.type){
       case '노래벙' : total[0]++
