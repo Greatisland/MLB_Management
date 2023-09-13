@@ -9,8 +9,8 @@ import { useState } from "react"
 
 const PartList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
-  //휴식기 제외
-  const totalMember = membersData.filter(member => !member[1].break)
+  //휴식기 & 가입대기 제외
+  const totalMember = membersData.filter(member => !member[1].break && member[1].join)
   const dispatch = useAppDispatch()
 
   const [ search, setSearch ] = useState('')
