@@ -104,7 +104,7 @@ export const  JoinModalContainer = styled.div`
 
   input[type='text'], .awardCount, .birth {
     border: none;
-    background: #f6f6f6;
+    background: #f9f9f9;
     border-radius: 30px;
     padding: 5px 10px !important;
     text-align: center !important;
@@ -115,15 +115,29 @@ export const  JoinModalContainer = styled.div`
 
   .awardCount, .birth {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     font-size: 0.8rem;
     align-items: center;
     justify-content: center;
-    height: 27px;
     box-sizing: border-box;
     gap: 10px;
+  }
+  .awardTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .detail {
+      font-size: 0.7rem;
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
+  .awardCount {
+    background: #fff;
+    border: 1px solid #bb8900;
     svg {
-      font-size: 1.1rem;
+      font-size: 2.2rem;
     }
   }
 
@@ -132,7 +146,7 @@ export const  JoinModalContainer = styled.div`
     border: none; 
     position: relative;
     padding: 5px 10px !important;
-    background: #f6f6f6;
+    background: #f9f9f9;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     font-size: 0.8rem;
@@ -170,7 +184,7 @@ export const  JoinModalContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     padding: 4px !important;
     border-radius: 12px;
-    background: #f6f6f6;
+    background: #f9f9f9;
     text-align: center;
     margin: 0 0 10px 0;
     cursor: pointer;
@@ -185,7 +199,7 @@ export const  JoinModalContainer = styled.div`
       background: #13131f;
     }
     option {
-      background: #f6f6f6;
+      background: #f9f9f9;
       color: #333;
     }
   }

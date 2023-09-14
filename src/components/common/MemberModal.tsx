@@ -195,6 +195,10 @@ const MemberModal = () => {
 
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
+            <div className="awardTitle">
+              <div className="detail"><StyledGiTrophy bgColor='#bb8900'/>: 우승/가창상</div>
+              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/>: 그 외 수상</div>
+            </div>
             <span className="awardCount">
               {
               new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
@@ -202,7 +206,7 @@ const MemberModal = () => {
               ))}
               {
               new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
-                <StyledGiTrophy bgColor='#c0c0c0' key={i}/>
+                <StyledGiTrophy bgColor='#A9A9A9' key={i}/>
               ))}
             </span>
           </> : null}
