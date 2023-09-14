@@ -81,6 +81,7 @@ const MemberFeeBtn = () => {
   }
 
 const handleFee = () => {
+  if(loginUser.level >= 3) {
   Swal.fire({
     title: `회비 금액을 수정해주세요. 현재 회비는 ${fee.gold.toLocaleString()}원 입니다.`,
     input: 'text',
@@ -103,7 +104,14 @@ const handleFee = () => {
       if (result.isConfirmed) {
         Swal.fire('완료!', '회비가 변경되었어요.', 'success')
       }
-  })
+  })}else{
+    Swal.fire({
+      icon: 'warning',
+      title: '총무 계정만 가능해요!',
+       showConfirmButton: false,
+      timer: 800
+    })
+  }
 }
   return (
     <BtnListContainer>

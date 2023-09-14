@@ -33,7 +33,7 @@ const Week = ({meet} : Props) => {
   meet.forEach(month => {
     month[1]?.forEach(target => {
       const formatted = target.date
-      .replace('년 ', '-').replace('월 ', '-').split('일')[0]
+      .replace('년 ', '/').replace('월 ', '/').split('일')[0]
 
       const date = new Date(formatted)
       yLabels[date.getDay()]++
