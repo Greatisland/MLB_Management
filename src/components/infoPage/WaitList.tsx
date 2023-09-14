@@ -9,12 +9,17 @@ const WaitList = () => {
   const waitMembersData = membersData.filter(member => !member[1].join)
 
   const daysSinceRegistration = (add: string | undefined) => {
+    //신입초대날짜가 없을 경우 0 반환
     if (!add) {
-      throw new Error('Invalid date input')
+      return 0
     }
     const userDate = new Date(add)
     const nowDate = new Date()
+
+    //벙 리스트 날짜값만 가진 배열로 평탄화
     const flattenedDates = Object.values(meetData).flat(2).map(entry => (entry as any).date).filter(val => val)
+
+    //신입 초대날짜 ~ 현재까지 존재한 벙 갯수 반환
     return flattenedDates.filter(meet => {
       const formatted = meet.replace('년 ', '-').replace('월 ', '-').split('일')[0]
       const date = new Date(formatted)
@@ -46,7 +51,7 @@ const WaitList = () => {
           approval: member[1].approval || false,
           comeback: member[1].comeback || '',
           awardCount: member[1].awardCount || null,
-          add: member[1].add || null
+          add: member[1].add || new Date().toISOString()
         }
       ))
     } else {

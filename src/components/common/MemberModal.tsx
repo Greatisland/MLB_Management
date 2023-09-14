@@ -226,10 +226,10 @@ const MemberModal = () => {
           <p>메모</p>
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
 
-          {/* {sendMember.add ? <> */}
+          {sendMember.add && !sendMember.join ? <>
             <p>신입방 초대일</p>
             <input type="date" value={state.add} onChange={e => setState({...state, add: e.target.value})} placeholder="날짜를 선택해주세요."></input>
-          {/* </> : null} */}
+          </> : null}
 
           <div className="checkFlex">
           <p>휴식기 여부</p>
