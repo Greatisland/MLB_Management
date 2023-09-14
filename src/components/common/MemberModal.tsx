@@ -196,13 +196,13 @@ const MemberModal = () => {
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
             <div className="awardTitle">
-              <div className="detail"><StyledGiTrophy bgColor='#bb8900'/>: 우승/가창상</div>
-              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/>: 그 외 수상</div>
+              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/>: 금 트로피</div>
+              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/>: 은 트로피</div>
             </div>
             <span className="awardCount">
               {
               new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
-                <StyledGiTrophy bgColor='#bb8900' key={i}/>
+                <StyledGiTrophy bgColor='#d1a01a' key={i}/>
               ))}
               {
               new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
@@ -274,14 +274,18 @@ const MemberModal = () => {
           <span>{state.gender}</span>
           {sendMember.awardCount ? <>
             <p>가요제 수상횟수</p>
+            <div className="awardTitle">
+              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/> 우승/가창상</div>
+              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/> 선곡상/인기상/영상상/기타</div>
+            </div>
             <span className="awardCount">
               {
               new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
-                <StyledGiTrophy bgColor='#bb8900' key={i}/>
+                <StyledGiTrophy bgColor='#d1a01a' key={i}/>
               ))}
               {
               new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
-                <StyledGiTrophy bgColor='#c0c0c0' key={i}/>
+                <StyledGiTrophy bgColor='#A9A9A9' key={i}/>
               ))}
             </span>
           </> : null}

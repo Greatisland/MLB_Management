@@ -320,12 +320,26 @@ export const NormalModalContainer = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     text-align: center;
   }
+  .awardTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .detail {
+      font-size: 0.7rem;
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
   .awardCount {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    background: #fff;
+    border: 1px solid #bb8900;
     gap: 10px;
     svg {
-      font-size: 1.2rem;
+      font-size: 2.2rem;
     }
   }
   .delete, .cancle {
