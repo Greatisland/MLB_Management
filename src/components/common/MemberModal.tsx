@@ -25,7 +25,8 @@ const MemberModal = () => {
     special: sendMember.special || '',
     target: '',
     break: sendMember.break || false,
-    state: sendMember.state || false
+    state: sendMember.state || false,
+    add: sendMember.add || ''
   })
 
   //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
@@ -62,7 +63,8 @@ const MemberModal = () => {
       sendMember.gender !== state.gender ||
       sendMember.special !== state.special ||
       sendMember.break !== state.break ||
-      sendMember.comeback !== state.comeback
+      sendMember.comeback !== state.comeback ||
+      sendMember.add !== state.add
       )
       ){
         //수정할 때 정보를 모두 채운 경우
@@ -223,6 +225,12 @@ const MemberModal = () => {
           </select>
           <p>메모</p>
           <input type="text" value={state.etc} onChange={e => setState({...state, etc: e.target.value})} placeholder="자유롭게 메모하세요."></input>
+
+          {/* {sendMember.add ? <> */}
+            <p>신입방 초대일</p>
+            <input type="date" value={state.add} onChange={e => setState({...state, add: e.target.value})} placeholder="날짜를 선택해주세요."></input>
+          {/* </> : null} */}
+
           <div className="checkFlex">
           <p>휴식기 여부</p>
           <CheckboxContainer>
@@ -230,7 +238,9 @@ const MemberModal = () => {
             <StyledCheckbox />
           </CheckboxContainer>
           </div>
+
           </> : null}
+
 
           <div className="extraBtn" onClick={handleExtra}>
             {extra ? 

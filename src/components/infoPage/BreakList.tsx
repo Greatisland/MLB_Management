@@ -17,12 +17,15 @@ const BreakList = () => {
           name: member[1].name,
           join: member[1].join,
           year: member[1].year,
+          birth: member[1].birth || '',
           gender: member[1].gender,
           etc: member[1].etc || '',
           state: true,
           special: member[1].special,
           break: member[1].break || false,
-          comeback: member[1].comeback || ''
+          approval: member[1].approval || false,
+          comeback: member[1].comeback || '',
+          awardCount: member[1].awardCount || null
         }
       ))
     } else {

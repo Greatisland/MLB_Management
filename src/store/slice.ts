@@ -28,6 +28,7 @@ export interface Member {
   secondPriseWinner?: boolean
   [key: `${number}month`]: number
   [key: `${number}monthHost`]: number
+  add?: string
 }
 
 export interface Ban {
