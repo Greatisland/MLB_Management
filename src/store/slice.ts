@@ -96,6 +96,7 @@ export interface Meet {
     date: string
     name: string
     type: string
+    list?: any
   }[]
 }
 

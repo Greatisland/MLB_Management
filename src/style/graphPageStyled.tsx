@@ -22,12 +22,17 @@ export const GraphAttendContainer = styled.div`
   padding: 10px;
   border-radius: 20px;
   height: 300px;
-  p {
+  p.sub_title {
+    position: absolute;
+    top: 40px;
+    right: 20px;
     margin: 10px 0 0;
     text-align: center;
     color: #666;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    letter-spacing: -0.04rem;
   }
+
   .arrow_container {
     position: absolute;
     top: 7px;

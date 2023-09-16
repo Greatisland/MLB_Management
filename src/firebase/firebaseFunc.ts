@@ -28,7 +28,7 @@ const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
 const feeRef = ref(database, '/fee')
-const meetRef = ref(database, '/hostList')
+const meetRef = ref(database, '/meetData')
 
 //애널리틱스
 const analytics = getAnalytics(app)

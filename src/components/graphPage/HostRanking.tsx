@@ -102,8 +102,10 @@ const HostRanking = ({members} : Props) => {
     ],
   };
   return (
+    <>
     <GraphAttendContainer>
       <Bar options={options} data={data} />
+      <p className="sub_title">* 정모 및 운영진회의 제외</p>
       <div className="arrow_container">
         <BsArrowLeftCircle onClick={() => {
           if (nowMonthNumber > 1) {
@@ -117,6 +119,7 @@ const HostRanking = ({members} : Props) => {
         }}/>
       </div>
     </GraphAttendContainer>
+    </>
   )
 }
 

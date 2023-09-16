@@ -30,10 +30,11 @@ interface Props {
 
 const MeetingType = ({meet} : Props) => {
   //x축
-  const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '기타']
+  const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
-  let nowMonthData = meet[nowMonthNumber - 1][1]
+  //비동기 오류때문에 삼항연산자로 값 가져옴
+  let nowMonthData = (meet[nowMonthNumber - 1] && meet[nowMonthNumber - 1][1]) ? meet[nowMonthNumber - 1][1] : []
 
   //y축
   let total = new Array(labels.length).fill(0)
@@ -50,6 +51,10 @@ const MeetingType = ({meet} : Props) => {
       case '버스킹' : total[3]++
       break
       case '이벤트벙' : total[4]++
+      break
+      case '정모' : total[5]++
+      break
+      case '운영진회의' : total[6]++
       break
       default : total[5]++
     }
@@ -76,20 +81,24 @@ const MeetingType = ({meet} : Props) => {
         label: '열린 횟수',
         data: total,
         backgroundColor: [
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(104, 104, 104, 0.2)',
-          'rgba(64, 255, 223, 0.2)',
+          'rgba(235, 196, 66, 0.2)',  // 밝은 주황색
+          'rgba(34, 142, 215, 0.2)',  // 밝은 파란색
+          'rgba(143, 92, 245, 0.2)',  // 밝은 자주색
+          'rgba(235, 39, 39, 0.2)',   // 밝은 빨간색
+          'rgba(108, 108, 108, 0.2)', // 중간 회색
+          'rgba(0, 235, 107, 0.2)',   // 밝은 녹색
+          'rgba(0, 206, 209, 0.2)',   // 밝은 청록색
+          'rgba(225, 205, 30, 0.2)'   // 노란색
         ],
         borderColor: [
-          'rgba(255, 206, 86, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 99, 132, 1)',
-          '#8b8b8b',
-          '#40ffd6',
+          'rgba(255, 206, 86, 1)',    // 밝은 주황색
+          'rgba(54, 162, 235, 1)',   // 밝은 파란색
+          'rgba(153, 102, 255, 1)',  // 밝은 자주색
+          'rgba(255, 59, 59, 1)',    // 밝은 빨간색
+          'rgba(128, 128, 128, 1)',  // 중간 회색
+          'rgba(0, 255, 127, 1)',    // 밝은 녹색
+          'rgba(11, 231, 235, 1)',   // 밝은 청록색
+          'rgba(245, 225, 50, 1)'    // 노란색
         ],
         borderWidth: 1,
       },
