@@ -33,7 +33,7 @@ const BasicStats = ({meetData, membersData}: Props) => {
       <p className="title">전체 회원 통계</p>
       <div className='content'>
         <span className='content_title'>참석율</span>
-        <span className='content_body'>{allMemberAverAttend}<span className="add_text">회</span></span>
+        <span className='content_body'><span className="add_text">월</span>{allMemberAverAttend}<span className="add_text">회</span></span>
       </div>
       <div className='content'>
         <span className='content_title'>나이(연도)</span>
