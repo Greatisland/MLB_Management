@@ -9,6 +9,7 @@ import { useState } from "react"
 
 const PartList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
+
   //휴식기 & 가입대기 제외
   const totalMember = membersData.filter(member => !member[1].break && member[1].join)
   const dispatch = useAppDispatch()
@@ -20,6 +21,11 @@ const PartList = () => {
   const date = new Date()
   const currentYear = date.getFullYear()
   const currentMonth = date.getMonth() + 1
+
+  //각 멤버 평균참석률의 평균값
+  const allMemberAver = Math.round(searchMembersData.reduce((acc, val) => {
+    return acc + averCheck(val[1])
+  }, 0)/searchMembersData.length * 10)/10
 
   return (
     <>

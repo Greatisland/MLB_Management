@@ -22,16 +22,16 @@ import { Bar } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import { GraphAttendContainer } from "../../style/graphPageStyled";
 interface Props {
-  members: [string, Member][]
+  membersData: [string, Member][]
 }
 
 
-const HostRanking = ({members} : Props) => {
+const HostRanking = ({membersData} : Props) => {
 
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   //벙 개설 횟수로 정렬
-  const sortedArray = [...members].sort((a, b) => {
+  const sortedArray = [...membersData].sort((a, b) => {
     const aMonthHost = a[1][`${nowMonthNumber}monthHost`] || 0
     const bMonthHost = b[1][`${nowMonthNumber}monthHost`] || 0
     return bMonthHost - aMonthHost

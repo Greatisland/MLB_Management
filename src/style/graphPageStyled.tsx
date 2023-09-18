@@ -47,3 +47,42 @@ export const GraphAttendContainer = styled.div`
     }
   }
 `
+
+export const BasicStatsContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+  p.title {
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #666;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content_title {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .content_body {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 1rem;
+      color: ${props => props.theme.green};
+      .add_text {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+`

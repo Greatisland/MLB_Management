@@ -20,17 +20,17 @@ import { Radar } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import { GraphAttendContainer } from "../../style/graphPageStyled";
 interface Props {
-  meet: Meet[]
+  meetData: Meet[]
 }
 
 
-const Week = ({meet} : Props) => {
+const Week = ({meetData} : Props) => {
   //x축 (월)
   const labels = ['일', '월', '화', '수', '목', '금', '토']
 
   //y축 (개설횟수)
   const yLabels = [0,0,0,0,0,0,0]
-  meet.forEach(month => {
+  meetData.forEach(month => {
     month[1]?.forEach(target => {
       const formatted = target.date
       .replace('년 ', '/').replace('월 ', '/').split('일')[0]

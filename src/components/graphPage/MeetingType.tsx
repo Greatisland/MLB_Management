@@ -24,17 +24,17 @@ import { Pie } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc';
 import { GraphAttendContainer } from "../../style/graphPageStyled";
 interface Props {
-  meet : Meet[]
+  meetData : Meet[]
 }
 
 
-const MeetingType = ({meet} : Props) => {
+const MeetingType = ({meetData} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   //비동기 오류때문에 삼항연산자로 값 가져옴
-  let nowMonthData = (meet[nowMonthNumber - 1] && meet[nowMonthNumber - 1][1]) ? meet[nowMonthNumber - 1][1] : []
+  let nowMonthData = (meetData[nowMonthNumber - 1] && meetData[nowMonthNumber - 1][1]) ? meetData[nowMonthNumber - 1][1] : []
 
   //y축
   let total = new Array(labels.length).fill(0)
