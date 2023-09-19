@@ -17,14 +17,20 @@ const GraphPage = () => {
   return (
     <GraphPageContainer>
       <GraphYear>
-        <BsArrowLeftCircle onClick={() => {if(yearView > 2017) setYearView(yearView - 1)}}/>
+        <BsArrowLeftCircle onClick={() => {
+          if(yearView > 2017) {
+            setYearView(yearView - 1)
+        }}}/>
         <p>{yearView}년</p>
-        <BsArrowRightCircle onClick={() => {if(yearView < new Date().getFullYear()) setYearView(yearView + 1)}}/>
+        <BsArrowRightCircle onClick={() => {
+          if(yearView < new Date().getFullYear()) {
+            setYearView(yearView + 1)
+        }}}/>
       </GraphYear>
-      <MeetingType meetData={meetData} yearView={yearView} monthView={monthView} setMonthView={setMonthView} />
+      <MeetingType meetData={meetData} yearView={yearView} setYearView={setYearView} monthView={monthView} setMonthView={setMonthView} />
       {loginUser.level >= 2 ? <BasicStats membersData={membersData} /> : null}
 
-      <HostRanking meetData={meetData} yearView={yearView} monthView={monthView} setMonthView={setMonthView}/>
+      <HostRanking meetData={meetData} yearView={yearView} setYearView={setYearView} monthView={monthView} setMonthView={setMonthView}/>
       <Week meetData={meetData} yearView={yearView} />
       <p className="notice">* 통계 그래프는 필요한 통계가 있을 경우 지속적으로 추가 예정입니다. *</p>
       <ScrollToTopBtn />

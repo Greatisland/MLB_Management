@@ -24,14 +24,15 @@ import { Pie } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
-  meetData : MeetData
+  meetData: MeetData
   yearView: number
+  setYearView: React.Dispatch<React.SetStateAction<number>>
   monthView: number
   setMonthView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const MeetingType = ({meetData, yearView, monthView, setMonthView} : Props) => {
+const MeetingType = ({meetData, yearView, setYearView, monthView, setMonthView} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
@@ -113,11 +114,21 @@ const MeetingType = ({meetData, yearView, monthView, setMonthView} : Props) => {
         <BsArrowLeftCircle onClick={() => {
           if (monthView > 1) {
             setMonthView(monthView - 1)
+          }else if(monthView === 1){
+            if(yearView > 2017) {
+              setYearView(yearView - 1)
+              setMonthView(12)
+            }
           }
         }} />
         <BsArrowRightCircle onClick={() => {
           if (monthView < 12) {
             setMonthView(monthView + 1)
+          }else if(monthView === 12){
+            if(yearView < new Date().getFullYear()) {
+              setYearView(yearView + 1)
+              setMonthView(1)
+            }
           }
         }}/>
       </div>

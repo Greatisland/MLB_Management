@@ -19,17 +19,17 @@ ChartJS.register(
   Legend
 );
 import { Bar } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData: MeetData
   yearView: number
+  setYearView: React.Dispatch<React.SetStateAction<number>>
   monthView: number
   setMonthView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const HostRanking = ({meetData, yearView, monthView, setMonthView} : Props) => {
+const HostRanking = ({meetData, yearView, setYearView, monthView, setMonthView} : Props) => {
 
   let handleData: Record<string, number> = {}
 
@@ -114,11 +114,21 @@ const HostRanking = ({meetData, yearView, monthView, setMonthView} : Props) => {
         <BsArrowLeftCircle onClick={() => {
           if (monthView > 1) {
             setMonthView(monthView - 1)
+          }else if(monthView === 1){
+            if(yearView > 2017) {
+              setYearView(yearView - 1)
+              setMonthView(12)
+            }
           }
         }} />
         <BsArrowRightCircle onClick={() => {
           if (monthView < 12) {
             setMonthView(monthView + 1)
+          }else if(monthView === 12){
+            if(yearView < new Date().getFullYear()) {
+              setYearView(yearView + 1)
+              setMonthView(1)
+            }
           }
         }}/>
       </div>
