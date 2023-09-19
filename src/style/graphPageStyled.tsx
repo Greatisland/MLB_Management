@@ -14,6 +14,23 @@ export const GraphPageContainer = styled.div`
   }
 `
 
+export const GraphYear = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: ${props => props.theme.gray2};
+  }
+  svg {
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+`
+
 export const GraphAttendContainer = styled.div`
   display: flex;
   position: relative;

@@ -18,7 +18,6 @@ const HofCard = ({award, onClick} : Props) => {
 
   return (
     <HofCardContainer>
-
       <div className="leftSide">
         <div className="textSide" onClick={onClick}>
           <h3>{award.eventName}</h3>
@@ -50,46 +49,19 @@ const HofCard = ({award, onClick} : Props) => {
       </div>
 
       <ul className="rightSide">
-        <li>
-          <span>{award.fAward}</span>
-          <p className="name">{award.fClass}</p>
-          <p className="track">{award.fTrack}</p>
-          {award.fLink ? <a href={award.fLink} target="_blank">Live<AiFillYoutube /></a> : null}
-          {award.fLink2 ? <a href={award.fLink2} target="_blank">Live<AiFillYoutube /></a> : null}
-        </li>
-        <li>
-          {award.sClass ? (
-          <>
-          <span>{award.sAward}</span>
-          <p className="name">{award.sClass}</p>
-          <p className="track">{award.sTrack}</p>
-          {award.sLink ? <a href={award.sLink} target="_blank">Live<AiFillYoutube /></a> : null}
-          {award.sLink2 ? <a href={award.sLink2} target="_blank">Live<AiFillYoutube /></a> : null}
-          </>
-          ) : null}
-        </li>
-        <li>
-          {award.tClass ? (
-          <>
-          <span>{award.tAward}</span>
-          <p className="name">{award.tClass}</p>
-          <p className="track">{award.tTrack}</p>
-          {award.tLink ? <a href={award.tLink} target="_blank">Live<AiFillYoutube /></a> : null}
-          {award.tLink2 ? <a href={award.tLink2} target="_blank">Live<AiFillYoutube /></a> : null}
-          </>
-          ) : null}
-        </li>
-        <li>
-          {award.anotherClass ? (
-          <>
-          <span>{award.anotherAward}</span>
-          <p className="name">{award.anotherClass}</p>
-          <p className="track">{award.anotherTrack}</p>
-          {award.anotherLink ? <a href={award.anotherLink} target="_blank">Live<AiFillYoutube /></a> : null}
-          {award.anotherLink2 ? <a href={award.anotherLink2} target="_blank">Live<AiFillYoutube /></a> : null}
-          </>
-          ) : null}
-        </li>
+        {['f', 's', 't', 'another'].map((keyword, i) => (
+          <li key={i}>
+            {award[`${keyword}Class`] ? (
+              <>
+              <span>{award[`${keyword}Award`]}</span>
+              <p className="name">{award[`${keyword}Class`]}</p>
+              <p className="track">{award[`${keyword}Track`]}</p>
+              {award[`${keyword}Link`] ? <a href={award[`${keyword}Link`]} target="_blank">Live<AiFillYoutube /></a> : null}
+              {award[`${keyword}Link2`] ? <a href={award[`${keyword}Link2`]} target="_blank">Live<AiFillYoutube /></a> : null}
+              </>
+            ) : null}
+          </li>
+        ))}
       </ul>
     </HofCardContainer>
   )

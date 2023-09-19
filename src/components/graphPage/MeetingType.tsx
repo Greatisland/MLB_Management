@@ -1,5 +1,6 @@
 import type { Meet } from "../../store/slice.ts"
 import { useState } from "react";
+import React from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import {
   Chart as ChartJS,
@@ -21,14 +22,16 @@ ChartJS.register(
   Legend
 );
 import { Pie } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc';
-import { GraphAttendContainer } from "../../style/graphPageStyled";
+import { dateCalc } from '../common/dateCalc.ts';
+import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData : Meet[]
+  yearView: number
+  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const MeetingType = ({meetData} : Props) => {
+const MeetingType = ({meetData, yearView, setYearView} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))

@@ -25,7 +25,7 @@ export const averCheck = (member: Member) => {
 
   const joinDate = new Date(member.join)
 
-  //북귀자일 경우
+  //복귀자일 경우
   if(member.comeback){
     const comeDate = new Date(member.comeback)
     //복귀 이전 벙참석횟수 기록이 있을 경우 대소를 구분해 큰 쪽을 평균으로 리턴

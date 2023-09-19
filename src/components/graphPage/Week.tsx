@@ -1,4 +1,5 @@
 import type { Meet } from "../../store/slice.ts"
+import React from 'react';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -17,14 +18,16 @@ ChartJS.register(
   Legend
 );
 import { Radar } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc';
-import { GraphAttendContainer } from "../../style/graphPageStyled";
+import { dateCalc } from '../common/dateCalc.ts';
+import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData: Meet[]
+  yearView: number
+  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const Week = ({meetData} : Props) => {
+const Week = ({meetData, yearView, setYearView} : Props) => {
   //x축 (월)
   const labels = ['일', '월', '화', '수', '목', '금', '토']
 
@@ -48,7 +51,7 @@ const Week = ({meetData} : Props) => {
       },
       title: {
         display: true,
-        text: `${dateCalc('year')}년 전체 요일별 벙 개설횟수 통계`
+        text: `${yearView}년 전체 요일별 벙 개설횟수 통계`
       },
     },
     scales: {

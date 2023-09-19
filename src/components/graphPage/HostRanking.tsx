@@ -1,6 +1,7 @@
-import type { Member } from "../../store/slice.ts"
+import type { Member, Meet } from "../../store/slice.ts"
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import { useState } from "react";
+import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,32 +20,32 @@ ChartJS.register(
   Legend
 );
 import { Bar } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc';
-import { GraphAttendContainer } from "../../style/graphPageStyled";
+import { dateCalc } from '../common/dateCalc.ts';
+import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
-  membersData: [string, Member][]
+  meetData: Meet[]
+  yearView: number
+  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const HostRanking = ({membersData} : Props) => {
+const HostRanking = ({meetData, yearView, setYearView} : Props) => {
 
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
-  //벙 개설 횟수로 정렬
-  const sortedArray = [...membersData].sort((a, b) => {
-    const aMonthHost = a[1][`${nowMonthNumber}monthHost`] || 0
-    const bMonthHost = b[1][`${nowMonthNumber}monthHost`] || 0
-    return bMonthHost - aMonthHost
+  let handleData: Record<string, number> = {}
+  meetData[nowMonthNumber-1]?.[1].forEach(val => {
+    if(val.type !== '운영진회의' && val.type !== '정모'){
+      handleData[val.host] = (handleData[val.host] || 0) + 1
+    }
   })
 
-  //벙 개설 횟수 0인 회원은 명단에서 삭제
-  const dataLabels = sortedArray.filter(val => val[1][`${nowMonthNumber}monthHost`])
+  let handleData2 = Object.entries(handleData).sort((a, b) => {
+    return b[1] - a[1]
+  })
 
-  //x축 (이름)
-  const labels = dataLabels.map(val => val[1].name)
-  
-  //y축 (개설횟수)
-  const yLabels = dataLabels.map(val => val[1][`${nowMonthNumber}monthHost`])
+  const labels = handleData2.map(val => val[0])
+  const yLabels = handleData2.map(val => val[1])
   const yMax = Math.max(...yLabels)
 
   const options = {

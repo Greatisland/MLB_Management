@@ -1,5 +1,5 @@
 import { Btn, BtnListContainer } from "../../style/globalStyled.tsx"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import HofAddModal from "./HofAddModal.tsx"
 import { useAppSelector } from "../../store/hook.ts"
 import Swal from "sweetalert2"

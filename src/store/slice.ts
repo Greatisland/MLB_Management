@@ -94,9 +94,10 @@ export interface Meet {
   0: string
   1: {
     date: string
-    name: string
+    host: string
+    title: string
     type: string
-    list?: any
+    list?: string[]
   }[]
 }
 

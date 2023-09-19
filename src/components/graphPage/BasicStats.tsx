@@ -1,14 +1,14 @@
 import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
-import type { Member, Meet } from "../../store/slice"
+import type { Member, Meet } from "../../store/slice.ts"
 import { averCheck } from "../common/averCheck.ts"
 import { daysBetweenDates } from "../common/daysBetweenDates.ts"
 
 interface Props {
   membersData: [string, Member][],
-  meetData: Meet[]
+  
 }
 
-const BasicStats = ({meetData, membersData}: Props) => {
+const BasicStats = ({membersData}: Props) => {
 
   const totalMember = membersData.filter(member => !member[1].break && member[1].join)
 
