@@ -1,6 +1,5 @@
 import type { MeetData } from "../../store/slice.ts"
-import { useState } from "react";
-import React from 'react';
+import React, { useState } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import {
   Chart as ChartJS,
@@ -27,17 +26,19 @@ import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData : MeetData
   yearView: number
+  monthView: number
+  setMonthView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const MeetingType = ({meetData, yearView} : Props) => {
+const MeetingType = ({meetData, yearView, monthView, setMonthView} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   //비동기 오류때문에 삼항연산자로 값 가져옴
   let testData = meetData.find(val => Number(val[0]) === yearView)
-  let nowMonthData = (testData ? (testData[1][nowMonthNumber] ? testData[1][nowMonthNumber] : []) : []) as any[]
+  let nowMonthData = (testData ? (testData[1][monthView] ? testData[1][monthView] : []) : []) as any[]
   //y축
   let total = new Array(labels.length).fill(0)
 
@@ -71,7 +72,7 @@ const MeetingType = ({meetData, yearView} : Props) => {
       },
       title: {
         display: true,
-        text: `${nowMonthNumber}월 열린 벙의 종류`
+        text: `${monthView}월 열린 벙의 종류`
       },
     },
   }
@@ -110,13 +111,13 @@ const MeetingType = ({meetData, yearView} : Props) => {
     <GraphAttendContainer>
       <div className="arrow_container">
         <BsArrowLeftCircle onClick={() => {
-          if (nowMonthNumber > 1) {
-            setNowMonthNumber(nowMonthNumber - 1)
+          if (monthView > 1) {
+            setMonthView(monthView - 1)
           }
         }} />
         <BsArrowRightCircle onClick={() => {
-          if (nowMonthNumber < 12) {
-            setNowMonthNumber(nowMonthNumber + 1)
+          if (monthView < 12) {
+            setMonthView(monthView + 1)
           }
         }}/>
       </div>

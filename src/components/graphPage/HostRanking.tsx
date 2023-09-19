@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import type { MeetData } from "../../store/slice.ts"
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
-import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,17 +24,17 @@ import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData: MeetData
   yearView: number
+  monthView: number
+  setMonthView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const HostRanking = ({meetData, yearView} : Props) => {
-
-  const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
+const HostRanking = ({meetData, yearView, monthView, setMonthView} : Props) => {
 
   let handleData: Record<string, number> = {}
 
   let testData = meetData.find(val => Number(val[0]) === yearView)
-  let nowMonthData = (testData ? (testData[1][nowMonthNumber] ? testData[1][nowMonthNumber] : []) : []) as any[]
+  let nowMonthData = (testData ? (testData[1][monthView] ? testData[1][monthView] : []) : []) as any[]
 
   nowMonthData.forEach(val => {
     if(val.type !== '운영진회의' && val.type !== '정모'){
@@ -60,7 +60,7 @@ const HostRanking = ({meetData, yearView} : Props) => {
       },
       title: {
         display: true,
-        text: `${nowMonthNumber}월 벙 개설 횟수`
+        text: `${monthView}월 벙 개설 횟수`
       },
     },
     scales: {
@@ -112,13 +112,13 @@ const HostRanking = ({meetData, yearView} : Props) => {
       <p className="sub_title">* 정모 및 운영진회의 제외</p>
       <div className="arrow_container">
         <BsArrowLeftCircle onClick={() => {
-          if (nowMonthNumber > 1) {
-            setNowMonthNumber(nowMonthNumber - 1)
+          if (monthView > 1) {
+            setMonthView(monthView - 1)
           }
         }} />
         <BsArrowRightCircle onClick={() => {
-          if (nowMonthNumber < 12) {
-            setNowMonthNumber(nowMonthNumber + 1)
+          if (monthView < 12) {
+            setMonthView(monthView + 1)
           }
         }}/>
       </div>

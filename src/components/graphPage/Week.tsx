@@ -27,7 +27,6 @@ interface Props {
 const Week = ({meetData, yearView} : Props) => {
   //x축 (월)
   const labels = ['일', '월', '화', '수', '목', '금', '토']
-  console.log(meetData)
   //y축 (개설횟수)
   const yLabels = [0,0,0,0,0,0,0]
   let testData = meetData.find(val => Number(val[0]) === yearView)
