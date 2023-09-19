@@ -1,11 +1,10 @@
 import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
-import type { Member, Meet } from "../../store/slice.ts"
+import type { Member } from "../../store/slice.ts"
 import { averCheck } from "../common/averCheck.ts"
 import { daysBetweenDates } from "../common/daysBetweenDates.ts"
 
 interface Props {
   membersData: [string, Member][],
-  
 }
 
 const BasicStats = ({membersData}: Props) => {
