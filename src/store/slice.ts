@@ -28,6 +28,16 @@ export interface Member {
   secondPriseWinner?: boolean
   [key: `${number}month`]: number
   [key: `${number}monthHost`]: number
+  attend?: {
+    [key: number]: {
+      [key: number]: number
+    }
+  }
+  host?: {
+    [key: number]: {
+      [key: number]: number
+    }
+  }
   add?: string
 }
 
@@ -90,21 +100,22 @@ interface Account {
   level: number
 }
 
-export interface Meet {
-  0: string
-  1: {
-    date: string
-    host: string
-    title: string
-    type: string
-    list?: string[]
-  }[]
+export interface Schedule {
+  date: string
+  host: string
+  list: string
+  title: string
+  type: string
 }
+
+type YearData = [string, Schedule[]]
+
+export type MeetData = YearData[]
 
 //state 초기 값
 interface InitialState {
   membersData: [string, Member][]
-  meetData: Meet[]
+  meetData: MeetData
   banData: [string, Ban][]
   hofData: [string, Hof][]
   sendMember: Member

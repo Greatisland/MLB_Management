@@ -1,4 +1,4 @@
-import type { Meet } from "../../store/slice.ts"
+import type { MeetData } from "../../store/slice.ts"
 import { useState } from "react";
 import React from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
@@ -25,20 +25,19 @@ import { Pie } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
-  meetData : Meet[]
+  meetData : MeetData
   yearView: number
-  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const MeetingType = ({meetData, yearView, setYearView} : Props) => {
+const MeetingType = ({meetData, yearView} : Props) => {
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   //비동기 오류때문에 삼항연산자로 값 가져옴
-  let nowMonthData = (meetData[nowMonthNumber - 1] && meetData[nowMonthNumber - 1][1]) ? meetData[nowMonthNumber - 1][1] : []
-
+  let testData = meetData.find(val => Number(val[0]) === yearView)
+  let nowMonthData = (testData ? (testData[1][nowMonthNumber] ? testData[1][nowMonthNumber] : []) : []) as any[]
   //y축
   let total = new Array(labels.length).fill(0)
 
@@ -116,7 +115,7 @@ const MeetingType = ({meetData, yearView, setYearView} : Props) => {
           }
         }} />
         <BsArrowRightCircle onClick={() => {
-          if (nowMonthNumber < Number(dateCalc('flatMonth'))) {
+          if (nowMonthNumber < 12) {
             setNowMonthNumber(nowMonthNumber + 1)
           }
         }}/>

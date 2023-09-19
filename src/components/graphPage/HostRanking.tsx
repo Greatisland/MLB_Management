@@ -1,7 +1,6 @@
-import type { Member, Meet } from "../../store/slice.ts"
+import type { MeetData } from "../../store/slice.ts"
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import { useState } from "react";
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,22 +22,26 @@ import { Bar } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
-  meetData: Meet[]
+  meetData: MeetData
   yearView: number
-  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const HostRanking = ({meetData, yearView, setYearView} : Props) => {
+const HostRanking = ({meetData, yearView} : Props) => {
 
   const [ nowMonthNumber, setNowMonthNumber ] = useState(Number(dateCalc('flatMonth')))
 
   let handleData: Record<string, number> = {}
-  meetData[nowMonthNumber-1]?.[1].forEach(val => {
+
+  let testData = meetData.find(val => Number(val[0]) === yearView)
+  let nowMonthData = (testData ? (testData[1][nowMonthNumber] ? testData[1][nowMonthNumber] : []) : []) as any[]
+
+  nowMonthData.forEach(val => {
     if(val.type !== '운영진회의' && val.type !== '정모'){
       handleData[val.host] = (handleData[val.host] || 0) + 1
     }
   })
+
 
   let handleData2 = Object.entries(handleData).sort((a, b) => {
     return b[1] - a[1]
@@ -114,7 +117,7 @@ const HostRanking = ({meetData, yearView, setYearView} : Props) => {
           }
         }} />
         <BsArrowRightCircle onClick={() => {
-          if (nowMonthNumber < Number(dateCalc('flatMonth'))) {
+          if (nowMonthNumber < 12) {
             setNowMonthNumber(nowMonthNumber + 1)
           }
         }}/>

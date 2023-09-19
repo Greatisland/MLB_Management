@@ -1,5 +1,4 @@
-import type { Meet } from "../../store/slice.ts"
-import React from 'react';
+import type { MeetData, Schedule } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -18,30 +17,40 @@ ChartJS.register(
   Legend
 );
 import { Radar } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
-  meetData: Meet[]
+  meetData: MeetData
   yearView: number
-  setYearView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const Week = ({meetData, yearView, setYearView} : Props) => {
+const Week = ({meetData, yearView} : Props) => {
   //x축 (월)
   const labels = ['일', '월', '화', '수', '목', '금', '토']
-
+  console.log(meetData)
   //y축 (개설횟수)
   const yLabels = [0,0,0,0,0,0,0]
-  meetData.forEach(month => {
-    month[1]?.forEach(target => {
-      const formatted = target.date
-      .replace('년 ', '/').replace('월 ', '/').split('일')[0]
+  let testData = meetData.find(val => Number(val[0]) === yearView)
 
-      const date = new Date(formatted)
-      yLabels[date.getDay()]++
+  //타입 가드 함수 (멍청한 타입스크립트에게 타입을 정확히 알려주자)
+  const isScheduleArray = (value: any): value is Schedule[] => {
+    return Array.isArray(value);
+  }
+
+  if(testData){
+    testData[1].forEach(month => {
+      if(isScheduleArray(month)){
+        month?.forEach(target => {
+          const formatted = target.date
+          .replace('년 ', '/').replace('월 ', '/').split('일')[0]
+    
+          const date = new Date(formatted)
+          yLabels[date.getDay()]++
+        })
+      }
     })
-  })
+  }
+
 
   const options: any = {
     plugins: {
