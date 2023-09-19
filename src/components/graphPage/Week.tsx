@@ -33,21 +33,33 @@ const Week = ({meetData, yearView} : Props) => {
 
   //타입 가드 함수 (멍청한 타입스크립트에게 타입을 정확히 알려주자)
   const isScheduleArray = (value: any): value is Schedule[] => {
-    return Array.isArray(value);
+    return Array.isArray(value)
   }
 
   if(testData){
-    testData[1].forEach(month => {
-      if(isScheduleArray(month)){
-        month?.forEach(target => {
+    if(isScheduleArray(testData[1])){
+      testData[1].forEach(month => {
+        if(isScheduleArray(month)){
+          month?.forEach(target => {
+            const formatted = target.date
+            .replace('년 ', '/').replace('월 ', '/').split('일')[0]
+      
+            const date = new Date(formatted)
+            yLabels[date.getDay()]++
+          })
+        }
+      })
+    }else{
+      (Object.values(testData[1]) as Schedule[][]).forEach((month) => {
+        month.forEach(target => {
           const formatted = target.date
           .replace('년 ', '/').replace('월 ', '/').split('일')[0]
     
           const date = new Date(formatted)
           yLabels[date.getDay()]++
         })
-      }
-    })
+      })
+    }
   }
 
 

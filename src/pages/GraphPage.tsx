@@ -17,7 +17,7 @@ const GraphPage = () => {
   return (
     <GraphPageContainer>
       <GraphYear>
-        <BsArrowLeftCircle onClick={() => {if(yearView > 2020) setYearView(yearView - 1)}}/>
+        <BsArrowLeftCircle onClick={() => {if(yearView > 2017) setYearView(yearView - 1)}}/>
         <p>{yearView}년</p>
         <BsArrowRightCircle onClick={() => {if(yearView < new Date().getFullYear()) setYearView(yearView + 1)}}/>
       </GraphYear>
