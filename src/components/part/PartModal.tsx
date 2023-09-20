@@ -2,14 +2,15 @@ import { PartModalContainer, PartModalWrapper } from "../../style/partPageStyled
 import ChartGraph from "./ChartGraph.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { togglePartModal, startSwiping, stopSwiping } from "../../store/slice.ts"
-import { useEffect } from "react"
-import GraphArrow from "../common/GraphArrow.tsx"
+import { useState, useEffect } from "react"
+import { GraphBtn } from "../../style/graphPageStyled.tsx"
+import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 
 const PartModal = () => {
-  const dispatch = useAppDispatch()
-  const { membersData, sendMember, yearView } = useAppSelector(state => state.membersData)
-  
   const date = new Date()
+  const dispatch = useAppDispatch()
+  const { membersData, sendMember } = useAppSelector(state => state.membersData)
+  const [ yearView, setYearView ] = useState(date.getFullYear())
 
   //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
   useEffect(() => {
@@ -48,8 +49,20 @@ const PartModal = () => {
   return (
     <PartModalWrapper>
       <PartModalContainer>
-        <ChartGraph member={thisMember[1]} aver={aver}/>
-        <GraphArrow />
+        <ChartGraph member={thisMember[1]} aver={aver} yearView={yearView} />
+        <GraphBtn>
+          <div className="year">
+            <BiLeftArrow onClick={() => {
+              if(yearView > 2017) {
+                setYearView(yearView - 1)
+            }}}/>
+            <p>{yearView}년</p>
+            <BiRightArrow onClick={() => {
+              if(yearView < new Date().getFullYear()) {
+                setYearView(yearView + 1)
+            }}}/>
+          </div>
+        </GraphBtn>
         <div className="textArea">
           <table>
             <thead>

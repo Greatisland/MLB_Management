@@ -18,7 +18,7 @@ const App = () => {
   const dispatch = useAppDispatch()
   const { loginUser } = useAppSelector(state => state.membersData)
   const [ isLoading, setIsLoading ] = useState(true)
-
+  
   useEffect(() => {
     //초기 데이터 받아오기
     dbFunc.getAllMembers((data: any) => dispatch(setMembers(data)))

@@ -5,6 +5,7 @@ import { toggleModal, sendMember, sortState } from "../../store/slice.ts"
 import { SearchBarPart } from "../../style/partPageStyled.tsx"
 import { dateCalc } from "../common/dateCalc.ts"
 import { useState } from "react"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
