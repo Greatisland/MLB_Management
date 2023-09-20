@@ -12,15 +12,6 @@ const HomeList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
   const [ search, setSearch ] = useState('')
 
-  const garbage = () => {
-    membersData.forEach(member => {
-      dbFunc.deleteGarbage(member[0], 'level')
-      dbFunc.deleteGarbage(member[0], 'approval')
-    })
-  }
-
-  garbage()
-
   //가입 승인상태이고 휴식기가 아니고 가입대기가 아닐 때
   const searchMembersData = membersData.filter(member => 
     member[1]?.name?.includes(search) && 
