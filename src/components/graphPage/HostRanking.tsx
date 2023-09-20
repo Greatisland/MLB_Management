@@ -1,4 +1,3 @@
-import React from 'react';
 import type { MeetData } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
@@ -19,15 +18,15 @@ ChartJS.register(
 );
 import { Bar } from 'react-chartjs-2';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
+import { useAppSelector } from "../../store/hook.ts";
+
 interface Props {
   meetData: MeetData
-  yearView: number
-  monthView: number
 }
 
 
-const HostRanking = ({meetData, yearView, monthView} : Props) => {
-
+const HostRanking = ({meetData} : Props) => {
+  const { yearView, monthView } = useAppSelector(state => state.membersData)
   let handleData: Record<string, number> = {}
 
   let testData = meetData.find(val => Number(val[0]) === yearView)
@@ -110,7 +109,7 @@ const HostRanking = ({meetData, yearView, monthView} : Props) => {
     <GraphAttendContainer>
       <Bar options={options} data={data} />
       {labels.length === 0 ? <>
-        <p className="empty_sub">이 달은 데이터가 없어요😬</p>
+        <p className="empty_sub">{yearView}년 {monthView}월은 데이터가 없어요😬</p>
       </> : null}
       <p className="sub_title">* 정모 및 운영진회의 제외</p>
     </GraphAttendContainer>

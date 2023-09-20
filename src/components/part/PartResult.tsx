@@ -3,6 +3,7 @@ import { PartResultContainer } from "../../style/partPageStyled.tsx"
 import { useState, useEffect } from "react"
 import { dateCalc } from "../common/dateCalc.ts"
 import { averCheck } from "../common/averCheck.ts"
+import { totalCalcFunc } from "../common/totalCalcFunc.ts"
 import type { Member } from "../../store/slice.ts"
 
 interface NewProp {
@@ -30,9 +31,9 @@ const PartResult = () => {
     }).sort((a, b) => {
       return (b.aver || 0) - (a.aver || 0)
     })
-
+1
     let filterMemberHost = [...membersData].sort((a, b) => {
-      return (b[1].totalHost || 0) - (a[1].totalHost || 0)
+      return (totalCalcFunc(b[1], new Date().getFullYear()).host || 0) - (totalCalcFunc(a[1], new Date().getFullYear()).host || 0)
     })
     setRising(filterMember.slice(0, 3))
     setHosting(filterMemberHost.slice(0, 3))
@@ -46,15 +47,15 @@ const PartResult = () => {
       </ul>
       <ul>
         <li>{rising[0] ? <>{rising[0].name} <span>평균 {rising[0].aver}회</span></> : 'N/A'}</li>
-        <li>{hosting[0] && hosting[0][1] ? <>{hosting[0][1].name} <span>{hosting[0][1].totalHost}회 개설!</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[0][1] ? <>{hosting[0][1].name} <span>{totalCalcFunc(hosting[0][1], new Date().getFullYear()).host}회 개설!</span></> : 'N/A'}</li>
       </ul>
       <ul>
         <li>{rising[1] ? <>{rising[1].name} <span>평균 {rising[1].aver}회</span></> : 'N/A'}</li>
-        <li>{hosting[0] && hosting[1][1] ? <>{hosting[1][1].name} <span>{hosting[1][1].totalHost}회 개설!</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[1][1] ? <>{hosting[1][1].name} <span>{totalCalcFunc(hosting[1][1], new Date().getFullYear()).host}회 개설!</span></> : 'N/A'}</li>
       </ul>
       <ul>
         <li>{rising[2] ? <>{rising[2].name} <span>평균 {rising[2].aver}회</span></> : 'N/A'}</li>
-        <li>{hosting[0] && hosting[2][1] ? <>{hosting[2][1].name} <span>{hosting[2][1].totalHost}회 개설!</span></> : 'N/A'}</li>
+        <li>{hosting[0] && hosting[2][1] ? <>{hosting[2][1].name} <span>{totalCalcFunc(hosting[2][1], new Date().getFullYear()).host}회 개설!</span></> : 'N/A'}</li>
       </ul>
     </PartResultContainer>
   )

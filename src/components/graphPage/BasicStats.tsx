@@ -1,16 +1,10 @@
 import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
-import type { Member } from "../../store/slice.ts"
-import { averCheck } from "../common/averCheck.ts"
 import { totalCalcFunc } from "../common/totalCalcFunc.ts"
 import { daysBetweenDates } from "../common/daysBetweenDates.ts"
+import { useAppSelector } from "../../store/hook.ts"
 
-interface Props {
-  membersData: [string, Member][],
-  yearView: number
-}
-
-const BasicStats = ({membersData, yearView}: Props) => {
-
+const BasicStats = () => {
+  const { membersData, yearView } = useAppSelector(state => state.membersData)
   const totalMember = membersData.filter(member => !member[1].break && member[1].join)
 
   //각 멤버 평균참석률의 평균값(해당 년도만)

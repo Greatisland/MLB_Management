@@ -1,6 +1,4 @@
 import type { MeetData } from "../../store/slice.ts"
-import React, { useState } from 'react';
-import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -21,15 +19,15 @@ ChartJS.register(
   Legend
 );
 import { Pie } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc.ts';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
+import { useAppSelector
+ } from "../../store/hook.ts";
 interface Props {
   meetData: MeetData
-  yearView: number
-  monthView: number
 }
 
-const MeetingType = ({meetData, yearView, monthView} : Props) => {
+const MeetingType = ({meetData} : Props) => {
+  const { yearView, monthView } = useAppSelector(state => state.membersData)
   //x축
   const labels = ['노래벙', '친목벙', '운동벙 ', '버스킹', '이벤트벙', '정모', '운영진회의', '기타']
 
@@ -108,7 +106,7 @@ const MeetingType = ({meetData, yearView, monthView} : Props) => {
     <GraphAttendContainer>
       <Pie options={options} data={data} />
       {Math.max(...total) === 0 ? <>
-        <p className="empty_sub">이 달은 데이터가 없어요😬</p>
+        <p className="empty_sub">{yearView}년 {monthView}월은 데이터가 없어요😬</p>
       </> : null}
     </GraphAttendContainer>
   )
