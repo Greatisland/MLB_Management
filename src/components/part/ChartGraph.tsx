@@ -18,13 +18,11 @@ ChartJS.register(
   Legend
 );
 import { GraphModalContainer } from '../../style/graphPageStyled.tsx';
-import { useAppSelector } from "../../store/hook.ts"
 import { Line } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
 import type { Member } from '../../store/slice.ts';
 
-const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
-  const { yearView } = useAppSelector(state => state.membersData)
+const ChartGraph = ({ member, aver, yearView }: { member: Member, aver: number, yearView: number }) => {
 
   //참여횟수
   let part = []

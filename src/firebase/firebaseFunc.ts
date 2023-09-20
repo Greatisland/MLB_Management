@@ -35,6 +35,11 @@ const analytics = getAnalytics(app)
 
 //데이터베이스 메소드
 export const dbFunc = {
+  //찌꺼기 데이터 제거
+  deleteGarbage(memberId: string, param: string) {
+    const garbageRef = ref(database, `/memberList/${memberId}/${param}`)
+    remove(garbageRef)
+  },
 
   // 멤버 추가
   addMember(member: Member) {

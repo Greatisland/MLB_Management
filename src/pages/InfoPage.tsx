@@ -14,7 +14,7 @@ import WaitList from "../components/infoPage/WaitList.tsx"
 
 const InfoPage = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
-
+  
   return (<>
     {loginUser.level >= 1 ? 
       <HomeContainer>
