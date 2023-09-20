@@ -17,6 +17,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import { GraphModalContainer } from '../../style/graphPageStyled.tsx';
 import { useAppSelector } from "../../store/hook.ts"
 import { Line } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
@@ -119,9 +120,12 @@ const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
     ],
   };
   return (
-    <div className='chartWrap'>
+    <GraphModalContainer>
       <Line options={options} data={data} />
-    </div>
+      {part.length === 0 && open.length === 0 ? <>
+        <p className="empty_sub">{yearView}년은 데이터가 없어요😬</p>
+      </> : null}
+    </GraphModalContainer>
   )
 }
 

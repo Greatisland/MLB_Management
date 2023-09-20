@@ -18,13 +18,15 @@ ChartJS.register(
 );
 import { Radar } from 'react-chartjs-2';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
+import { useAppSelector } from "../../store/hook.ts";
 interface Props {
   meetData: MeetData
-  yearView: number
 }
 
 
-const Week = ({meetData, yearView} : Props) => {
+const Week = ({meetData} : Props) => {
+  const { yearView } = useAppSelector(state => state.membersData)
+
   //x축 (월)
   const labels = ['일', '월', '화', '수', '목', '금', '토']
   //y축 (개설횟수)

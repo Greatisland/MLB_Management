@@ -17,12 +17,11 @@ export const GraphPageContainer = styled.div`
 export const GraphBtn = styled.div`
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
   svg {
     padding: 10px;
     font-size: 0.8rem;
     cursor: pointer;
-    fill: #666;
+    fill: ${props => props.theme.brown};
   }
   .year {
     display: flex;
@@ -32,7 +31,7 @@ export const GraphBtn = styled.div`
     p {
       font-size: 1rem;
       font-weight: bold;
-      color: ${props => props.theme.pink3};
+      color: ${props => props.theme.pink2};
     }
   }
   .month {
@@ -43,12 +42,38 @@ export const GraphBtn = styled.div`
     p {
       font-size: 1rem;
       font-weight: bold;
-      color: ${props => props.theme.pink3};
+      color: ${props => props.theme.pink2};
     }
   }
 
 `
-
+export const GraphModalContainer = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 300px;
+  p.sub_title {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    margin: 10px 0 0;
+    text-align: center;
+    color: #666;
+    font-size: 0.6rem;
+    letter-spacing: -0.04rem;
+  }
+  p.empty_sub {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #666;
+    font-size: 1.4rem;
+    letter-spacing: 0.04rem;
+    color: ${props => props.theme.pink2};
+  }
+`
 export const GraphAttendContainer = styled.div`
   display: flex;
   position: relative;
@@ -69,7 +94,7 @@ export const GraphAttendContainer = styled.div`
   }
   p.empty_sub {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
