@@ -7,11 +7,14 @@ const PartAward = () => {
 
   const { membersData } = useAppSelector(state => state.membersData)
 
+  const date = new Date()
+  const currentYear = date.getFullYear()
+
   //체고의 프로벙참러!!
   let gloryName = ''
   let monthCount = 0
   membersData.map(member => {
-    let monthPart = (member[1] as any)[`${dateCalc('flatMonth')}month`]
+    let monthPart = (member[1] as any).attend?.[currentYear][`${dateCalc('flatMonth')}`]
     if(monthPart) {
       if(monthCount < monthPart){
         monthCount = monthPart

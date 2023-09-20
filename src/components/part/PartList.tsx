@@ -3,12 +3,13 @@ import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
 import { sortState } from "../../store/slice.ts"
 import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
 import { dateCalc } from "../common/dateCalc.ts"
-import { averCheck } from "../common/averCheck.ts"
+import { totalCalcFunc } from "../common/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
+import GraphArrow from "../common/GraphArrow.tsx"
 
 const PartList = () => {
-  const { membersData, loginUser } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
 
   //휴식기 & 가입대기 제외
   const totalMember = membersData.filter(member => !member[1].break && member[1].join)
@@ -22,16 +23,12 @@ const PartList = () => {
   const currentYear = date.getFullYear()
   const currentMonth = date.getMonth() + 1
 
-  //각 멤버 평균참석률의 평균값
-  const allMemberAver = Math.round(searchMembersData.reduce((acc, val) => {
-    return acc + averCheck(val[1])
-  }, 0)/searchMembersData.length * 10)/10
-
   return (
     <>
     <SearchBarPart onSubmit={(e: React.FormEvent) => e.preventDefault()}>
       <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="이름을 검색해주세요."/>
     </SearchBarPart>
+    <GraphArrow isMonth={true}/>
     <TagExplain>
       <span className="exp">
         <StyledFaCrown bgColor='#ffac4c' />
@@ -52,8 +49,7 @@ const PartList = () => {
           <tr>
             <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
             <th className="index">순번</th>
-            <th onClick={() => {dispatch(sortState('yearPart'))}}>올해 참석</th>
-            <th onClick={() => {dispatch(sortState('monthPart'))}}>금월 참석</th>
+            <th onClick={() => {dispatch(sortState('monthPart'))}}>{monthView}월 참석</th>
             <th onClick={() => {dispatch(sortState('aver'))}}>평균 참석</th>
           </tr>
         </thead>
@@ -65,10 +61,13 @@ const PartList = () => {
           let joinYear = String(memberJoin.getFullYear())
           let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
           let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
+          let hotCount = (
+            ((member[1] as any).attend[currentYear][`${dateCalc('flatMonth')}`] || 0) + 
+            (member[1] as any).attend[currentYear][`${(dateCalc('flatMonth') || 0) as number - 1}`] + 
+            (member[1] as any).attend[currentYear][`${(dateCalc('flatMonth') || 0) as number - 2}`]
+          )
 
-          let hotCount = ((member[1] as any)[`${dateCalc('flatMonth')}month`] + 
-          (member[1] as any)[`${Number(dateCalc('flatMonth')) - 1}month`] +
-          (member[1] as any)[`${Number(dateCalc('flatMonth')) - 2}month`])
+          const yearData = (member[1] as any).attend[yearView] || 0
 
           return (
           loginUser.level >= 2 && member[1].danger ?
@@ -87,9 +86,10 @@ const PartList = () => {
                 )) ? <span className="tagNew">신입</span> : null
               }</div></td>
             <td className="index">{i+1}</td>
-            <td>{member[1].total || 0} 회</td>
-            <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
-            <td>{averCheck(member[1])} 회</td>
+            <td>{
+            yearData ? yearData[monthView] || 0 : 0
+            } 회</td>
+            <td>{totalCalcFunc(member[1], yearView).aver} 회</td>
           </DangerText>
 
           :
@@ -116,9 +116,10 @@ const PartList = () => {
               </div>
             </td>
             <td className="index">{i+1}</td>
-            <td>{member[1].total || 0} 회</td>
-            <td>{(member[1] as any)[`${dateCalc('flatMonth')}month`] || 0} 회</td>
-            <td>{averCheck(member[1])} 회</td>
+            <td>{
+            yearData ? yearData[monthView] || 0 : 0
+            } 회</td>
+            <td>{totalCalcFunc(member[1], yearView).aver} 회</td>
           </tr>
         )})}
         </tbody>

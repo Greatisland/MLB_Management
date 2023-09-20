@@ -11,11 +11,11 @@ export const averCheck = (member: Member) => {
     if(param.getFullYear() === date.getFullYear()){
       joinMonth = param.getMonth() + 1
     }
-  
+
     //계산
     for (let i = joinMonth; i <= Number(dateCalc('flatMonth')); i++) {
       // const monthValue = member[`${i}month` as keyof Member]
-      const monthValue = member.attend ? member.attend[date.getFullYear()][i] : 0
+      const monthValue = member.attend ? (member.attend[date.getFullYear()][i] || 0) : 0
       aver.total += (monthValue ? Number(monthValue) : 0)
       aver.count++
     }

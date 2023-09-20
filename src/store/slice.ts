@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { dateCalc } from "../components/common/dateCalc.ts"
 import { averCheck } from "../components/common/averCheck.ts"
+import { totalCalcFunc } from "../components/common/totalCalcFunc.ts"
 
 export interface Member {
   id?: string
@@ -143,6 +143,8 @@ interface InitialState {
   accountList : [string, Account][]
   fee: {gold: number}
   isSwiping: boolean
+  yearView: number
+  monthView: number
 }
 
 const initialState: InitialState = {
@@ -196,6 +198,8 @@ const initialState: InitialState = {
     gold: 0
   },
   isSwiping: true,
+  yearView: new Date().getFullYear(),
+  monthView: new Date().getMonth() + 1,
 }
 
 //reducer, state를 모두 관리할 slice
@@ -203,6 +207,10 @@ const membersDataSlice = createSlice({
   name: "membersData",
   initialState,
   reducers: {
+
+    //날짜 보기
+    setYearView(state, action) {state.yearView = action.payload},
+    setMonthView(state, action) {state.monthView = action.payload},
 
     //데이터 세팅
     setMembers (state, action) {state.membersData = action.payload},
@@ -269,9 +277,8 @@ const membersDataSlice = createSlice({
 
       } else if (action.payload === 'monthPart') {
         state.membersData.sort((a, b) => {
-          let string = `${dateCalc('flatMonth')}month`
-          let aPart = (a[1] as any)[string] || 0
-          let bPart = (b[1] as any)[string] || 0
+          let aPart = (a[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
+          let bPart = (b[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
           return (Number(bPart) - Number(aPart)) * state.sortDirection.monthPart
         })
         state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
@@ -284,7 +291,7 @@ const membersDataSlice = createSlice({
         state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
       } else if (action.payload === 'aver') {
         state.membersData.sort((a, b) => {
-          return (averCheck(b[1]) - averCheck(a[1])) * state.sortDirection.aver
+          return (totalCalcFunc(b[1], state.yearView).aver - totalCalcFunc(a[1], state.yearView).aver) * state.sortDirection.aver
         })
         state.sortDirection.aver = -state.sortDirection.aver
       }
@@ -315,6 +322,8 @@ const membersDataSlice = createSlice({
   }
 })
 export const { 
+  setYearView,
+  setMonthView,
   stopSwiping, 
   startSwiping, 
   sortState, 

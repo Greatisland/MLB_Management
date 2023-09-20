@@ -17,11 +17,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import { useAppSelector } from "../../store/hook.ts"
 import { Line } from 'react-chartjs-2';
 import { dateCalc } from '../common/dateCalc.ts';
 import type { Member } from '../../store/slice.ts';
 
 const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
+  const { yearView } = useAppSelector(state => state.membersData)
 
   //참여횟수
   let part = []
@@ -30,15 +32,21 @@ const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
   //평균
   let averList = new Array(12).fill(aver)
 
+  for (let i = 1; i <= averList.length; i++){
+    const att = member?.attend?.[yearView]
+    const host = member?.host?.[yearView]
+    if(att) {
+      const monthValue = att?.[i] || 0
+      part.push(monthValue ? Number(monthValue) : 0)
 
-  //계산
-  for (let i = 1; i <= Number(dateCalc('flatMonth')); i++) {
-    const monthValue = member[`${i}month` as keyof Member]
-    const monthHostValue = member[`${i}monthHost` as keyof Member]
-    
-    part.push(monthValue ? Number(monthValue) : 0)
-    open.push(monthHostValue ? Number(monthHostValue) : 0)
+    }
+    if(host) {
+      const monthHostValue = host?.[i] || 0
+      open.push(monthHostValue ? Number(monthHostValue) : 0)
+    }
   }
+
+
   
   const date = new Date()
   const joinDate = new Date(member.join)
@@ -56,8 +64,10 @@ const ChartGraph = ({ member, aver }: { member: Member, aver: number }) => {
   }
 
   //x축
-  const basicLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-  const labels = basicLabels.slice(monthStart, Number(dateCalc('flatMonth')))
+  let labels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+  if(yearView === date.getFullYear()){
+    labels = labels.slice(monthStart, Number(dateCalc('flatMonth')))
+  }
   
   
 

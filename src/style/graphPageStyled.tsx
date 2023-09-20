@@ -14,21 +14,39 @@ export const GraphPageContainer = styled.div`
   }
 `
 
-export const GraphYear = styled.div`
+export const GraphBtn = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: ${props => props.theme.gray2};
-  }
+  /* flex-direction: column; */
   svg {
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     cursor: pointer;
+    fill: #666;
   }
+  .year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+      color: ${props => props.theme.pink3};
+    }
+  }
+  .month {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+      color: ${props => props.theme.pink3};
+    }
+  }
+
 `
 
 export const GraphAttendContainer = styled.div`
@@ -49,19 +67,16 @@ export const GraphAttendContainer = styled.div`
     font-size: 0.6rem;
     letter-spacing: -0.04rem;
   }
-
-  .arrow_container {
+  p.empty_sub {
     position: absolute;
-    top: 7px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 140px;
-    svg {
-      padding: 10px;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #666;
+    font-size: 1.4rem;
+    letter-spacing: 0.04rem;
+    color: ${props => props.theme.pink2};
   }
 `
 

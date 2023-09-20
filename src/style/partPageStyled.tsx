@@ -216,7 +216,7 @@ export const PartModalContainer = styled.div`
     tr {
       display: flex;
       border-bottom: 1px solid #fff;
-      padding: 0 60px 0;
+      padding: 0 30px 0;
       box-sizing: border-box;
     }
     th, td {

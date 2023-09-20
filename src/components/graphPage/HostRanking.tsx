@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { MeetData } from "../../store/slice.ts"
-import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,13 +22,11 @@ import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 interface Props {
   meetData: MeetData
   yearView: number
-  setYearView: React.Dispatch<React.SetStateAction<number>>
   monthView: number
-  setMonthView: React.Dispatch<React.SetStateAction<number>>
 }
 
 
-const HostRanking = ({meetData, yearView, setYearView, monthView, setMonthView} : Props) => {
+const HostRanking = ({meetData, yearView, monthView} : Props) => {
 
   let handleData: Record<string, number> = {}
 
@@ -47,7 +44,10 @@ const HostRanking = ({meetData, yearView, setYearView, monthView, setMonthView} 
     return b[1] - a[1]
   })
 
+  //x축
   const labels = handleData2.map(val => val[0])
+
+  //y축
   const yLabels = handleData2.map(val => val[1])
   const yMax = Math.max(...yLabels)
 
@@ -60,7 +60,7 @@ const HostRanking = ({meetData, yearView, setYearView, monthView, setMonthView} 
       },
       title: {
         display: true,
-        text: `${monthView}월 벙 개설 횟수`
+        text: `${yearView}년 ${monthView}월 벙 개설 횟수`
       },
     },
     scales: {
@@ -109,29 +109,10 @@ const HostRanking = ({meetData, yearView, setYearView, monthView, setMonthView} 
     <>
     <GraphAttendContainer>
       <Bar options={options} data={data} />
+      {labels.length === 0 ? <>
+        <p className="empty_sub">이 달은 데이터가 없어요😬</p>
+      </> : null}
       <p className="sub_title">* 정모 및 운영진회의 제외</p>
-      <div className="arrow_container">
-        <BsArrowLeftCircle onClick={() => {
-          if (monthView > 1) {
-            setMonthView(monthView - 1)
-          }else if(monthView === 1){
-            if(yearView > 2017) {
-              setYearView(yearView - 1)
-              setMonthView(12)
-            }
-          }
-        }} />
-        <BsArrowRightCircle onClick={() => {
-          if (monthView < 12) {
-            setMonthView(monthView + 1)
-          }else if(monthView === 12){
-            if(yearView < new Date().getFullYear()) {
-              setYearView(yearView + 1)
-              setMonthView(1)
-            }
-          }
-        }}/>
-      </div>
     </GraphAttendContainer>
     </>
   )
