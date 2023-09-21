@@ -76,7 +76,7 @@ const PartModal = () => {
                 <td>{total}</td>
               </tr>
               <tr>
-                <td>{yearView}년 펑균 참석율</td>
+                <td>{yearView}년 평균 참석율</td>
                 <td>{aver}</td>
               </tr>
               <tr>
