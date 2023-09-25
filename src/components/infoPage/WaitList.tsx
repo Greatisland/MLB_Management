@@ -17,7 +17,7 @@ const WaitList = () => {
     const nowDate = new Date()
 
     //벙 리스트 날짜값만 가진 배열로 평탄화
-    const flattenedDates = Object.values(meetData).flat(2).map(entry => (entry as any).date).filter(val => val)
+    const flattenedDates = Object.values(meetData).flat(3).map(entry => (entry as any).date).filter(val => val)
 
     //신입 초대날짜 ~ 현재까지 존재한 벙 갯수 반환
     return flattenedDates.filter(meet => {

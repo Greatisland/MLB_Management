@@ -7,12 +7,14 @@ import Week from "../components/graphPage/Week.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 import BasicStats from "../components/graphPage/BasicStats.tsx"
 import GraphArrow from "../components/common/GraphArrow.tsx"
+import MeetingTotal from "../components/graphPage/MeetingTotal.tsx"
 
 const GraphPage = () => {
   const { meetData } = useAppSelector(state => state.membersData)
   return (
     <GraphPageContainer>
       <GraphArrow isMonth={true}/>
+      <MeetingTotal meetData={meetData} />
       <MeetingType meetData={meetData} />
       <HostRanking meetData={meetData} />
       <BasicStats />

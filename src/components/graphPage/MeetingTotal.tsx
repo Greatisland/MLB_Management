@@ -2,9 +2,34 @@ import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
 import { totalCalcFunc } from "../common/totalCalcFunc.ts"
 import { daysBetweenDates } from "../common/daysBetweenDates.ts"
 import { useAppSelector } from "../../store/hook.ts"
+import type { MeetData } from "../../store/slice.ts"
 
-const BasicStats = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+interface Props {
+  meetData: MeetData
+}
+
+const MeetingTotal = ({meetData}: Props) => {
+  const { membersData, yearView, monthView } = useAppSelector(state => state.membersData)
+
+  //해당 달의 벙 갯수, 평균 참석자,
+    
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const totalMember = membersData.filter(member => !member[1].break && member[1].join)
 
   //각 멤버 평균참석률의 평균값(해당 년도만)
@@ -43,4 +68,4 @@ const BasicStats = () => {
   )
 }
 
-export default BasicStats
+export default MeetingTotal
