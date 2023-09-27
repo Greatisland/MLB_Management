@@ -1,4 +1,4 @@
-import type { MeetData } from "../../store/slice.ts"
+import type { MeetData, Schedule } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,7 +30,13 @@ const HostRanking = ({meetData} : Props) => {
   let handleData: Record<string, number> = {}
 
   let testData = meetData.find(val => Number(val[0]) === yearView)
-  let nowMonthData = (testData ? (testData[1][monthView] ? testData[1][monthView] : []) : []) as any[]
+  let nowMonthData: any = []
+
+  if(testData && Array.isArray(testData[1])){
+    nowMonthData = testData[1][monthView] ? testData[1][monthView] : []
+  }else if(testData){
+    nowMonthData = testData[1] ? [testData[1]] : []
+  }
 
   nowMonthData.forEach(val => {
     if(val.type !== '운영진회의' && val.type !== '정모'){
