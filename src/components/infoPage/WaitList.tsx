@@ -20,7 +20,7 @@ const WaitList = () => {
     const flattenedDates = Object.values(meetData).flat(3).map(entry => (entry as any).date).filter(val => val)
 
     //신입 초대날짜 ~ 현재까지 존재한 벙 갯수 반환
-    return flattenedDates.filter(meet => {
+    const result = flattenedDates.filter(meet => {
       const formatted = meet.replace('년 ', '/').replace('월 ', '/').split('일')[0]
       const date = new Date(formatted)
       if(
@@ -29,7 +29,8 @@ const WaitList = () => {
       ){
         return true
       }
-    }).length
+    })
+    return result.length
   }
 
 
