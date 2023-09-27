@@ -7,11 +7,13 @@ import { StyledGiTrophy } from "../../style/homeStyled.tsx"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
 import { startSwiping, stopSwiping } from "../../store/slice.ts"
+import { returnFind } from "./returnFind.ts"
 
 const MemberModal = () => {
   
   const dispatch = useAppDispatch()
-  const { loginUser, sendMember } = useAppSelector(state => state.membersData)
+  const { loginUser, sendMember, meetData } = useAppSelector(state => state.membersData)
+  const [ returnMem, setReturnMem ] = useState<boolean>(false)
   const [ extra, setExtra ] = useState(false)
   const [ state, setState ] = useState({
     name: sendMember.name || '',
@@ -171,6 +173,19 @@ const MemberModal = () => {
         <form onSubmit={handleSubmit}>
           <p>이름</p>
           <input type="text" value={state.name} onChange={e => setState({...state, name: e.target.value})} placeholder="이름을 입력하세요." />
+          {!sendMember.state && state.name ? <div className="checkFlex">
+          <p>혹시 복귀자인가요?</p>
+          <CheckboxContainer>
+            <HiddenCheckbox onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setReturnMem(e.target.checked)
+              if(!returnMem){
+                console.log(returnFind(meetData, state.name))
+                setState({...state, join: returnFind(meetData, state.name)})
+              }
+            }}/>
+            <StyledCheckbox />
+          </CheckboxContainer>
+          </div>: null}
           <p>가입일</p>
           <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요." />
           <p>년생</p>

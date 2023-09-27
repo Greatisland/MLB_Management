@@ -7,6 +7,7 @@ import { totalCalcFunc } from "../common/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 import GraphArrow from "../common/GraphArrow.tsx"
+import { AnyAsyncThunk } from "@reduxjs/toolkit/dist/matchers"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
@@ -61,13 +62,23 @@ const PartList = () => {
           let joinYear = String(memberJoin.getFullYear())
           let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
           let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
-          let hotCount = (
-            ((member[1] as any).attend[currentYear][`${dateCalc('flatMonth')}`] || 0) + 
-            (member[1] as any).attend[currentYear][`${(dateCalc('flatMonth') || 0) as number - 1}`] + 
-            (member[1] as any).attend[currentYear][`${(dateCalc('flatMonth') || 0) as number - 2}`]
-          )
+          let hotCount = 0
 
-          const yearData = (member[1] as any).attend[yearView] || 0
+          if (member[1] && (member[1] as any).attend) {
+            const attend = (member[1] as any).attend[currentYear] || {}
+            const currentMonth = Number(dateCalc('flatMonth')) || 0
+            hotCount = (
+              (attend[`${currentMonth}`] || 0) +
+              (attend[`${currentMonth - 1}`] || 0) +
+              (attend[`${currentMonth - 2}`] || 0)
+            )
+          }
+
+          let yearData: any = null
+
+          if(member[1] && (member[1] as any).attend) {
+              yearData = (member[1] as any).attend[yearView] || {}
+          }
 
           return (
           loginUser.level >= 2 && member[1].danger ?

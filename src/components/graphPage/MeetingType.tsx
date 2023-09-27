@@ -20,8 +20,7 @@ ChartJS.register(
 );
 import { Pie } from 'react-chartjs-2';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
-import { useAppSelector
- } from "../../store/hook.ts";
+import { useAppSelector } from "../../store/hook.ts";
 interface Props {
   meetData: MeetData
 }

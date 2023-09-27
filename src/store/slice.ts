@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { averCheck } from "../components/common/averCheck.ts"
 import { totalCalcFunc } from "../components/common/totalCalcFunc.ts"
 
 export interface Member {
@@ -108,7 +107,7 @@ export interface Schedule {
   type: string
 }
 
-type YearData = [string, Schedule[]]
+type YearData = [string, Schedule[]] | [string, Schedule]
 
 export type MeetData = YearData[]
 
