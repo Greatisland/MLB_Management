@@ -32,7 +32,14 @@ const MeetingType = ({meetData} : Props) => {
 
   //비동기 오류때문에 삼항연산자로 값 가져옴
   let testData = meetData.find(val => Number(val[0]) === yearView)
-  let nowMonthData = (testData ? (testData[1][monthView] ? testData[1][monthView] : []) : []) as any[]
+  // let nowMonthData = (testData ? (testData[1][monthView] ? testData[1][monthView] : []) : []) as any[]
+  let nowMonthData: any = []
+
+  if(testData && Array.isArray(testData[1])){
+    nowMonthData = testData[1][monthView] ? testData[1][monthView] : []
+  }else if(testData){
+    nowMonthData = testData[1] ? [testData[1]] : []
+  }
   //y축
   let total = new Array(labels.length).fill(0)
 
