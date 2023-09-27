@@ -6,7 +6,7 @@ export const returnFind = (meetData: MeetData, name: string): string => {
     if (Array.isArray(data)) {
       //배열을 1차원 배열로 평탄화 후 참석 명단에서 이름 찾기
       const found = data.flat().find(meet => meet && (
-        meet?.list?.split(',').find((user: string) => user === name)
+        meet?.list?.split(',').find((user: string) => user.trim() === name)
       ))
 
       //이름 찾았으면 최초 참석날짜 저장 후 순회 종료
@@ -19,7 +19,7 @@ export const returnFind = (meetData: MeetData, name: string): string => {
     } else if (data) {
       //객체를 배열로 변환&평탄화 후 참석 명단에서 이름 찾기
       const found = Object.values(data).flat().find(meet => meet && (
-        meet?.list?.split(',').find((user: string) => user === name)
+        meet?.list?.split(',').find((user: string) => user.trim() === name)
       ))
       //이름 찾았으면 최초 참석날짜 저장 후 순회 종료
       if(found) {
