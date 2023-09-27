@@ -93,6 +93,7 @@ const HomeList = () => {
                 (attend[`${currentMonth - 2}`] || 0)
               )
             }
+            
             return (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].special === '모임장' ?
