@@ -29,6 +29,7 @@ const HomeList = () => {
         gender: member[1].gender,
         etc: member[1].etc || '',
         state: true,
+        pay: member[1].pay || false,
         special: member[1].special,
         break: member[1].break || false,
         approval: member[1].approval || false,

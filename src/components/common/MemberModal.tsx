@@ -30,7 +30,7 @@ const MemberModal = () => {
     birth: sendMember.birth || '',
     etc: sendMember.etc || '',
     gender: sendMember.gender || '',
-    pay: false,
+    pay: sendMember.pay || false,
     special: sendMember.special || '',
     target: '',
     break: sendMember.break || false,
