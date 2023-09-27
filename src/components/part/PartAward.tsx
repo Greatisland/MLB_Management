@@ -14,7 +14,7 @@ const PartAward = () => {
   let gloryName = ''
   let monthCount = 0
   membersData.map(member => {
-    let monthPart = (member[1] as any).attend?.[currentYear][`${dateCalc('flatMonth')}`]
+    let monthPart = (member[1] as any)?.attend?.[currentYear]?.[`${dateCalc('flatMonth')}`]
     if(monthPart) {
       if(monthCount < monthPart){
         monthCount = monthPart
