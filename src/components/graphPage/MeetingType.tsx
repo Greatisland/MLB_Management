@@ -1,4 +1,4 @@
-import type { MeetData } from "../../store/slice.ts"
+import type { MeetData, Schedule } from "../../store/slice.ts"
 import {
   Chart as ChartJS,
   ArcElement,
@@ -44,7 +44,7 @@ const MeetingType = ({meetData} : Props) => {
   let total = new Array(labels.length).fill(0)
 
   //y축 데이터 바인딩
-  nowMonthData.forEach(val => {
+  nowMonthData.forEach((val: Schedule) => {
     switch(val.type){
       case '노래벙' : total[0]++
       break

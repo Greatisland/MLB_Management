@@ -38,7 +38,7 @@ const HostRanking = ({meetData} : Props) => {
     nowMonthData = testData[1] ? [testData[1]] : []
   }
 
-  nowMonthData.forEach(val => {
+  nowMonthData.forEach((val: Schedule) => {
     if(val.type !== '운영진회의' && val.type !== '정모'){
       handleData[val.host] = (handleData[val.host] || 0) + 1
     }
