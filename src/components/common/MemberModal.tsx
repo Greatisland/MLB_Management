@@ -1,4 +1,11 @@
-import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, NormalModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle.tsx"
+import { 
+  CheckboxContainer, 
+  HiddenCheckbox, 
+  JoinModalContainer, 
+  NormalModalContainer, 
+  JoinModalWrapper, 
+  StyledCheckbox
+ } from "../../style/headerStyle.tsx"
 import { useState, ChangeEvent, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { toggleModal } from "../../store/slice.ts"
@@ -178,13 +185,23 @@ const MemberModal = () => {
           <CheckboxContainer>
             <HiddenCheckbox onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setReturnMem(e.target.checked)
-              if(!returnMem){
-                console.log(returnFind(meetData, state.name))
-                setState({...state, join: returnFind(meetData, state.name)})
+              if(e.target.checked){
+                let returnDate = returnFind(meetData, state.name)
+                const today = new Date()
+                const formattedDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+                //복귀자 체크박스에 체크할 경우 메모에 최초가입 날짜 자동작성 및 복귀일 오늘날짜로 설정
+                setState({
+                  ...state, etc: `${returnDate} 최초가입`, comeback: `${formattedDate}`
+                })
+              }else{
+                setState({
+                  ...state, etc: ``, comeback: ``
+                })
               }
             }}/>
             <StyledCheckbox />
           </CheckboxContainer>
+          {returnMem ? <span className='return_date'>그렇다면 최초 가입일은 {returnFind(meetData, state.name) ? `${returnFind(meetData, state.name)}입니다`: `찾을 수 없습니다`}</span> : null}
           </div>: null}
           <p>가입일</p>
           <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요." />
@@ -225,7 +242,7 @@ const MemberModal = () => {
               ))}
             </span>
           </> : null}
-          {sendMember.comeback ? 
+          {sendMember.comeback || returnMem ? 
           <>
           <p>복귀일</p>
           <input type="date" value={state.comeback} onChange={e => setState({...state, comeback: e.target.value})} placeholder="날짜를 선택해주세요."></input>

@@ -223,8 +223,16 @@ export const  JoinModalContainer = styled.div`
   }
   .checkFlex {
     display: flex;
-    margin: 10px 0 0;
-    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    gap: 10px;
+
+    span.return_date {
+      display: block;
+      width: 100%;
+      font-size: 0.8rem;
+      color: #999;
+    }
   }
 
   .extraBtn {
