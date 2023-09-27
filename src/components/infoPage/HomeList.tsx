@@ -83,11 +83,17 @@ const HomeList = () => {
             let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
 
             let hotCount = 0
-            if (member[1]?.attend) {
-                hotCount += (member[1]?.attend[currentYear]?.[`${Number(dateCalc('flatMonth'))}`] || 0) +
-                (member[1]?.attend[currentYear]?.[`${(dateCalc('flatMonth') || 0) as number - 1}`] || 0) +
-                (member[1]?.attend[currentYear]?.[`${(dateCalc('flatMonth') || 0) as number - 2}`] || 0)
+
+            if (member[1] && (member[1] as any).attend) {
+              const attend = (member[1] as any).attend[currentYear] || {}
+              const currentMonth = Number(dateCalc('flatMonth')) || 0
+              hotCount = (
+                (attend[`${currentMonth}`] || 0) +
+                (attend[`${currentMonth - 1}`] || 0) +
+                (attend[`${currentMonth - 2}`] || 0)
+              )
             }
+            
             return (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].special === '모임장' ?

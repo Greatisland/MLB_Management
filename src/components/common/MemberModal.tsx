@@ -1,4 +1,11 @@
-import { CheckboxContainer, HiddenCheckbox, JoinModalContainer, NormalModalContainer, JoinModalWrapper, StyledCheckbox } from "../../style/headerStyle.tsx"
+import { 
+  CheckboxContainer, 
+  HiddenCheckbox, 
+  JoinModalContainer, 
+  NormalModalContainer, 
+  JoinModalWrapper, 
+  StyledCheckbox
+ } from "../../style/headerStyle.tsx"
 import { useState, ChangeEvent, useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { toggleModal } from "../../store/slice.ts"
@@ -7,11 +14,13 @@ import { StyledGiTrophy } from "../../style/homeStyled.tsx"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
 import { startSwiping, stopSwiping } from "../../store/slice.ts"
+import { returnFind } from "./returnFind.ts"
 
 const MemberModal = () => {
   
   const dispatch = useAppDispatch()
-  const { loginUser, sendMember } = useAppSelector(state => state.membersData)
+  const { loginUser, sendMember, meetData } = useAppSelector(state => state.membersData)
+  const [ returnMem, setReturnMem ] = useState<boolean>(false)
   const [ extra, setExtra ] = useState(false)
   const [ state, setState ] = useState({
     name: sendMember.name || '',
@@ -171,6 +180,29 @@ const MemberModal = () => {
         <form onSubmit={handleSubmit}>
           <p>이름</p>
           <input type="text" value={state.name} onChange={e => setState({...state, name: e.target.value})} placeholder="이름을 입력하세요." />
+          {!sendMember.state && state.name ? <div className="checkFlex">
+          <p>혹시 복귀자인가요?</p>
+          <CheckboxContainer>
+            <HiddenCheckbox onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setReturnMem(e.target.checked)
+              if(e.target.checked){
+                let returnDate = returnFind(meetData, state.name)
+                const today = new Date()
+                const formattedDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+                //복귀자 체크박스에 체크할 경우 메모에 최초가입 날짜 자동작성 및 복귀일 오늘날짜로 설정
+                setState({
+                  ...state, etc: `${returnDate} 최초가입`, comeback: `${formattedDate}`
+                })
+              }else{
+                setState({
+                  ...state, etc: ``, comeback: ``
+                })
+              }
+            }}/>
+            <StyledCheckbox />
+          </CheckboxContainer>
+          {returnMem ? <span className='return_date'>그렇다면 최초 가입일은 {returnFind(meetData, state.name) ? `${returnFind(meetData, state.name)}입니다`: `찾을 수 없습니다`}</span> : null}
+          </div>: null}
           <p>가입일</p>
           <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요." />
           <p>년생</p>
@@ -210,7 +242,7 @@ const MemberModal = () => {
               ))}
             </span>
           </> : null}
-          {sendMember.comeback ? 
+          {sendMember.comeback || returnMem ? 
           <>
           <p>복귀일</p>
           <input type="date" value={state.comeback} onChange={e => setState({...state, comeback: e.target.value})} placeholder="날짜를 선택해주세요."></input>
