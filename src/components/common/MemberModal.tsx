@@ -30,7 +30,7 @@ const MemberModal = () => {
     birth: sendMember.birth || '',
     etc: sendMember.etc || '',
     gender: sendMember.gender || '',
-    pay: false,
+    pay: sendMember.pay || false,
     special: sendMember.special || '',
     target: '',
     break: sendMember.break || false,
@@ -181,7 +181,7 @@ const MemberModal = () => {
           <p>이름</p>
           <input type="text" value={state.name} onChange={e => setState({...state, name: e.target.value})} placeholder="이름을 입력하세요." />
           {!sendMember.state && state.name ? <div className="checkFlex">
-          <p>혹시 복귀자인가요?</p>
+          <p>혹시 {state.name}님은 복귀자인가요?</p>
           <CheckboxContainer>
             <HiddenCheckbox onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setReturnMem(e.target.checked)
@@ -201,7 +201,9 @@ const MemberModal = () => {
             }}/>
             <StyledCheckbox />
           </CheckboxContainer>
-          {returnMem ? <span className='return_date'>그렇다면 최초 가입일은 {returnFind(meetData, state.name) ? `${returnFind(meetData, state.name)}입니다`: `찾을 수 없습니다`}</span> : null}
+          {returnMem ? 
+          returnFind(meetData, state.name) ? <span className='return_date'>{state.name}님의 최초 가입일은 {returnFind(meetData, state.name)} 입니다.</span> : <span className='return_date'>{state.name}님을 찾을 수 없습니다.</span>
+          : null}
           </div>: null}
           <p>가입일</p>
           <input type="date" value={state.join} onChange={e => setState({...state, join: e.target.value})} placeholder="날짜를 선택해주세요." />
