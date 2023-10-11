@@ -60,7 +60,7 @@ const MeetingType = ({meetData} : Props) => {
       break
       case '운영진회의' : total[6]++
       break
-      default : total[5]++
+      default : total[7]++
     }
   })
   
