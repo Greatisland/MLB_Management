@@ -10,6 +10,7 @@ import SecretBoardWrite from "../components/secretboard/SecretBoardWrite.tsx";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../store/hook.ts";
 import GraphPage from "../pages/GraphPage.tsx";
+import GrandFather from "../pages/GrandFather.tsx";
 
 const AppRouter = () => {
   const location = useLocation()
@@ -67,6 +68,7 @@ const AppRouter = () => {
         <Route path="boardwrite/:id" element={<SecretBoardWrite />} />
         <Route path="graphpage" element={<GraphPage />} />
         <Route path="halloffame" element={<HallOfFame />} />
+        <Route path="GrandFather" element={<GrandFather />} />
       </Route>
     </Routes>
   )
