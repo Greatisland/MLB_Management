@@ -64,7 +64,7 @@ const GrandFather = () => {
     setInput('');
 
   };
-
+  //모냐고
   return (
     <>
       <ChatWindow>
