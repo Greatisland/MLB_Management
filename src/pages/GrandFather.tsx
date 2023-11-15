@@ -8,7 +8,7 @@ import { MessageContentText } from "openai/resources/beta/threads/messages/messa
 const GrandFather = () => {
   const { loginUser } = useAppSelector(state => state.membersData) 
   // OpenAI 연결 만들기
-  const secretKey = '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';
+  const secretKey = import.meta.env.VITE_OPENAI_KEY;
   const openai = new OpenAI({
       apiKey: secretKey,
       dangerouslyAllowBrowser: true
@@ -25,7 +25,7 @@ const GrandFather = () => {
     event.preventDefault();
     if (!input.trim()) return;
     
-    const assistant = await openai.beta.assistants.retrieve('asst_Oqtmgnch1GlrhHAs7aLGZPlo')
+    const assistant = await openai.beta.assistants.retrieve(import.meta.env.VITE_ASSET)
     const thread = await openai.beta.threads.create();
   
     // 첫 번째 setChats 호출
