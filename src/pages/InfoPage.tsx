@@ -10,7 +10,7 @@ import Waiting from "../components/common/Waiting.tsx"
 import BirthList from "../components/infoPage/BirthList.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 import WaitList from "../components/infoPage/WaitList.tsx"
-
+import GfIcon from "../components/common/GfIcon.tsx"
 
 const InfoPage = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
@@ -27,6 +27,7 @@ const InfoPage = () => {
         <BanList />
         <ScrollToTopBtn />
         <Footer />
+        <GfIcon />
       </HomeContainer> :
       <Waiting />}
   </>

@@ -144,8 +144,8 @@ export const ScrollToTopBtnContainer = styled.div`
   position: fixed;
   z-index: 99;
   background: #fff;
-  bottom: 100px;
-  right: 20px;
+  bottom: 80px;
+  right: 55px;
   border: 1px solid #ccc;
   cursor: pointer;
   svg {
@@ -165,4 +165,31 @@ export const SplashContainer = styled.div`
   align-items: center;
   z-index: 999;
   background: ${props => props.theme.pink2};
+`
+
+export const GfIconBtnContainer = styled.div`
+  position: fixed;
+  bottom: 80px;
+  right: 5px;
+  z-index: 10;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  p {
+    font-size: 0.7rem;
+  }
+`
+
+export const GfIconBtn = styled.div`
+  display: block;
+  width: 40px; 
+  height: 40px;
+  border: 2px solid #fff;
+  background: url('/grandFather.png') center center/cover;
+  border-radius: 50%;
+
 `
