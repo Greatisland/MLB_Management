@@ -83,11 +83,10 @@ const GrandFather = () => {
           }]);
       }
     setIsSend(false)
+    //로그 저장
+    dbFunc.chatLog(loginUser.name, {chatLog: chats})
     }, 0);
     setInput('');
-    
-    //로그 저장
-    dbFunc.updateMember(loginUser.uid, {chatLog: chats})
   };
   
   return (
