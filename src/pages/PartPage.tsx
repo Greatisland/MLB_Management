@@ -7,6 +7,7 @@ import { useAppSelector } from "../store/hook.ts"
 import Footer from "../components/common/Footer.tsx"
 import Waiting from "../components/common/Waiting.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
+import GfIcon from "../components/common/GfIcon.tsx"
 
 
 const PartPage = () => {
@@ -22,6 +23,7 @@ const PartPage = () => {
       {modalPartState ? <PartModal /> : null}
       <ScrollToTopBtn />
       <Footer />
+      <GfIcon />
     </PartPageContainer> :
     <Waiting />}
     </>

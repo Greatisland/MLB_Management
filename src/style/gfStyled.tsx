@@ -1,17 +1,28 @@
 import styled from 'styled-components';
 
 export const ChatWindow = styled.div`
-  width: 100%;
   min-height: 80vh;
   height: 100%;
   overflow-y: auto;
   border-top: 1px solid #ccc;
-  padding: 10px 10px 60px 10px;
+  padding: 10px;
   margin-top: 20px;
   box-sizing: border-box;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  .notice {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #999;  
+    padding: 10px 0;
+  }
+  &::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 120px;
+  }
 `;
 
 export const Message = styled.div<{ isai: boolean }>`
@@ -51,6 +62,8 @@ export const ChatForm = styled.form`
   box-sizing: border-box;
   bottom: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   border-top: 1px solid #ccc;
   input {
     flex-grow: 1;
@@ -61,10 +74,26 @@ export const ChatForm = styled.form`
   }
   button {
     padding: 8px 12px;
-    background-color: #007bff;
+    background-color: ${props => props.theme.pink2};
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+  }
+  circle {
+    color: ${props => props.theme.pink2};
+  }
+  .notice {
+    text-align: center;
+    line-height: 30px;
+    font-size: 0.7rem;
+    color: #999;  
+    padding: 0 0 0 10px;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 70px;
   }
 `;

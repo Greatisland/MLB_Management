@@ -5,6 +5,7 @@ import { HallOfFameContainer } from "../style/hallOfFameStyled.tsx"
 import { useAppSelector } from "../store/hook.ts"
 import Waiting from "../components/common/Waiting.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
+import GfIcon from "../components/common/GfIcon.tsx"
 
 
 const HallOfFame = () => {
@@ -16,6 +17,7 @@ const HallOfFame = () => {
       <HofList />
       <ScrollToTopBtn />
       <Footer />
+      <GfIcon />
     </HallOfFameContainer> : <Waiting />
     }
     </>

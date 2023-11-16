@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { dbFunc } from "../firebase/firebaseFunc.ts"
 import { useAppSelector } from "../store/hook.ts"
 import Waiting from "../components/common/Waiting.tsx"
+import GfIcon from "../components/common/GfIcon.tsx"
 
 
 const SecretBoard = () => {
@@ -24,6 +25,7 @@ const SecretBoard = () => {
       </p>
       <SecretBoardList board={board}/>
       <Footer />
+      <GfIcon />
     </SecretBoardContainer> :
     <Waiting />}
     </>
