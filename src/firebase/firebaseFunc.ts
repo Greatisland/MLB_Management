@@ -41,6 +41,12 @@ export const dbFunc = {
     remove(garbageRef)
   },
 
+  //대화로그 저장
+  chatLog(name: string, chats: any) {
+    const chatRef = ref(database, `/chatLog/${name}`)
+    update(chatRef, chats)
+  },
+
   // 멤버 추가
   addMember(member: Member) {
     const newMemberRef = push(dbRef)
