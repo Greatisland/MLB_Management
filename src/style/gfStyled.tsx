@@ -29,6 +29,7 @@ export const Message = styled.div<{ isai: boolean }>`
   display: flex;
   flex-direction: column;
   align-self: ${(props) => (props.isai ? 'flex-start' : 'flex-end')};
+  max-width: 70%;
 
   span {
     display: flex;
@@ -49,9 +50,7 @@ export const Message = styled.div<{ isai: boolean }>`
     padding: 8px 12px;
     margin: 5px 0;
     border-radius: 10px;
-    max-width: 70%;
   }
-
 `;
 
 export const ChatForm = styled.form`
