@@ -33,6 +33,10 @@ const WaitList = () => {
     return result.length
   }
 
+  const dateConversion = (date: string | undefined) => {
+    return date ? date.replace(/-/g, '.').slice(2) : '신입방 초대일을 입력해주세요.'
+  }
+
 
   const handleAddMember = (member: any) => {
     //레벨 2 이상부터 운영진
@@ -75,7 +79,7 @@ const WaitList = () => {
         <thead>
           <tr>
             <th>이름</th>
-            <th>{`지나온 벙 갯수`}</th>
+            <th>{`신입톡방 초대일`}</th>
             {loginUser.level >= 2 ?
             <th>메모</th>:null}
           </tr>
@@ -84,7 +88,7 @@ const WaitList = () => {
           {waitMembersData.map((member, i) => (
             <tr key={i} onClick={() => handleAddMember(member)}>
               <td>{member[1].name}</td>
-              <td>{daysSinceRegistration(member[1].add)}</td>
+              <td>{dateConversion(member[1].add)}</td>
               <td className="tdmemo">{member[1].etc || ''}</td>
             </tr>
           ))}

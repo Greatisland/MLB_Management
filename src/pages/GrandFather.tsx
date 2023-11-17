@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { useState, FormEvent, useEffect, useRef } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { ChatWindow, Message, ChatForm } from "../style/gfStyled";
 import { useAppSelector } from "../store/hook";
 import { MessageContentText } from "openai/resources/beta/threads/messages/messages.mjs";
@@ -109,7 +109,7 @@ const GrandFather = () => {
         {isSend ?
         <>
           <CircularProgress style={svgStyled}/>
-          <p className='notice'>할아버지가 대답할 떄 까지 잠시만 기다려 주세요...</p>
+          <p className='notice'>할아버지가 대답할 때까지 잠시만 기다려 주세요...</p>
         </>
         :
         <>
