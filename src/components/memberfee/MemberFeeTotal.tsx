@@ -7,7 +7,7 @@ import { RiHandCoinLine } from 'react-icons/ri';
 
 
 const MemberFeeTotal = () => {
-  const { membersData, fee } = useAppSelector(state => state.membersData)
+  const { membersData, fee, loginUser } = useAppSelector(state => state.membersData)
   let payMembers = membersData.filter(member => {
     let memberJoin = new Date(member[1].join)
     let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
@@ -44,6 +44,8 @@ const MemberFeeTotal = () => {
   
 
   return (
+    <>
+    {loginUser.level >= 1 ?
     <MemberFeeTotalContainer>
       <ul className="title">
         <li><RiHandCoinLine />납부 완료율</li>
@@ -55,7 +57,8 @@ const MemberFeeTotal = () => {
         <li><span>₩</span>{completeTotal('done')}</li>
         <li><span>₩</span>{completeTotal('none')}</li>
       </ul>
-    </MemberFeeTotalContainer>
+    </MemberFeeTotalContainer> : null}
+    </>
   )
 }
 
