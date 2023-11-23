@@ -25,7 +25,7 @@ const PrizeList = () => {
         {prizeFirst?.map((member, i) => (
           <div className="member" key={i}>
             <span className="title">
-              첫 벙
+              첫 벙 지원금
               <GiClover />
             </span>
             <span>{member.name}</span>
@@ -35,7 +35,7 @@ const PrizeList = () => {
         {prizeSing?.map((member, i) => (
           <div className="member" key={i}>
             <span className="title">
-              노래벙
+              노래벙 지원금
               <GiLoveSong />
             </span>
             <span>{member}</span>

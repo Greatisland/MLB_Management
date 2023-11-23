@@ -40,7 +40,8 @@ export const hasPrize = {
         const hosts = prize.map((bung: any) => {
           return bung.host
         })
-        return hosts
+        // 선착순 3회까지 지원함.
+        return hosts.slice(0, 3)
       }
     }
   }
