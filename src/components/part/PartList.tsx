@@ -2,14 +2,13 @@ import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
 import { sortState } from "../../store/slice.ts"
 import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
-import { dateCalc } from "../common/dateCalc.ts"
-import { totalCalcFunc } from "../common/totalCalcFunc.ts"
+import { dateCalc } from "../../lib/dateCalc.ts"
+import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 import GraphArrow from "../common/GraphArrow.tsx"
 import { AnyAsyncThunk } from "@reduxjs/toolkit/dist/matchers"
-
-import { averCheck } from "../common/averCheck.ts"
+import { averCheck } from "../../lib/averCheck.ts"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)

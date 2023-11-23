@@ -1,9 +1,9 @@
 import { useAppSelector } from "../../store/hook.ts"
 import { PartResultContainer } from "../../style/partPageStyled.tsx"
 import { useState, useEffect } from "react"
-import { dateCalc } from "../common/dateCalc.ts"
-import { averCheck } from "../common/averCheck.ts"
-import { totalCalcFunc } from "../common/totalCalcFunc.ts"
+import { dateCalc } from "../../lib/dateCalc.ts"
+import { averCheck } from "../../lib/averCheck.ts"
+import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import type { Member } from "../../store/slice.ts"
 
 interface NewProp {

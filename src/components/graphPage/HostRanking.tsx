@@ -19,6 +19,7 @@ ChartJS.register(
 import { Bar } from 'react-chartjs-2';
 import { GraphAttendContainer } from "../../style/graphPageStyled.tsx";
 import { useAppSelector } from "../../store/hook.ts";
+import { hasPrize } from "../../lib/hasPrize.ts";
 
 interface Props {
   meetData: MeetData

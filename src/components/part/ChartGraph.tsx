@@ -19,7 +19,7 @@ ChartJS.register(
 );
 import { GraphModalContainer } from '../../style/graphPageStyled.tsx';
 import { Line } from 'react-chartjs-2';
-import { dateCalc } from '../common/dateCalc.ts';
+import { dateCalc } from '../../lib/dateCalc.ts';
 import type { Member } from '../../store/slice.ts';
 
 const ChartGraph = ({ member, aver, yearView }: { member: Member, aver: number, yearView: number }) => {
