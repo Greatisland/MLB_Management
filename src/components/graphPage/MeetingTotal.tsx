@@ -1,6 +1,6 @@
 import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
-import { totalCalcFunc } from "../common/totalCalcFunc.ts"
-import { daysBetweenDates } from "../common/daysBetweenDates.ts"
+import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
+import { daysBetweenDates } from "../../lib/daysBetweenDates.ts"
 import { useAppSelector } from "../../store/hook.ts"
 import type { MeetData } from "../../store/slice.ts"
 

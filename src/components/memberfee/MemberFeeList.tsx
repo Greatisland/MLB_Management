@@ -3,7 +3,7 @@ import { useAppSelector } from "../../store/hook.ts"
 import { useState, useEffect } from "react";
 import { TiUserAdd, TiUserDelete } from 'react-icons/ti';
 import { dbFunc } from "../../firebase/firebaseFunc.ts";
-import { dateCalc } from "../common/dateCalc.ts";
+import { dateCalc } from "../../lib/dateCalc.ts";
 import Swal from "sweetalert2";
 import type { Member } from "../../store/slice.ts";
 

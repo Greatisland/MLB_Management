@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { averCheck } from "../components/common/averCheck.ts"
-import { totalCalcFunc } from "../components/common/totalCalcFunc.ts"
+import { averCheck } from "../lib/averCheck"
 
 export interface Member {
   id?: string

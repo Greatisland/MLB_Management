@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../store/hook.ts"
-import { dateCalc } from "../common/dateCalc.ts"
+import { dateCalc } from "../../lib/dateCalc.ts"
 import { FaBirthdayCake } from "react-icons/fa";
 import { PartAwardContainer } from "../../style/partPageStyled.tsx";
 

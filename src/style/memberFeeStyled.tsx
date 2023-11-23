@@ -20,6 +20,47 @@ export const MemberFeeContainer = styled.div`
   }
 `
 
+export const PrizeListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  gap: 5px;
+  border-radius: 20px;
+  background: #f9f9f9;
+  padding: 0 0 10px 0;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+  .member {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    gap: 20px;
+    span {
+      display: flex;
+      min-width: 60px;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+      line-height: 31px;
+      font-size: 1rem;
+      border-bottom: 1px solid #fff;
+      svg {
+        fill: ${props => props.theme.green};
+        font-size: 1.2rem;
+      }
+    }
+    .title {
+      font-size: 0.8rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+    padding: 5px 20px;
+    background: #E3CBCB;
+    text-align: center;
+  }
+`
+
 export const MemberFeeListContainer = styled.div`
   display: flex;
   gap: 10px;
@@ -90,7 +131,6 @@ export const MembersTarget = styled.div`
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
       }
     }
-
   }
 `
 interface IColor {

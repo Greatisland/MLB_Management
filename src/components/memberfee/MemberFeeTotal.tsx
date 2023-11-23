@@ -1,6 +1,6 @@
 import { MemberFeeTotalContainer } from "../../style/memberFeeStyled.tsx"
 import { useAppSelector } from "../../store/hook.ts"
-import { dateCalc } from "../common/dateCalc.ts";
+import { dateCalc } from "../../lib/dateCalc.ts";
 import { FaCoins } from 'react-icons/fa';
 import { GiCoins } from 'react-icons/gi';
 import { RiHandCoinLine } from 'react-icons/ri';

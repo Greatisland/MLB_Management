@@ -14,7 +14,7 @@ import { StyledGiTrophy } from "../../style/homeStyled.tsx"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { TfiArrowCircleDown, TfiArrowCircleUp } from 'react-icons/tfi';
 import { startSwiping, stopSwiping } from "../../store/slice.ts"
-import { returnFind } from "./returnFind.ts"
+import { returnFind } from "../../lib/returnFind.ts"
 
 const MemberModal = () => {
   

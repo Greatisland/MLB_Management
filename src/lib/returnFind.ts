@@ -1,4 +1,4 @@
-import type { MeetData } from "../../store/slice"
+import type { MeetData } from "../store/slice"
 export const returnFind = (meetData: MeetData, name: string): string => {
   let result = ''
   for (const [_, data] of meetData) {
