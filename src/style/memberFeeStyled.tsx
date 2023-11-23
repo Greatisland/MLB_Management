@@ -37,7 +37,7 @@ export const PrizeListContainer = styled.div`
     gap: 20px;
     span {
       display: flex;
-      min-width: 60px;
+      min-width: 95px;
       align-items: center;
       gap: 5px;
       text-align: center;
@@ -50,7 +50,8 @@ export const PrizeListContainer = styled.div`
       }
     }
     .title {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      font-weight: bold;
     }
   }
   p {
