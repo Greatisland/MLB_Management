@@ -113,14 +113,14 @@ const MemberFeeList = () => {
 
   return (
     <>
-    {loginUser.level >= 2 ?
+    {loginUser.level >= 1 ?
     <MemberFeeListContainer>
       <MembersTarget>
-        <p>회비대상자</p>
+        <p>회비대상</p>
         {payMembers.map((member, i) => (
           <div className="member" key={i}>
             <ul onClick={() => handlePay(member)}>
-              <li>{member[1].name}</li>
+              <li>{loginUser.level >= 2 ? member[1].name : '***'}</li>
               <CheckState state={member[1]?.pay ? member[1].pay.toString() : 'false'}>{member[1].pay ? '완료!' : '미완료'}</CheckState>
             </ul>
             <span>
@@ -131,7 +131,7 @@ const MemberFeeList = () => {
       </MembersTarget>
 
       <MembersTarget>
-        <p>회비제외자</p>
+        <p>회비제외</p>
         {newFace.map((member, i) => (
           <div className="member" key={i}>
             <ul>

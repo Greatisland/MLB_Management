@@ -18,10 +18,11 @@ const AppRouter = () => {
   const { isSwiping, loginUser } = useAppSelector(state => state.membersData)
   const [ startX, setStartX ] = useState<number | null>(null) // 터치 이벤트 X좌표
 
-  //로그인에 따른 페이지 렌더링 차이
-  const pageList = loginUser.level >= 2 ? 
-    ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : 
-    ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
+  // //로그인에 따른 페이지 렌더링 차이
+  // const pageList = loginUser.level >= 2 ? 
+  //   ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : 
+  //   ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
+  const pageList = ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame']
   
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
 

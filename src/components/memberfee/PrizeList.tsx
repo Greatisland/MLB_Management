@@ -34,7 +34,7 @@ const PrizeList = () => {
     <>
     {((prizeFirst && prizeFirst.length > 0 ) || (prizeSing && prizeSing.length > 0)) &&
         <PrizeListContainer>
-        <p>{dateCalc('month')}월 상금 대상자</p>
+        <p>{dateCalc('month')}월 지원금 대상</p>
         {prizeFirst?.map((member, i) => (
           <div className="member" key={i}>
             <span className="title">
