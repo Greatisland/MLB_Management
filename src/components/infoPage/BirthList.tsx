@@ -13,14 +13,23 @@ const BirthList = () => {
       if(Number(birthMonth) === param) return true
     })
   }
-  let monthCount = Number(dateCalc('flatMonth')) + 1
-  let birthMemberData = handleBirthMember(monthCount)
+
+  // let monthCount = Number(dateCalc('flatMonth')) + 1
+  // let birthMemberData = handleBirthMember(monthCount)
+
+  // while(birthMemberData.length === 0 && monthCount <= 12){
+  //   monthCount++
+  //   birthMemberData = handleBirthMember(monthCount)
+  // }
+
+  let monthCount = (Number(dateCalc('flatMonth')) + 1) % 12 || 12;
+  let birthMemberData = handleBirthMember(monthCount);
 
   while(birthMemberData.length === 0 && monthCount <= 12){
-    monthCount++
-    birthMemberData = handleBirthMember(monthCount)
+    monthCount = (monthCount % 12) + 1;
+    birthMemberData = handleBirthMember(monthCount);
   }
-
+  
   if(birthMemberData.length > 0){return (
     <PartAwardContainer>
       <FaBirthdayCake />
@@ -34,7 +43,6 @@ const BirthList = () => {
   )}else{
     return null
   }
-
 }
 
 export default BirthList
