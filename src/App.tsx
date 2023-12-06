@@ -35,9 +35,9 @@ const App = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
 
       // 로그인 상태 redux 전송
-      const send = (level: number) => {dispatch(loginUserSend({
+      const send = (level: number, name: string) => {dispatch(loginUserSend({
         uid: user ? user.uid : '',
-        name: user ? user.displayName : '',
+        name: user ? name : '',
         photoURL: user ? user.photoURL : '',
         state: user ? true : false,
         level: user ? level : 0,
@@ -51,19 +51,19 @@ const App = () => {
           const data = snapshot.val()
           if(data){
             //계정 데이터베이스가 있을 경우 저장된 회원 등급 전송
-            send(data?.level)
+            send(data?.level, data?.name)
           }else if(user.displayName){
             //없을 경우 계정 데이터베이스 생성 후 레벨 0 전송
             const accountRef = ref(database, '/userLevels/' + user.uid)
             const newAccount = {name: user.displayName, level: 0}
             set(accountRef, newAccount)
-            send(0)
+            send(0, '')
           }
           setIsLoading(false)
         })
       }else{
         //로그아웃 시 로그인 화면으로 이동
-        send(0)
+        send(0, '')
         setIsLoading(false)
       }
     })

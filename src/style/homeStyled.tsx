@@ -149,3 +149,95 @@ export const BanTopContainer = styled.div`
     margin: 0 0 0 auto;
   }
 `
+
+export const CheckBirthContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: ${props => props.theme.pink2};
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+  svg {
+    font-size: 1rem;
+    fill: #fff;
+  }
+`
+
+export const BirthAlert = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 400px!important;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  form {
+    p {
+      width: 100%;
+      text-align: center;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    select {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0 0 0;
+      input, .cancle {
+        padding: 5px 20px;
+        border-radius: 24px;
+        border: none;
+        color: #fff;
+        background-color: ${props => props.theme.pink2};
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #e7e7e7;
+          color: #333;
+        }
+      }
+    }
+  }
+`

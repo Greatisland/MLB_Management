@@ -8,6 +8,7 @@ import Footer from "../components/common/Footer.tsx"
 import { useAppSelector } from "../store/hook.ts"
 import Waiting from "../components/common/Waiting.tsx"
 import BirthList from "../components/infoPage/BirthList.tsx"
+import CheckBirth from "../components/infoPage/CheckBirth.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 import WaitList from "../components/infoPage/WaitList.tsx"
 import GfIcon from "../components/common/GfIcon.tsx"
@@ -21,6 +22,7 @@ const InfoPage = () => {
         <BtnList />
         <PenddingList />
         <BirthList />
+        <CheckBirth />
         <HomeList />
         <WaitList />
         <BreakList />
