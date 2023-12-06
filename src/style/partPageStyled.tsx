@@ -32,7 +32,14 @@ export const PartAwardContainer = styled.div`
   .date {
     color: #fff;
   }
+  p {
+    width: 100%;
+    flex: 1;
+  }
   .name {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
     color: #fff;
     font-weight: bold;
     font-size: 1.15rem;
