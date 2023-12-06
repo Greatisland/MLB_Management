@@ -36,13 +36,13 @@ const BirthList = () => {
   return (
     <PartAwardContainer>
       <IoMdArrowDropleftCircle style={arrowStyle} onClick={() => handleMonth(-1)}/>
-      <p>{month === Number(dateCalc('flatMonth')) ? '이번 달 ' : '다가오는 '} 
+      <p>{month === Number(dateCalc('flatMonth')) ? '이번 달 ' : '다가오는 '}
         <span className="date">{month.toString().padStart(2,'0')}</span>
         월 <span className="name">생일</span>인 회원은 
         {birthMemberData.length > 0 ?
-        <><span className="name">{
+        <> <span>{
         birthMemberData.map((member, i) => (
-          <span className='name' key={i}>{i !== 0 ? ',': null} {member[1]?.name}</span>
+          <span className='name' key={i}>{i !== 0 ? ', ': null}{member[1]?.name}</span>
         ))}
         </span> 님입니다! </> : ' 존재하지 않거나 찾을 수 없습니다.'
         }
