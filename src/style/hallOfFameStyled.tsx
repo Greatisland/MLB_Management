@@ -318,3 +318,28 @@ export const StyledSwiperSlide = styled(SwiperSlide)<ImgUrl>`
   background: #333 url(${props => props.ImgUrl}) center center/cover;
   
 `
+export const YearIndicator = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.6rem;
+  background: ${props => props.theme.brown};
+  padding: 8px 4px;
+  border-radius: 12px;
+  top: 50%;
+  border: 1px solid #fff;
+  right: 4px;
+  z-index: 100;
+  div {
+    cursor: pointer;
+    color: #fff;
+    padding: 6px 0;
+    border-bottom: 1px solid #fff;
+  }
+  div.active {
+    color: #6d0404;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+`

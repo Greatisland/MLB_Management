@@ -37,6 +37,7 @@ const PartResult = () => {
     })
     setRising(filterMember.slice(0, 3))
     setHosting(filterMemberHost.slice(0, 3))
+    console.log(filterMemberHost.map(val => val[1].name))
   }, [membersData])
 
   return (

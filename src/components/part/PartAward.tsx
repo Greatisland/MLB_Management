@@ -32,8 +32,7 @@ const PartAward = () => {
       <GiPartyPopper />
       <p><span className="date">{dateCalc('year')}</span>
       년 <span className="date">{dateCalc('month')}</span>
-      월 현재 최고의 프로벙참러는 
-      <span className="name partName"> {gloryName}</span> 님입니다!</p>
+      월 현재 최고의 프로벙참러는 <span className="name partName">{gloryName}</span> 님입니다!</p>
       <GiPartyPopper />
     </PartAwardContainer>
   )
