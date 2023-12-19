@@ -121,7 +121,7 @@ const HofAddModal = ({setIsModal, award} : Props) => {
   const deleteAward = (hofId: string) => {
     if(hofId !== ''){
       Swal.fire({
-        title: `정말로 ${state?.eventName}를 가요제 정보에서 지우시겠어요?`,
+        title: `정말로 ${state?.eventName}를 수상 정보에서 지우시겠어요?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#e99797',
@@ -150,9 +150,9 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     <HofAddModalWrapper>
       <HofModalContainer>
         <form onSubmit={handleSubmit}>
-          <p>가요제 이름(필수)</p>
+          <p>수상 이름(필수)</p>
           <input type="text" value={state.eventName} onChange={e => setState({...state, eventName: e.target.value})} placeholder="가요제 이름을 입력하세요." />
-          <p>가요제 날짜(필수)</p>
+          <p>수상 날짜(필수)</p>
           <input type="date" value={state.eventDate} onChange={e => setState({...state, eventDate: e.target.value})} placeholder="날짜를 선택해주세요." />
 
           {new Array(4).fill('').map((_, i) => {

@@ -316,30 +316,37 @@ export const StyledSwiperSlide = styled(SwiperSlide)<ImgUrl>`
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(63, 31, 1, 0.4);
   background: #333 url(${props => props.ImgUrl}) center center/cover;
-  
 `
+
 export const YearIndicator = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 0.6rem;
-  background: ${props => props.theme.brown};
-  padding: 8px 4px;
+  background: rgba(0, 0, 0, 0.7); // 투명도 추가
+  padding: 10px 6px;
   border-radius: 12px;
   top: 50%;
-  border: 1px solid #fff;
-  right: 4px;
+  border: none;
+  right: 10px;
   z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); // 그림자 추가
+
   div {
     cursor: pointer;
-    color: #fff;
-    padding: 6px 0;
-    border-bottom: 1px solid #fff;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 0;
+    margin-bottom: 4px;
+    /* transition: all 0.3s; // 부드러운 전환 효과 */
+
+    &:hover {
+      color: rgba(255, 255, 255, 1); // 호버 효과
+    }
   }
   div.active {
-    color: #6d0404;
+    color: #ffcc00; // 활성화된 년도 색상 변경
     font-size: 0.8rem;
     font-weight: bold;
   }
-`
+`;

@@ -228,10 +228,10 @@ const MemberModal = () => {
 
 
           {sendMember.awardCount ? <>
-            <p>가요제 수상횟수</p>
+            <p>수상 횟수</p>
             <div className="awardTitle">
-              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/> 우승/가창상</div>
-              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/> 선곡상/인기상/영상상/기타</div>
+              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/> 우승/가창상/1위</div>
+              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/> 기타 수상</div>
             </div>
             <span className="awardCount">
               {
@@ -307,10 +307,10 @@ const MemberModal = () => {
           <p>성별</p>
           <span>{state.gender}</span>
           {sendMember.awardCount ? <>
-            <p>가요제 수상횟수</p>
+            <p>수상 횟수</p>
             <div className="awardTitle">
-              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/> 우승/가창상</div>
-              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/> 선곡상/인기상/영상상/기타</div>
+              <div className="detail"><StyledGiTrophy bgColor='#d1a01a'/> 우승/가창상/1위</div>
+              <div className="detail"><StyledGiTrophy bgColor='#A9A9A9'/> 기타 수상</div>
             </div>
             <span className="awardCount">
               {
