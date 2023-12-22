@@ -108,7 +108,7 @@ const AveragePart = ({meetData} : Props) => {
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: '벙 개설 횟수',
+        label: '열린 벙 횟수',
         data: bungs,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
