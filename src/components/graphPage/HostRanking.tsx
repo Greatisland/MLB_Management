@@ -66,7 +66,7 @@ const HostRanking = ({meetData} : Props) => {
       },
       title: {
         display: true,
-        text: `${yearView}년 ${monthView}월 벙 개설 횟수`
+        text: `${yearView}년 ${monthView}월 벙 개설한 멤버`
       },
     },
     scales: {

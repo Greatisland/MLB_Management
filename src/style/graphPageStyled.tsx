@@ -16,7 +16,14 @@ export const GraphPageContainer = styled.div`
 
 export const GraphBtn = styled.div`
   display: flex;
+  width: 100%;
+  position: sticky;
+  background: #fff;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   justify-content: center;
+  padding: 10px 0;
   svg {
     padding: 10px;
     font-size: 0.8rem;

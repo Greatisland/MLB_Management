@@ -8,6 +8,8 @@ import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 import BasicStats from "../components/graphPage/BasicStats.tsx"
 import GraphArrow from "../components/common/GraphArrow.tsx"
 import GfIcon from "../components/common/GfIcon.tsx"
+import YearOverview from "../components/graphPage/YearOverview.tsx"
+import AveragePart from "../components/graphPage/AveragePart.tsx"
 // import MeetingTotal from "../components/graphPage/MeetingTotal.tsx"
 
 const GraphPage = () => {
@@ -16,6 +18,8 @@ const GraphPage = () => {
     <GraphPageContainer>
       <GraphArrow isMonth={true}/>
       {/* <MeetingTotal meetData={meetData} /> */}
+      <YearOverview meetData={meetData} />
+      <AveragePart meetData={meetData} />
       <MeetingType meetData={meetData} />
       <HostRanking meetData={meetData} />
       <BasicStats />
