@@ -13,17 +13,49 @@ export const GraphPageContainer = styled.div`
     text-align: center;
   }
 `
-
-export const GraphBtn = styled.div`
+export const GraphPageBtn = styled.div`
   display: flex;
   width: 100%;
   position: sticky;
   background: #fff;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 2;
   justify-content: center;
-  padding: 10px 0;
+  padding: 10px 0 0 0;
+  svg {
+    padding: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    fill: ${props => props.theme.brown};
+  }
+  .year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+      color: ${props => props.theme.pink2};
+    }
+  }
+  .month {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+      color: ${props => props.theme.pink2};
+    }
+  }
+
+`
+export const GraphBtn = styled.div`
+  display: flex;
+  justify-content: center;
   svg {
     padding: 10px;
     font-size: 0.8rem;

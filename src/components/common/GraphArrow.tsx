@@ -1,4 +1,4 @@
-import { GraphBtn } from "../../style/graphPageStyled.tsx"
+import { GraphPageBtn } from "../../style/graphPageStyled.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { setYearView, setMonthView } from "../../store/slice.ts"
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
@@ -11,7 +11,7 @@ const GraphArrow = ({isMonth} : Props) => {
   const dispatch = useAppDispatch()
   const { yearView, monthView } = useAppSelector(state => state.membersData)
   return (
-    <GraphBtn>
+    <GraphPageBtn>
       <div className="year">
         <BiLeftArrow onClick={() => {
           if(yearView > 2017) {
@@ -49,7 +49,7 @@ const GraphArrow = ({isMonth} : Props) => {
         </div> : null
       }
 
-      </GraphBtn>
+      </GraphPageBtn>
   )
 }
 
