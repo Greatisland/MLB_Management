@@ -7,7 +7,6 @@ import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 import GraphArrow from "../common/GraphArrow.tsx"
-import { AnyAsyncThunk } from "@reduxjs/toolkit/dist/matchers"
 import { averCheck } from "../../lib/averCheck.ts"
 
 const PartList = () => {
@@ -102,7 +101,7 @@ const PartList = () => {
             yearData ? yearData[monthView] || 0 : 0
             } 회</td>
             {/* <td>{totalCalcFunc(member[1], yearView).aver} 회</td> */}
-            <td>{averCheck(member[1])} 회</td>
+            <td>{averCheck(member[1], yearView)} 회</td>
           </DangerText>
 
           :
@@ -133,7 +132,7 @@ const PartList = () => {
             yearData ? yearData[monthView] || 0 : 0
             } 회</td>
             {/* <td>{totalCalcFunc(member[1], yearView).aver} 회</td> */}
-            <td>{averCheck(member[1])} 회</td>
+            <td>{averCheck(member[1], yearView)} 회</td>
           </tr>
         )})}
         </tbody>

@@ -28,10 +28,8 @@ interface Props {
 
 
 const YearOverview = ({meetData} : Props) => {
-  const { yearView, monthView } = useAppSelector(state => state.membersData)
-  console.log(meetData)
+  const { yearView } = useAppSelector(state => state.membersData)
   let testData = meetData.find(val => Number(val[0]) === yearView)
-
 
   //x축
   let labels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
@@ -73,7 +71,7 @@ const YearOverview = ({meetData} : Props) => {
       },
       title: {
         display: true,
-        text: `${yearView}년 참가자 월간 총합`
+        text: `${yearView}년 참석 월별 누적총합`
       },
     },
     scales: {

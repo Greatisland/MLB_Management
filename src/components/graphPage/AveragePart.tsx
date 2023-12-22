@@ -27,8 +27,7 @@ interface Props {
 }
 
 const AveragePart = ({meetData} : Props) => {
-  const { yearView, monthView } = useAppSelector(state => state.membersData)
-  console.log(meetData)
+  const { yearView } = useAppSelector(state => state.membersData)
   let testData = meetData.find(val => Number(val[0]) === yearView)
 
 
@@ -102,13 +101,13 @@ const AveragePart = ({meetData} : Props) => {
     labels,
     datasets: [
       {
-        label: '벙 참석인원 평균',
+        label: '참석인원 평균',
         data: averageParticipants,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: '열린 벙 횟수',
+        label: '벙 갯수',
         data: bungs,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
