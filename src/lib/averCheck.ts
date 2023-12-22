@@ -1,21 +1,22 @@
 import type { Member } from "../store/slice.ts"
 import { dateCalc } from "./dateCalc.ts"
 
-export const averCheck = (member: Member) => {
+export const averCheck = (member: Member, year: number) => {
 
   //핵심계산
   const calc = (param: Date) => {
-    const date = new Date()
+    // const date = new Date()
     let aver = {total: 0, count: 0, result: 0}
     let joinMonth = 1
-    if(param.getFullYear() === date.getFullYear()){
+    // if(param.getFullYear() === date.getFullYear()){
+    if(param.getFullYear() === year){
       joinMonth = param.getMonth() + 1
     }
 
     //계산
     for (let i = joinMonth; i <= Number(dateCalc('flatMonth')); i++) {
       // const monthValue = member[`${i}month` as keyof Member]
-      const monthValue = member.attend ? (member.attend[date.getFullYear()][i] || 0) : 0
+      const monthValue = member.attend ? (member.attend[year]?.[i] || 0) : 0
       aver.total += (monthValue ? Number(monthValue) : 0)
       aver.count++
     }

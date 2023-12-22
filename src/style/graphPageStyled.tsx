@@ -13,7 +13,7 @@ export const GraphPageContainer = styled.div`
     text-align: center;
   }
 `
-export const GraphPageBtn = styled.div`
+export const GraphBtn = styled.div`
   display: flex;
   width: 100%;
   position: sticky;
@@ -22,7 +22,6 @@ export const GraphPageBtn = styled.div`
   left: 0;
   z-index: 2;
   justify-content: center;
-  padding: 10px 0 0 0;
   svg {
     padding: 10px;
     font-size: 0.8rem;
@@ -51,41 +50,8 @@ export const GraphPageBtn = styled.div`
       color: ${props => props.theme.pink2};
     }
   }
-
 `
-export const GraphBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  svg {
-    padding: 10px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    fill: ${props => props.theme.brown};
-  }
-  .year {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    p {
-      font-size: 1rem;
-      font-weight: bold;
-      color: ${props => props.theme.pink2};
-    }
-  }
-  .month {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    p {
-      font-size: 1rem;
-      font-weight: bold;
-      color: ${props => props.theme.pink2};
-    }
-  }
 
-`
 export const GraphModalContainer = styled.div`
   display: flex;
   position: relative;

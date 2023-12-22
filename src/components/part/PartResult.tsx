@@ -11,7 +11,7 @@ interface NewProp {
 }
 
 const PartResult = () => {
-  const { membersData } = useAppSelector(state => state.membersData)
+  const { membersData, yearView } = useAppSelector(state => state.membersData)
   let [ rising, setRising ] = useState<(Member & NewProp)[]>([])
   let [ hosting, setHosting ] = useState<[string, Member][]>([])
 
@@ -26,7 +26,7 @@ const PartResult = () => {
     }).map(member => {
       // 새로운 객체를 생성하여 원본 데이터를 수정하지 않도록 함
       let newMember: Member & NewProp = {...member[1], aver: 0}
-      newMember.aver = averCheck(newMember)
+      newMember.aver = averCheck(newMember, yearView)
       return newMember
     }).sort((a, b) => {
       return (b.aver || 0) - (a.aver || 0)
@@ -37,7 +37,6 @@ const PartResult = () => {
     })
     setRising(filterMember.slice(0, 3))
     setHosting(filterMemberHost.slice(0, 3))
-    console.log(filterMemberHost.map(val => val[1].name))
   }, [membersData])
 
   return (
