@@ -10,8 +10,8 @@ const CheckBirth = () => {
   const [ member, setMember ] = useState<any[]>([])
   const [ isModal, setIsModal ] = useState(false)
 
-  const [isMonth, setIsMonth] = useState('1')
-  const [isDay, setIsDay] = useState('1')
+  const [isMonth, setIsMonth] = useState('')
+  const [isDay, setIsDay] = useState('')
 
   useEffect(() => {
     const name = loginUser.name
@@ -21,11 +21,9 @@ const CheckBirth = () => {
     }
   }, [member])
 
-  const month = new Array(12).fill('').map((_, i) => i+1)
-  const day = new Array(31).fill('').map((_, i) => i+1)
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if(Number(isMonth) >= 1 && Number(isMonth) <= 12 && Number(isDay) >= 1 && Number(isDay) <= 31){
     Swal.fire({
       title: `생일 정보를 업데이트합니다.`,
       text: `${loginUser.name}님의 생일이 ${isMonth}월 ${isDay}일이 맞나요?`,
@@ -62,6 +60,17 @@ const CheckBirth = () => {
         return
       }else{return}
     })
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: '오류',
+        html: `
+        정확한 날짜를 입력해주세요!
+        `,
+        showConfirmButton: false,
+        timer: 1000
+      })
+    }
   };
 
   if(member.length > 0){
@@ -77,19 +86,16 @@ const CheckBirth = () => {
       {isModal && 
       <BirthAlert>
         <form onSubmit={handleSubmit}>
-          <p>생일을 알려주세요!</p>
-          <select onChange={e => setIsMonth(e.target.value)}>
-            {month.map((value, i) => (
-              <option value={value} key={i}>{value}</option>
-            ))}
-          </select>
+          <h2>생일을 알려주세요!</h2>
+          <p className="notice">
+            <span>Q: 왜 생일을 입력해야 하나요?</span>
+            매 달 모임에서 생일자를 취합하여 생일벙을 엽니다. 케잌도 함께 지원하고 있으니 생일을 꼭 입력해주세요.
+          </p>
+          <input type="text" value={isMonth} onChange={e => setIsMonth(e.target.value)} />
           <span>월</span>
-          <select onChange={e => setIsDay(e.target.value)}>
-            {day.map((value, i) => (
-              <option value={value} key={i}>{value}</option>
-            ))}
-          </select>
+          <input type="text" value={isDay} onChange={e => setIsDay(e.target.value)} />
           <span>일</span>
+
           <div className="button">
             <input type="submit" value="완료"></input>
             <div className="cancle" onClick={() => setIsModal(!isModal)}>취소</div>
