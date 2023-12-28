@@ -18,12 +18,12 @@ const Waiting = () => {
       <HomeContainer>
 
         <div className="wait">
-        <form onSubmit={handleNameChange}>
-          <p>성함이 {loginUser.name}님이 맞나요? 아니라면 운영진이 확인하고 계정을 승인할 수 있도록 정확한 이름으로 수정해주세요. 누구인지 확인이 어려울 경우 계정승인이 거부될 수 있습니다.</p>
+          <form onSubmit={handleNameChange}>
+            <p>성함이 {loginUser.name}님이 맞나요? 아니라면 운영진이 확인하고 계정을 승인할 수 있도록 정확한 이름으로 수정해주세요. 누구인지 확인이 어려울 경우 계정승인이 거부될 수 있습니다.</p>
 
-          <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
-          <input type="submit" value='변경' />
-        </form>
+            <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
+            <input type="submit" value='변경' />
+          </form>
           <p className="notice">
 
           운영진이 승인할 때 까지 잠시만 기다려주세요... <br />
