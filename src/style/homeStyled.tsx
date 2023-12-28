@@ -11,14 +11,52 @@ export const HomeContainer = styled.div`
   padding: 20px 20px 90px 20px;
   .wait {
     display: flex;
+    width: 100%;
     height: 100vh;
     font-size: 0.8rem;
     line-height: 1.67rem;
     gap: 30px;
-    padding: 40px 0 0 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      p {
+        width: 100%;
+      }
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    input[type='text'] {
+      border: none;
+      background: #f9f9f9;
+      border-radius: 30px;
+      padding: 5px 10px !important;
+      text-align: center !important;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    
+    input[type='submit'] {
+      border: none;
+      background: #FF9CC7;
+      border-radius: 30px;
+      padding: 8px 20px !important;
+      color: #fff;
+      letter-spacing: 0.04rem;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .notice {
+      width: 100%;
+    }
   }
 `
 
