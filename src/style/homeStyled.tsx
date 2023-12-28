@@ -201,7 +201,7 @@ export const CheckBirthContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
   font-size: 0.8rem;
-  background: ${props => props.theme.pink2};
+  background: ${props => props.theme.green};
   color: #fff;
   cursor: pointer;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
@@ -236,6 +236,15 @@ export const BirthAlert = styled.div`
       width: 100%;
       text-align: center;
     }
+    .notice {
+      span {
+        display: block;
+        font-weight: bold;
+        margin: 0 0 5px 0;
+      }
+      font-size: 0.7rem;
+      color: #666;
+    }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -243,16 +252,19 @@ export const BirthAlert = styled.div`
     padding: 20px;
     border-radius: 10px;
     justify-content: center;
-    select {
+    input[type='text'] {
+      width: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 5px 20px;
       border-radius: 5px;
       border: 1px solid #ccc;
       background-color: white;
       font-size: 16px;
+      text-align: center;
       cursor: pointer;
+      padding: 5px;
+      box-sizing: border-box;
     }
 
     .button {

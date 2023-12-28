@@ -14,11 +14,13 @@ const PenddingList = () => {
         title: `${account[1].name}님의 계정을 승인할까요?`,
         text: "승인할 경우 해당 계정은 이 어플을 이용할 수 있습니다.",
         icon: 'question',
+        showDenyButton: true,
         showCancelButton: true,
         confirmButtonColor: '#e99797',
         cancelButtonColor: '#4ec6e4',
-        confirmButtonText: '네.',
-        cancelButtonText: '아니요.'
+        confirmButtonText: '승인',
+        denyButtonText: '거절',
+        cancelButtonText: '보류',
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
@@ -32,7 +34,16 @@ const PenddingList = () => {
           })
           dbFunc.updateAccount(account[0], {...account[1], level: 1})
           return
-        }else{
+        }else if(result.isDenied){
+          Swal.fire({
+            icon: 'info',
+            title: '거부',
+            html: `
+            승인 거부되었습니다!
+            `,
+            showConfirmButton: false,
+            timer: 1000
+          })
           dbFunc.removeAccount(account[0])
         }
       })
