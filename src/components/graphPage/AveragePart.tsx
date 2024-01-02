@@ -80,6 +80,7 @@ const AveragePart = ({meetData} : Props) => {
     scales: {
       y: {
         min: 0,
+        // max: 30,
         ticks: {
           beginAtZero: true,
           stepSize: 1,
