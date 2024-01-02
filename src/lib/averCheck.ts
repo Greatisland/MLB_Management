@@ -22,7 +22,7 @@ export const averCheck = (member: Member, year: number) => {
     }
 
     //평균값이 첫재 소수점까지만 보이도록 
-    return Math.round((aver.result = aver.total / aver.count) * 10) / 10
+    return Math.round((aver.result = aver.total / (aver.count || 1)) * 10) / 10
   }
 
   const joinDate = new Date(member.join)

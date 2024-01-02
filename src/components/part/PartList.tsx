@@ -8,6 +8,9 @@ import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
 import GraphArrow from "../common/GraphArrow.tsx"
 import { averCheck } from "../../lib/averCheck.ts"
+import { newFaceCheck } from "../../lib/newFaceCheck.ts"
+import { oldFaceCheck } from "../../lib/oldFaceCheck.ts"
+import { hotCount } from "../../lib/hotCount.ts"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
@@ -59,20 +62,9 @@ const PartList = () => {
           let memberJoin = new Date(member[1].join)
           let memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
           let joinMonth = memberJoin.getMonth() + 1
-          let joinYear = String(memberJoin.getFullYear())
+          let joinYear = memberJoin.getFullYear()
           let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
           let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
-          let hotCount = 0
-
-          if (member[1] && (member[1] as any).attend) {
-            const attend = (member[1] as any).attend[currentYear] || {}
-            const currentMonth = Number(dateCalc('flatMonth')) || 0
-            hotCount = (
-              (attend[`${currentMonth}`] || 0) +
-              (attend[`${currentMonth - 1}`] || 0) +
-              (attend[`${currentMonth - 2}`] || 0)
-            )
-          }
 
           let yearData: any = null
 
@@ -92,9 +84,7 @@ const PartList = () => {
               <div className="tagContainer">
                 <span className="tagDanger">위험!</span>
               {//신입태그
-                (joinYear === dateCalc('year') && (
-                  Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
-                )) ? <span className="tagNew">신입</span> : null
+                newFaceCheck(joinYear, joinMonth) ? <span className="tagNew">신입</span> : null
               }</div></td>
             <td className="index">{i+1}</td>
             <td>{
@@ -115,15 +105,13 @@ const PartList = () => {
               <div className="tagContainer">
               {
                 //신입태그
-                (joinYear === dateCalc('year') && (
-                  Number(joinMonth) >= (Number(dateCalc('flatMonth')) - 2)
-                )) ? <span className="tagNew">신입</span> : null
+                newFaceCheck(joinYear, joinMonth) ? <span className="tagNew">신입</span> : null
               }{
-                comeYear === currentYear && (comeMonth === currentMonth || comeMonth + 1 === currentMonth || comeMonth + 2 === currentMonth) ? 
+                oldFaceCheck(comeYear, comeMonth, currentYear, currentMonth) ? 
                 <span className="tagBack">복귀</span> :
                 null
               }
-              {hotCount >= 15 ?
+              {hotCount(member[1]) >= 15 ?
                <span className="tagHot">Hot</span> : null}
               </div>
             </td>
@@ -131,8 +119,8 @@ const PartList = () => {
             <td>{
             yearData ? yearData[monthView] || 0 : 0
             } 회</td>
-            {/* <td>{totalCalcFunc(member[1], yearView).aver} 회</td> */}
-            <td>{averCheck(member[1], yearView)} 회</td>
+            <td>{totalCalcFunc(member[1], yearView).aver} 회</td>
+            {/* <td>{averCheck(member[1], yearView)} 회</td> */}
           </tr>
         )})}
         </tbody>
