@@ -77,6 +77,7 @@ const YearOverview = ({meetData} : Props) => {
     scales: {
       y: {
         min: 0,
+        max: Math.max(...totalParticipants, 200),
         ticks: {
           beginAtZero: true,
           stepSize: 1,
