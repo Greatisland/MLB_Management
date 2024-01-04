@@ -35,9 +35,12 @@ export const totalCalcFunc = (member: Member, yearView: number) => {
     }, 0)
     result.aver = Math.round(result.total / data.length * 10)/10
   }
+
   if(member?.host?.[yearView]){
-    
     result.host = Object.values(member?.host?.[yearView]).reduce((acc: number, val: any) => acc + Number(val), 0)
+  }
+  
+  if(member.host){
     const hostData = Object.values(member.host).map(val => Object.values(val)).flat()
     result.totalHost = hostData.reduce((memberAcc, att) => {
       return memberAcc + att
