@@ -94,7 +94,7 @@ const PartModal = () => {
               </tr>
               <tr>
                 <td>벙 개설횟수</td>
-                <td className="data">{tab === 1 ? totalCalcFunc(thisMember[1], yearView).host : host}</td>
+                <td className="data">{tab === 1 ? totalCalcFunc(thisMember[1], yearView).totalHost : host}</td>
               </tr>
 
             </tbody>
