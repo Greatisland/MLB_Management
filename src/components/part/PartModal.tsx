@@ -5,12 +5,14 @@ import { togglePartModal, startSwiping, stopSwiping } from "../../store/slice.ts
 import { useState, useEffect } from "react"
 import { GraphBtn } from "../../style/graphPageStyled.tsx"
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
+import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 
 const PartModal = () => {
   const date = new Date()
   const dispatch = useAppDispatch()
   const { membersData, sendMember } = useAppSelector(state => state.membersData)
   const [ yearView, setYearView ] = useState(date.getFullYear())
+  const [ tab, setTab ] = useState(0)
 
   //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
   useEffect(() => {
@@ -71,18 +73,30 @@ const PartModal = () => {
               </tr>
             </thead>
             <tbody>
+              <tr className="tab_btn">
+                <td 
+                  className={tab === 0 ? 'active' : ''}
+                  onClick={() => setTab(0)}
+                >{yearView}년 통계</td>
+                <td 
+                  className={tab === 1 ? 'active' : ''}
+                  onClick={() => setTab(1)}
+                >전체 통계</td>
+              </tr>
+
               <tr>
-                <td>{yearView}년 총 참석</td>
-                <td>{total}</td>
+                <td>총 참석</td>
+                <td className="data">{tab === 1 ? totalCalcFunc(thisMember[1], yearView).total : total}</td>
               </tr>
               <tr>
-                <td>{yearView}년 평균 참석율</td>
-                <td>{aver}</td>
+                <td>월 평균 참석</td>
+                <td className="data">{tab === 1 ? totalCalcFunc(thisMember[1], yearView).aver : aver}</td>
               </tr>
               <tr>
-                <td>{yearView}년 벙 개설횟수</td>
-                <td>{host}</td>
+                <td>벙 개설횟수</td>
+                <td className="data">{tab === 1 ? totalCalcFunc(thisMember[1], yearView).host : host}</td>
               </tr>
+
             </tbody>
           </table>
         </div>

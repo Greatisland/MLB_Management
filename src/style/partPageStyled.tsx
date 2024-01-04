@@ -220,6 +220,11 @@ export const PartModalContainer = styled.div`
     thead, tbody, tr {
       width: 100%;
     }
+    tbody {
+      tr {
+        margin: 10px 0 0 0;
+      }
+    }
     tr {
       display: flex;
       border-bottom: 1px solid #fff;
@@ -232,6 +237,27 @@ export const PartModalContainer = styled.div`
       text-align: center;
       font-size: 0.85rem;
       cursor: pointer;
+    }
+    td {
+      font-size: 0.7rem;
+    }
+    .tab_btn {
+      td {
+        font-size: 0.8rem;
+      }
+      .active {
+        color: ${props => props.theme.pink2};
+        /* font-size: 1rem; */
+        font-weight: bold;
+        border-bottom: 3px solid ${props => props.theme.pink2};
+      }
+    }
+    .data {
+      background: #f2f2f2;
+      border-radius: 2rem;
+      box-sizing: border-box;
+      font-size: 0.7rem;
+      letter-spacing: 0.1rem;
     }
   }
 
