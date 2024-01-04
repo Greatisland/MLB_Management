@@ -10,7 +10,8 @@ const BirthList = () => {
   
   //다음달 생일자 명단
   const handleBirthMember = (param : number) => {
-    return membersData.filter((member) => {
+    const totalMember = membersData.filter(member => !member[1].break && member[1].join)
+    return totalMember.filter((member) => {
       const birthMonth = member[1].birth ? member[1].birth.split('월')[0] : null
       if(Number(birthMonth) === param) return true
     })
