@@ -16,7 +16,7 @@ const HomeList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser, accountList } = useAppSelector(state => state.membersData)
   const [ search, setSearch ] = useState('')
-  const [ isTab, setIsTab ] = useState(1)
+  const [ isTab, setIsTab ] = useState(0)
 
   interface SortedProps {
     0: string,
