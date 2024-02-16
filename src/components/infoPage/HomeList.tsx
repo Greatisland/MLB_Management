@@ -35,7 +35,7 @@ const HomeList = () => {
   
     // 정렬된 배열로 상태 업데이트
     setSortedAccounts(sortedAccountList);
-  }, []); // accountList가 변경될 때마다 이 효과를 다시 실행
+  }, [accountList]); // accountList가 변경될 때마다 이 효과를 다시 실행
 
   //가입 승인상태이고 휴식기가 아니고 가입대기가 아닐 때
   const searchMembersData = membersData.filter(member => 
@@ -189,6 +189,7 @@ const HomeList = () => {
                 <option value={3}>총무</option>
                 <option value={2}>운영진</option>
                 <option value={1}>일반회원</option>
+                <option value={0}>가입 미승인</option>
               </SelectBox>
             </td>
             <td 
