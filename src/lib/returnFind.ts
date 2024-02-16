@@ -8,7 +8,7 @@ export const returnFind = (meetData: MeetData, name: string): string => {
       const found = data.flat().find(meet => meet && (
         meet?.list?.split(',').find((user: string) => user.trim() === name)
       ))
-
+        
       //이름 찾았으면 최초 참석날짜 저장 후 순회 종료
       if(found) {
         result = found.date

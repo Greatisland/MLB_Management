@@ -327,4 +327,18 @@ export const TagExplain = styled.div`
     color: #b22222; 
     background: #ffffff; 
   }
+
+`
+
+export const NoticeText = styled.p`
+  /* width: 100%; */
+  font-size: 0.6rem;
+  /* letter-spacing: 0.01rem; */
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background: #aaa;
+  padding: 4px;
+  border-radius: 20px;
+  margin: 0 0 40px 0;
 `

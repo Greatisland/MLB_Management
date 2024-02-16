@@ -59,6 +59,32 @@ export const HomeContainer = styled.div`
     }
   }
 `
+interface TabProps {
+  isTab?: boolean
+}
+
+export const TabBtnContainer = styled.div<TabProps>`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`
+
+export const TabBtn = styled.div<TabProps>`
+  padding: 0 20px 2px 20px;
+  border: none;
+  border-bottom: ${props => props.isTab ? `2px solid #FF9CC7` : '2px solid transparent'};
+  background-color: transparent;
+  font-weight: ${props => props.isTab ? 
+    'bold' : 'normal'
+  };
+  color: ${props => props.isTab ? 
+    props.theme.pink2
+  : '#333'};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+`
 
 const svgStyles = css`
   font-size: 0.7rem;
@@ -179,6 +205,12 @@ export const HomeListContainer = styled.div`
   .pendding {
     width: 100%;
   }
+  .delete {
+    svg {
+      font-size: 1rem;
+    }
+    font-size: 0.7rem;
+  }
 `
 
 export const BanTopContainer = styled.div`
@@ -290,4 +322,15 @@ export const BirthAlert = styled.div`
       }
     }
   }
+`
+
+export const SelectBox = styled.select`
+  padding: 2px 4px;
+  text-align: center;
+  /* font-size: 16px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* 기본 select 스타일 제거 */
+  background-color: #f8f8f8;
+  cursor: pointer;
 `

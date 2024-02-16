@@ -1,18 +1,41 @@
-import { HomeListContainer, StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
+import { HomeListContainer, StyledFaCrown, StyledFaStar, TabBtnContainer, TabBtn, SelectBox } from "../../style/homeStyled.tsx"
 import { TagExplain } from "../../style/partPageStyled.tsx"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { toggleModal, sendMember, sortState } from "../../store/slice.ts"
+import { MdDeleteOutline } from "react-icons/md";
 import { SearchBarPart } from "../../style/partPageStyled.tsx"
 import { dateCalc } from "../../lib/dateCalc.ts"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { newFaceCheck } from "../../lib/newFaceCheck.ts"
 import { oldFaceCheck } from "../../lib/oldFaceCheck.ts"
 import { hotCount } from "../../lib/hotCount.ts"
+import { dbFunc } from "../../firebase/firebaseFunc.ts"
+import Swal from "sweetalert2"
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
-  const { membersData, loginUser } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser, accountList } = useAppSelector(state => state.membersData)
   const [ search, setSearch ] = useState('')
+  const [ isTab, setIsTab ] = useState(1)
+
+  interface SortedProps {
+    0: string,
+    1: {
+      name: string,
+      level: number
+    }
+  }
+  const [ sortedAccounts, setSortedAccounts ] = useState<SortedProps[]>([])
+
+  useEffect(() => {
+    // accountList의 복사본을 생성하여 정렬
+    const sortedAccountList = [...accountList].sort((a, b) => {
+      return b[1].level - a[1].level;
+    });
+  
+    // 정렬된 배열로 상태 업데이트
+    setSortedAccounts(sortedAccountList);
+  }, []); // accountList가 변경될 때마다 이 효과를 다시 실행
 
   //가입 승인상태이고 휴식기가 아니고 가입대기가 아닐 때
   const searchMembersData = membersData.filter(member => 
@@ -42,9 +65,26 @@ const HomeList = () => {
     ))
   }
 
+  const DeleteNotice = (name: string, memberId: string) => {
+    Swal.fire({
+      title: `${name}의 계정을 삭제할까요?`,
+      html: `계정 삭제는 회원 삭제와 별개에요! `,
+      showDenyButton: true,
+      confirmButtonText: "삭제",
+      denyButtonText: `취소`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dbFunc.removeAccount(memberId)
+        Swal.fire("삭제완료!", "", "success");
+      }
+    });
+  }
+
   const date = new Date()
   const currentYear = date.getFullYear()
   const currentMonth = date.getMonth() + 1
+
 
   return (
     <>
@@ -65,6 +105,11 @@ const HomeList = () => {
         최근 참석 상위권 (지난 3개월 기준)
       </span>
     </TagExplain>
+    {loginUser.level >= 2 && <TabBtnContainer>
+      <TabBtn isTab={isTab === 0 && true} onClick={() => setIsTab(0)}>회원</TabBtn>
+      <TabBtn isTab={isTab === 1 && true} onClick={() => setIsTab(1)}>계정</TabBtn>
+    </TabBtnContainer>}
+    {isTab === 0 ?
     <HomeListContainer>
       <table>
         <thead>
@@ -115,6 +160,46 @@ const HomeList = () => {
         </tbody>
       </table>
     </HomeListContainer>
+    : 
+    <HomeListContainer>
+      <table>
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>계정권한</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+        {sortedAccounts?.map((account, i) => (
+          <tr key={i}>
+            <td>{account[1].name}</td>
+            <td>
+              <SelectBox 
+                value={account[1].level}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                  dbFunc.updateAccount(account[0], {
+                    name: account[1].name,
+                    level: e.target.value
+                  })
+                }}
+              >
+                {/* {loginUser.level >= 4 && <option value={4}>모임장</option>} */}
+                <option value={4}>모임장</option>
+                <option value={3}>총무</option>
+                <option value={2}>운영진</option>
+                <option value={1}>일반회원</option>
+              </SelectBox>
+            </td>
+            <td 
+              className='delete'
+              onClick={() => DeleteNotice(account[1].name, account[0])}
+            ><MdDeleteOutline />계정삭제</td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
+    </HomeListContainer>}
     </>
   )
 }

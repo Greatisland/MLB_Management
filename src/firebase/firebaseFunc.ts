@@ -72,13 +72,6 @@ export const dbFunc = {
     })
   },
 
-  // 계정 수정하기
-  updateAccount(memberId: string, updatedMember: any) {
-    const memberRef = ref(database, `/userLevels/${memberId}`)
-    update(memberRef, updatedMember)
-  },
-
-
   // 전원 계정 리스트 읽어오기
   getAllAccount(callback: any) {
     onValue(accountRef, (snapshot) => {
@@ -86,7 +79,13 @@ export const dbFunc = {
     })
   },
 
-  // 계정 레벨정보 삭제
+  // 계정 수정하기
+  updateAccount(memberId: string, updatedMember: any) {
+    const memberRef = ref(database, `/userLevels/${memberId}`)
+    update(memberRef, updatedMember)
+  },
+
+  // 계정 삭제
   removeAccount(memberId: string) {
     const memberRef = ref(database, `/userLevels/${memberId}`)
     remove(memberRef)

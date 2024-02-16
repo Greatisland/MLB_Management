@@ -314,11 +314,11 @@ const MemberModal = () => {
             </div>
             <span className="awardCount">
               {
-              new Array(sendMember.awardCount.fClass?sendMember.awardCount.fClass:0).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.fClass||0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#d1a01a' key={i}/>
               ))}
               {
-              new Array(sendMember.awardCount.sClass?sendMember.awardCount.sClass:0).fill('').map((_, i) => (
+              new Array(sendMember.awardCount.sClass||0).fill('').map((_, i) => (
                 <StyledGiTrophy bgColor='#A9A9A9' key={i}/>
               ))}
             </span>

@@ -2,7 +2,6 @@ import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
 import { sortState } from "../../store/slice.ts"
 import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
-import { dateCalc } from "../../lib/dateCalc.ts"
 import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
@@ -11,6 +10,7 @@ import { averCheck } from "../../lib/averCheck.ts"
 import { newFaceCheck } from "../../lib/newFaceCheck.ts"
 import { oldFaceCheck } from "../../lib/oldFaceCheck.ts"
 import { hotCount } from "../../lib/hotCount.ts"
+import { NoticeText } from "../../style/partPageStyled.tsx"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
@@ -126,6 +126,9 @@ const PartList = () => {
         </tbody>
       </table>
     </PartListContainer>
+      <NoticeText>
+        - 실시간 반영이 아니기에 실제 밴드 기록과 하루 정도 오차가 있을 수 있습니다. -
+      </NoticeText>
     </>
   )
 }
