@@ -19,7 +19,7 @@ const MemberFee = () => {
       <MemberFeeBtn />
       <p className="dateResult"><span>{dateCalc('year')}</span>년<span>{dateCalc('month')}</span>월 <span>{dateCalc('day')}</span>일 회비현황</p>
       <MemberFeeTotal />
-      <PrizeList />
+      {/* <PrizeList /> */}
       <MemberFeeList />
       <ScrollToTopBtn />
       <Footer />
