@@ -79,7 +79,8 @@ const HofAddModal = ({setIsModal, award} : Props) => {
     if (e.target.files) {
       const img = e.target.files[0]
       //소괄호 들어가면 styled components에서 불러올 떄 개빡침... 
-      const name = img.name.replace(/[(){}[\]]/g, '')
+      const timestamp = new Date().getTime()
+      const name = img.name.replace(/[(){}[\]]/g, '') + '-' + timestamp
       const storageRef = ref(storage, `HallOfFameList/${name}`)
       uploadBytes(storageRef, img)
       .then((snapshot) => {
