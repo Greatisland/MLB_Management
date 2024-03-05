@@ -12,6 +12,7 @@ const MemberFeeList = () => {
   const [payMembers, setPayMembers] = useState<[string, Member][]>([]);
   const [noPayMembers, setNoPayMembers] = useState<[string, Member][]>([]);
   const [newFace, setNewFace] = useState<[string, Member][]>([]);
+  const [comeback, setComeback] = useState<[string, Member][]>([]);
 
   useEffect(() => {
     const filteredPayMembers  = membersData.filter(member => {
@@ -19,7 +20,19 @@ const MemberFeeList = () => {
       let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
       let joinYear = String(memberJoin.getFullYear())
   
-      if(member[1].special === '' && member[1].target === '' && !member[1].break && member[1].join && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
+      if(
+        member[1].special === '' && member[1].target === '' && !member[1].break && 
+        member[1].join && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))
+      ){
+        // 이번달 복귀자의 경우 제외
+        if(member[1]?.comeback){
+          let memberComeback = new Date(member[1].comeback)
+          let comeMonth = String(memberComeback.getMonth() + 1).padStart(2,'0')
+          let comeYear = String(memberComeback.getFullYear())
+          if(comeYear === dateCalc('year') && comeMonth === dateCalc('month')){
+            return false
+          }
+        }
         return true
       }
     }).sort((a, b) => {
@@ -52,12 +65,27 @@ const MemberFeeList = () => {
       let memberJoin = new Date(member[1].join)
       let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
       let joinYear = String(memberJoin.getFullYear())
-  
+
+      // 신입의 경우 첫달 면제
       if(member[1].target === '' && joinYear === dateCalc('year') && joinMonth === dateCalc('month')){
         return true
       }
     })
     setNewFace(filteredNewFace)
+
+    const filteredComeback = membersData.filter(member => {
+      // 복귀자의 경우 첫달 면제
+      let memberComeback: Date
+      if(member[1]?.comeback){
+        memberComeback = new Date(member[1].comeback)
+        let comeMonth = String(memberComeback.getMonth() + 1).padStart(2,'0')
+        let comeYear = String(memberComeback.getFullYear())
+        if(member[1].target === '' && comeYear === dateCalc('year') && comeMonth === dateCalc('month')){
+          return true
+        }
+      }
+    })
+    setComeback(filteredComeback)
   }, [membersData])
 
   const handleSwitching = (member: any, param: string) => {
@@ -140,6 +168,15 @@ const MemberFeeList = () => {
             </ul>
           </div>
         ))}
+        {comeback.map((member, i) => (
+          <div className="member" key={i}>
+            <ul>
+              <li>{member[1].name}</li>
+              <li>{dateCalc('month')}월 복귀</li>
+            </ul>
+          </div>
+        ))}
+        
         {noPayMembers.map((member, i) => (
           <div className="member" key={i}>
             <ul>
