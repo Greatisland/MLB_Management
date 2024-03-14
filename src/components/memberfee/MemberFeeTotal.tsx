@@ -13,11 +13,22 @@ const MemberFeeTotal = () => {
     let joinMonth = String(memberJoin.getMonth() + 1).padStart(2,'0')
     let joinYear = String(memberJoin.getFullYear())
 
+    // 이번달 복귀면 회비면제
+    if(member[1].comeback){
+      let memberComeback = new Date(member[1].comeback)
+      let comeMonth = String(memberComeback.getMonth() + 1).padStart(2,'0')
+      let comeYear = String(memberComeback.getFullYear())
+      if(comeYear === dateCalc('year') && comeMonth === dateCalc('month')){
+        return false
+      }
+    }
+
     //차례대로,
-    //면제 사유 없고 && 운영진 아니고 && 휴식기 아니고 && 신입 아닐 때
+    //면제 사유 없고 && 운영진 아니고 && 휴식기 아니고 && 신입 아닐 때 회비대상 적용
     if(member[1].target === '' && !member[1].special && !member[1].break && member[1].join && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
       return true
     }
+    console.log(member[1].name)
   })
 
   const percent = () => {
@@ -37,7 +48,9 @@ const MemberFeeTotal = () => {
 
     if(param === 'done'){
       return (complete * fee.gold).toLocaleString()
-    }else{
+    }else if(param === 'none'){
+      const test = payMembers.map((member ,i) => member[1].name)
+      // console.log(test)
       return ((payMembers.length * fee.gold) - (complete * fee.gold)).toLocaleString()
     }
   }
