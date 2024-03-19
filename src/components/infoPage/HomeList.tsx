@@ -12,6 +12,8 @@ import { hotCount } from "../../lib/hotCount.ts"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import Swal from "sweetalert2"
 
+import { totalCalcFunc } from "../../lib/totalCalcFunc.ts";
+
 const HomeList = () => {
   const dispatch = useAppDispatch()
   const { membersData, loginUser, accountList } = useAppSelector(state => state.membersData)
@@ -84,6 +86,12 @@ const HomeList = () => {
   const date = new Date()
   const currentYear = date.getFullYear()
   const currentMonth = date.getMonth() + 1
+
+  const test = searchMembersData.filter((member) => member[1].name === '최소현')
+  console.log(test)
+  console.log(
+    totalCalcFunc(test[0][1], 2024)
+  )
 
 
   return (
