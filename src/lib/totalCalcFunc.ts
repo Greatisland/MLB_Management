@@ -41,15 +41,14 @@ export const totalCalcFunc = (member: Member, yearView: number) => {
     //   attend[year] = month
     // })
 
+    const joinTime = new Date(member.join)
+    const comeTime = new Date(member.comeback || 0)
+
     // 각 연도에 대해 1월부터 12월까지 모든 월이 존재하도록 보장
     Object.keys(attend).forEach((yearKey) => {
       const year = parseInt(yearKey)
-
-
       const date = new Date()
       // 가입일 및 복귀일에 따라 그 전 일자는 통계에서 빼야 함
-      const joinTime = new Date(member.join)
-      const comeTime = new Date(member.comeback || 0)
 
       let startMonth = 1
       let lastMonth = 12
