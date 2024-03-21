@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { useAppSelector } from "../store/hook.ts";
 import GraphPage from "../pages/GraphPage.tsx";
 import GrandFather from "../pages/GrandFather.tsx";
+import BuskingBoard from "../pages/BuskingBoard.tsx";
 
 const AppRouter = () => {
   const location = useLocation()
@@ -22,7 +23,7 @@ const AppRouter = () => {
   // const pageList = loginUser.level >= 2 ? 
   //   ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : 
   //   ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
-  const pageList = ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame']
+  const pageList = ['/infopage', '/partpage', '/graphpage', '/buskingboard', '/memberfee', '/halloffame']
   
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
 
@@ -64,6 +65,7 @@ const AppRouter = () => {
         <Route path="infopage" element={<InfoPage />} />
         <Route path="partpage" element={<PartPage />} />
         <Route path="memberfee" element={<MemberFee />} />
+        <Route path="buskingboard" element={<BuskingBoard />} />
         <Route path="secretboard" element={<SecretBoard />} />
         <Route path="boardview/:id" element={<SecretBoardView />} />
         <Route path="boardwrite/:id" element={<SecretBoardWrite />} />

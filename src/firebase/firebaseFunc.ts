@@ -10,7 +10,7 @@ import {
 } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update, get, runTransaction } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
-import { type Member, type Ban, type Hof } from '../store/slice.ts'
+import type { Member, Ban, Hof, BuskingData } from '../store/type.ts'
 import Swal from 'sweetalert2'
 import { app } from "./firebaseConfig"
 
@@ -27,6 +27,7 @@ const accountRef = ref(database, '/userLevels')
 const banRef = ref(database, '/banList')
 const hofRef = ref(database, '/halloffame')
 const boardRef = ref(database, '/board')
+const buskingRef = ref(database, '/busking')
 const feeRef = ref(database, '/fee')
 const meetRef = ref(database, '/meetData')
 
@@ -215,6 +216,32 @@ export const dbFunc = {
 
     viewedPosts[postId] = true
     localStorage.setItem('viewedPosts', JSON.stringify(viewedPosts))
+  },
+
+  // 버스킹 게시글 추가
+  addBuskingArticle(article: BuskingData) {
+    const newArticleRef = push(buskingRef);
+    set(newArticleRef, article);
+  },
+
+  // 버스킹 게시글 수정
+  updateBuskingArticle(articleId: string, updateArticle: Partial<BuskingData>) {
+    const articleRef = ref(database, `/busking/${articleId}`);
+    update(articleRef, updateArticle);
+  },
+
+  // 버스킹 게시글 삭제
+  removeBuskingArticle(articleId: string) {
+    const articleRef = ref(database, `/busking/${articleId}`);
+    remove(articleRef);
+  },
+
+  // 버스킹 게시글 목록 읽어오기
+  getBuskingBoard(callback: (data: [string, BuskingData][]) => void) {
+    onValue(buskingRef, (snapshot) => {
+      const data = Object.entries(snapshot.val() || {}) as [string, BuskingData][];
+      callback(data);
+    });
   },
 
   //회비 수정
