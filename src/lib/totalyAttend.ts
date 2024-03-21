@@ -1,4 +1,4 @@
-import type { Member } from "../store/slice"
+import type { Member } from "../store/type.ts"
 
 export const totalyAttend = (totalMember: [string, Member][]) => {
   const total = totalMember.reduce((acc, member) => {

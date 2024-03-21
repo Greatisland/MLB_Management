@@ -1,4 +1,4 @@
-import type { Member } from "../store/slice"
+import type { Member } from "../store/type.ts"
 
 export const hotCount = (member: Member) => {
   const date = new Date()

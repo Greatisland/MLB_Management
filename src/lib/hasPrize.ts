@@ -1,5 +1,5 @@
 import { dateCalc } from "./dateCalc"
-import type { Member } from "../store/slice"
+import type { Member } from "../store/type.ts"
 
 export const hasPrize = {
   first (member: Member) {
