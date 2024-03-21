@@ -2,7 +2,7 @@ import { BasicStatsContainer } from "../../style/graphPageStyled.tsx"
 import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { daysBetweenDates } from "../../lib/daysBetweenDates.ts"
 import { useAppSelector } from "../../store/hook.ts"
-import type { MeetData } from "../../store/slice.ts"
+import type { MeetData } from "../../store/type.ts"
 
 interface Props {
   meetData: MeetData

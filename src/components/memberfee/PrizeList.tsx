@@ -3,7 +3,7 @@ import { useAppSelector } from "../../store/hook.ts"
 import { dateCalc } from "../../lib/dateCalc.ts"
 import { useState, useEffect } from "react"
 import { hasPrize } from "../../lib/hasPrize.ts"
-import type { Member } from "../../store/slice.ts"
+import type { Member } from "../../store/type.ts"
 import { GiClover, GiLoveSong } from "react-icons/gi";
 
 const PrizeList = () => {

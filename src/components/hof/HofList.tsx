@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import HofAddModal from "./HofAddModal.tsx"
 import { useState, useEffect, useRef } from "react"
 import { stopSwiping } from "../../store/slice.ts"
-import type { Hof } from "../../store/slice.ts"
+import type { Hof } from "../../store/type.ts"
 import Swal from "sweetalert2"
 
 const HofList = () => {

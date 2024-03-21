@@ -5,7 +5,7 @@ import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import Swal from "sweetalert2"
 import { startSwiping, stopSwiping } from "../../store/slice.ts"
 import { useAppDispatch } from "../../store/hook.ts"
-import type { Hof } from "../../store/slice.ts"
+import type { Hof } from "../../store/type.ts"
 
 interface Props {
   setIsModal: (value: boolean) => void
