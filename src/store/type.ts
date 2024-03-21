@@ -144,6 +144,7 @@ export interface InitialState {
 }
 
 export interface BuskingData {
+  id: string;
   title: string;
   content: string;
   date: string;
