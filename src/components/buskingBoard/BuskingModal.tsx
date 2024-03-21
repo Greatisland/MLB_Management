@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BuskingModalWrapper, BuskingModalContainer } from "../../style/buskingBoardStyled";
 import type { BuskingData } from "../../store/type";
 import { dbFunc } from "../../firebase/firebaseFunc";
+import { useAppSelector } from "../../store/hook.ts"
 
 interface BuskingModalProps {
   isOpen: boolean;
@@ -15,12 +16,14 @@ const BuskingModal = ({ isOpen, onClose, onSubmit }: BuskingModalProps) => {
   const [date, setDate] = useState("");
   const [participants, setParticipants] = useState("");
   const [location, setLocation] = useState("");
+  const { loginUser } = useAppSelector(state => state.membersData)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newArticle: BuskingData = {
       title,
+      user: loginUser.name,
       content,
       date,
       participants,

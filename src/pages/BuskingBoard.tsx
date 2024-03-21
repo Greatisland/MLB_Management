@@ -57,6 +57,7 @@ const BuskingBoard = () => {
             <p>일시: {article.date}</p>
             <p>참여자: {article.participants}</p>
             <p>장소: {article.location}</p>
+            <p>이름: {article.user}</p>
           </li>
         ))}
       </ul>
