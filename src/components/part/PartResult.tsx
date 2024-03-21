@@ -3,7 +3,7 @@ import { PartResultContainer } from "../../style/partPageStyled.tsx"
 import { useState, useEffect } from "react"
 import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { newFaceCheck } from "../../lib/newFaceCheck.ts"
-import type { Member } from "../../store/slice.ts"
+import type { Member } from "../../store/type.ts"
 
 interface NewProp {
   aver: number

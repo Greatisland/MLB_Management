@@ -10,7 +10,7 @@ import {
 import { useParams, useNavigate } from "react-router"
 import { dbFunc } from "../../firebase/firebaseFunc.ts"
 import { useState, useEffect } from "react"
-import { startSwiping, stopSwiping } from "../../store/slice.ts"
+import { startSwiping, stopSwiping } from "../../store/type.ts"
 import type { Board } from "../../store/slice.ts"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import Swal from "sweetalert2"

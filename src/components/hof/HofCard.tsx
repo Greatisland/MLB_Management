@@ -1,7 +1,7 @@
 import { HofCardContainer, SwiperContainer, StyledSwiperSlide } from "../../style/hallOfFameStyled.tsx"
 import { AiFillYoutube } from 'react-icons/ai';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import type { Hof } from "../../store/slice.ts"
+import type { Hof } from "../../store/type.ts"
 import { Swiper } from "swiper/react";
 import { Navigation } from 'swiper/modules';
 import { useAppDispatch } from "../../store/hook.ts";

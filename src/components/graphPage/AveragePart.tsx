@@ -1,4 +1,4 @@
-import type { MeetData } from "../../store/slice.ts"
+import type { MeetData } from "../../store/type.ts"
 import {
   Chart as ChartJS,
   CategoryScale,

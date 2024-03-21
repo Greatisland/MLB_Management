@@ -5,7 +5,7 @@ import { TiUserAdd, TiUserDelete } from 'react-icons/ti';
 import { dbFunc } from "../../firebase/firebaseFunc.ts";
 import { dateCalc } from "../../lib/dateCalc.ts";
 import Swal from "sweetalert2";
-import type { Member } from "../../store/slice.ts";
+import type { Member } from "../../store/type.ts";
 
 const MemberFeeList = () => {
   const { membersData, loginUser } = useAppSelector(state => state.membersData)
