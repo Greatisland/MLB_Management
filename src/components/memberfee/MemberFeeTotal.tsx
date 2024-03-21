@@ -28,7 +28,6 @@ const MemberFeeTotal = () => {
     if(member[1].target === '' && !member[1].special && !member[1].break && member[1].join && !(joinYear === dateCalc('year') && joinMonth === dateCalc('month'))){
       return true
     }
-    console.log(member[1].name)
   })
 
   const percent = () => {
