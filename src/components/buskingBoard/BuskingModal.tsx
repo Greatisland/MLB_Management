@@ -5,6 +5,7 @@ import { dbFunc } from "../../firebase/firebaseFunc";
 import { startSwiping, stopSwiping } from "../../store/slice.ts"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { toggleBuskingModal } from "../../store/slice.ts";
+import Swal from "sweetalert2";
 
 const BuskingModal = () => {
   const { loginUser, modalBuskingState, sendBusking } = useAppSelector(state => state.membersData)
@@ -18,6 +19,33 @@ const BuskingModal = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const newAlert = (param: string) => {
+      return Swal.fire({
+        html: param,
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonText: "알겠습니다 ㅠㅠ",
+      })
+    }
+
+    // 유효성 검증
+    if (title.length > 20) {
+      newAlert('제목은 20자 안으로 작성해주세요!')
+      return;
+    }
+
+    if (content.length > 400) {
+      newAlert("내용은 400자를 넘을 수 없습니다.");
+      return;
+    }
+
+    const today = new Date();
+    const selectedDate = new Date(date);
+    if (selectedDate < today) {
+      newAlert("선택한 날짜는 오늘 이전 날짜일 수 없습니다.");
+      return;
+    }
+
     const newArticle: BuskingData = {
       title,
       uid: loginUser.uid,
@@ -30,12 +58,13 @@ const BuskingModal = () => {
 
     // 전달된 정보가 있으면(수정이면)
     if(sendBusking && sendBusking.id){
-      console.log('수정')
       dbFunc.updateBuskingArticle(sendBusking.id ,newArticle)
     }else{
     // 신규 생성이면
-    console.log('생성')
-      dbFunc.addBuskingArticle(newArticle);
+      dbFunc.addBuskingArticle({...newArticle, participants: [{
+        name: loginUser.name,
+        uid: loginUser.uid
+      }]});
     }
 
     setTitle("");
@@ -51,16 +80,6 @@ const BuskingModal = () => {
   useEffect(() => {
     dispatch(stopSwiping())
     return () => {
-      // // 버스킹 정보 전달 데이터 초기화
-      // dispatch(sendBusking({
-      //   id: '',
-      //   title: '',
-      //   content: '',
-      //   date: '',
-      //   participants: [],
-      //   location: ''
-      // }))
-      // 스와이프 다시 시작
       dispatch(startSwiping())
     }
   }, [])
@@ -92,12 +111,6 @@ const BuskingModal = () => {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
-              {/* <p>참여인원</p>
-              <input
-                type="number"
-                value={participants}
-                onChange={(e) => setParticipants(e.target.value)}
-              /> */}
 
               <p>장소</p>
               <input
@@ -106,7 +119,7 @@ const BuskingModal = () => {
                 onChange={(e) => setLocation(e.target.value)}
               />
 
-              <input type="submit" value="등록" />
+              <input type="submit" value={sendBusking.id ? '수정' : '등록'} />
             </form>
 
             <div className="btnWrapper">

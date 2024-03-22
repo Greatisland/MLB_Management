@@ -21,6 +21,7 @@ import type { BuskingData } from "../../store/type.ts"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import Swal from "sweetalert2"
 import { FaEye, FaUser, FaCommentAlt } from "react-icons/fa";
+import { formatDate } from "../../lib/formatDate.ts"
 
 const BuskingView = () => {
   const dispatch = useAppDispatch()
@@ -184,7 +185,7 @@ const BuskingView = () => {
       </BuskingTitle>
       <BuskingInfo>
         <p>작성자 <span>{article?.user}</span></p>
-        <p>버스킹 일자 <span>{article?.date}</span></p>
+        <p>버스킹 일자 <span>{formatDate(article?.date || '')}</span></p>
         <p>장소 <span>{article?.location}</span></p>
       </BuskingInfo>
       {/* <BuskingBar percentage={(article?.participants.length / 8) * 100}> */}

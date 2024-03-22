@@ -5,8 +5,6 @@ export const BuskingBoardContainer = styled.div`
   overflow: hidden;
 `
 
-
-
 export const BuskingModalWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -116,6 +114,37 @@ export const BuskingModalContainer = styled.div`
   }
 `;
 
+export const BuskingNoticeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  background: ${props => props.theme.pink2};
+  /* background: #ffeaea; */
+  border: 1px solid #f2f2f2;
+  padding: 14px;
+  border-radius: 20px;
+  svg {
+    font-size: 1.6rem;
+    fill: #fff;
+  }
+`
+export const BuskingNoticeModalContainer = styled.div`
+  width: 80%;
+  max-width: 400px;
+  max-height: 600px;
+  background: #fff;
+  border-radius: 30px;
+  gap: 20px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  
+`
+
 export const BuskingListContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -164,11 +193,10 @@ export const BuskingListContainer = styled.div`
       display: flex;
       gap: 10px;
       span {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: #333;
-        /* background: ${props => props.theme.pink}; */
         background: #fff;
-        padding: 2px 4px;
+        padding: 2px 12px;
         border-radius: 20px;
       }
     }

@@ -21,7 +21,8 @@ const BuskingBoard = () => {
   useEffect(() => {
     const fetchArticles = () => {
       dbFunc.getBuskingBoard((data: [string, BuskingData][]) => {
-        const fetchedArticles = data.map(([id, article]) => ({
+        // 최신글이 위로가게 reverse씀
+        const fetchedArticles = data.reverse().map(([id, article]) => ({
           id,
           ...article,
         }));

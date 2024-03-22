@@ -1,12 +1,26 @@
 import type { BuskingData } from "../../store/type"
-import { BuskingListContainer, BuskingBar } from "../../style/buskingBoardStyled"
+import { 
+  BuskingListContainer, 
+  BuskingBar,
+  BuskingNoticeContainer
+} from "../../style/buskingBoardStyled"
 import { useNavigate } from "react-router"
+import { formatDate } from "../../lib/formatDate"
+import { IoIosNotifications } from "react-icons/io";
+import BuskingNoticeModal from "./BuskingNoticeModal";
+import { useState } from "react";
 
 const BuskingList = ({articles}: {articles: BuskingData[]}) => {
   const navigate = useNavigate()
+  const [isModal, setIsModal] = useState(false);
+  
   return (
     <BuskingListContainer>
-      <div>버스킹 규칙 공지</div>
+      <BuskingNoticeContainer onClick={() => setIsModal(!isModal)}>
+        <IoIosNotifications />
+        버스킹 만들기/참가하기 방법
+      </BuskingNoticeContainer>
+      {isModal && <BuskingNoticeModal setIsModal={setIsModal}/>}
     {articles.map((article) => (
       <div
        key={article.id}
@@ -14,7 +28,7 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
        onClick={() => navigate(`/buskingboardview/${article.id}`)}
       >
         <div className="info">
-          <span className='date'>{article.date}</span>
+          <span className='date'>{formatDate(article.date)}</span>
           <span className='location'>{article.location}</span>
         </div>
         <div className="head">
