@@ -114,10 +114,12 @@ export interface InitialState {
   meetData: MeetData
   banData: [string, Ban][]
   hofData: [string, Hof][]
-  sendMember: Member
+  sendMember: Member,
+  sendBusking: Partial<BuskingData>
   sendBan: Ban
   modalState: boolean
   modalPartState: boolean
+  modalBuskingState: boolean
   sortDirection : {
     name: number
     join: number
@@ -145,10 +147,22 @@ export interface InitialState {
 
 export interface BuskingData {
   id?: string;
+  uid: string;
   title: string;
   user: string;
   content: string;
   date: string;
-  participants: string;
+  participants?: {
+    uid: string
+    name: string
+  }[];
   location: string;
+  viewCount?: number
+  viewUsers?: string[]
+  comments?: {
+    name: string
+    contents: string
+    date: string
+    uid: string
+  }[]
 }

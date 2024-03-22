@@ -78,7 +78,7 @@ const SecretBoardView = () => {
   }, [])
 
   useEffect(() => {
-    if(id) dbFunc.incrementViewCount(id, loginUser.uid)
+    if(id) dbFunc.incrementViewCount(id, loginUser.uid, 'board')
   }, [])
 
   return (

@@ -12,6 +12,7 @@ import { useAppSelector } from "../store/hook.ts";
 import GraphPage from "../pages/GraphPage.tsx";
 import GrandFather from "../pages/GrandFather.tsx";
 import BuskingBoard from "../pages/BuskingBoard.tsx";
+import BuskingView from "../components/buskingBoard/BuskingView.tsx";
 
 const AppRouter = () => {
   const location = useLocation()
@@ -66,6 +67,7 @@ const AppRouter = () => {
         <Route path="partpage" element={<PartPage />} />
         <Route path="memberfee" element={<MemberFee />} />
         <Route path="buskingboard" element={<BuskingBoard />} />
+        <Route path="buskingboardview/:id" element={<BuskingView />} />
         <Route path="secretboard" element={<SecretBoard />} />
         <Route path="boardview/:id" element={<SecretBoardView />} />
         <Route path="boardwrite/:id" element={<SecretBoardWrite />} />
