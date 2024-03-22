@@ -229,6 +229,28 @@ export const dbFunc = {
     const articleRef = ref(database, `/busking/${articleId}`);
     update(articleRef, updateArticle);
   },
+  
+  // 버스킹 공지사항 읽어오기
+  async getBuskingNotice() {
+    const articleRef = ref(database, `/buskingNotice`)
+    
+    try {
+      const snapshot = await get(articleRef)
+      
+      if (snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        console.log('No data available')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  // 버스킹 공지사항 수정
+  updateBuskingNotice(updateNotice: {content: string}) {
+    const articleRef = ref(database, `/buskingNotice`);
+    update(articleRef, updateNotice);
+  },
 
   // 버스킹 게시글 삭제
   removeBuskingArticle(articleId: string) {

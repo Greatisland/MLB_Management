@@ -47,7 +47,7 @@ const BuskingBoard = () => {
         })),
         dispatch(toggleBuskingModal())
       }}>
-        <IoMdAddCircle /><span>버스킹 일정 추가하기</span>
+        <IoMdAddCircle /><span>일정 추가하기</span>
       </BuskingAddBtn>
 
       <BuskingList articles={articles} />
