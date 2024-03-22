@@ -16,7 +16,10 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
   
   return (
     <BuskingListContainer>
-      <BuskingNoticeContainer onClick={() => setIsModal(!isModal)}>
+      <BuskingNoticeContainer onClick={() => {
+        document.body.classList.add('no-scroll'),
+        setIsModal(!isModal)
+      }}>
         <IoIosNotifications />
         버스킹 만들기/참가하기 방법
       </BuskingNoticeContainer>

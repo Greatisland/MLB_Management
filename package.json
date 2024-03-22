@@ -17,6 +17,7 @@
     "@mui/material": "^5.13.6",
     "@mui/styled-engine-sc": "^5.12.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/autosize": "^4.0.3",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
     "chart.js": "^4.3.0",

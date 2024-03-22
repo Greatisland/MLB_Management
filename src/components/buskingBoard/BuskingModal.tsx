@@ -65,6 +65,16 @@ const BuskingModal = () => {
         name: loginUser.name,
         uid: loginUser.uid
       }]});
+      Swal.fire({
+        title: "추가되었습니다.",
+        html: `
+          버스킹은 최소 3인 이상이어야 열 수 있어요.<br>
+          <a href="#">links</a>,
+          and other HTML tags
+        `,
+        icon: "success",
+        confirmButtonText: '네'
+      });
     }
 
     setTitle("");
@@ -72,7 +82,7 @@ const BuskingModal = () => {
     setDate("");
     setParticipants([]);
     setLocation("");
-
+    
     dispatch(toggleBuskingModal());
   };
 
@@ -102,10 +112,9 @@ const BuskingModal = () => {
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                required
               ></textarea>
 
-              <p>예상날짜</p>
+              <p>예상 날짜</p>
               <input
                 type="date"
                 value={date}

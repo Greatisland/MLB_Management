@@ -11,7 +11,7 @@ export const BuskingModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 101;
   top: 0;
   left: 0;
   display: flex;
@@ -134,28 +134,39 @@ export const BuskingNoticeContainer = styled.div`
 export const BuskingNoticeModalContainer = styled.div`
   width: 80%;
   max-width: 400px;
-  max-height: 600px;
   background: #fff;
   border-radius: 30px;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 20px;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
-  margin: auto 0;
+  align-items: center;
+  textarea {
+    width: 80%;
+    min-height: 400px;
+    resize: none;
+    padding: 4px;
+    border: none;
+    white-space: pre-wrap;
+  }
+  div {
+    
+  }
   
 `
 
 export const BuskingListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   .con {
     display: flex;
     flex-direction: column;
     gap: 10px;
     /* background: ${props => props.theme.pink2}; */
-    background: #ffeaea;
-    border: 1px solid #f2f2f2;
+    background: #fff;
+    border: 1px solid #ddd;
     padding: 14px;
     border-radius: 20px;
 
@@ -193,9 +204,10 @@ export const BuskingListContainer = styled.div`
       display: flex;
       gap: 10px;
       span {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: #333;
-        background: #fff;
+        /* background: #615e60; */
+        border: 1px solid #bbb;
         padding: 2px 12px;
         border-radius: 20px;
       }
@@ -207,19 +219,21 @@ export const BuskingAddBtn = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  background: ${props => props.theme.green};
+  /* background: ${props => props.theme.brown}; */
+  background: rgba(255,255,255,0.9);
   padding: 4px 30px 4px 30px;
-  border: 2px solid #fff;
+  border: 1px solid #666;
   border-radius: 20px;
   position: fixed;
+  z-index: 100;
   bottom: 80px;
   left: 30px;
   svg {
     font-size: 2rem;
-    fill: #fff;
+    fill: #333;
   }
   span {
-    color: #fff;
+    color: #333;
     font-size: 0.9rem;
     font-weight: bold;
   }
