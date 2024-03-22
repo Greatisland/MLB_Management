@@ -160,57 +160,58 @@ export const BuskingListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  .con {
+`
+
+export const BuskingCard = styled.div<{end: boolean}>`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* background: ${props => props.theme.pink2}; */
+  background: ${props => props.end ? '#f2f2f2' : '#fff'};
+  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 20px;
+
+  .head {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    /* background: ${props => props.theme.pink2}; */
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 14px;
-    border-radius: 20px;
-
-    .head {
-      display: flex;
-      align-items: center;
-      h3 {
-        font-size: 1.5rem;
-        color: #333;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin-right: 5px;
-      }
-      .participants {
-
-      }
-      .user {
-        min-width: 3rem;
-        color: #333;
-        text-align: right;
-        font-weight: bold;
-        font-size: 0.8rem;
-        margin-left: auto;
-      }
-    }
-
-    .content {
+    align-items: center;
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      margin-right: 5px;
     }
+    .participants {
 
-    .info {
-      display: flex;
-      gap: 10px;
-      span {
-        font-size: 0.8rem;
-        color: #333;
-        /* background: #615e60; */
-        border: 1px solid #bbb;
-        padding: 2px 12px;
-        border-radius: 20px;
-      }
+    }
+    .user {
+      min-width: 3rem;
+      color: #333;
+      text-align: right;
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-left: auto;
+    }
+  }
+
+  .content {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .info {
+    display: flex;
+    gap: 10px;
+    span {
+      font-size: 0.8rem;
+      color: #333;
+      /* background: #615e60; */
+      border: 1px solid #bbb;
+      padding: 2px 12px;
+      border-radius: 20px;
     }
   }
 `

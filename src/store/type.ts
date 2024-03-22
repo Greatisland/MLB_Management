@@ -152,6 +152,7 @@ export interface BuskingData {
   user: string;
   content: string;
   date: string;
+  end: boolean;
   participants?: {
     uid: string
     name: string

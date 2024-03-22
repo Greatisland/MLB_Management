@@ -80,10 +80,16 @@ const BuskingView = () => {
   }
 
   const handlePart = (param: boolean) => {
-    if((article?.participants?.length || 0) >= 8 && param){
+    if(
+      (article?.participants?.length || 0) >= 8 && param
+      ||
+      article?.end
+      ){
       Swal.fire({
         html: `
-          더 이상 참가를 할 수 없어요!
+          ${article?.end ? 
+            '남은 시간이 7일 이하일 경우 투표결과를 바꿀 수 없어요.':
+            '참가인원이 모두 꽉 찼어요.'}
         `,
         icon: 'warning',
         showCancelButton: false,

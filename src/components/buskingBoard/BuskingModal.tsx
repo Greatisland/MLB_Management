@@ -41,8 +41,13 @@ const BuskingModal = () => {
 
     const today = new Date();
     const selectedDate = new Date(date);
-    if (selectedDate < today) {
-      newAlert("선택한 날짜는 오늘 이전 날짜일 수 없습니다.");
+    
+    // 현재 날짜에 10일을 더한 날짜를 계산.
+    const minDate = new Date(today);
+    minDate.setDate(today.getDate() + 10);
+
+    if (selectedDate <= minDate) {
+      newAlert("오늘로부터 10일 이상의 날짜로 설정해주세요.");
       return;
     }
 
@@ -54,6 +59,7 @@ const BuskingModal = () => {
       date,
       participants,
       location,
+      end: false
     };
 
     // 전달된 정보가 있으면(수정이면)

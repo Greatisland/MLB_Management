@@ -2,7 +2,8 @@ import type { BuskingData } from "../../store/type"
 import { 
   BuskingListContainer, 
   BuskingBar,
-  BuskingNoticeContainer
+  BuskingNoticeContainer,
+  BuskingCard
 } from "../../style/buskingBoardStyled"
 import { useNavigate } from "react-router"
 import { formatDate } from "../../lib/formatDate"
@@ -25,10 +26,10 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
       </BuskingNoticeContainer>
       {isModal && <BuskingNoticeModal setIsModal={setIsModal}/>}
     {articles.map((article) => (
-      <div
+      <BuskingCard
        key={article.id}
-       className='con'
        onClick={() => navigate(`/buskingboardview/${article.id}`)}
+       end={article.end}
       >
         <div className="info">
           <span className='date'>{formatDate(article.date)}</span>
@@ -45,11 +46,7 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
             <span className='percent'>{((article?.participants?.length || 0) / 8) * 100}%</span>
           </div>
         </BuskingBar>
-        {/* <p className='content'>{article.content}</p> */}
-
-
-
-      </div>
+      </BuskingCard>
     ))}
   </BuskingListContainer>
   )
