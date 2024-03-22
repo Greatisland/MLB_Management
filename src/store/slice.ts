@@ -8,6 +8,14 @@ const initialState: InitialState = {
   meetData: [],
   banData: [],
   hofData: [],
+  sendBusking: {
+    id: '',
+    title: '',
+    content: '',
+    date: '',
+    participants: [],
+    location: ''
+  },
   sendMember: {
     id: '',
     name: '',
@@ -31,6 +39,7 @@ const initialState: InitialState = {
   },
   modalState: false,
   modalPartState: false,
+  modalBuskingState: false,
   sortDirection : {
     name: 1,
     join: 1,
@@ -165,10 +174,16 @@ const membersDataSlice = createSlice({
       if(state.modalPartState){document.body.classList.add('no-scroll')}
       else{document.body.classList.remove('no-scroll')}
     },
+    toggleBuskingModal (state) {
+      state.modalBuskingState = !state.modalBuskingState
+      if(state.modalBuskingState){document.body.classList.add('no-scroll')}
+      else{document.body.classList.remove('no-scroll')}
+    },
 
     //모달 전송
     sendMember (state, action) {state.sendMember = action.payload},
     sendBan (state, action) {state.sendBan = action.payload},
+    sendBusking (state, action) {state.sendBusking = action.payload},
 
     //로그인 유저 전송
     loginUserSend (state, action) {state.loginUser = action.payload},
@@ -186,10 +201,12 @@ export const {
   sortState, 
   toggleModal, 
   togglePartModal, 
+  toggleBuskingModal,
   setFee, 
   sendMember, 
   setBanMembers, 
   setMembers, 
+  sendBusking,
   setMeet,
   setHof, 
   sendBan, 

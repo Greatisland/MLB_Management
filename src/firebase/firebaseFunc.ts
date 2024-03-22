@@ -192,10 +192,10 @@ export const dbFunc = {
   },
 
   //칭찬게시판 글 조회수 저장
-  incrementViewCount(postId: string, uid: string) {
+  incrementViewCount(postId: string, uid: string, param: string) {
     //로컬스토리지에 저장하여 중복집계 방지
     const viewedPosts: { [key: string]: boolean } = JSON.parse(localStorage.getItem('viewedPosts') || '{}')
-    const postRef = ref(database, `/board/${postId}`)
+    const postRef = ref(database, `/${param}/${postId}`)
     const userNameRef = ref(database, `/userLevels/${uid}`)
     onValue(userNameRef, (snapshot) => {
       const userName = snapshot.val()
@@ -242,6 +242,23 @@ export const dbFunc = {
       const data = Object.entries(snapshot.val() || {}) as [string, BuskingData][];
       callback(data);
     });
+  },
+  
+  // 버스킹 게시글 읽어오기
+  async getBuskingArticle(articleId: string | undefined) {
+    const articleRef = ref(database, `/busking/${articleId}`)
+    
+    try {
+      const snapshot = await get(articleRef)
+      
+      if (snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        console.log('No data available')
+      }
+    } catch (error) {
+      console.error(error)
+    }
   },
 
   //회비 수정
