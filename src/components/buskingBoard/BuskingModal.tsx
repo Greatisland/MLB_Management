@@ -8,9 +8,14 @@ import { toggleBuskingModal } from "../../store/slice.ts";
 import Swal from "sweetalert2";
 
 const BuskingModal = () => {
+  const basicContent = `
+    버스킹 시간: ex) 13시~17시
+    연습장소: ex) 구일즈 연습실
+  `
+
   const { loginUser, modalBuskingState, sendBusking } = useAppSelector(state => state.membersData)
   const [title, setTitle] = useState(sendBusking.title || '');
-  const [content, setContent] = useState(sendBusking.content || '');
+  const [content, setContent] = useState(sendBusking.content || basicContent);
   const [date, setDate] = useState(sendBusking.date || '');
   const [participants, setParticipants] = useState(sendBusking.participants || []);
   const [location, setLocation] = useState(sendBusking.location || '');
@@ -74,12 +79,13 @@ const BuskingModal = () => {
       Swal.fire({
         title: "추가되었습니다.",
         html: `
-          버스킹은 최소 3인 이상이어야 열 수 있어요.<br>
-          <a href="#">links</a>,
-          and other HTML tags
+          버스킹을 열기 전 꼭 화면 상단의 <br>
+          <b>버스킹 만들기/참가하기 방법</b>을 읽어주세요! <br>
+          7일 남은 시점에서 자동으로 밴드에 글이 등록되며 
+          등록된 시점에서는 인원변동이 되지 않습니다.
         `,
         icon: "success",
-        confirmButtonText: '네'
+        confirmButtonText: '확인'
       });
     }
 
@@ -127,7 +133,7 @@ const BuskingModal = () => {
                 onChange={(e) => setDate(e.target.value)}
               />
 
-              <p>장소</p>
+              <p>버스킹 장소</p>
               <input
                 type="text"
                 value={location}

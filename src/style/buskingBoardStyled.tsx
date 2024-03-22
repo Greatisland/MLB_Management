@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const BuskingBoardContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
   overflow: hidden;
 `
@@ -144,10 +146,14 @@ export const BuskingNoticeModalContainer = styled.div`
   align-items: center;
   textarea {
     width: 80%;
-    min-height: 400px;
+    min-height: 600px;
     resize: none;
     padding: 4px;
     border: none;
+    white-space: pre-wrap;
+  }
+  pre {
+    width: 80%;
     white-space: pre-wrap;
   }
   div {
@@ -167,16 +173,31 @@ export const BuskingCard = styled.div<{end: boolean}>`
   flex-direction: column;
   gap: 10px;
   /* background: ${props => props.theme.pink2}; */
-  background: ${props => props.end ? '#f2f2f2' : '#fff'};
+  /* background: ${props => props.end ? '#f2f2f2' : '#fff'}; */
+  background: #fff;
+  opacity: ${props => props.end ? '0.4' : '1'};
   border: 1px solid #ddd;
   padding: 14px;
   border-radius: 20px;
+
+  .emagency {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: ${props => props.theme.pink2};
+    font-weight: bold;
+    font-size: 0.8rem;
+    svg {
+      font-size: 1.2rem;
+      fill: ${props => props.theme.pink2};
+    }
+  }
 
   .head {
     display: flex;
     align-items: center;
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #333;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -204,6 +225,7 @@ export const BuskingCard = styled.div<{end: boolean}>`
 
   .info {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     span {
       font-size: 0.8rem;

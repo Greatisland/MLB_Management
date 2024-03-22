@@ -49,7 +49,7 @@ const BuskingNoticeModal = ({setIsModal}: {setIsModal: (param: boolean) => void}
         </>
         :
         <>
-        {notice}
+        <pre>{notice}</pre>
         <Btn onClick={() => {
           document.body.classList.remove('no-scroll'),
           setIsModal(false)

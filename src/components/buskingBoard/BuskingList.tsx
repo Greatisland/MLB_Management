@@ -10,11 +10,19 @@ import { formatDate } from "../../lib/formatDate"
 import { IoIosNotifications } from "react-icons/io";
 import BuskingNoticeModal from "./BuskingNoticeModal";
 import { useState } from "react";
+import { AiOutlineNotification } from "react-icons/ai";
 
 const BuskingList = ({articles}: {articles: BuskingData[]}) => {
   const navigate = useNavigate()
   const [isModal, setIsModal] = useState(false);
+
   
+  const deadline = (date: string) => {
+    const endDay = new Date(date).getDate()
+    const today = new Date().getDate()
+    return endDay - today
+  }
+
   return (
     <BuskingListContainer>
       <BuskingNoticeContainer onClick={() => {
@@ -31,8 +39,14 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
        onClick={() => navigate(`/buskingboardview/${article.id}`)}
        end={article.end}
       >
+        {deadline(article.date) <= 10 && !article.end &&
+        <div className="emagency">
+          <AiOutlineNotification />참가투표가 곧 마감됩니다.
+        </div>
+        }
         <div className="info">
           <span className='date'>{formatDate(article.date)}</span>
+          <span className='deadline'>{deadline(article.date)}일 뒤</span>
           <span className='location'>{article.location}</span>
         </div>
         <div className="head">
