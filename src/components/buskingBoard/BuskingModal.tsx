@@ -48,8 +48,7 @@ const BuskingModal = () => {
     const selectedDate = new Date(date);
     
     // 현재 날짜에 10일을 더한 날짜를 계산.
-    const minDate = new Date(today);
-    minDate.setDate(today.getDate() + 10);
+    const minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 10);
 
     if (selectedDate <= minDate) {
       newAlert("오늘로부터 10일 이상의 날짜로 설정해주세요.");
@@ -77,12 +76,10 @@ const BuskingModal = () => {
         uid: loginUser.uid
       }]});
       Swal.fire({
-        title: "추가되었습니다.",
+        title: "꼭 확인해주세요!",
         html: `
-          버스킹을 열기 전 꼭 화면 상단의 <br>
-          <b>버스킹 만들기/참가하기 방법</b>을 읽어주세요! <br>
-          7일 남은 시점에서 자동으로 밴드에 글이 등록되며 
-          등록된 시점에서는 인원변동이 되지 않습니다.
+        버스킹을 시작하기 전에, 화면 상단에 위치한 **<b>버스킹 만들기/참가하기 방법</b>**을 반드시 확인해 주세요! <br><br>
+        버스킹 시작 7일 전에는 자동으로 밴드에 일정이 등록됩니다. 이때부터는 참가 인원 투표가 불가능하니, 사전에 계획을 잘 세우고 참여해 주시기 바랍니다.
         `,
         icon: "success",
         confirmButtonText: '확인'

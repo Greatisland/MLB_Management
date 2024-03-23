@@ -6,7 +6,8 @@ import { useAppSelector } from "../../store/hook";
 
 const BuskingNoticeModal = ({setIsModal}: {setIsModal: (param: boolean) => void}) => {
   const { loginUser } = useAppSelector(state => state.membersData) 
-  const [notice, setNotice] = useState('');
+  const [notice, setNotice] = useState('')
+  const [change, setChange] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   //글 정보 가져오기
@@ -31,25 +32,33 @@ const BuskingNoticeModal = ({setIsModal}: {setIsModal: (param: boolean) => void}
     dbFunc.updateBuskingNotice({content: notice})
   }
 
+  const SafeHtmlPre = ({ html }: {html: string}) => {
+    return <pre dangerouslySetInnerHTML={{ __html: html }}></pre>;
+  }
+
   return (
     <BuskingModalWrapper>
       <BuskingNoticeModalContainer>
         {loginUser.level >= 2 ? 
-        <><textarea
+        <>
+        {change ? <textarea
           value={notice}
           onChange={(e) => resizeHeight(textareaRef, e)}
           ref={textareaRef}
           required
-        ></textarea>
+        /> : <SafeHtmlPre html={notice} />}
+        <Btn onClick={() => {
+          setChange(!change)
+        }}><p>공지사항 수정하기</p></Btn>
         <Btn onClick={() => {
           handleNotice()
           document.body.classList.remove('no-scroll'),
           setIsModal(false)
-        }}><p>공지사항 수정</p></Btn>
+        }}><p>확인</p></Btn>
         </>
         :
         <>
-        <pre>{notice}</pre>
+        <SafeHtmlPre html={notice} />
         <Btn onClick={() => {
           document.body.classList.remove('no-scroll'),
           setIsModal(false)

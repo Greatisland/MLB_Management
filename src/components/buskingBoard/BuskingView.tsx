@@ -20,7 +20,7 @@ import { sendBusking, startSwiping, stopSwiping, toggleBuskingModal } from "../.
 import type { BuskingData } from "../../store/type.ts"
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import Swal from "sweetalert2"
-import { FaEye, FaUser, FaCommentAlt } from "react-icons/fa";
+import { FaEye, FaUser, FaRegComment } from "react-icons/fa";
 import { formatDate } from "../../lib/formatDate.ts"
 
 const BuskingView = () => {
@@ -213,7 +213,7 @@ const BuskingView = () => {
       </BuskingVote>
       <BuskingContent>{article?.content}</BuskingContent>
       <CommentSection>
-        <h3><FaCommentAlt />댓글 ({article?.comments ? Object.keys(article?.comments).length : 0})</h3>
+        <h3><FaRegComment />댓글 ({article?.comments ? Object.keys(article?.comments).length : 0})</h3>
         <CommentList>
           {article?.comments &&
             Object.entries(article?.comments).map(([commentId, comment]) => (

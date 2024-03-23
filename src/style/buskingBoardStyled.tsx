@@ -226,7 +226,8 @@ export const BuskingCard = styled.div<{end: boolean}>`
   .info {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+    align-items: center;
     span {
       font-size: 0.8rem;
       color: #333;
@@ -238,11 +239,31 @@ export const BuskingCard = styled.div<{end: boolean}>`
   }
 `
 
+export const CommentNumber = styled.div<{com: number}>`
+  svg {
+    font-size: 1.7rem;
+    fill: ${props => props.theme.pink2};
+    transform: translateY(1px);
+  }
+  position: relative;
+  margin: 0 0 0 auto;
+  &::after {
+    display: block;
+    content: '${props => props.com}';
+    width: 2px;
+    height: 2px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 11%; left: 32%;
+  }
+`
+
 export const BuskingAddBtn = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  /* background: ${props => props.theme.brown}; */
   background: rgba(255,255,255,0.9);
   padding: 4px 30px 4px 30px;
   border: 1px solid #666;
@@ -391,8 +412,8 @@ export const BuskingVote = styled.div`
   }
 `;
 
-export const BuskingContent = styled.p`
-  font-size: 1.1rem;
+export const BuskingContent = styled.pre`
+  font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 30px;
 `;
@@ -402,10 +423,10 @@ export const CommentSection = styled.div`
   h3 {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
     margin: 0 0 20px 0;
     svg {
-      font-size: 0.9rem;
+      font-size: 1.4rem;
 
     }
   }
