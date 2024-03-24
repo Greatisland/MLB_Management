@@ -88,7 +88,7 @@ const BuskingView = () => {
       Swal.fire({
         html: `
           ${article?.end ? 
-            '남은 시간이 7일 이하일 경우 투표결과를 바꿀 수 없어요.':
+            '밴드에 일정이 올라간 이후에는 밴드에서 투표결과를 변경해주세요.':
             '참가인원이 모두 꽉 찼어요.'}
         `,
         icon: 'warning',
