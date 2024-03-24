@@ -128,6 +128,7 @@ export const BuskingNoticeContainer = styled.div`
   border: 1px solid #f2f2f2;
   padding: 14px;
   border-radius: 20px;
+  cursor: pointer;
   svg {
     font-size: 1.6rem;
     fill: #fff;
@@ -179,6 +180,7 @@ export const BuskingCard = styled.div<{end: boolean}>`
   border: 1px solid #ddd;
   padding: 14px;
   border-radius: 20px;
+  cursor: pointer;
 
   .emagency {
     display: flex;
@@ -272,6 +274,7 @@ export const BuskingAddBtn = styled.div`
   z-index: 100;
   bottom: 80px;
   left: 30px;
+  cursor: pointer;
   svg {
     font-size: 2rem;
     fill: #333;
@@ -409,6 +412,7 @@ export const BuskingVote = styled.div`
     border-radius: 20px;
     background: #e7b3b3;
     color: #fff;
+    cursor: pointer;
   }
 `;
 

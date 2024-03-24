@@ -10,6 +10,7 @@ import {
 } from "firebase/auth"
 import { getDatabase, remove, ref, onValue, push, set, update, get, runTransaction } from 'firebase/database'
 import { getAnalytics } from "firebase/analytics";
+import { getMessaging } from "firebase/messaging";
 import type { Member, Ban, Hof, BuskingData } from '../store/type.ts'
 import Swal from 'sweetalert2'
 import { app } from "./firebaseConfig"
@@ -33,6 +34,9 @@ const meetRef = ref(database, '/meetData')
 
 //애널리틱스
 const analytics = getAnalytics(app)
+
+//메시지
+const messaging = getMessaging(app);
 
 //데이터베이스 메소드
 export const dbFunc = {
