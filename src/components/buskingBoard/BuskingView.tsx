@@ -29,6 +29,9 @@ const BuskingView = () => {
   const { id } = useParams()
   const { loginUser } = useAppSelector(state => state.membersData)
 
+  //댓글
+  const [ con, setCon ] = useState('')
+
   const [ article, setArticle ] = useState<BuskingData>()
 
   const getToday = () => {
@@ -39,8 +42,7 @@ const BuskingView = () => {
     return `${year}.${month}.${day}`
   }
 
-  //댓글
-  const [ con, setCon ] = useState('')
+
 
   const handleUpdate = () => {
     dispatch(sendBusking({...article, id}))
@@ -150,7 +152,61 @@ const BuskingView = () => {
     }
     setCon('')
   }
+
+  // 댓글 수정
+  const editComment = async (commentId: string, comment: any) => {  
+    if(comment.uid !== loginUser.uid){
+      Swal.fire({
+        html: `
+          내가 쓴 댓글이 아니라 수정할 수 없어요!
+        `,
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonText: "알겠습니다 ㅠㅠ",
+      })
+      return
+    }
   
+    const result = await Swal.fire({
+      input: "textarea",
+      inputLabel: "댓글 수정",
+      inputAttributes: {
+        "aria-label": "Type your message here"
+      },
+      inputValue: `${comment.contents}`,
+      showCancelButton: true,
+      showDenyButton: true, 
+      confirmButtonText: '수정',
+      cancelButtonText: '취소',
+      denyButtonText: '삭제', 
+    });
+    
+    if (result.isConfirmed) {
+      // 수정 버튼 클릭 시
+      console.log(id)
+
+      if(id){
+        const updateComment = {...article}
+
+        if(updateComment?.comments){
+          updateComment.comments[Number(commentId)].contents = result.value
+        }
+        dbFunc.updateBuskingArticle(id, updateComment)
+        Swal.fire('댓글이 수정되었습니다.');
+      }
+    } else if (result.isDenied) {
+      // 삭제 버튼 클릭 시
+      if (id) {
+        const updateComment = {...article}
+
+        if (updateComment?.comments) {
+          updateComment.comments.splice(Number(commentId), 1)
+          dbFunc.updateBuskingArticle(id, updateComment)
+          Swal.fire('댓글이 삭제되었습니다.')
+        }
+      }
+    }
+  }
   //좌우 스와이프 페이지이동 컨트롤 (페이지 오픈시 비활성, 페이지 벗어날 시 활성)
   useEffect(() => {
     dispatch(stopSwiping())
@@ -217,7 +273,10 @@ const BuskingView = () => {
         <CommentList>
           {article?.comments &&
             Object.entries(article?.comments).map(([commentId, comment]) => (
-              <CommentItem key={commentId}>
+              <CommentItem 
+                key={commentId}
+                onClick={() => {editComment(commentId, comment)}}
+              >
                 <CommentMeta>
                   <span className='name'><FaUser />{comment.name}</span>
                   <span>{comment.date}</span>
