@@ -19,6 +19,8 @@ const BuskingModal = () => {
   const [date, setDate] = useState(sendBusking.date || '');
   const [participants, setParticipants] = useState(sendBusking.participants || []);
   const [location, setLocation] = useState(sendBusking.location || '');
+  const [max, setMax] = useState(sendBusking.max || '3');
+  const [deadline, setDeadline] = useState(sendBusking.deadline || '7');
   const dispatch = useAppDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +65,9 @@ const BuskingModal = () => {
       date,
       participants,
       location,
-      end: false
+      end: false,
+      max,
+      deadline,
     };
 
     // 전달된 정보가 있으면(수정이면)
@@ -136,6 +140,34 @@ const BuskingModal = () => {
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />
+
+              <div className="box">
+                <div className="sub_box">
+                <p>최대 인원</p>
+                <input 
+                  type="number"
+                  value={max}
+                  min='2'
+                  max='8'
+                  onChange={(e) => setMax(e.target.value)}
+                />
+                </div>
+
+                <div className="sub_box">
+                  <p>마감되는 날짜</p>
+                  <div className="sub_box2">
+                  <input 
+                    type="number"
+                    value={deadline}
+                    min='7'
+                    max='30'
+                    onChange={(e) => setDeadline(e.target.value)}
+                  />
+                  <span>일 전</span>
+                  </div>
+                </div>
+              </div>
+
 
               <input type="submit" value={sendBusking.id ? '수정' : '등록'} />
             </form>

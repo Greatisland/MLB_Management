@@ -50,9 +50,11 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
        onClick={() => navigate(`/buskingboardview/${article.id}`)}
        end={article.end}
       >
+        {/* {article.end && <span className="fixed"> - Fixed - </span>} */}
+        <div className="wrap">
         {deadline(article.date) <= 14 && !article.end &&
         <div className="emagency">
-          <AiOutlineNotification />{deadline(article.date) - 7}일 후 참가투표가 마감됩니다.
+          <AiOutlineNotification />{deadline(article.date) - Number(article.deadline)}일 후 참가투표가 마감됩니다.
         </div>}
 
         <div className="info">
@@ -67,12 +69,12 @@ const BuskingList = ({articles}: {articles: BuskingData[]}) => {
           {/* <span className='participants'>{article?.participants?.length || 0}명</span> */}
           <span className='user'>{article.user}</span>
         </div>
-        <BuskingBar percentage={((article?.participants?.length || 0) / 8) * 100}>
+        <BuskingBar percentage={((article?.participants?.length || 0) / Number(article.max)) * 100}>
           <div className='fill'>
             {/* <span>{(article?.participants?.length) || 0}/8</span> */}
-            <span className='percent'>{((article?.participants?.length || 0) / 8) * 100}%</span>
+            <span className='percent'>{((article?.participants?.length || 0) / Number(article.max)) * 100}%</span>
           </div>
-        </BuskingBar>
+        </BuskingBar></div>
       </BuskingCard>
     ))}
   </BuskingListContainer>

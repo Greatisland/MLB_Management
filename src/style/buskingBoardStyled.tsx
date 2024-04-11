@@ -32,7 +32,6 @@ export const BuskingModalWrapper = styled.div`
 export const BuskingModalContainer = styled.div`
   width: 80%;
   max-width: 400px;
-  max-height: 600px;
   background: #fff;
   border-radius: 30px;
   gap: 20px;
@@ -45,6 +44,31 @@ export const BuskingModalContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .box {
+    display: flex;
+    justify-content: space-around;
+    .sub_box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      p {
+        text-align: center;
+      }
+      input {
+        width: 14px;
+      }
+      .sub_box2 {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        span {
+          margin: 0 0 10px 0;
+        }
+      }
+    }
   }
 
   p {
@@ -170,17 +194,33 @@ export const BuskingListContainer = styled.div`
 `
 
 export const BuskingCard = styled.div<{end: boolean}>`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  position: relative;
   /* background: ${props => props.theme.pink2}; */
   /* background: ${props => props.end ? '#f2f2f2' : '#fff'}; */
   background: #fff;
-  opacity: ${props => props.end ? '0.4' : '1'};
   border: 1px solid #ddd;
   padding: 14px;
   border-radius: 20px;
   cursor: pointer;
+
+  .wrap {
+    opacity: ${props => props.end ? '0.4' : '1'};
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fixed {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#666;
+    font-size: 2rem;
+    font-weight: bold;
+    /* letter-spacing: 0.08rem; */
+    z-index: 200;
+  }
 
   .emagency {
     display: flex;

@@ -165,5 +165,7 @@ export interface BuskingData {
     contents: string
     date: string
     uid: string
-  }[]
+  }[],
+  max: string
+  deadline: string
 }
