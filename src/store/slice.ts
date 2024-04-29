@@ -17,7 +17,7 @@ const initialState: InitialState = {
     participants: [],
     location: '',
     deadline: '',
-    max: 0
+    max: ''
   },
   sendMember: {
     id: '',
