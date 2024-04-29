@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../store/hook.ts"
 import { StyledFaCrown, StyledFaStar } from "../../style/homeStyled.tsx"
 import { sortState } from "../../store/slice.ts"
-import { DangerText, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
+import { DangerText, MemberCard, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
 import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
 import { useState } from "react"
@@ -11,6 +11,8 @@ import { newFaceCheck } from "../../lib/newFaceCheck.ts"
 import { oldFaceCheck } from "../../lib/oldFaceCheck.ts"
 import { hotCount } from "../../lib/hotCount.ts"
 import { NoticeText } from "../../style/partPageStyled.tsx"
+import { getTotalAttendance } from "../../lib/getTotalAttendance.ts"
+import { checkAttendanceWarning } from "../../lib/checkAttendanceWarning .ts"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
@@ -54,7 +56,7 @@ const PartList = () => {
             <th onClick={() => {dispatch(sortState('name'))}}>정렬 | 이름</th>
             <th className="index">순번</th>
             <th onClick={() => {dispatch(sortState('monthPart'))}}>{monthView}월 참석</th>
-            <th onClick={() => {dispatch(sortState('aver'))}}>평균 참석</th>
+            <th onClick={() => {dispatch(sortState('aver'))}}>3개월간 참석</th>
           </tr>
         </thead>
         <tbody>
@@ -72,37 +74,21 @@ const PartList = () => {
               yearData = (member[1] as any).attend[yearView] || {}
           }
 
+          const isWarning = checkAttendanceWarning(member[1])
+
           return (
-          loginUser.level >= 2 && member[1].danger ?
-          <DangerText key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
-            <td>{member[1].special === '모임장' ?
-                <StyledFaCrown bgColor='#ffac4c' /> : 
-                member[1].special === '운영진' ? 
-                <StyledFaStar bgColor='#fc7b7b' /> : null
-                
-              }{member[1].name}
-              <div className="tagContainer">
-                <span className="tagDanger">위험!</span>
-              {//신입태그
-                newFaceCheck(joinYear, joinMonth) ? <span className="tagNew">신입</span> : null
-              }</div></td>
-            <td className="index">{i+1}</td>
-            <td>{
-            yearData ? yearData[monthView] || 0 : 0
-            } 회</td>
-            {/* <td>{totalCalcFunc(member[1], yearView).aver} 회</td> */}
-            <td>{averCheck(member[1], yearView)} 회</td>
-          </DangerText>
-
-          :
-
-          <tr key={i} onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}>
+          <MemberCard 
+            key={i} 
+            onClick={() => {dispatch(togglePartModal()), dispatch(sendMember({id: member[0]}))}}
+            isWarning={isWarning}
+          >
             <td>{member[1].special === '모임장' ?
                 <StyledFaCrown bgColor='#ffac4c' /> : 
                 member[1].special === '운영진' ? 
                 <StyledFaStar bgColor='#fc7b7b' /> : null}
               {member[1].name}
               <div className="tagContainer">
+              {isWarning && <span className="tagDanger">위험!</span>}
               {
                 //신입태그
                 newFaceCheck(joinYear, joinMonth) ? <span className="tagNew">신입</span> : null
@@ -119,9 +105,9 @@ const PartList = () => {
             <td>{
             yearData ? yearData[monthView] || 0 : 0
             } 회</td>
-            <td>{totalCalcFunc(member[1], yearView).aver} 회</td>
+            <td>{getTotalAttendance(member[1])} 회</td>
             {/* <td>{averCheck(member[1], yearView)} 회</td> */}
-          </tr>
+          </MemberCard>
         )})}
         </tbody>
       </table>

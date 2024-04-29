@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { totalCalcFunc } from "../lib/totalCalcFunc"
 import type { InitialState } from "./type"
+import { getTotalAttendance } from "../lib/getTotalAttendance"
 
 
 const initialState: InitialState = {
@@ -157,11 +158,19 @@ const membersDataSlice = createSlice({
         })
         state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
       } else if (action.payload === 'aver') {
+        /* //전체 평균값일 경우
         state.membersData.sort((a, b) => {
           return (totalCalcFunc(b[1], state.yearView).aver - totalCalcFunc(a[1], state.yearView).aver) * state.sortDirection.aver
           // return (averCheck(b[1], state.yearView) - averCheck(a[1], state.yearView)) * state.sortDirection.aver
         })
         state.sortDirection.aver = -state.sortDirection.aver
+        */
+       state.membersData.sort((a, b) => {
+        return (
+          (getTotalAttendance(b[1]) - getTotalAttendance(a[1])) * state.sortDirection.aver
+        )
+       })
+       state.sortDirection.aver = -state.sortDirection.aver
       }
     },
 

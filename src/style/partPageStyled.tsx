@@ -88,7 +88,16 @@ const tagStyles = css`
   border-radius: 2rem; 
 `
 
+interface MemberItemProps {
+  isWarning: boolean;
+}
 
+export const MemberCard  = styled.tr<MemberItemProps>`
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #fff;
+  background: ${props => props.isWarning ? '#f5eaea;': null}
+`
 export const PartListContainer = styled.div`
   ${componentStyles}
   flex-direction: column;
