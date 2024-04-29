@@ -251,7 +251,7 @@ const BuskingView = () => {
         <p>장소 <span>{article?.location}</span></p>
       </BuskingInfo>
       {/* <BuskingBar percentage={(article?.participants.length / 8) * 100}> */}
-      <BuskingBar percentage={((article?.participants?.length || 0) / (article?.max || 8)) * 100}>
+      <BuskingBar percentage={((article?.participants?.length || 0) / (Number(article?.max) || 8)) * 100}>
         <div className='fill'>
           <span>{(article?.participants?.length) || 0}/{article?.max}</span>
           {/* <span>{(test.length / 8) * 100}</span> */}
