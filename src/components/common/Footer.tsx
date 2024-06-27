@@ -20,7 +20,8 @@ const Footer = () => {
         <Link to='/partpage' className={currentPath === '/partpage' ? 'spot' : 'none'}><AiFillEdit /><p>참석관리</p></Link>
         <Link to='/graphpage' className={currentPath === '/graphpage' ? 'spot' : 'none'}><BsFillBarChartFill /><p>통계</p></Link>
         {/* <Link to='/buskingboard' className={currentPath === '/buskingboard' ? 'spot' : 'none'}><MdOutlineMicExternalOn /><p>버스킹</p></Link> */}
-        <Link to='/memberfee' className={currentPath === '/memberfee' ? 'spot' : 'none'}><GiMoneyStack /><p>회비관리</p></Link>
+        <Link to='/secretboard' className={currentPath === '/secretboard' ? 'spot' : 'none'}><AiFillDatabase /><p>게시판</p></Link>
+        {/* <Link to='/memberfee' className={currentPath === '/memberfee' ? 'spot' : 'none'}><GiMoneyStack /><p>회비관리</p></Link> */}
         <Link to='/halloffame' className={currentPath === '/halloffame' ? 'spot' : 'none'}><AiFillTrophy /><p>명예의 전당</p></Link>
       </FooterContainer> :
       <></>

@@ -24,7 +24,7 @@ const AppRouter = () => {
   // const pageList = loginUser.level >= 2 ? 
   //   ['/infopage', '/partpage', '/graphpage', '/memberfee', '/secretboard', '/halloffame'] : 
   //   ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame'] 
-  const pageList = ['/infopage', '/partpage', '/graphpage', '/memberfee', '/halloffame']
+  const pageList = ['/infopage', '/partpage', '/graphpage', '/secretboard', '/halloffame']
   
   let currentPageIndex = pageList.findIndex(page => page === location.pathname) 
 
