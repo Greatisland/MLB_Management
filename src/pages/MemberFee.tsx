@@ -13,8 +13,6 @@ import PrizeList from "../components/memberfee/PrizeList.tsx"
 const MemberFee = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   return (
-    <>
-    {loginUser.level >= 1 ? 
     <MemberFeeContainer>
       <MemberFeeBtn />
       <p className="dateResult"><span>{dateCalc('year')}</span>년<span>{dateCalc('month')}</span>월 <span>{dateCalc('day')}</span>일 회비현황</p>
@@ -23,9 +21,7 @@ const MemberFee = () => {
       <MemberFeeList />
       <ScrollToTopBtn />
       <Footer />
-    </MemberFeeContainer> :
-    <Waiting />}
-    </>
+    </MemberFeeContainer>
   )
 }
 

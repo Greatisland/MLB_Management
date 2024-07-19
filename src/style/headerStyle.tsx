@@ -42,6 +42,17 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
       cursor: pointer;
     }
   }
+  .login {
+    margin: 0 0 0 auto;
+    border: none;
+    background: #FFA3A3;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    padding: 5px 20px;
+    color: #fff;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
 `
 export const  JoinModalWrapper = styled.div`
   width: 100%;

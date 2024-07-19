@@ -13,6 +13,7 @@ import GraphPage from "../pages/GraphPage.tsx";
 import GrandFather from "../pages/GrandFather.tsx";
 import BuskingBoard from "../pages/BuskingBoard.tsx";
 import BuskingView from "../components/buskingBoard/BuskingView.tsx";
+import LoginPage from "../pages/LoginPage.tsx";
 
 const AppRouter = () => {
   const location = useLocation()
@@ -74,6 +75,7 @@ const AppRouter = () => {
         <Route path="graphpage" element={<GraphPage />} />
         <Route path="halloffame" element={<HallOfFame />} />
         <Route path="GrandFather" element={<GrandFather />} />
+        <Route path="loginpage" element={<LoginPage />} />
       </Route>
     </Routes>
   )

@@ -14,8 +14,6 @@ const PartPage = () => {
   const { modalPartState, loginUser } = useAppSelector(state => state.membersData)
 
   return (
-    <>
-    {loginUser.level >= 1 ? 
     <PartPageContainer>
       <PartAward />
       <PartResult />
@@ -24,9 +22,7 @@ const PartPage = () => {
       <ScrollToTopBtn />
       <Footer />
       <GfIcon />
-    </PartPageContainer> :
-    <Waiting />}
-    </>
+    </PartPageContainer>
   )
 }
 

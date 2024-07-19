@@ -11,16 +11,13 @@ import GfIcon from "../components/common/GfIcon.tsx"
 const HallOfFame = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   return (
-    <>{loginUser.level >= 1 ? 
       <HallOfFameContainer>
       <HofBtnList />
       <HofList />
       <ScrollToTopBtn />
       <Footer />
       <GfIcon />
-    </HallOfFameContainer> : <Waiting />
-    }
-    </>
+    </HallOfFameContainer> 
   )
 }
 

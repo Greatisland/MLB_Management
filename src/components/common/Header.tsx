@@ -3,14 +3,17 @@ import MemberModal from "./MemberModal.tsx";
 import { useAppSelector } from "../../store/hook.ts";
 import { Link } from "react-router-dom";
 import { authFunc } from "../../firebase/firebaseFunc.ts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const { modalState, loginUser } = useAppSelector(state => state.membersData)
   const navigate = useNavigate()
+  const location = useLocation()
+
+  //로그인 페이지에서 헤더 숨김
+  if('/LoginPage'.includes(location.pathname)) return <></>
 
   return (
-    <>{loginUser.state ?
     <HeaderContainer $photourl={loginUser.photoURL}>
       <Link to='/infopage'><h1 className="eng">MLB MANAGEMENT</h1></Link>
       {loginUser.state ? 
@@ -21,9 +24,10 @@ const Header = () => {
           navigate('/')
           authFunc.logout()
         }}>로그아웃</div>
-      </div> : null}
+      </div> : 
+      <div className="login" onClick={() => {navigate('/LoginPage')}}>로그인</div>}
       {modalState ? <MemberModal /> : null}
-    </HeaderContainer> : <></>}</>
+    </HeaderContainer>
   )
 }
 

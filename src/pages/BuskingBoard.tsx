@@ -34,7 +34,6 @@ const BuskingBoard = () => {
   }, []);
 
   return (
-    <>{loginUser.level >= 1 ?
     <BuskingBoardContainer>
       <BuskingAddBtn onClick={() => {
         dispatch(sendBusking({
@@ -57,9 +56,7 @@ const BuskingBoard = () => {
       <ScrollToTopBtn />
       <Footer />
       <GfIcon />
-    </BuskingBoardContainer> :
-    <Waiting />}
-    </>
+    </BuskingBoardContainer> 
   )
 }
 

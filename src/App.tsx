@@ -80,31 +80,39 @@ const App = () => {
         <Splash />
       </ThemeProvider>
   </>)}
-  //로그인이 되었을 때, 승인된 회원 or 승인되지 않은 회원 조건부 렌더링
-  if(loginUser.state){return (<>
-    {loginUser.level >= 1 ? 
-    <>
+  return (
+      <>
       <ThemeProvider theme={originTheme}>
         <GlobalStyle />
         <ScrollToTop />
         <AppRouter />
       </ThemeProvider>
-    </>:
-    <>
-      <ThemeProvider theme={originTheme}>
-        <GlobalStyle />
-        <ScrollToTop />
-        <Waiting />
-      </ThemeProvider>
-    </>}</>)
-  //로그인되지 않았을 때 (로그인 페이지)
-  }else{return (<>
-      <ThemeProvider theme={originTheme}>
-        <GlobalStyle />
-        <ScrollToTop />
-        <LoginPage />
-      </ThemeProvider>
-    </>)}
+    </>)
+  //로그인이 되었을 때, 승인된 회원 or 승인되지 않은 회원 조건부 렌더링
+  // if(loginUser.state){return (<>
+  //   {loginUser.level >= 1 ? 
+  //   <>
+  //     <ThemeProvider theme={originTheme}>
+  //       <GlobalStyle />
+  //       <ScrollToTop />
+  //       <AppRouter />
+  //     </ThemeProvider>
+  //   </>:
+  //   <>
+  //     <ThemeProvider theme={originTheme}>
+  //       <GlobalStyle />
+  //       <ScrollToTop />
+  //       <Waiting />
+  //     </ThemeProvider>
+  //   </>}</>)
+  // //로그인되지 않았을 때 (로그인 페이지)
+  // }else{return (<>
+  //     <ThemeProvider theme={originTheme}>
+  //       <GlobalStyle />
+  //       <ScrollToTop />
+  //       <LoginPage />
+  //     </ThemeProvider>
+  //   </>)}
 }
 
 export default App

@@ -16,8 +16,7 @@ import GfIcon from "../components/common/GfIcon.tsx"
 const InfoPage = () => {
   const { loginUser } = useAppSelector(state => state.membersData)
   
-  return (<>
-    {loginUser.level >= 1 ? 
+  return (
       <HomeContainer>
         <BtnList />
         <PenddingList />
@@ -30,9 +29,7 @@ const InfoPage = () => {
         <ScrollToTopBtn />
         <Footer />
         <GfIcon />
-      </HomeContainer> :
-      <Waiting />}
-  </>
+      </HomeContainer> 
   )
 }
 
