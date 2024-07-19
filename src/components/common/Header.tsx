@@ -11,7 +11,7 @@ const Header = () => {
   const location = useLocation()
 
   //로그인 페이지에서 헤더 숨김
-  if('/LoginPage'.includes(location.pathname)) return <></>
+  if(location.pathname === '/LoginPage') return <></>
 
   return (
     <HeaderContainer $photourl={loginUser.photoURL}>
