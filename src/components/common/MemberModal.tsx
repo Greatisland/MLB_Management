@@ -68,6 +68,7 @@ const MemberModal = () => {
       sendMember.name !== state.name ||
       sendMember.join !== state.join ||
       sendMember.year !== state.year ||
+      sendMember.birth !== state.birth ||
       sendMember.etc !== state.etc ||
       sendMember.gender !== state.gender ||
       sendMember.special !== state.special ||
@@ -214,11 +215,13 @@ const MemberModal = () => {
               <option key={i} value={i + 1988}>{i + 1988 + v}</option>
             ))}
           </select>
-          {sendMember.birth ? 
+          {/* {sendMember.birth ?  */}
           <>
             <p>생일</p>
-            <span className="birth">{sendMember.birth}</span>
-          </>: null}
+            {/* <span className="birth">{sendMember.birth}</span> */}
+            <input type="text" value={state.birth} onChange={e => setState({...state, birth: e.target.value})} placeholder="ex) 1월 1일" />
+          </>
+          {/* : null} */}
           <p>성별</p>
           <select value={state.gender} onChange={e => setState({...state, gender: e.target.value})}>
             <option value={''}>선택</option>
