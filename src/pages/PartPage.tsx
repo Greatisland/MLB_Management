@@ -5,13 +5,12 @@ import PartResult from "../components/part/PartResult.tsx"
 import { PartPageContainer } from "../style/partPageStyled.tsx"                                                
 import { useAppSelector } from "../store/hook.ts"
 import Footer from "../components/common/Footer.tsx"
-import Waiting from "../components/common/Waiting.tsx"
 import ScrollToTopBtn from "../components/common/ScrollToTopBtn.tsx"
 import GfIcon from "../components/common/GfIcon.tsx"
 
 
 const PartPage = () => {
-  const { modalPartState, loginUser } = useAppSelector(state => state.membersData)
+  const { modalPartState } = useAppSelector(state => state.membersData)
 
   return (
     <PartPageContainer>

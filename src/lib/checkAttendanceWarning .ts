@@ -1,8 +1,8 @@
 import type { Member } from "../store/type"
 import { getTotalAttendance } from "./getTotalAttendance"
 
-export const checkAttendanceWarning = (member: Member) => {
-  const totalAttendance = getTotalAttendance(member)
+export const checkAttendanceWarning = (yearView:number, monthView:number, member: Member) => {
+  const totalAttendance = getTotalAttendance(yearView, monthView, member)
   const currentDate = new Date()
   const joinDate = new Date(member.join)
   const comebackDate = member.comeback ? new Date(member.comeback) : null

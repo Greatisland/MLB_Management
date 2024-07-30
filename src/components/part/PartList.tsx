@@ -61,12 +61,12 @@ const PartList = () => {
         </thead>
         <tbody>
         {searchMembersData.map((member, i) => {
-          let memberJoin = new Date(member[1].join)
-          let memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
-          let joinMonth = memberJoin.getMonth() + 1
-          let joinYear = memberJoin.getFullYear()
-          let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
-          let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
+          const memberJoin = new Date(member[1].join)
+          const memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
+          const joinMonth = memberJoin.getMonth() + 1
+          const joinYear = memberJoin.getFullYear()
+          const comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
+          const comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
 
           let yearData: any = null
 
@@ -74,7 +74,7 @@ const PartList = () => {
               yearData = (member[1] as any).attend[yearView] || {}
           }
 
-          const isWarning = checkAttendanceWarning(member[1])
+          const isWarning = checkAttendanceWarning(yearView, monthView, member[1])
 
           return (
           <MemberCard 
@@ -105,7 +105,7 @@ const PartList = () => {
             <td>{
             yearData ? yearData[monthView] || 0 : 0
             } 회</td>
-            <td>{getTotalAttendance(member[1])} 회</td>
+            <td>{getTotalAttendance(yearView, monthView, member[1])} 회</td>
             {/* <td>{averCheck(member[1], yearView)} 회</td> */}
           </MemberCard>
         )})}

@@ -107,9 +107,9 @@ const membersDataSlice = createSlice({
       // 정렬 기준에 따라 처리
       if (action.payload === 'name') {
         state.membersData.sort((a, b) => {
-          let aName = a[1].name
-          let bName = b[1].name
-          let comparison = aName < bName ? -1 : (aName > bName ? 1 : 0)
+          const aName = a[1].name
+          const bName = b[1].name
+          const comparison = aName < bName ? -1 : (aName > bName ? 1 : 0)
           return comparison * state.sortDirection.name; // 방향에 따른 정렬
         })
         state.sortDirection.name = -state.sortDirection.name; // 방향 전환
@@ -128,32 +128,32 @@ const membersDataSlice = createSlice({
   
       } else if (action.payload === 'etc') {
         state.membersData.sort((a, b) => {
-          let aName = a[1].etc || ''
-          let bName = b[1].etc || ''
-          let comparison = aName < bName ? 1 : (aName > bName ? -1 : 0)
+          const aName = a[1].etc || ''
+          const bName = b[1].etc || ''
+          const comparison = aName < bName ? 1 : (aName > bName ? -1 : 0)
           return comparison * state.sortDirection.etc // 방향에 따른 정렬
         })
         state.sortDirection.etc = -state.sortDirection.etc // 방향 전환
 
       } else if (action.payload === 'yearPart') {
         state.membersData.sort((a, b) => {
-          let aPart = a[1].total || 0
-          let bPart = b[1].total || 0
+          const aPart = a[1].total || 0
+          const bPart = b[1].total || 0
           return (Number(bPart) - Number(aPart)) * state.sortDirection.yearPart
         })
         state.sortDirection.yearPart = -state.sortDirection.yearPart // 방향 전환
 
       } else if (action.payload === 'monthPart') {
         state.membersData.sort((a, b) => {
-          let aPart = (a[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
-          let bPart = (b[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
+          const aPart = (a[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
+          const bPart = (b[1] as any).attend?.[state.yearView]?.[state.monthView] || 0
           return (Number(bPart) - Number(aPart)) * state.sortDirection.monthPart
         })
         state.sortDirection.monthPart = -state.sortDirection.monthPart // 방향 전환
       } else if (action.payload === 'yearHost') {
         state.membersData.sort((a, b) => {
-          let aPart = a[1].totalHost || 0
-          let bPart = b[1].totalHost || 0
+          const aPart = a[1].totalHost || 0
+          const bPart = b[1].totalHost || 0
           return (Number(bPart) - Number(aPart)) * state.sortDirection.yearHost
         })
         state.sortDirection.yearHost = -state.sortDirection.yearHost // 방향 전환
@@ -167,7 +167,7 @@ const membersDataSlice = createSlice({
         */
        state.membersData.sort((a, b) => {
         return (
-          (getTotalAttendance(b[1]) - getTotalAttendance(a[1])) * state.sortDirection.aver
+          (getTotalAttendance(state.yearView, state.monthView, b[1]) - getTotalAttendance(state.yearView, state.monthView, a[1])) * state.sortDirection.aver
         )
        })
        state.sortDirection.aver = -state.sortDirection.aver
