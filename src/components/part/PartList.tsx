@@ -97,7 +97,7 @@ const PartList = () => {
                 <span className="tagBack">복귀</span> :
                 null
               }
-              {hotCount(member[1]) >= 15 ?
+              {hotCount(yearView, monthView, member[1]) >= 15 ?
                <span className="tagHot">Hot</span> : null}
               </div>
             </td>

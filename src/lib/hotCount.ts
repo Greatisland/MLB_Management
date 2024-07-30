@@ -1,9 +1,9 @@
 import type { Member } from "../store/type.ts"
 
-export const hotCount = (member: Member) => {
+export const hotCount = (yearView: number, monthView: number, member: Member, page?: boolean) => {
   const date = new Date()
-  const currentYear = date.getFullYear()
-  const currentMonth = date.getMonth() + 1
+  const currentYear = page? date.getFullYear(): yearView
+  const currentMonth = page? date.getMonth() + 1: monthView
 
   const preAttend = member.attend?.[currentYear - 1] || {}
   const attend = member.attend?.[currentYear] || {}

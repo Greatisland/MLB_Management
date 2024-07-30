@@ -16,7 +16,7 @@ import { totalCalcFunc } from "../../lib/totalCalcFunc.ts";
 
 const HomeList = () => {
   const dispatch = useAppDispatch()
-  const { membersData, loginUser, accountList } = useAppSelector(state => state.membersData)
+  const { membersData, loginUser, accountList, yearView, monthView } = useAppSelector(state => state.membersData)
   const [ search, setSearch ] = useState('')
   const [ isTab, setIsTab ] = useState(0)
 
@@ -125,12 +125,12 @@ const HomeList = () => {
         </thead>
         <tbody>
           {searchMembersData.map((member, i) => {
-            let memberJoin = new Date(member[1].join)
-            let memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
-            let joinMonth = memberJoin.getMonth() + 1
-            let joinYear = memberJoin.getFullYear()
-            let comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
-            let comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
+            const memberJoin = new Date(member[1].join)
+            const memberCome: Date | null = member[1].comeback ? new Date(member[1].comeback) : null
+            const joinMonth = memberJoin.getMonth() + 1
+            const joinYear = memberJoin.getFullYear()
+            const comeMonth = memberCome ? memberCome?.getMonth() + 1 : 0
+            const comeYear = memberCome ? memberCome?.getFullYear() || 0 : 0
             
             return (
             <tr key={i} onClick={() => handleAddMember(member)}>
@@ -147,7 +147,7 @@ const HomeList = () => {
                   <span className="tagBack">복귀</span> :
                   null
                 }
-                {hotCount(member[1]) >= 15 ?
+                {hotCount(yearView, monthView, member[1], true) >= 15 ?
                 <span className="tagHot">Hot</span> : null}
                 </div>
               </td>
