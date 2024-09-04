@@ -12,7 +12,7 @@ import { oldFaceCheck } from "../../lib/oldFaceCheck.ts"
 import { hotCount } from "../../lib/hotCount.ts"
 import { NoticeText } from "../../style/partPageStyled.tsx"
 import { getTotalAttendance } from "../../lib/getTotalAttendance.ts"
-import { checkAttendanceWarning } from "../../lib/checkAttendanceWarning .ts"
+import { checkAttendanceWarning } from "../../lib/checkAttendanceWarning.ts"
 
 const PartList = () => {
   const { membersData, loginUser, yearView, monthView } = useAppSelector(state => state.membersData)
