@@ -4,7 +4,7 @@ import { sortState } from "../../store/slice.ts"
 import { DangerText, MemberCard, PartListContainer, SearchBarPart, TagExplain } from "../../style/partPageStyled.tsx"
 import { totalCalcFunc } from "../../lib/totalCalcFunc.ts"
 import { togglePartModal, sendMember } from "../../store/slice.ts"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import GraphArrow from "../common/GraphArrow.tsx"
 import { averCheck } from "../../lib/averCheck.ts"
 import { newFaceCheck } from "../../lib/newFaceCheck.ts"
@@ -23,6 +23,7 @@ const PartList = () => {
 
   const [ search, setSearch ] = useState('')
 
+  
   const searchMembersData = totalMember.filter(member => member[1].name.includes(search))
 
   const date = new Date()

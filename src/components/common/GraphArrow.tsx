@@ -19,9 +19,9 @@ const GraphArrow = ({isMonth} : Props) => {
         }}}/>
         <p>{yearView}년</p>
         <BiRightArrow onClick={() => {
-          if(yearView < new Date().getFullYear()) {
+          // if(yearView < new Date().getFullYear()) {
             dispatch(setYearView(yearView + 1))
-        }}}/>
+        }}/>
       </div>
       {isMonth ? 
         <div className="month">

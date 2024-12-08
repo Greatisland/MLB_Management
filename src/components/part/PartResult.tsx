@@ -11,20 +11,20 @@ interface NewProp {
 
 const PartResult = () => {
   const { membersData } = useAppSelector(state => state.membersData)
-  let [ rising, setRising ] = useState<any>([])
-  let [ hosting, setHosting ] = useState<[string, Member][]>([])
+  const [ rising, setRising ] = useState<any>([])
+  const [ hosting, setHosting ] = useState<[string, Member][]>([])
   const date = new Date()
   const currentYear = date.getFullYear()
 
   useEffect(() => {
-    let filterMember = [...membersData].filter((member) => {
-      let memberJoin = new Date(member[1].join)
-      let joinMonth = memberJoin.getMonth() + 1
-      let joinYear = memberJoin.getFullYear()
+    const filterMember = [...membersData].filter((member) => {
+      const memberJoin = new Date(member[1].join)
+      const joinMonth = memberJoin.getMonth() + 1
+      const joinYear = memberJoin.getFullYear()
       if(newFaceCheck(joinYear, joinMonth)){return member}
     }).map(member => {
       // 새로운 객체를 생성하여 원본 데이터를 수정하지 않도록 함
-      let newMember: Member & NewProp = {...member[1], aver: 0}
+      const newMember: Member & NewProp = {...member[1], aver: 0}
       newMember.aver = totalCalcFunc(newMember, currentYear).aver
       return newMember
     }).sort((a, b) => {
@@ -33,7 +33,7 @@ const PartResult = () => {
 
     
 1
-    let filterMemberHost = [...membersData].sort((a, b) => {
+    const filterMemberHost = [...membersData].sort((a, b) => {
       return (totalCalcFunc(b[1], currentYear).host || 0) - (totalCalcFunc(a[1], currentYear).host || 0)
     }).filter(member => member[1]?.host?.[currentYear])
 
